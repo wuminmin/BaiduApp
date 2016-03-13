@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">BaiduApp</string>
+    <string name="title_order">订单</string>
+    <string name="order_meidenglu">您还没有登录,请登录后查看订单</string>
+</resources>

@@ -1,0 +1,28 @@
+<resources>
+
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+        <item name="android:windowBackground">@color/white</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="tabView">@style/TabView</item>
+        <!--//图标居中-->
+    </style>
+
+    <style name="TabView">
+        <item name="android:addStatesFromChildren">true</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:gravity">bottom|center_horizontal</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:background">@android:color/white</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+
+    <style name="title">
+        <item name="android:gravity">center</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:clickable">false</item>
+    </style>
+
+</resources>

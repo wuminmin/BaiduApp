@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPage_Press">#41b5E8</color>
+    <color name="colorPage">#969696</color>
+    <color name="colorLine">#d9d9d9</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="mcolor">#3794b8</color>
+    <color name="white">#FFFFFF</color>
+    <color name="clr_normal">#ff6501</color>
+    <color name="clr_pressed">#a44100</color>
+    <color name="blue">#00b0f0</color>
+    <color name="black">#2a2a2a</color>
+    <color name="lightblack">#969696</color>
+
+    <color name="lightbackground">#f2f2f2f2</color>
+
+
+    <!--头、底部 layout 背景色-->
+
+    <color name="dhcolor">#40b4d9</color>
+    <color name="reg_text_color">#5a5a5a</color>
+    <color name="reg_btn_bg_color">#40b4d4</color>
+    <color name="reg_text_border_color">#40b4d6</color>
+    <color name="reg_getcode_btn_stroke">#b4b4b4</color>
+    <color name="title_red">#fc0c48</color>
+    <color name="red">#FF0000</color>
+    <color name="red_">#E35850</color>
+    <color name="green">#008000</color>
+    <color name="orange">#FFA500</color>
+    <!--<color name="blue">#0000FF</color>-->
+    <color name="mediumblue">#0000CD</color><!--中兰色 -->
+    <color name="myblue">#54BCEF</color>
+    <color name="grey">#999999</color>
+    <color name="lgrey">#EEEEEE</color>
+    <color name="mgrey">#D3D3D3</color>
+    <color name="order_item_top_bg">#44B5DF</color>
+    <color name="orange_h">#FF6600</color>
+    <color name="province_line_border">#C7C7C7</color>
+    <color name="text_order_stat_1">#07C7C7</color>
+    <color name="no_color">@null</color>
+</resources>
