@@ -70,7 +70,7 @@ public class ImageAdapter extends BaseAdapter {
             // set value into textview
             TextView textView = (TextView) gridView
                     .findViewById(R.id.grid_item_label);
-            textView.setText(mobileValues[position]);
+//            textView.setText(mobileValues[position]);
 
             // set image based on selected text
             ImageView imageView = (ImageView) gridView
@@ -78,15 +78,15 @@ public class ImageAdapter extends BaseAdapter {
 
             String mobile = mobileValues[position];
 
-            if (mobile.equals("buy")) {
-                imageView.setImageResource(R.drawable.buy);
-            } else if (mobile.equals("deliver")) {
-                imageView.setImageResource(R.drawable.deliver);
-            } else if (mobile.equals("fruit")) {
-                imageView.setImageResource(R.drawable.fruit);
-            } else {
-                imageView.setImageResource(R.drawable.medicine);
-            }
+//            if (mobile.equals("buy")) {
+//                imageView.setImageResource(R.drawable.buy);
+//            } else if (mobile.equals("deliver")) {
+//                imageView.setImageResource(R.drawable.deliver);
+//            } else if (mobile.equals("fruit")) {
+//                imageView.setImageResource(R.drawable.fruit);
+//            } else {
+//                imageView.setImageResource(R.drawable.medicine);
+//            }
 
         } else {
             gridView = (View) convertView;
