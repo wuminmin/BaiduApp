@@ -48,7 +48,7 @@ public class HomeFragment extends BaseFragment {
 
         lv_market = (ListView) view.findViewById(R.id.lv_market);
         listViewAdapter = new ListViewAdapter(view.getContext());
-        lv_market.setAdapter(listViewAdapter);
+//        lv_market.setAdapter(listViewAdapter);
 
 
         grid = (GridView)view.findViewById(R.id.gridView);
