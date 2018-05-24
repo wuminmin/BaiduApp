@@ -4,258 +4,309 @@
     android:background="@color/lightbackground"
     android:orientation="vertical">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:background="@color/title_red">
 
-        <EditText
-            android:id="@+id/et_search"
-            android:layout_width="match_parent"
-            android:layout_height="35dp"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:background="@drawable/et"
-            android:drawableLeft="@drawable/non_catering_icon_search"
-            android:hint="搜索商户或者商品名称"
-            android:inputType="number"
-            android:textColorHint="@color/lightblack"
-            android:textSize="14sp" />
-    </RelativeLayout>
+    <Button
+    android:id="@+id/button"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignParentTop="true"
+    android:layout_centerHorizontal="true"
+    android:text="获取无线信息" />
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    <TextView
+    android:maxLines = "1000"
+    android:scrollbars = "vertical"
+    android:id="@+id/textView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentStart="true"
+    android:layout_alignParentTop="true"
+    android:layout_marginTop="99dp"
+    android:ellipsize="end"
+    android:text="基站信息" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <GridView xmlns:android="http://schemas.android.com/apk/res/android"
-                android:id="@+id/gridView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:columnWidth="90dp"
-                android:numColumns="auto_fit"
-                android:verticalSpacing="10dp"
-                android:horizontalSpacing="10dp"
-                android:stretchMode="columnWidth"
-                android:gravity="center"
-                />
+    <TextView
+    android:id="@+id/editText"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentTop="true"
+    android:layout_centerHorizontal="true"
+    android:layout_marginTop="217dp"
+    android:ems="10"
+    android:maxLines="1000"
+    android:scrollbars="vertical"
+    android:text="小区信息" />
 
 
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="160dp"
-                android:layout_marginTop="20dp"
-                android:background="@color/white"
-                android:orientation="vertical">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp">
-
-                    <RelativeLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1">
-
-                        <ImageView
-                            android:id="@+id/iv_11"
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"
-                            android:layout_centerHorizontal="true"
-                            android:background="@drawable/eat" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="餐饮"
-                            android:textSize="12sp"
-                            android:layout_below="@+id/iv_11"
-                            android:layout_centerHorizontal="true"/>
-                    </RelativeLayout>
-
-                    <RelativeLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1">
-
-                        <ImageView
-                            android:id="@+id/iv_21"
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"
-                            android:layout_centerHorizontal="true"
-                            android:background="@drawable/buy" />
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="超市购"
-                            android:textSize="12sp"
-                            android:layout_below="@+id/iv_21"
-                            android:layout_centerHorizontal="true"/>
-                    </RelativeLayout>
-
-                    <RelativeLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1">
-
-                        <ImageView
-                            android:id="@+id/iv_31"
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"
-                            android:layout_centerHorizontal="true"
-                            android:background="@drawable/fruit" />
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="水果新"
-                            android:textSize="12sp"
-                            android:layout_below="@+id/iv_31"
-                            android:layout_centerHorizontal="true"/>
-                    </RelativeLayout>
-
-                    <RelativeLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1">
-
-                        <ImageView
-                            android:id="@+id/iv_41"
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"
-                            android:layout_centerHorizontal="true"
-                            android:background="@drawable/tea" />
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="下午茶"
-                            android:textSize="12sp"
-                            android:layout_below="@+id/iv_41"
-                            android:layout_centerHorizontal="true"/>
-                    </RelativeLayout>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp">
-
-                    <RelativeLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1">
-
-                        <ImageView
-                            android:id="@+id/iv_1"
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"
-                            android:layout_centerHorizontal="true"
-                            android:background="@drawable/tuhao" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="土豪特供"
-                            android:textSize="12sp"
-                            android:layout_below="@+id/iv_1"
-                            android:layout_centerHorizontal="true"/>
-                    </RelativeLayout>
-
-                    <RelativeLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1">
-
-                        <ImageView
-                            android:id="@+id/iv_2"
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"
-                            android:layout_centerHorizontal="true"
-                            android:background="@drawable/newdian" />
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="新店"
-                            android:textSize="12sp"
-                            android:layout_below="@+id/iv_2"
-                            android:layout_centerHorizontal="true"/>
-                    </RelativeLayout>
-
-                    <RelativeLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1">
-
-                        <ImageView
-                            android:id="@+id/iv_3"
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"
-                            android:layout_centerHorizontal="true"
-                            android:background="@drawable/deliver" />
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="百度配送"
-                            android:textSize="12sp"
-                            android:layout_below="@+id/iv_3"
-                            android:layout_centerHorizontal="true"/>
-                    </RelativeLayout>
-
-                    <RelativeLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1">
-
-                        <ImageView
-                            android:id="@+id/iv_4"
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"
-                            android:layout_centerHorizontal="true"
-                            android:background="@drawable/medicine" />
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="网上送药"
-                            android:textSize="12sp"
-                            android:layout_below="@+id/iv_4"
-                            android:layout_centerHorizontal="true"/>
-                    </RelativeLayout>
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/lightblack"/>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="40dp">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="15dp"
-                    android:text="全部商家"/>
-            </LinearLayout>
-
-            <com.ysc.baiduapp.MyListView
-                android:id="@+id/lv_market"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:listSelector="#00000000"
-                android:childDivider="#00000000">
-            </com.ysc.baiduapp.MyListView>
 
 
-        </LinearLayout>
 
-    </ScrollView>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!--<RelativeLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="55dp"-->
+        <!--android:background="@color/title_red">-->
+
+        <!--<EditText-->
+            <!--android:id="@+id/et_search"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="35dp"-->
+            <!--android:layout_centerVertical="true"-->
+            <!--android:layout_marginLeft="20dp"-->
+            <!--android:layout_marginRight="20dp"-->
+            <!--android:background="@drawable/et"-->
+            <!--android:drawableLeft="@drawable/non_catering_icon_search"-->
+            <!--android:hint="搜索商户或者商品名称"-->
+            <!--android:inputType="number"-->
+            <!--android:textColorHint="@color/lightblack"-->
+            <!--android:textSize="14sp" />-->
+    <!--</RelativeLayout>-->
+
+    <!--<ScrollView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent">-->
+
+        <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:orientation="vertical">-->
+
+            <!--<GridView xmlns:android="http://schemas.android.com/apk/res/android"-->
+                <!--android:id="@+id/gridView"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:columnWidth="90dp"-->
+                <!--android:numColumns="auto_fit"-->
+                <!--android:verticalSpacing="10dp"-->
+                <!--android:horizontalSpacing="10dp"-->
+                <!--android:stretchMode="columnWidth"-->
+                <!--android:gravity="center"-->
+                <!--/>-->
+
+
+
+            <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="160dp"-->
+                <!--android:layout_marginTop="20dp"-->
+                <!--android:background="@color/white"-->
+                <!--android:orientation="vertical">-->
+
+                <!--<LinearLayout-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginTop="10dp">-->
+
+                    <!--<RelativeLayout-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_weight="1">-->
+
+                        <!--<ImageView-->
+                            <!--android:id="@+id/iv_11"-->
+                            <!--android:layout_width="50dp"-->
+                            <!--android:layout_height="50dp"-->
+                            <!--android:layout_centerHorizontal="true"-->
+                            <!--android:background="@drawable/eat" />-->
+
+                        <!--<TextView-->
+                            <!--android:layout_width="wrap_content"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:text="餐饮"-->
+                            <!--android:textSize="12sp"-->
+                            <!--android:layout_below="@+id/iv_11"-->
+                            <!--android:layout_centerHorizontal="true"/>-->
+                    <!--</RelativeLayout>-->
+
+                    <!--<RelativeLayout-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_weight="1">-->
+
+                        <!--<ImageView-->
+                            <!--android:id="@+id/iv_21"-->
+                            <!--android:layout_width="50dp"-->
+                            <!--android:layout_height="50dp"-->
+                            <!--android:layout_centerHorizontal="true"-->
+                            <!--android:background="@drawable/buy" />-->
+                        <!--<TextView-->
+                            <!--android:layout_width="wrap_content"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:text="超市购"-->
+                            <!--android:textSize="12sp"-->
+                            <!--android:layout_below="@+id/iv_21"-->
+                            <!--android:layout_centerHorizontal="true"/>-->
+                    <!--</RelativeLayout>-->
+
+                    <!--<RelativeLayout-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_weight="1">-->
+
+                        <!--<ImageView-->
+                            <!--android:id="@+id/iv_31"-->
+                            <!--android:layout_width="50dp"-->
+                            <!--android:layout_height="50dp"-->
+                            <!--android:layout_centerHorizontal="true"-->
+                            <!--android:background="@drawable/fruit" />-->
+                        <!--<TextView-->
+                            <!--android:layout_width="wrap_content"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:text="水果新"-->
+                            <!--android:textSize="12sp"-->
+                            <!--android:layout_below="@+id/iv_31"-->
+                            <!--android:layout_centerHorizontal="true"/>-->
+                    <!--</RelativeLayout>-->
+
+                    <!--<RelativeLayout-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_weight="1">-->
+
+                        <!--<ImageView-->
+                            <!--android:id="@+id/iv_41"-->
+                            <!--android:layout_width="50dp"-->
+                            <!--android:layout_height="50dp"-->
+                            <!--android:layout_centerHorizontal="true"-->
+                            <!--android:background="@drawable/tea" />-->
+                        <!--<TextView-->
+                            <!--android:layout_width="wrap_content"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:text="下午茶"-->
+                            <!--android:textSize="12sp"-->
+                            <!--android:layout_below="@+id/iv_41"-->
+                            <!--android:layout_centerHorizontal="true"/>-->
+                    <!--</RelativeLayout>-->
+                <!--</LinearLayout>-->
+                <!--<LinearLayout-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginTop="10dp">-->
+
+                    <!--<RelativeLayout-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_weight="1">-->
+
+                        <!--<ImageView-->
+                            <!--android:id="@+id/iv_1"-->
+                            <!--android:layout_width="50dp"-->
+                            <!--android:layout_height="50dp"-->
+                            <!--android:layout_centerHorizontal="true"-->
+                            <!--android:background="@drawable/tuhao" />-->
+
+                        <!--<TextView-->
+                            <!--android:layout_width="wrap_content"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:text="土豪特供"-->
+                            <!--android:textSize="12sp"-->
+                            <!--android:layout_below="@+id/iv_1"-->
+                            <!--android:layout_centerHorizontal="true"/>-->
+                    <!--</RelativeLayout>-->
+
+                    <!--<RelativeLayout-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_weight="1">-->
+
+                        <!--<ImageView-->
+                            <!--android:id="@+id/iv_2"-->
+                            <!--android:layout_width="50dp"-->
+                            <!--android:layout_height="50dp"-->
+                            <!--android:layout_centerHorizontal="true"-->
+                            <!--android:background="@drawable/newdian" />-->
+                        <!--<TextView-->
+                            <!--android:layout_width="wrap_content"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:text="新店"-->
+                            <!--android:textSize="12sp"-->
+                            <!--android:layout_below="@+id/iv_2"-->
+                            <!--android:layout_centerHorizontal="true"/>-->
+                    <!--</RelativeLayout>-->
+
+                    <!--<RelativeLayout-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_weight="1">-->
+
+                        <!--<ImageView-->
+                            <!--android:id="@+id/iv_3"-->
+                            <!--android:layout_width="50dp"-->
+                            <!--android:layout_height="50dp"-->
+                            <!--android:layout_centerHorizontal="true"-->
+                            <!--android:background="@drawable/deliver" />-->
+                        <!--<TextView-->
+                            <!--android:layout_width="wrap_content"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:text="百度配送"-->
+                            <!--android:textSize="12sp"-->
+                            <!--android:layout_below="@+id/iv_3"-->
+                            <!--android:layout_centerHorizontal="true"/>-->
+                    <!--</RelativeLayout>-->
+
+                    <!--<RelativeLayout-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_weight="1">-->
+
+                        <!--<ImageView-->
+                            <!--android:id="@+id/iv_4"-->
+                            <!--android:layout_width="50dp"-->
+                            <!--android:layout_height="50dp"-->
+                            <!--android:layout_centerHorizontal="true"-->
+                            <!--android:background="@drawable/medicine" />-->
+                        <!--<TextView-->
+                            <!--android:layout_width="wrap_content"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:text="网上送药"-->
+                            <!--android:textSize="12sp"-->
+                            <!--android:layout_below="@+id/iv_4"-->
+                            <!--android:layout_centerHorizontal="true"/>-->
+                    <!--</RelativeLayout>-->
+                <!--</LinearLayout>-->
+
+            <!--</LinearLayout>-->
+
+            <!--<TextView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="1dp"-->
+                <!--android:background="@color/lightblack"/>-->
+            <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="40dp">-->
+                <!--<TextView-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_gravity="center_vertical"-->
+                    <!--android:layout_marginLeft="15dp"-->
+                    <!--android:text="全部商家"/>-->
+            <!--</LinearLayout>-->
+
+            <!--<com.ysc.baiduapp.MyListView-->
+                <!--android:id="@+id/lv_market"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:listSelector="#00000000"-->
+                <!--android:childDivider="#00000000">-->
+            <!--</com.ysc.baiduapp.MyListView>-->
+
+
+        <!--</LinearLayout>-->
+
+    <!--</ScrollView>-->
 
 
 

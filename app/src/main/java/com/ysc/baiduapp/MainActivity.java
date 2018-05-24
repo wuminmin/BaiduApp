@@ -2,6 +2,7 @@ package com.ysc.baiduapp;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -9,13 +10,16 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.telephony.TelephonyManager;
 import android.view.Menu;
 import android.view.Window;
 import android.widget.GridView;
 
+import com.tencent.bugly.crashreport.CrashReport;
 import com.ysc.baiduapp.fragment.OrderFragment;
 import com.ysc.baiduapp.fragment.MineFragment;
 import com.ysc.baiduapp.fragment.HomeFragment;
+import com.ysc.baiduapp.service.GetCellInfo;
 import com.ysc.baiduapp.viewcustom.BaseFragment;
 import com.ysc.baiduapp.viewcustom.IconPagerAdapter;
 import com.ysc.baiduapp.viewcustom.IconTabPageIndicator;
@@ -24,16 +28,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends FragmentActivity {
+    public GetCellInfo getCellInfo;
     private ViewPager mViewPager;
     private IconTabPageIndicator mIndicator;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        CrashReport.initCrashReport(getApplicationContext(), "5d728085f5", true);
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activityfragement_main);
         initViews();
         initData();
-
     }
 
     private void initViews(){
@@ -56,6 +61,7 @@ public class MainActivity extends FragmentActivity {
         List<BaseFragment> fragments = new ArrayList<BaseFragment>();
 
         HomeFragment homeFragment = new HomeFragment();
+//        homeFragment.setGetCellInfo(getCellInfo);
         homeFragment.setTitle("首页");
         homeFragment.setIconId(R.drawable.tab_home_selector);
         fragments.add(homeFragment);

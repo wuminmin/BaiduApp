@@ -9,7 +9,7 @@ import android.telephony.CellInfo;
 import android.telephony.TelephonyManager;
 import android.telephony.cdma.CdmaCellLocation;
 import android.telephony.gsm.GsmCellLocation;
-
+import android.support.v4.app.FragmentActivity;
 import com.ysc.baiduapp.MainActivity;
 
 import java.util.Arrays;
@@ -17,13 +17,13 @@ import java.util.List;
 
 public class GetCellInfo {
     private static final int MY_PERMISSIONS_REQUEST_ACCESS_COARSE_LOCATION = 0;
-    private MainActivity mymainActivity;
+    private FragmentActivity mymainActivity;
     private Context mycontext;
     private TelephonyManager telephonyManager;
     private String strTmp = "基站信息：";
     private String strCellInfo = "小区信息：";
 
-    GetCellInfo(Context c, TelephonyManager t, MainActivity m) {
+    public GetCellInfo(Context c, TelephonyManager t, FragmentActivity m) {
         mycontext = c;
         telephonyManager = t;
         mymainActivity = m;
