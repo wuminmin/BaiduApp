@@ -24,6 +24,8 @@ import com.ysc.baiduapp.R;
 import com.ysc.baiduapp.service.GetCellInfo;
 import com.ysc.baiduapp.viewcustom.BaseFragment;
 
+import org.json.simple.parser.ParseException;
+
 /**
  * Created by wjx on 2016-1-12.
  */
@@ -75,7 +77,11 @@ public class HomeFragment extends BaseFragment {
             public void onClick(View v) {
 //                try {
                     textViewBase.setText(getCellInfo.myBase());
+                try {
                     textViewCell.setText(getCellInfo.myCell());
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
 //                }catch (Exception e){
 ////                    new AlertDialog.Builder(Context).setTitle("内部错误") .setMessage(e.toString()).setPositiveButton("确定", null)  .show();
 //                    System.out.print("System.out.print(e.toString());------------------------------------"+e.toString());
