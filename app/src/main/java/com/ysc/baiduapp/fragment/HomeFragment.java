@@ -24,6 +24,9 @@ import com.ysc.baiduapp.R;
 import com.ysc.baiduapp.service.GetCellInfo;
 import com.ysc.baiduapp.viewcustom.BaseFragment;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.json.simple.parser.ParseException;
 
 /**
@@ -42,9 +45,44 @@ public class HomeFragment extends BaseFragment {
 
     private static final int REQUEST_READ_PHONE_STATE = 0;
     private static final int MY_PERMISSIONS_REQUEST_ACCESS_COARSE_LOCATION = 0;
-    private Button btn;
     private TextView textViewBase;
-    private TextView textViewCell;
+
+    private String strGetCellInfo;
+
+    private String mCellIdentityCdma_mBasestationId;
+    private String mCellIdentityCdma_mLatitude;
+    private String mCellIdentityCdma_mLongitude;
+    private String mCellIdentityCdma_mNetworkId;
+    private String mCellIdentityCdma_mSystemId;
+    private String mCellSignalStrengthCdma_mCdmaDbm;
+    private String mCellSignalStrengthCdma_mCdmaEcio;
+    private String mCellSignalStrengthCdma_mEvdoDbm;
+    private String mCellSignalStrengthCdma_mEvdoEcio;
+    private String mCellSignalStrengthCdma_mEvdoSnr;
+    private String mCellIdentityCdma_mRegistered;
+    private String mCellIdentityCdma_mTimeStamp;
+    private String mCellIdentityCdma_mTimeStampType;
+
+    private String mCellIdentityLte_mCi;
+    private String mCellIdentityLte_mEarfcn;
+    private String mCellIdentityLte_mMcc;
+    private String mCellIdentityLte_mMnc;
+    private String mCellIdentityLte_mPci;
+    private String mCellIdentityLte_mTac;
+
+    private String mCellSignalStrengthLte_mCqi;
+    private String mCellSignalStrengthLte_mRsrp;
+    private String mCellSignalStrengthLte_mRsrq;
+    private String mCellSignalStrengthLte_mRssnr;
+    private String mCellSignalStrengthLte_mSignalStrength;
+    private String mCellSignalStrengthLte_mTimingAdvance;
+
+    private String mCellIdentityLte_mRegistered;
+    private String mCellIdentityLte_mTimeStamp;
+    private String mCellIdentityLte_mTimeStampType;
+
+
+
 
 //    @SuppressLint("ValidFragment")
 //    public void setGetCellInfo(GetCellInfo g){
@@ -62,24 +100,140 @@ public class HomeFragment extends BaseFragment {
         init();
         return view;
     }
+    private TextView textView;
+    private Button button;
+    private TextView textView2;
+    private TextView textView3;
+    private TextView textView4;
+    private TextView textView5;
+    private TextView textView6;
+    private TextView textView7;
+    private TextView textView8;
+    private TextView textView9;
+    private TextView textView10;
+    private TextView textView11;
+    private TextView textView12;
+
+    private TextView textView13;
+    private TextView textView14;
+    private TextView textView15;
+    private TextView textView16;
+    private TextView textView17;
+    private TextView textView18;
+    private TextView textView19;
+    private TextView textView20;
+    private TextView textView21;
+    private TextView textView22;
+    private TextView textView23;
+    private TextView textView24;
 
     private void init() {
 
-        btn = (Button) view.findViewById(R.id.button);
-        textViewBase = (TextView) view.findViewById(R.id.textView);
-        textViewBase.setMovementMethod(new ScrollingMovementMethod());
-        textViewCell = (TextView) view.findViewById(R.id.editText);
-        textViewCell.setMovementMethod(new ScrollingMovementMethod());
+//        Button btn = (Button) view.findViewById(R.id.button);
+//        textViewBase = (TextView) view.findViewById(R.id.textView);
+//        textViewBase.setMovementMethod(new ScrollingMovementMethod());
+//        TextView textViewCell = (TextView) view.findViewById(R.id.editText);
+//        textViewCell.setMovementMethod(new ScrollingMovementMethod());
+        button = view.findViewById(R.id.button);
+        textView = view.findViewById(R.id.textView);
+        textView2 = view.findViewById(R.id.textView2);
+        textView3 = view.findViewById(R.id.textView3);
+        textView4 = view.findViewById(R.id.textView4);
+        textView5 = view.findViewById(R.id.textView5);
+        textView6 = view.findViewById(R.id.textView6);
+        textView7 = view.findViewById(R.id.textView7);
+        textView8 = view.findViewById(R.id.textView8);
+        textView9 = view.findViewById(R.id.textView9);
+        textView10 = view.findViewById(R.id.textView10);
+        textView11 = view.findViewById(R.id.textView11);
+        textView12 = view.findViewById(R.id.textView12);
+        textView13 = view.findViewById(R.id.textView13);
+        textView14 = view.findViewById(R.id.textView14);
+        textView15 = view.findViewById(R.id.textView15);
+        textView16 = view.findViewById(R.id.textView16);
+        textView17 = view.findViewById(R.id.textView17);
+        textView18 = view.findViewById(R.id.textView18);
+        textView19 = view.findViewById(R.id.textView19);
+        textView20 = view.findViewById(R.id.textView20);
+        textView21 = view.findViewById(R.id.textView21);
+        textView22 = view.findViewById(R.id.textView22);
+        textView23 = view.findViewById(R.id.textView23);
+        textView24 = view.findViewById(R.id.textView24);
 
-
-        btn.setOnClickListener(new View.OnClickListener() {
+        button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                try {
-                    textViewBase.setText(getCellInfo.myBase());
                 try {
-                    textViewCell.setText(getCellInfo.myCell());
-                } catch (ParseException e) {
+//                    textViewBase.setText(getCellInfo.myBase());
+//                    textViewCell.setText(getCellInfo.myCell());
+                    strGetCellInfo = getCellInfo.myCell();
+                    if(strGetCellInfo != null){
+                        JSONArray jsonarray = new JSONArray(strGetCellInfo);
+                        JSONObject jsonobject0 = jsonarray.getJSONObject(0);
+                        mCellIdentityCdma_mBasestationId = jsonobject0.getJSONObject("mCellIdentityCdma").getString("mBasestationId");
+                        mCellIdentityCdma_mLatitude = jsonobject0.getJSONObject("mCellIdentityCdma").getString("mLatitude");
+                        mCellIdentityCdma_mLongitude = jsonobject0.getJSONObject("mCellIdentityCdma").getString("mLongitude");
+                        mCellIdentityCdma_mNetworkId = jsonobject0.getJSONObject("mCellIdentityCdma").getString("mNetworkId");
+                        mCellIdentityCdma_mSystemId = jsonobject0.getJSONObject("mCellIdentityCdma").getString("mSystemId");
+
+                        mCellSignalStrengthCdma_mCdmaDbm = jsonobject0.getJSONObject("mCellSignalStrengthCdma").getString("mCdmaDbm");
+                        mCellSignalStrengthCdma_mCdmaEcio = jsonobject0.getJSONObject("mCellSignalStrengthCdma").getString("mCdmaEcio");
+                        mCellSignalStrengthCdma_mEvdoDbm = jsonobject0.getJSONObject("mCellSignalStrengthCdma").getString("mEvdoDbm");
+                        mCellSignalStrengthCdma_mEvdoEcio = jsonobject0.getJSONObject("mCellSignalStrengthCdma").getString("mEvdoEcio");
+                        mCellSignalStrengthCdma_mEvdoSnr = jsonobject0.getJSONObject("mCellSignalStrengthCdma").getString("mEvdoSnr");
+                        mCellIdentityCdma_mRegistered = jsonobject0.getString("mRegistered");
+                        mCellIdentityCdma_mTimeStamp = jsonobject0.getString("mTimeStamp");
+                        mCellIdentityCdma_mTimeStampType = jsonobject0.getString("mTimeStampType");
+
+                        JSONObject jsonobject1 = jsonarray.getJSONObject(1);
+                        mCellIdentityLte_mCi = jsonobject1.getJSONObject("mCellIdentityLte").getString("mCi");
+                        mCellIdentityLte_mEarfcn = jsonobject1.getJSONObject("mCellIdentityLte").getString("mEarfcn");
+                        mCellIdentityLte_mMcc = jsonobject1.getJSONObject("mCellIdentityLte").getString("mMcc");
+                        mCellIdentityLte_mMnc = jsonobject1.getJSONObject("mCellIdentityLte").getString("mMnc");
+                        mCellIdentityLte_mPci = jsonobject1.getJSONObject("mCellIdentityLte").getString("mPci");
+                        mCellIdentityLte_mTac = jsonobject1.getJSONObject("mCellIdentityLte").getString("mTac");
+                        mCellSignalStrengthLte_mCqi = jsonobject1.getJSONObject("mCellSignalStrengthLte").getString("mCqi");
+                        mCellSignalStrengthLte_mRsrp = jsonobject1.getJSONObject("mCellSignalStrengthLte").getString("mRsrp");
+                        mCellSignalStrengthLte_mRsrq = jsonobject1.getJSONObject("mCellSignalStrengthLte").getString("mRsrq");
+                        mCellSignalStrengthLte_mRssnr = jsonobject1.getJSONObject("mCellSignalStrengthLte").getString("mRssnr");
+                        mCellSignalStrengthLte_mSignalStrength = jsonobject1.getJSONObject("mCellSignalStrengthLte").getString("mSignalStrength");
+                        mCellSignalStrengthLte_mTimingAdvance = jsonobject1.getJSONObject("mCellSignalStrengthLte").getString("mTimingAdvance");
+                        mCellIdentityLte_mRegistered = jsonobject1.getString("mRegistered");
+                        mCellIdentityLte_mTimeStamp = jsonobject1.getString("mTimeStamp");
+                        mCellIdentityLte_mTimeStampType = jsonobject1.getString("mTimeStampType");
+
+                        textView.setText("mCellIdentityCdma_mLatitude:"+mCellIdentityCdma_mBasestationId);
+                        textView2.setText("mCellIdentityCdma_mLatitude:"+mCellIdentityCdma_mLatitude);
+                        textView3.setText("mCellIdentityCdma_mLongitude:"+mCellIdentityCdma_mLongitude);
+                        textView4.setText("mCellIdentityCdma_mNetworkId:"+mCellIdentityCdma_mNetworkId);
+                        textView5.setText("mCellIdentityCdma_mSystemId:"+mCellIdentityCdma_mSystemId);
+                        textView6.setText("mCellSignalStrengthCdma_mCdmaDbm:"+mCellSignalStrengthCdma_mCdmaDbm);
+                        textView7.setText("mCellSignalStrengthCdma_mCdmaEcio:"+mCellSignalStrengthCdma_mCdmaEcio);
+                        textView8.setText("mCellSignalStrengthCdma_mEvdoDbm:"+mCellSignalStrengthCdma_mEvdoDbm);
+                        textView9.setText("mCellSignalStrengthCdma_mEvdoEcio:"+mCellSignalStrengthCdma_mEvdoEcio);
+                        textView10.setText("mCellSignalStrengthCdma_mEvdoSnr:"+mCellSignalStrengthCdma_mEvdoSnr);
+                        textView11.setText("mCellIdentityCdma_mRegistered:"+mCellIdentityCdma_mRegistered);
+                        textView12.setText("mCellIdentityCdma_mTimeStamp:"+mCellIdentityCdma_mTimeStamp);
+                        textView13.setText("mCellIdentityCdma_mTimeStampType:"+mCellIdentityCdma_mTimeStampType);
+
+                        textView14.setText("mCellIdentityLte_mCi:"+mCellIdentityLte_mCi);
+                        textView15.setText("mCellIdentityLte_mEarfcn:"+mCellIdentityLte_mEarfcn);
+                        textView16.setText("mCellIdentityLte_mMcc:"+mCellIdentityLte_mMcc);
+                        textView17.setText("mCellIdentityLte_mMnc:"+mCellIdentityLte_mMnc);
+                        textView18.setText("mCellIdentityLte_mPci:"+mCellIdentityLte_mPci);
+                        textView19.setText("mCellIdentityLte_mTac:"+mCellIdentityLte_mTac);
+                        textView20.setText("mCellSignalStrengthLte_mCqi:"+mCellSignalStrengthLte_mCqi);
+                        textView21.setText("mCellSignalStrengthLte_mRsrp:"+mCellSignalStrengthLte_mRsrp);
+                        textView22.setText("mCellSignalStrengthLte_mRssnr:"+mCellSignalStrengthLte_mRssnr);
+                        textView23.setText("mCellSignalStrengthLte_mSignalStrength:"+mCellSignalStrengthLte_mSignalStrength);
+                        textView24.setText("mCellSignalStrengthLte_mTimingAdvance:"+mCellSignalStrengthLte_mTimingAdvance);
+
+                    }
+
+
+
+
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
 //                }catch (Exception e){

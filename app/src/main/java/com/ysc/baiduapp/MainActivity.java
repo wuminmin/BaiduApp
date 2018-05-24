@@ -62,12 +62,12 @@ public class MainActivity extends FragmentActivity {
 
         HomeFragment homeFragment = new HomeFragment();
 //        homeFragment.setGetCellInfo(getCellInfo);
-        homeFragment.setTitle("首页");
+        homeFragment.setTitle("小区信息");
         homeFragment.setIconId(R.drawable.tab_home_selector);
         fragments.add(homeFragment);
 
         OrderFragment classFragment = new OrderFragment();
-        classFragment.setTitle("订单");
+        classFragment.setTitle("场景采集");
         classFragment.setIconId(R.drawable.tab_class_selector);
         fragments.add(classFragment);
 

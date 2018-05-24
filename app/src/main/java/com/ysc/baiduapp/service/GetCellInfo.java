@@ -13,7 +13,9 @@ import android.support.v4.app.FragmentActivity;
 
 import com.google.gson.Gson;
 import com.ysc.baiduapp.MainActivity;
+
 import java.util.List;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -78,8 +80,8 @@ public class GetCellInfo {
                     ActivityCompat.requestPermissions(mymainActivity,
                             new String[]{Manifest.permission.ACCESS_COARSE_LOCATION},
                             MY_PERMISSIONS_REQUEST_ACCESS_COARSE_LOCATION);
-                    new AlertDialog.Builder(mycontext).setTitle("标题").setMessage("请求卫星和网络权限！！").setPositiveButton("确定", null).show();
-                    return "请求卫星和网络权限！！";
+//                    new AlertDialog.Builder(mycontext).setTitle("标题").setMessage("请求卫星和网络权限！！").setPositiveButton("确定", null).show();
+                    return null;
                 }
                 List<CellInfo> cellInfoList = telephonyManager.getAllCellInfo();
 //                ListIterator<CellInfo> itr=cellInfoList.listIterator();
@@ -99,17 +101,17 @@ public class GetCellInfo {
 //                }
                 try {
 //                strCellInfo =  Arrays.toString(cellInfoList.toArray());
-                Gson gson = new Gson();
-                String ss = "";
-                String jsonString = gson.toJson(cellInfoList);
+                    Gson gson = new Gson();
+                    strCellInfo = gson.toJson(cellInfoList);
 //                JSONParser parser = new JSONParser();
 //                JSONObject json = (JSONObject) parser.parse(jsonString);
 
 //                JSONObject jsonObj = new JSONObject("[{\"mCellIdentityCdma\":{\"mBasestationId\":52946,\"mLatitude\":574990,\"mLongitude\":1676491,\"mNetworkId\":3,\"mSystemId\":13824},\"mCellSignalStrengthCdma\":{\"mCdmaDbm\":-73,\"mCdmaEcio\":-85,\"mEvdoDbm\":2147483647,\"mEvdoEcio\":2147483647,\"mEvdoSnr\":2147483647},\"mRegistered\":true,\"mTimeStamp\":5958058485325,\"mTimeStampType\":3},{\"mCellIdentityLte\":{\"mCi\":25170179,\"mEarfcn\":100,\"mMcc\":460,\"mMnc\":11,\"mPci\":242,\"mTac\":6245},\"mCellSignalStrengthLte\":{\"mCqi\":2147483647,\"mRsrp\":-78,\"mRsrq\":-10,\"mRssnr\":2147483647,\"mSignalStrength\":31,\"mTimingAdvance\":1},\"mRegistered\":true,\"mTimeStamp\":5958058485325,\"mTimeStampType\":3},{\"mCellIdentityLte\":{\"mCi\":2147483647,\"mEarfcn\":100,\"mMcc\":2147483647,\"mMnc\":2147483647,\"mPci\":290,\"mTac\":2147483647},\"mCellSignalStrengthLte\":{\"mCqi\":2147483647,\"mRsrp\":-88,\"mRsrq\":-16,\"mRssnr\":2147483647,\"mSignalStrength\":27,\"mTimingAdvance\":2147483647},\"mRegistered\":false,\"mTimeStamp\":5958058485325,\"mTimeStampType\":3},{\"mCellIdentityLte\":{\"mCi\":2147483647,\"mEarfcn\":100,\"mMcc\":2147483647,\"mMnc\":2147483647,\"mPci\":181,\"mTac\":2147483647},\"mCellSignalStrengthLte\":{\"mCqi\":2147483647,\"mRsrp\":-92,\"mRsrq\":-20,\"mRssnr\":2147483647,\"mSignalStrength\":26,\"mTimingAdvance\":2147483647},\"mRegistered\":false,\"mTimeStamp\":5958058485325,\"mTimeStampType\":3},{\"mCellIdentityLte\":{\"mCi\":2147483647,\"mEarfcn\":2147483647,\"mMcc\":2147483647,\"mMnc\":2147483647,\"mPci\":2147483647,\"mTac\":2147483647},\"mCellSignalStrengthLte\":{\"mCqi\":2147483647,\"mRsrp\":-76,\"mRsrq\":-6,\"mRssnr\":2147483647,\"mSignalStrength\":27,\"mTimingAdvance\":2147483647},\"mRegistered\":false,\"mTimeStamp\":5958058485325,\"mTimeStampType\":3},{\"mCellIdentityLte\":{\"mCi\":2147483647,\"mEarfcn\":2147483647,\"mMcc\":2147483647,\"mMnc\":2147483647,\"mPci\":2147483647,\"mTac\":2147483647},\"mCellSignalStrengthLte\":{\"mCqi\":2147483647,\"mRsrp\":-88,\"mRsrq\":-19,\"mRssnr\":2147483647,\"mSignalStrength\":27,\"mTimingAdvance\":2147483647},\"mRegistered\":false,\"mTimeStamp\":5958058485325,\"mTimeStampType\":3},{\"mCellIdentityLte\":{\"mCi\":2147483647,\"mEarfcn\":2147483647,\"mMcc\":2147483647,\"mMnc\":2147483647,\"mPci\":2147483647,\"mTac\":2147483647},\"mCellSignalStrengthLte\":{\"mCqi\":2147483647,\"mRsrp\":-90,\"mRsrq\":-19,\"mRssnr\":2147483647,\"mSignalStrength\":27,\"mTimingAdvance\":2147483647},\"mRegistered\":false,\"mTimeStamp\":5958058485325,\"mTimeStampType\":3}]\n");
-                    JSONArray jsonarray = new JSONArray(jsonString);
+//                    JSONArray jsonarray = new JSONArray(jsonString);
 //                    for(int i=0; i < jsonarray.length(); i++) {
-                        JSONObject jsonobject = jsonarray.getJSONObject(0);
-                        strCellInfo = jsonobject.getJSONObject("mCellSignalStrengthCdma").getString("mCdmaDbm");
+//                    JSONObject jsonobject = jsonarray.getJSONObject(0);
+//                        strCellInfo = jsonobject.getJSONObject("mCellSignalStrengthCdma").getString("mCdmaDbm");
+
 //                        String id       = jsonobject.getString("id");
 //                        String title    = jsonobject.getString("title");
 //                        String company  = jsonobject.getString("company");
@@ -117,7 +119,7 @@ public class GetCellInfo {
 //                    }
 //                    strCellInfo = jsonObj.getJSONObject("mCellIdentityCdma").getString("mBasestationId");
                     System.out.print(strCellInfo);
-                } catch (JSONException e) {
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
 
