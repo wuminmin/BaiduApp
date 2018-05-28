@@ -1,12 +1,8 @@
 package com.ysc.baiduapp.fragment;
 
-import android.annotation.SuppressLint;
-import android.app.AlertDialog;
 import android.content.Context;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.telephony.TelephonyManager;
-import android.text.method.ScrollingMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,22 +15,19 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ysc.baiduapp.GridViewAdapter;
-import com.ysc.baiduapp.ImageAdapter;
 import com.ysc.baiduapp.ListViewAdapter;
 import com.ysc.baiduapp.R;
 import com.ysc.baiduapp.service.GetCellInfo;
 import com.ysc.baiduapp.viewcustom.BaseFragment;
 
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
-import org.json.simple.parser.ParseException;
 
 /**
  * Created by wjx on 2016-1-12.
  */
 public class HomeFragment extends BaseFragment {
-    public GetCellInfo getCellInfo;
+    private GetCellInfo getCellInfo;
     private View view;
     private EditText et_search;
     private ListView lv_market;
@@ -48,39 +41,7 @@ public class HomeFragment extends BaseFragment {
     private static final int MY_PERMISSIONS_REQUEST_ACCESS_COARSE_LOCATION = 0;
     private TextView textViewBase;
 
-    private String strGetCellInfo;
 
-    private String mCellIdentityCdma_mBasestationId;
-    private String mCellIdentityCdma_mLatitude;
-    private String mCellIdentityCdma_mLongitude;
-    private String mCellIdentityCdma_mNetworkId;
-    private String mCellIdentityCdma_mSystemId;
-    private String mCellSignalStrengthCdma_mCdmaDbm;
-    private String mCellSignalStrengthCdma_mCdmaEcio;
-    private String mCellSignalStrengthCdma_mEvdoDbm;
-    private String mCellSignalStrengthCdma_mEvdoEcio;
-    private String mCellSignalStrengthCdma_mEvdoSnr;
-    private String mCellIdentityCdma_mRegistered;
-    private String mCellIdentityCdma_mTimeStamp;
-    private String mCellIdentityCdma_mTimeStampType;
-
-    private String mCellIdentityLte_mCi;
-    private String mCellIdentityLte_mEarfcn;
-    private String mCellIdentityLte_mMcc;
-    private String mCellIdentityLte_mMnc;
-    private String mCellIdentityLte_mPci;
-    private String mCellIdentityLte_mTac;
-
-    private String mCellSignalStrengthLte_mCqi;
-    private String mCellSignalStrengthLte_mRsrp;
-    private String mCellSignalStrengthLte_mRsrq;
-    private String mCellSignalStrengthLte_mRssnr;
-    private String mCellSignalStrengthLte_mSignalStrength;
-    private String mCellSignalStrengthLte_mTimingAdvance;
-
-    private String mCellIdentityLte_mRegistered;
-    private String mCellIdentityLte_mTimeStamp;
-    private String mCellIdentityLte_mTimeStampType;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -93,16 +54,16 @@ public class HomeFragment extends BaseFragment {
         init();
         return view;
     }
-    private TextView textView;
+    private TextView textViewm_CellIdentityCdma_mBasestationId;
     private Button button;
-    private TextView textView2;
-    private TextView textView3;
-    private TextView textView4;
-    private TextView textView5;
-    private TextView textView6;
-    private TextView textView7;
-    private TextView textView8;
-    private TextView textView9;
+    private TextView textViewm_CellIdentityCdma_mLatitude;
+    private TextView textView_mCellIdentityCdma_mLongitude;
+    private TextView textView_mCellIdentityCdma_mNetworkId;
+    private TextView textView_mCellSignalStrengthCdma_mCdmaDbm;
+    private TextView textView_mCellSignalStrengthCdma_mCdmaEcio;
+    private TextView textView_mCellSignalStrengthCdma_mEvdoDbm;
+    private TextView textView_mCellSignalStrengthCdma_mEvdoEcio;
+    private TextView textView_mCellSignalStrengthCdma_mEvdoSnr;
     private TextView textView10;
     private TextView textView11;
     private TextView textView12;
@@ -122,37 +83,68 @@ public class HomeFragment extends BaseFragment {
 
     private void init() {
         button = view.findViewById(R.id.button);
-        textView = view.findViewById(R.id.textView);
-        textView2 = view.findViewById(R.id.textView2);
-        textView3 = view.findViewById(R.id.textView3);
-        textView4 = view.findViewById(R.id.textView4);
-        textView5 = view.findViewById(R.id.textView5);
-        textView6 = view.findViewById(R.id.textView6);
-        textView7 = view.findViewById(R.id.textView7);
-        textView8 = view.findViewById(R.id.textView8);
-        textView9 = view.findViewById(R.id.textView9);
-        textView10 = view.findViewById(R.id.textView10);
-        textView11 = view.findViewById(R.id.textView11);
-        textView12 = view.findViewById(R.id.textView12);
-        textView13 = view.findViewById(R.id.textView13);
-        textView14 = view.findViewById(R.id.textView14);
-        textView15 = view.findViewById(R.id.textView15);
-        textView16 = view.findViewById(R.id.textView16);
-        textView17 = view.findViewById(R.id.textView17);
-        textView18 = view.findViewById(R.id.textView18);
-        textView19 = view.findViewById(R.id.textView19);
-        textView20 = view.findViewById(R.id.textView20);
-        textView21 = view.findViewById(R.id.textView21);
-        textView22 = view.findViewById(R.id.textView22);
-        textView23 = view.findViewById(R.id.textView23);
-        textView24 = view.findViewById(R.id.textView24);
+        textViewm_CellIdentityCdma_mBasestationId = view.findViewById(R.id.mCellIdentityCdma_mBasestationId);
+        textViewm_CellIdentityCdma_mLatitude = view.findViewById(R.id.mCellIdentityCdma_mLatitude);
+        textView_mCellIdentityCdma_mLongitude = view.findViewById(R.id.mCellIdentityCdma_mLongitude);
+        textView_mCellIdentityCdma_mNetworkId = view.findViewById(R.id.mCellIdentityCdma_mNetworkId);
+        textView_mCellSignalStrengthCdma_mCdmaDbm = view.findViewById(R.id.mCellSignalStrengthCdma_mCdmaDbm);
+        textView_mCellSignalStrengthCdma_mCdmaEcio = view.findViewById(R.id.mCellSignalStrengthCdma_mCdmaEcio);
+        textView_mCellSignalStrengthCdma_mEvdoDbm = view.findViewById(R.id.mCellSignalStrengthCdma_mEvdoDbm);
+        textView_mCellSignalStrengthCdma_mEvdoEcio = view.findViewById(R.id.mCellSignalStrengthCdma_mEvdoEcio);
+        textView_mCellSignalStrengthCdma_mEvdoSnr = view.findViewById(R.id.mCellSignalStrengthCdma_mEvdoSnr);
+        textView10 = view.findViewById(R.id.mCellIdentityCdma_mRegistered);
+        textView11 = view.findViewById(R.id.mCellIdentityCdma_mTimeStamp);
+        textView12 = view.findViewById(R.id.mCellIdentityCdma_mTimeStampType);
+        textView13 = view.findViewById(R.id.mCellIdentityLte_mCi);
+        textView14 = view.findViewById(R.id.mCellIdentityLte_mEarfcn);
+        textView15 = view.findViewById(R.id.mCellIdentityLte_mMcc);
+        textView16 = view.findViewById(R.id.mCellIdentityLte_mMnc);
+        textView17 = view.findViewById(R.id.mCellIdentityLte_mPci);
+        textView18 = view.findViewById(R.id.mCellIdentityLte_mTac);
+        textView19 = view.findViewById(R.id.mCellSignalStrengthLte_mCqi);
+        textView20 = view.findViewById(R.id.mCellSignalStrengthLte_mRsrp);
+        textView21 = view.findViewById(R.id.mCellSignalStrengthLte_mRssnr);
+        textView22 = view.findViewById(R.id.mCellSignalStrengthLte_mSignalStrength);
+        textView23 = view.findViewById(R.id.mCellSignalStrengthLte_mTimingAdvance);
+//        textView24 = view.findViewById(R.id.textView24);
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 try {
-//                    textViewBase.setText(getCellInfo.myBase());
-//                    textViewCell.setText(getCellInfo.myCell());
+                     String strGetCellInfo;
+                     String mCellIdentityCdma_mBasestationId;
+                     String mCellIdentityCdma_mLatitude;
+                     String mCellIdentityCdma_mLongitude;
+                     String mCellIdentityCdma_mNetworkId;
+                     String mCellIdentityCdma_mSystemId;
+                     String mCellSignalStrengthCdma_mCdmaDbm;
+                     String mCellSignalStrengthCdma_mCdmaEcio;
+                     String mCellSignalStrengthCdma_mEvdoDbm;
+                     String mCellSignalStrengthCdma_mEvdoEcio;
+                     String mCellSignalStrengthCdma_mEvdoSnr;
+                     String mCellIdentityCdma_mRegistered;
+                     String mCellIdentityCdma_mTimeStamp;
+                     String mCellIdentityCdma_mTimeStampType;
+
+                     String mCellIdentityLte_mCi;
+                     String mCellIdentityLte_mEarfcn;
+                     String mCellIdentityLte_mMcc;
+                     String mCellIdentityLte_mMnc;
+                     String mCellIdentityLte_mPci;
+                     String mCellIdentityLte_mTac;
+
+                     String mCellSignalStrengthLte_mCqi;
+                     String mCellSignalStrengthLte_mRsrp;
+                     String mCellSignalStrengthLte_mRsrq;
+                     String mCellSignalStrengthLte_mRssnr;
+                     String mCellSignalStrengthLte_mSignalStrength;
+                     String mCellSignalStrengthLte_mTimingAdvance;
+
+                     String mCellIdentityLte_mRegistered;
+                     String mCellIdentityLte_mTimeStamp;
+                     String mCellIdentityLte_mTimeStampType;
+
                     strGetCellInfo = getCellInfo.myCell();
                     if(strGetCellInfo != null){
                         JSONArray jsonarray = new JSONArray(strGetCellInfo);
@@ -189,36 +181,34 @@ public class HomeFragment extends BaseFragment {
                         mCellIdentityLte_mTimeStamp = jsonobject1.getString("mTimeStamp");
                         mCellIdentityLte_mTimeStampType = jsonobject1.getString("mTimeStampType");
 
-                        textView.setText("mCellIdentityCdma_mLatitude:"+mCellIdentityCdma_mBasestationId);
-                        textView2.setText("mCellIdentityCdma_mLatitude:"+mCellIdentityCdma_mLatitude);
-                        textView3.setText("mCellIdentityCdma_mLongitude:"+mCellIdentityCdma_mLongitude);
-                        textView4.setText("mCellIdentityCdma_mNetworkId:"+mCellIdentityCdma_mNetworkId);
-                        textView5.setText("mCellIdentityCdma_mSystemId:"+mCellIdentityCdma_mSystemId);
-                        textView6.setText("mCellSignalStrengthCdma_mCdmaDbm:"+mCellSignalStrengthCdma_mCdmaDbm);
-                        textView7.setText("mCellSignalStrengthCdma_mCdmaEcio:"+mCellSignalStrengthCdma_mCdmaEcio);
-                        textView8.setText("mCellSignalStrengthCdma_mEvdoDbm:"+mCellSignalStrengthCdma_mEvdoDbm);
-                        textView9.setText("mCellSignalStrengthCdma_mEvdoEcio:"+mCellSignalStrengthCdma_mEvdoEcio);
-                        textView10.setText("mCellSignalStrengthCdma_mEvdoSnr:"+mCellSignalStrengthCdma_mEvdoSnr);
-                        textView11.setText("mCellIdentityCdma_mRegistered:"+mCellIdentityCdma_mRegistered);
-                        textView12.setText("mCellIdentityCdma_mTimeStamp:"+mCellIdentityCdma_mTimeStamp);
-                        textView13.setText("mCellIdentityCdma_mTimeStampType:"+mCellIdentityCdma_mTimeStampType);
+                        textViewm_CellIdentityCdma_mBasestationId.setText(mCellIdentityCdma_mBasestationId);
+                        textViewm_CellIdentityCdma_mLatitude.setText(mCellIdentityCdma_mLatitude);
+                        textView_mCellIdentityCdma_mLongitude.setText(mCellIdentityCdma_mLongitude);
+                        textView_mCellIdentityCdma_mNetworkId.setText(mCellIdentityCdma_mNetworkId);
+                        textView_mCellSignalStrengthCdma_mCdmaDbm.setText(mCellIdentityCdma_mSystemId);
+                        textView_mCellSignalStrengthCdma_mCdmaEcio.setText(mCellSignalStrengthCdma_mCdmaDbm);
+                        textView_mCellSignalStrengthCdma_mEvdoDbm.setText(mCellSignalStrengthCdma_mCdmaEcio);
+                        textView_mCellSignalStrengthCdma_mEvdoEcio.setText(mCellSignalStrengthCdma_mEvdoDbm);
+                        textView_mCellSignalStrengthCdma_mEvdoSnr.setText(mCellSignalStrengthCdma_mEvdoEcio);
+                        textView10.setText(mCellSignalStrengthCdma_mEvdoSnr);
+                        textView11.setText(mCellIdentityCdma_mRegistered);
+                        textView12.setText(mCellIdentityCdma_mTimeStamp);
+                        textView13.setText(mCellIdentityCdma_mTimeStampType);
 
-                        textView14.setText("mCellIdentityLte_mCi:"+mCellIdentityLte_mCi);
-                        textView15.setText("mCellIdentityLte_mEarfcn:"+mCellIdentityLte_mEarfcn);
-                        textView16.setText("mCellIdentityLte_mMcc:"+mCellIdentityLte_mMcc);
-                        textView17.setText("mCellIdentityLte_mMnc:"+mCellIdentityLte_mMnc);
-                        textView18.setText("mCellIdentityLte_mPci:"+mCellIdentityLte_mPci);
-                        textView19.setText("mCellIdentityLte_mTac:"+mCellIdentityLte_mTac);
-                        textView20.setText("mCellSignalStrengthLte_mCqi:"+mCellSignalStrengthLte_mCqi);
-                        textView21.setText("mCellSignalStrengthLte_mRsrp:"+mCellSignalStrengthLte_mRsrp);
-                        textView22.setText("mCellSignalStrengthLte_mRssnr:"+mCellSignalStrengthLte_mRssnr);
-                        textView23.setText("mCellSignalStrengthLte_mSignalStrength:"+mCellSignalStrengthLte_mSignalStrength);
-                        textView24.setText("mCellSignalStrengthLte_mTimingAdvance:"+mCellSignalStrengthLte_mTimingAdvance);
-
+                        textView14.setText(mCellIdentityLte_mCi);
+                        textView15.setText(mCellIdentityLte_mEarfcn);
+                        textView16.setText(mCellIdentityLte_mMcc);
+                        textView17.setText(mCellIdentityLte_mMnc);
+                        textView18.setText(mCellIdentityLte_mPci);
+                        textView19.setText(mCellIdentityLte_mTac);
+                        textView20.setText(mCellSignalStrengthLte_mCqi);
+                        textView21.setText(mCellSignalStrengthLte_mRsrp);
+                        textView22.setText(mCellSignalStrengthLte_mRssnr);
+                        textView23.setText(mCellSignalStrengthLte_mSignalStrength);
+//                        textView24.setText(mCellSignalStrengthLte_mTimingAdvance);
+                    }else{
+                        textViewm_CellIdentityCdma_mBasestationId.setText("无法识别小区信息，可能需要您给APP授权！！");
                     }
-
-
-
 
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -226,22 +216,5 @@ public class HomeFragment extends BaseFragment {
                 }
             }
         });
-
-
-
-//        et_search = (EditText) view.findViewById(R.id.et_search);
-//        Drawable drawable = null;
-//        drawable = getResources().getDrawable(R.drawable.bai);
-//        drawable.setBounds(2, 0, 75, 40);
-//        et_search.setCompoundDrawables(drawable, null, null, null);
-//
-//        lv_market = (ListView) view.findViewById(R.id.lv_market);
-//        listViewAdapter = new ListViewAdapter(view.getContext());
-//        lv_market.setAdapter(listViewAdapter);
-//
-//
-//        grid = (GridView)view.findViewById(R.id.gridView);
-//        gridViewAdapter = new GridViewAdapter(view.getContext());
-//        grid.setAdapter(new ImageAdapter(getActivity(),MOBILE_OS));
     }
 }

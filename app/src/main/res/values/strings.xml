@@ -18,7 +18,30 @@
 
     <string name="order_upload_data">上传数据</string>
 
-
+    <string name="mCellIdentityCdma_mBasestationId">基站标识号</string>
+    <string name="mCellIdentityCdma_mLatitude">纬度</string>
+    <string name="mCellIdentityCdma_mLongitude">经度</string>
+    <string name="mCellIdentityCdma_mNetworkId">网络号</string>
+    <string name="mCellIdentityCdma_mSystemId">系统号</string>
+    <string name="mCellSignalStrengthCdma_mCdmaDbm">CDMA信号强度</string>
+    <string name="mCellSignalStrengthCdma_mCdmaEcio">CDMA EC/IO</string>
+    <string name="mCellSignalStrengthCdma_mEvdoDbm">EVDO 信号强度</string>
+    <string name="mCellSignalStrengthCdma_mEvdoEcio">EVDO EC/IO</string>
+    <string name="mCellSignalStrengthCdma_mEvdoSnr">EVDO SNR</string>
+    <string name="mCellIdentityCdma_mRegistered">注册小区</string>
+    <string name="mCellIdentityCdma_mTimeStamp">时间</string>
+    <string name="mCellIdentityCdma_mTimeStampType">时间类型</string>
+    <string name="mCellIdentityLte_mCi">LTE CI</string>
+    <string name="mCellIdentityLte_mEarfcn">LTE bARFCN</string>
+    <string name="mCellIdentityLte_mMcc">LTE MCC</string>
+    <string name="mCellIdentityLte_mMnc">LTE MNC</string>
+    <string name="mCellIdentityLte_mPci">LTE PCI</string>
+    <string name="mCellIdentityLte_mTac">LTE TAC</string>
+    <string name="mCellSignalStrengthLte_mCqi">LTE CQI</string>
+    <string name="mCellSignalStrengthLte_mRsrp">LTE RSRP</string>
+    <string name="mCellSignalStrengthLte_mRssnr">LTE SNR</string>
+    <string name="mCellSignalStrengthLte_mSignalStrength">LTE 信号强度</string>
+    <string name="mCellSignalStrengthLte_mTimingAdvance">LTE </string>
 
 
 

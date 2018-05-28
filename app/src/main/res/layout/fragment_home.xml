@@ -4,439 +4,647 @@
     android:background="@color/lightbackground"
     android:orientation="vertical">
 
-
-    <!--<Button-->
-    <!--android:id="@+id/button"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_alignParentTop="true"-->
-    <!--android:layout_centerHorizontal="true"-->
-    <!--android:text="获取无线信息" />-->
-
-    <!--<TextView-->
-        <!--android:id="@+id/textView"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_alignParentStart="true"-->
-        <!--android:layout_alignParentTop="true"-->
-        <!--android:layout_marginTop="99dp"-->
-        <!--android:ellipsize="end"-->
-        <!--android:maxLines="1000"-->
-        <!--android:scrollbars="vertical"-->
-        <!--android:text="基站信息" />-->
-
-    <!--<TextView-->
-    <!--android:id="@+id/editText"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_alignParentTop="true"-->
-    <!--android:layout_centerHorizontal="true"-->
-    <!--android:layout_marginTop="217dp"-->
-    <!--android:ems="10"-->
-    <!--android:maxLines="1000"-->
-    <!--android:scrollbars="vertical"-->
-    <!--android:text="小区信息" />-->
-
-    <!--<EditText-->
-        <!--android:id="@+id/editText"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:ems="10"-->
-        <!--android:inputType="textPersonName"-->
-        <!--android:text="Name" />-->
-
-
-    <!--<RelativeLayout-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="55dp"-->
-        <!--android:background="@color/title_red">-->
-
-        <!--<EditText-->
-            <!--android:id="@+id/et_search"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="35dp"-->
-            <!--android:layout_centerVertical="true"-->
-            <!--android:layout_marginLeft="20dp"-->
-            <!--android:layout_marginRight="20dp"-->
-            <!--android:background="@drawable/et"-->
-            <!--android:drawableLeft="@drawable/non_catering_icon_search"-->
-            <!--android:hint="搜索商户或者商品名称"-->
-            <!--android:inputType="number"-->
-            <!--android:textColorHint="@color/lightblack"-->
-            <!--android:textSize="14sp" />-->
-    <!--</RelativeLayout>-->
-
-    <!--<ScrollView-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent">-->
-
-        <!--<LinearLayout-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="match_parent"-->
-            <!--android:orientation="vertical">-->
-
-            <!--<GridView xmlns:android="http://schemas.android.com/apk/res/android"-->
-                <!--android:id="@+id/gridView"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="match_parent"-->
-                <!--android:columnWidth="90dp"-->
-                <!--android:numColumns="auto_fit"-->
-                <!--android:verticalSpacing="10dp"-->
-                <!--android:horizontalSpacing="10dp"-->
-                <!--android:stretchMode="columnWidth"-->
-                <!--android:gravity="center"-->
-                <!--/>-->
-
-
-
-            <!--<LinearLayout-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="160dp"-->
-                <!--android:layout_marginTop="20dp"-->
-                <!--android:background="@color/white"-->
-                <!--android:orientation="vertical">-->
-
-                <!--<LinearLayout-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_marginTop="10dp">-->
-
-                    <!--<RelativeLayout-->
-                        <!--android:layout_width="wrap_content"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:layout_weight="1">-->
-
-                        <!--<ImageView-->
-                            <!--android:id="@+id/iv_11"-->
-                            <!--android:layout_width="50dp"-->
-                            <!--android:layout_height="50dp"-->
-                            <!--android:layout_centerHorizontal="true"-->
-                            <!--android:background="@drawable/eat" />-->
-
-                        <!--<TextView-->
-                            <!--android:layout_width="wrap_content"-->
-                            <!--android:layout_height="wrap_content"-->
-                            <!--android:text="餐饮"-->
-                            <!--android:textSize="12sp"-->
-                            <!--android:layout_below="@+id/iv_11"-->
-                            <!--android:layout_centerHorizontal="true"/>-->
-                    <!--</RelativeLayout>-->
-
-                    <!--<RelativeLayout-->
-                        <!--android:layout_width="wrap_content"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:layout_weight="1">-->
-
-                        <!--<ImageView-->
-                            <!--android:id="@+id/iv_21"-->
-                            <!--android:layout_width="50dp"-->
-                            <!--android:layout_height="50dp"-->
-                            <!--android:layout_centerHorizontal="true"-->
-                            <!--android:background="@drawable/buy" />-->
-                        <!--<TextView-->
-                            <!--android:layout_width="wrap_content"-->
-                            <!--android:layout_height="wrap_content"-->
-                            <!--android:text="超市购"-->
-                            <!--android:textSize="12sp"-->
-                            <!--android:layout_below="@+id/iv_21"-->
-                            <!--android:layout_centerHorizontal="true"/>-->
-                    <!--</RelativeLayout>-->
-
-                    <!--<RelativeLayout-->
-                        <!--android:layout_width="wrap_content"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:layout_weight="1">-->
-
-                        <!--<ImageView-->
-                            <!--android:id="@+id/iv_31"-->
-                            <!--android:layout_width="50dp"-->
-                            <!--android:layout_height="50dp"-->
-                            <!--android:layout_centerHorizontal="true"-->
-                            <!--android:background="@drawable/fruit" />-->
-                        <!--<TextView-->
-                            <!--android:layout_width="wrap_content"-->
-                            <!--android:layout_height="wrap_content"-->
-                            <!--android:text="水果新"-->
-                            <!--android:textSize="12sp"-->
-                            <!--android:layout_below="@+id/iv_31"-->
-                            <!--android:layout_centerHorizontal="true"/>-->
-                    <!--</RelativeLayout>-->
-
-                    <!--<RelativeLayout-->
-                        <!--android:layout_width="wrap_content"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:layout_weight="1">-->
-
-                        <!--<ImageView-->
-                            <!--android:id="@+id/iv_41"-->
-                            <!--android:layout_width="50dp"-->
-                            <!--android:layout_height="50dp"-->
-                            <!--android:layout_centerHorizontal="true"-->
-                            <!--android:background="@drawable/tea" />-->
-                        <!--<TextView-->
-                            <!--android:layout_width="wrap_content"-->
-                            <!--android:layout_height="wrap_content"-->
-                            <!--android:text="下午茶"-->
-                            <!--android:textSize="12sp"-->
-                            <!--android:layout_below="@+id/iv_41"-->
-                            <!--android:layout_centerHorizontal="true"/>-->
-                    <!--</RelativeLayout>-->
-                <!--</LinearLayout>-->
-                <!--<LinearLayout-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_marginTop="10dp">-->
-
-                    <!--<RelativeLayout-->
-                        <!--android:layout_width="wrap_content"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:layout_weight="1">-->
-
-                        <!--<ImageView-->
-                            <!--android:id="@+id/iv_1"-->
-                            <!--android:layout_width="50dp"-->
-                            <!--android:layout_height="50dp"-->
-                            <!--android:layout_centerHorizontal="true"-->
-                            <!--android:background="@drawable/tuhao" />-->
-
-                        <!--<TextView-->
-                            <!--android:layout_width="wrap_content"-->
-                            <!--android:layout_height="wrap_content"-->
-                            <!--android:text="土豪特供"-->
-                            <!--android:textSize="12sp"-->
-                            <!--android:layout_below="@+id/iv_1"-->
-                            <!--android:layout_centerHorizontal="true"/>-->
-                    <!--</RelativeLayout>-->
-
-                    <!--<RelativeLayout-->
-                        <!--android:layout_width="wrap_content"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:layout_weight="1">-->
-
-                        <!--<ImageView-->
-                            <!--android:id="@+id/iv_2"-->
-                            <!--android:layout_width="50dp"-->
-                            <!--android:layout_height="50dp"-->
-                            <!--android:layout_centerHorizontal="true"-->
-                            <!--android:background="@drawable/newdian" />-->
-                        <!--<TextView-->
-                            <!--android:layout_width="wrap_content"-->
-                            <!--android:layout_height="wrap_content"-->
-                            <!--android:text="新店"-->
-                            <!--android:textSize="12sp"-->
-                            <!--android:layout_below="@+id/iv_2"-->
-                            <!--android:layout_centerHorizontal="true"/>-->
-                    <!--</RelativeLayout>-->
-
-                    <!--<RelativeLayout-->
-                        <!--android:layout_width="wrap_content"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:layout_weight="1">-->
-
-                        <!--<ImageView-->
-                            <!--android:id="@+id/iv_3"-->
-                            <!--android:layout_width="50dp"-->
-                            <!--android:layout_height="50dp"-->
-                            <!--android:layout_centerHorizontal="true"-->
-                            <!--android:background="@drawable/deliver" />-->
-                        <!--<TextView-->
-                            <!--android:layout_width="wrap_content"-->
-                            <!--android:layout_height="wrap_content"-->
-                            <!--android:text="百度配送"-->
-                            <!--android:textSize="12sp"-->
-                            <!--android:layout_below="@+id/iv_3"-->
-                            <!--android:layout_centerHorizontal="true"/>-->
-                    <!--</RelativeLayout>-->
-
-                    <!--<RelativeLayout-->
-                        <!--android:layout_width="wrap_content"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:layout_weight="1">-->
-
-                        <!--<ImageView-->
-                            <!--android:id="@+id/iv_4"-->
-                            <!--android:layout_width="50dp"-->
-                            <!--android:layout_height="50dp"-->
-                            <!--android:layout_centerHorizontal="true"-->
-                            <!--android:background="@drawable/medicine" />-->
-                        <!--<TextView-->
-                            <!--android:layout_width="wrap_content"-->
-                            <!--android:layout_height="wrap_content"-->
-                            <!--android:text="网上送药"-->
-                            <!--android:textSize="12sp"-->
-                            <!--android:layout_below="@+id/iv_4"-->
-                            <!--android:layout_centerHorizontal="true"/>-->
-                    <!--</RelativeLayout>-->
-                <!--</LinearLayout>-->
-
-            <!--</LinearLayout>-->
-
-            <!--<TextView-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="1dp"-->
-                <!--android:background="@color/lightblack"/>-->
-            <!--<LinearLayout-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="40dp">-->
-                <!--<TextView-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_gravity="center_vertical"-->
-                    <!--android:layout_marginLeft="15dp"-->
-                    <!--android:text="全部商家"/>-->
-            <!--</LinearLayout>-->
-
-            <!--<com.ysc.baiduapp.MyListView-->
-                <!--android:id="@+id/lv_market"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="match_parent"-->
-                <!--android:listSelector="#00000000"-->
-                <!--android:childDivider="#00000000">-->
-            <!--</com.ysc.baiduapp.MyListView>-->
-
-
-        <!--</LinearLayout>-->
-
-    <!--</ScrollView>-->
-
-
     <Button
         android:id="@+id/button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="获取小区信息" />
 
-    <TextView
-        android:id="@+id/textView"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:layout_marginTop="0dp"
+        android:background="@color/white"
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="TextView" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="20dp">
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="TextView" />
+            <TextView
+                android:id="@+id/tv_MyFragement_Personal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
+                android:gravity="center_vertical"
+                android:text="@string/mCellIdentityCdma_mBasestationId" />
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="TextView" />
+            <TextView
+                android:id="@+id/mCellIdentityCdma_mBasestationId"
+                android:layout_width="250dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="10dp"
+                android:background="@null"
+                android:textColorHint="@color/lightblack"
+                android:textSize="14sp" />
+        </RelativeLayout>
 
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="TextView" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@color/lightbackground" />
 
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="TextView" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="20dp">
 
-    <TextView
-        android:id="@+id/textView7"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="TextView" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
+                android:gravity="center_vertical"
+                android:text="@string/mCellIdentityCdma_mLatitude" />
 
-    <TextView
-        android:id="@+id/textView8"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="TextView" />
+            <TextView
+                android:id="@+id/mCellIdentityCdma_mLatitude"
+                android:layout_width="250dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="10dp"
+                android:background="@null"
+                android:textColorHint="@color/lightblack"
+                android:textSize="14sp" />
+        </RelativeLayout>
 
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="TextView" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@color/lightbackground" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="20dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
+                android:gravity="center_vertical"
+                android:text="@string/mCellIdentityCdma_mLongitude" />
+            <TextView
+                android:id="@+id/mCellIdentityCdma_mLongitude"
+                android:layout_width="250dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="10dp"
+                android:background="@null"
+                android:textColorHint="@color/lightblack"
+                android:textSize="14sp" />
+        </RelativeLayout>
 
-    <TextView
-        android:id="@+id/textView10"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="TextView" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@color/lightbackground" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="20dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
+                android:gravity="center_vertical"
+                android:text="@string/mCellIdentityCdma_mNetworkId" />
+            <TextView
+                android:id="@+id/mCellIdentityCdma_mNetworkId"
+                android:layout_width="250dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="10dp"
+                android:background="@null"
+                android:textColorHint="@color/lightblack"
+                android:textSize="14sp" />
+        </RelativeLayout>
 
 
-    <TextView
-        android:id="@+id/textView11"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="TextView" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@color/lightbackground" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="20dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
+                android:gravity="center_vertical"
+                android:text="@string/mCellSignalStrengthCdma_mCdmaDbm" />
+            <TextView
+                android:id="@+id/mCellSignalStrengthCdma_mCdmaDbm"
+                android:layout_width="250dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="10dp"
+                android:background="@null"
+                android:textColorHint="@color/lightblack"
+                android:textSize="14sp" />
+        </RelativeLayout>
 
-    <TextView
-        android:id="@+id/textView12"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="TextView" />
 
-    <TextView
-        android:id="@+id/textView13"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="TextView" />
-    <TextView
-        android:id="@+id/textView14"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="TextView" />
-    <TextView
-        android:id="@+id/textView15"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="TextView" />
-    <TextView
-        android:id="@+id/textView16"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="TextView" />
-    <TextView
-        android:id="@+id/textView17"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="TextView" />
-    <TextView
-        android:id="@+id/textView18"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="TextView" />
-    <TextView
-        android:id="@+id/textView19"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="TextView" />
-    <TextView
-        android:id="@+id/textView20"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="TextView" />
-    <TextView
-        android:id="@+id/textView21"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="TextView" />
-    <TextView
-        android:id="@+id/textView22"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="TextView" />
-    <TextView
-        android:id="@+id/textView23"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="TextView" />
-    <TextView
-        android:id="@+id/textView24"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="TextView" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@color/lightbackground" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="20dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
+                android:gravity="center_vertical"
+                android:text="@string/mCellSignalStrengthCdma_mCdmaEcio" />
+            <TextView
+                android:id="@+id/mCellSignalStrengthCdma_mCdmaEcio"
+                android:layout_width="250dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="10dp"
+                android:background="@null"
+                android:textColorHint="@color/lightblack"
+                android:textSize="14sp" />
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@color/lightbackground" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="20dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
+                android:gravity="center_vertical"
+                android:text="@string/mCellSignalStrengthCdma_mEvdoDbm" />
+            <TextView
+                android:id="@+id/mCellSignalStrengthCdma_mEvdoDbm"
+                android:layout_width="250dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="10dp"
+                android:background="@null"
+                android:textColorHint="@color/lightblack"
+                android:textSize="14sp" />
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@color/lightbackground" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="20dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
+                android:gravity="center_vertical"
+                android:text="@string/mCellSignalStrengthCdma_mEvdoEcio" />
+            <TextView
+                android:id="@+id/mCellSignalStrengthCdma_mEvdoEcio"
+                android:layout_width="250dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="10dp"
+                android:background="@null"
+                android:textColorHint="@color/lightblack"
+                android:textSize="14sp" />
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@color/lightbackground" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="20dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
+                android:gravity="center_vertical"
+                android:text="@string/mCellSignalStrengthCdma_mEvdoSnr" />
+            <TextView
+                android:id="@+id/mCellSignalStrengthCdma_mEvdoSnr"
+                android:layout_width="250dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="10dp"
+                android:background="@null"
+                android:textColorHint="@color/lightblack"
+                android:textSize="14sp" />
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@color/lightbackground" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="20dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
+                android:gravity="center_vertical"
+                android:text="@string/mCellIdentityCdma_mRegistered" />
+            <TextView
+                android:id="@+id/mCellIdentityCdma_mRegistered"
+                android:layout_width="250dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="10dp"
+                android:background="@null"
+                android:textColorHint="@color/lightblack"
+                android:textSize="14sp" />
+        </RelativeLayout>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@color/lightbackground" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="20dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
+                android:gravity="center_vertical"
+                android:text="@string/mCellIdentityCdma_mTimeStamp" />
+            <TextView
+                android:id="@+id/mCellIdentityCdma_mTimeStamp"
+                android:layout_width="250dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="10dp"
+                android:background="@null"
+                android:textColorHint="@color/lightblack"
+                android:textSize="14sp" />
+        </RelativeLayout>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@color/lightbackground" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="20dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
+                android:gravity="center_vertical"
+                android:text="@string/mCellIdentityCdma_mTimeStampType" />
+            <TextView
+                android:id="@+id/mCellIdentityCdma_mTimeStampType"
+                android:layout_width="250dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="10dp"
+                android:background="@null"
+                android:textColorHint="@color/lightblack"
+                android:textSize="14sp" />
+        </RelativeLayout>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@color/lightbackground" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="20dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
+                android:gravity="center_vertical"
+                android:text="@string/mCellIdentityLte_mCi" />
+            <TextView
+                android:id="@+id/mCellIdentityLte_mCi"
+                android:layout_width="250dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="10dp"
+                android:background="@null"
+                android:textColorHint="@color/lightblack"
+                android:textSize="14sp" />
+        </RelativeLayout>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@color/lightbackground" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="20dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
+                android:gravity="center_vertical"
+                android:text="@string/mCellIdentityLte_mEarfcn" />
+            <TextView
+                android:id="@+id/mCellIdentityLte_mEarfcn"
+                android:layout_width="250dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="10dp"
+                android:background="@null"
+                android:textColorHint="@color/lightblack"
+                android:textSize="14sp" />
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@color/lightbackground" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="20dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
+                android:gravity="center_vertical"
+                android:text="@string/mCellIdentityLte_mMcc" />
+            <TextView
+                android:id="@+id/mCellIdentityLte_mMcc"
+                android:layout_width="250dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="10dp"
+                android:background="@null"
+                android:textColorHint="@color/lightblack"
+                android:textSize="14sp" />
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@color/lightbackground" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="20dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
+                android:gravity="center_vertical"
+                android:text="@string/mCellIdentityLte_mMnc" />
+            <TextView
+                android:id="@+id/mCellIdentityLte_mMnc"
+                android:layout_width="250dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="10dp"
+                android:background="@null"
+                android:textColorHint="@color/lightblack"
+                android:textSize="14sp" />
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@color/lightbackground" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="20dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
+                android:gravity="center_vertical"
+                android:text="@string/mCellIdentityLte_mPci" />
+            <TextView
+                android:id="@+id/mCellIdentityLte_mPci"
+                android:layout_width="250dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="10dp"
+                android:background="@null"
+                android:textColorHint="@color/lightblack"
+                android:textSize="14sp" />
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@color/lightbackground" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="20dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
+                android:gravity="center_vertical"
+                android:text="@string/mCellIdentityLte_mTac" />
+            <TextView
+                android:id="@+id/mCellIdentityLte_mTac"
+                android:layout_width="250dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="10dp"
+                android:background="@null"
+                android:textColorHint="@color/lightblack"
+                android:textSize="14sp" />
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@color/lightbackground" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="20dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
+                android:gravity="center_vertical"
+                android:text="@string/mCellSignalStrengthLte_mCqi" />
+            <TextView
+                android:id="@+id/mCellSignalStrengthLte_mCqi"
+                android:layout_width="250dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="10dp"
+                android:background="@null"
+                android:textColorHint="@color/lightblack"
+                android:textSize="14sp" />
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@color/lightbackground" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="20dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
+                android:gravity="center_vertical"
+                android:text="@string/mCellSignalStrengthLte_mRsrp" />
+            <TextView
+                android:id="@+id/mCellSignalStrengthLte_mRsrp"
+                android:layout_width="250dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="10dp"
+                android:background="@null"
+                android:textColorHint="@color/lightblack"
+                android:textSize="14sp" />
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@color/lightbackground" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="20dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
+                android:gravity="center_vertical"
+                android:text="@string/mCellSignalStrengthLte_mRssnr" />
+            <TextView
+                android:id="@+id/mCellSignalStrengthLte_mRssnr"
+                android:layout_width="250dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="10dp"
+                android:background="@null"
+                android:textColorHint="@color/lightblack"
+                android:textSize="14sp" />
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@color/lightbackground" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="20dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
+                android:gravity="center_vertical"
+                android:text="@string/mCellSignalStrengthLte_mSignalStrength" />
+            <TextView
+                android:id="@+id/mCellSignalStrengthLte_mSignalStrength"
+                android:layout_width="250dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="10dp"
+                android:background="@null"
+                android:textColorHint="@color/lightblack"
+                android:textSize="14sp" />
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@color/lightbackground" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="20dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
+                android:gravity="center_vertical"
+                android:text="@string/mCellSignalStrengthLte_mTimingAdvance" />
+            <TextView
+                android:id="@+id/mCellSignalStrengthLte_mTimingAdvance"
+                android:layout_width="250dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="10dp"
+                android:background="@null"
+                android:textColorHint="@color/lightblack"
+                android:textSize="14sp" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
 </LinearLayout>
