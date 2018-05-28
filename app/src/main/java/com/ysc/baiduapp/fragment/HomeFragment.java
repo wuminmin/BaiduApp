@@ -16,6 +16,7 @@ import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.ysc.baiduapp.GridViewAdapter;
 import com.ysc.baiduapp.ImageAdapter;
@@ -81,14 +82,6 @@ public class HomeFragment extends BaseFragment {
     private String mCellIdentityLte_mTimeStamp;
     private String mCellIdentityLte_mTimeStampType;
 
-
-
-
-//    @SuppressLint("ValidFragment")
-//    public void setGetCellInfo(GetCellInfo g){
-//        this.getCellInfo = g;
-//    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_home, null, false);
@@ -128,12 +121,6 @@ public class HomeFragment extends BaseFragment {
     private TextView textView24;
 
     private void init() {
-
-//        Button btn = (Button) view.findViewById(R.id.button);
-//        textViewBase = (TextView) view.findViewById(R.id.textView);
-//        textViewBase.setMovementMethod(new ScrollingMovementMethod());
-//        TextView textViewCell = (TextView) view.findViewById(R.id.editText);
-//        textViewCell.setMovementMethod(new ScrollingMovementMethod());
         button = view.findViewById(R.id.button);
         textView = view.findViewById(R.id.textView);
         textView2 = view.findViewById(R.id.textView2);
@@ -235,11 +222,8 @@ public class HomeFragment extends BaseFragment {
 
                 } catch (Exception e) {
                     e.printStackTrace();
+                    Toast.makeText(getActivity().getApplicationContext(), e.toString(), Toast.LENGTH_LONG).show();
                 }
-//                }catch (Exception e){
-////                    new AlertDialog.Builder(Context).setTitle("内部错误") .setMessage(e.toString()).setPositiveButton("确定", null)  .show();
-//                    System.out.print("System.out.print(e.toString());------------------------------------"+e.toString());
-//                }
             }
         });
 

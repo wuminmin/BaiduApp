@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.ysc.baiduapp.R;
 import com.ysc.baiduapp.viewcustom.BaseFragment;
@@ -16,6 +17,7 @@ import com.ysc.baiduapp.viewcustom.BaseFragment;
 public class OrderFragment extends BaseFragment {
     private ImageView iv_order;
     private View view;
+    private TextView order_upload_data;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -25,5 +27,12 @@ public class OrderFragment extends BaseFragment {
     }
 
     private void init() {
+        order_upload_data = view.findViewById(R.id.order_upload_data);
+        order_upload_data.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getActivity().getApplicationContext(), "上传成功！！！！", Toast.LENGTH_LONG).show();
+            }
+        });
     }
 }

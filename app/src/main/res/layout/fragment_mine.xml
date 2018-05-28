@@ -4,39 +4,39 @@
     android:background="@color/lightbackground"
     android:orientation="vertical">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    <!--<ScrollView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent">-->
 
         <!--<LinearLayout-->
             <!--android:layout_width="match_parent"-->
             <!--android:layout_height="match_parent"-->
             <!--android:orientation="vertical">-->
 
-            <!--<RelativeLayout-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="150dp"-->
-                <!--android:background="@color/title_red">-->
+            <!--&lt;!&ndash;<RelativeLayout&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_height="150dp"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:background="@color/title_red">&ndash;&gt;-->
 
-                <!--<ImageView-->
-                    <!--android:layout_width="30dp"-->
-                    <!--android:layout_height="30dp"-->
-                    <!--android:layout_alignParentRight="true"-->
-                    <!--android:layout_marginRight="10dp"-->
-                    <!--android:layout_marginTop="10dp"-->
-                    <!--android:background="@drawable/logo_set" />-->
+                <!--&lt;!&ndash;<ImageView&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_width="30dp"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_height="30dp"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_alignParentRight="true"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_marginRight="10dp"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_marginTop="10dp"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:background="@drawable/logo_set" />&ndash;&gt;-->
 
-                <!--<Button-->
-                    <!--android:layout_width="140dp"-->
-                    <!--android:layout_height="50dp"-->
-                    <!--android:layout_centerHorizontal="true"-->
-                    <!--android:layout_gravity="center_horizontal"-->
-                    <!--android:layout_marginTop="60dp"-->
-                    <!--android:background="@drawable/btn_white"-->
-                    <!--android:text="登录/注册"-->
-                    <!--android:textColor="@color/title_red"-->
-                    <!--android:textSize="16sp" />-->
-            <!--</RelativeLayout>-->
+                <!--&lt;!&ndash;<Button&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_width="140dp"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_height="50dp"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_centerHorizontal="true"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_gravity="center_horizontal"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_marginTop="60dp"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:background="@drawable/btn_white"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:text="登录/注册"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:textColor="@color/title_red"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:textSize="16sp" />&ndash;&gt;-->
+            <!--&lt;!&ndash;</RelativeLayout>&ndash;&gt;-->
 
             <!--<LinearLayout-->
                 <!--android:layout_width="match_parent"-->
@@ -71,13 +71,34 @@
                         <!--android:gravity="center_vertical"-->
                         <!--android:text="我的送餐地址" />-->
 
-                    <!--<ImageView-->
-                        <!--android:layout_width="35dp"-->
-                        <!--android:layout_height="20dp"-->
-                        <!--android:layout_alignParentRight="true"-->
-                        <!--android:layout_centerVertical="true"-->
-                        <!--android:layout_marginRight="25dp"-->
-                        <!--android:src="@drawable/wallet_base_indicator_arrow" />-->
+                    <!--&lt;!&ndash;<EditText&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:id="@+id/editText"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_width="wrap_content"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_alignParentEnd="true"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_alignParentTop="true"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:ems="10"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:inputType="textPersonName"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:text="" />&ndash;&gt;-->
+
+                    <!--<EditText-->
+                        <!--android:id="@+id/et_search"-->
+                        <!--android:layout_width="204dp"-->
+                        <!--android:layout_height="match_parent"-->
+                        <!--android:background="@null"-->
+                        <!--android:layout_alignParentBottom="true"-->
+                        <!--android:layout_alignParentEnd="true"-->
+                        <!--android:hint=""-->
+                        <!--android:inputType="number"-->
+                        <!--android:textColorHint="@color/lightblack"-->
+                        <!--android:textSize="14sp" />-->
+                    <!--&lt;!&ndash;<ImageView&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_width="35dp"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_height="20dp"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_alignParentRight="true"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_centerVertical="true"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_marginRight="25dp"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:src="@drawable/wallet_base_indicator_arrow" />&ndash;&gt;-->
                 <!--</RelativeLayout>-->
 
                 <!--<TextView-->
@@ -476,7 +497,7 @@
 
             <!--</LinearLayout>-->
         <!--</LinearLayout>-->
-    </ScrollView>
+    <!--</ScrollView>-->
 
 
 </LinearLayout>
