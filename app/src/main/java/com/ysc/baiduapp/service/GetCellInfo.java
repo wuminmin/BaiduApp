@@ -6,6 +6,7 @@ import android.content.pm.PackageManager;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AlertDialog;
 import android.telephony.CellInfo;
+import android.telephony.CellInfoCdma;
 import android.telephony.TelephonyManager;
 import android.telephony.cdma.CdmaCellLocation;
 import android.telephony.gsm.GsmCellLocation;
@@ -13,19 +14,10 @@ import android.support.v4.app.FragmentActivity;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
-import com.ysc.baiduapp.MainActivity;
 
 import java.util.List;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-
-import java.util.Arrays;
-import java.util.List;
-import java.util.ListIterator;
 
 public class GetCellInfo {
     private static final int MY_PERMISSIONS_REQUEST_ACCESS_COARSE_LOCATION = 0;
@@ -93,4 +85,34 @@ public class GetCellInfo {
         }
         return strCellInfo;
     }
+
+    public String getCellInfoLte(){
+        if (telephonyManager == null) {
+            new AlertDialog.Builder(mycontext).setTitle("错误").setMessage("内部错误 telephonyManager").setPositiveButton("确定", null).show();
+        } else {
+            if (telephonyManager.getPhoneType() == TelephonyManager.PHONE_TYPE_CDMA) {
+                if (ActivityCompat.checkSelfPermission(mycontext, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                    ActivityCompat.requestPermissions(mymainActivity,
+                            new String[]{Manifest.permission.ACCESS_COARSE_LOCATION},
+                            MY_PERMISSIONS_REQUEST_ACCESS_COARSE_LOCATION);
+                    Toast.makeText(this.mycontext, "请求卫星和网络权限！！", Toast.LENGTH_LONG).show();
+                }
+                List<CellInfo> cellInfoList = telephonyManager.getAllCellInfo();
+                try {
+                    Gson gson = new Gson();
+                    CellInfoCdma cellInfoCdma = null;
+                    strCellInfo = gson.toJson(cellInfoList);
+                    for(CellInfo cellInfo : cellInfoList){
+                        System.out.println("System.out.println(cellInfo.describeContents());"+cellInfo.describeContents());
+                    }
+
+//                    System.out.print(strCellInfo);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return null;
+    }
+
 }

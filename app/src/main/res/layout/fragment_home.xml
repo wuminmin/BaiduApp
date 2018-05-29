@@ -8,643 +8,781 @@
         android:id="@+id/button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="获取小区信息" />
+        android:text="@string/button" />
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="0dp"
-        android:background="@color/white"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="20dp">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/tv_MyFragement_Personal"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginStart="10dp"
-                android:gravity="center_vertical"
-                android:text="@string/mCellIdentityCdma_mBasestationId" />
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:background="@color/white"
+                android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/mCellIdentityCdma_mBasestationId"
-                android:layout_width="250dp"
-                android:layout_height="match_parent"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentEnd="true"
-                android:layout_marginEnd="10dp"
-                android:background="@null"
-                android:textColorHint="@color/lightblack"
-                android:textSize="14sp" />
-        </RelativeLayout>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@color/lightbackground" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:background="@color/lightbackground" />
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="20dp">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="10dp"
+                        android:gravity="center_vertical"
+                        android:text="@string/mCellIdentityLte_mCi" />
 
-            <TextView
+                    <TextView
+                        android:id="@+id/mCellIdentityLte_mCi"
+                        android:layout_width="250dp"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="10dp"
+                        android:background="@null"
+                        android:textColorHint="@color/lightblack"
+                        android:textSize="14sp" />
+                </RelativeLayout>
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@color/lightbackground" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="10dp"
+                        android:gravity="center_vertical"
+                        android:text="@string/mCellIdentityLte_mEarfcn" />
+
+                    <TextView
+                        android:id="@+id/mCellIdentityLte_mEarfcn"
+                        android:layout_width="250dp"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="10dp"
+                        android:background="@null"
+                        android:textColorHint="@color/lightblack"
+                        android:textSize="14sp" />
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@color/lightbackground" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="10dp"
+                        android:gravity="center_vertical"
+                        android:text="@string/mCellIdentityLte_mMcc" />
+
+                    <TextView
+                        android:id="@+id/mCellIdentityLte_mMcc"
+                        android:layout_width="250dp"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="10dp"
+                        android:background="@null"
+                        android:textColorHint="@color/lightblack"
+                        android:textSize="14sp" />
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@color/lightbackground" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="10dp"
+                        android:gravity="center_vertical"
+                        android:text="@string/mCellIdentityLte_mMnc" />
+
+                    <TextView
+                        android:id="@+id/mCellIdentityLte_mMnc"
+                        android:layout_width="250dp"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="10dp"
+                        android:background="@null"
+                        android:textColorHint="@color/lightblack"
+                        android:textSize="14sp" />
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@color/lightbackground" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="10dp"
+                        android:gravity="center_vertical"
+                        android:text="@string/mCellIdentityLte_mPci" />
+
+                    <TextView
+                        android:id="@+id/mCellIdentityLte_mPci"
+                        android:layout_width="250dp"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="10dp"
+                        android:background="@null"
+                        android:textColorHint="@color/lightblack"
+                        android:textSize="14sp" />
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@color/lightbackground" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="10dp"
+                        android:gravity="center_vertical"
+                        android:text="@string/mCellIdentityLte_mTac" />
+
+                    <TextView
+                        android:id="@+id/mCellIdentityLte_mTac"
+                        android:layout_width="250dp"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="10dp"
+                        android:background="@null"
+                        android:textColorHint="@color/lightblack"
+                        android:textSize="14sp" />
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@color/lightbackground" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="10dp"
+                        android:gravity="center_vertical"
+                        android:text="@string/mCellSignalStrengthLte_mCqi" />
+
+                    <TextView
+                        android:id="@+id/mCellSignalStrengthLte_mCqi"
+                        android:layout_width="250dp"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="10dp"
+                        android:background="@null"
+                        android:textColorHint="@color/lightblack"
+                        android:textSize="14sp" />
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@color/lightbackground" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="10dp"
+                        android:gravity="center_vertical"
+                        android:text="@string/mCellSignalStrengthLte_mRsrp" />
+
+                    <TextView
+                        android:id="@+id/mCellSignalStrengthLte_mRsrp"
+                        android:layout_width="250dp"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="10dp"
+                        android:background="@null"
+                        android:textColorHint="@color/lightblack"
+                        android:textSize="14sp" />
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@color/lightbackground" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="10dp"
+                        android:gravity="center_vertical"
+                        android:text="@string/mCellSignalStrengthLte_mRssnr" />
+
+                    <TextView
+                        android:id="@+id/mCellSignalStrengthLte_mRssnr"
+                        android:layout_width="250dp"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="10dp"
+                        android:background="@null"
+                        android:textColorHint="@color/lightblack"
+                        android:textSize="14sp" />
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@color/lightbackground" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="10dp"
+                        android:gravity="center_vertical"
+                        android:text="@string/mCellSignalStrengthLte_mSignalStrength" />
+
+                    <TextView
+                        android:id="@+id/mCellSignalStrengthLte_mSignalStrength"
+                        android:layout_width="250dp"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="10dp"
+                        android:background="@null"
+                        android:textColorHint="@color/lightblack"
+                        android:textSize="14sp" />
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@color/lightbackground" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="10dp"
+                        android:gravity="center_vertical"
+                        android:text="@string/mCellSignalStrengthLte_mTimingAdvance" />
+
+                    <TextView
+                        android:id="@+id/mCellSignalStrengthLte_mTimingAdvance"
+                        android:layout_width="250dp"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="10dp"
+                        android:background="@null"
+                        android:textColorHint="@color/lightblack"
+                        android:textSize="14sp" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginStart="10dp"
-                android:gravity="center_vertical"
-                android:text="@string/mCellIdentityCdma_mLatitude" />
+                android:layout_height="2dp"
+                android:layout_marginTop="20dp"
+                android:background="@color/lgrey"></LinearLayout>
 
-            <TextView
-                android:id="@+id/mCellIdentityCdma_mLatitude"
-                android:layout_width="250dp"
-                android:layout_height="match_parent"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentEnd="true"
-                android:layout_marginEnd="10dp"
-                android:background="@null"
-                android:textColorHint="@color/lightblack"
-                android:textSize="14sp" />
-        </RelativeLayout>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:background="@color/lightbackground" />
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="20dp">
-            <TextView
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginStart="10dp"
-                android:gravity="center_vertical"
-                android:text="@string/mCellIdentityCdma_mLongitude" />
-            <TextView
-                android:id="@+id/mCellIdentityCdma_mLongitude"
-                android:layout_width="250dp"
-                android:layout_height="match_parent"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentEnd="true"
-                android:layout_marginEnd="10dp"
-                android:background="@null"
-                android:textColorHint="@color/lightblack"
-                android:textSize="14sp" />
-        </RelativeLayout>
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp">
+
+                    <TextView
+                        android:id="@+id/tv_MyFragement_Personal"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="10dp"
+                        android:gravity="center_vertical"
+                        android:text="@string/mCellIdentityCdma_mBasestationId" />
+
+                    <TextView
+                        android:id="@+id/mCellIdentityCdma_mBasestationId"
+                        android:layout_width="250dp"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="10dp"
+                        android:background="@null"
+                        android:textColorHint="@color/lightblack"
+                        android:textSize="14sp" />
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@color/lightbackground" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="10dp"
+                        android:gravity="center_vertical"
+                        android:text="@string/mCellIdentityCdma_mLatitude" />
+
+                    <TextView
+                        android:id="@+id/mCellIdentityCdma_mLatitude"
+                        android:layout_width="250dp"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="10dp"
+                        android:background="@null"
+                        android:textColorHint="@color/lightblack"
+                        android:textSize="14sp" />
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@color/lightbackground" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="10dp"
+                        android:gravity="center_vertical"
+                        android:text="@string/mCellIdentityCdma_mLongitude" />
+
+                    <TextView
+                        android:id="@+id/mCellIdentityCdma_mLongitude"
+                        android:layout_width="250dp"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="10dp"
+                        android:background="@null"
+                        android:textColorHint="@color/lightblack"
+                        android:textSize="14sp" />
+                </RelativeLayout>
 
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:background="@color/lightbackground" />
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="20dp">
-            <TextView
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@color/lightbackground" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="10dp"
+                        android:gravity="center_vertical"
+                        android:text="@string/mCellIdentityCdma_mNetworkId" />
+
+                    <TextView
+                        android:id="@+id/mCellIdentityCdma_mNetworkId"
+                        android:layout_width="250dp"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="10dp"
+                        android:background="@null"
+                        android:textColorHint="@color/lightblack"
+                        android:textSize="14sp" />
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@color/lightbackground" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="10dp"
+                        android:gravity="center_vertical"
+                        android:text="@string/mCellIdentityCdma_mSystemId" />
+
+                    <TextView
+                        android:id="@+id/mCellIdentityCdma_mSystemId"
+                        android:layout_width="250dp"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="10dp"
+                        android:background="@null"
+                        android:textColorHint="@color/lightblack"
+                        android:textSize="14sp" />
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginStart="10dp"
-                android:gravity="center_vertical"
-                android:text="@string/mCellIdentityCdma_mNetworkId" />
-            <TextView
-                android:id="@+id/mCellIdentityCdma_mNetworkId"
-                android:layout_width="250dp"
-                android:layout_height="match_parent"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentEnd="true"
-                android:layout_marginEnd="10dp"
-                android:background="@null"
-                android:textColorHint="@color/lightblack"
-                android:textSize="14sp" />
-        </RelativeLayout>
+                android:layout_height="2dp"
+                android:layout_marginTop="20dp"
+                android:background="@color/lgrey"></LinearLayout>
 
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:background="@color/lightbackground" />
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="20dp">
-            <TextView
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginStart="10dp"
-                android:gravity="center_vertical"
-                android:text="@string/mCellSignalStrengthCdma_mCdmaDbm" />
-            <TextView
-                android:id="@+id/mCellSignalStrengthCdma_mCdmaDbm"
-                android:layout_width="250dp"
-                android:layout_height="match_parent"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentEnd="true"
-                android:layout_marginEnd="10dp"
-                android:background="@null"
-                android:textColorHint="@color/lightblack"
-                android:textSize="14sp" />
-        </RelativeLayout>
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@color/lightbackground" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="10dp"
+                        android:gravity="center_vertical"
+                        android:text="@string/mCellSignalStrengthCdma_mCdmaDbm" />
+
+                    <TextView
+                        android:id="@+id/mCellSignalStrengthCdma_mCdmaDbm"
+                        android:layout_width="250dp"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="10dp"
+                        android:background="@null"
+                        android:textColorHint="@color/lightblack"
+                        android:textSize="14sp" />
+                </RelativeLayout>
 
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:background="@color/lightbackground" />
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="20dp">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginStart="10dp"
-                android:gravity="center_vertical"
-                android:text="@string/mCellSignalStrengthCdma_mCdmaEcio" />
-            <TextView
-                android:id="@+id/mCellSignalStrengthCdma_mCdmaEcio"
-                android:layout_width="250dp"
-                android:layout_height="match_parent"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentEnd="true"
-                android:layout_marginEnd="10dp"
-                android:background="@null"
-                android:textColorHint="@color/lightblack"
-                android:textSize="14sp" />
-        </RelativeLayout>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@color/lightbackground" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:background="@color/lightbackground" />
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="20dp">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginStart="10dp"
-                android:gravity="center_vertical"
-                android:text="@string/mCellSignalStrengthCdma_mEvdoDbm" />
-            <TextView
-                android:id="@+id/mCellSignalStrengthCdma_mEvdoDbm"
-                android:layout_width="250dp"
-                android:layout_height="match_parent"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentEnd="true"
-                android:layout_marginEnd="10dp"
-                android:background="@null"
-                android:textColorHint="@color/lightblack"
-                android:textSize="14sp" />
-        </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:background="@color/lightbackground" />
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="20dp">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginStart="10dp"
-                android:gravity="center_vertical"
-                android:text="@string/mCellSignalStrengthCdma_mEvdoEcio" />
-            <TextView
-                android:id="@+id/mCellSignalStrengthCdma_mEvdoEcio"
-                android:layout_width="250dp"
-                android:layout_height="match_parent"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentEnd="true"
-                android:layout_marginEnd="10dp"
-                android:background="@null"
-                android:textColorHint="@color/lightblack"
-                android:textSize="14sp" />
-        </RelativeLayout>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="10dp"
+                        android:gravity="center_vertical"
+                        android:text="@string/mCellSignalStrengthCdma_mCdmaEcio" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:background="@color/lightbackground" />
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="20dp">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginStart="10dp"
-                android:gravity="center_vertical"
-                android:text="@string/mCellSignalStrengthCdma_mEvdoSnr" />
-            <TextView
-                android:id="@+id/mCellSignalStrengthCdma_mEvdoSnr"
-                android:layout_width="250dp"
-                android:layout_height="match_parent"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentEnd="true"
-                android:layout_marginEnd="10dp"
-                android:background="@null"
-                android:textColorHint="@color/lightblack"
-                android:textSize="14sp" />
-        </RelativeLayout>
+                    <TextView
+                        android:id="@+id/mCellSignalStrengthCdma_mCdmaEcio"
+                        android:layout_width="250dp"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="10dp"
+                        android:background="@null"
+                        android:textColorHint="@color/lightblack"
+                        android:textSize="14sp" />
+                </RelativeLayout>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:background="@color/lightbackground" />
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="20dp">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginStart="10dp"
-                android:gravity="center_vertical"
-                android:text="@string/mCellIdentityCdma_mRegistered" />
-            <TextView
-                android:id="@+id/mCellIdentityCdma_mRegistered"
-                android:layout_width="250dp"
-                android:layout_height="match_parent"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentEnd="true"
-                android:layout_marginEnd="10dp"
-                android:background="@null"
-                android:textColorHint="@color/lightblack"
-                android:textSize="14sp" />
-        </RelativeLayout>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@color/lightbackground" />
 
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:background="@color/lightbackground" />
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="20dp">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginStart="10dp"
-                android:gravity="center_vertical"
-                android:text="@string/mCellIdentityCdma_mTimeStamp" />
-            <TextView
-                android:id="@+id/mCellIdentityCdma_mTimeStamp"
-                android:layout_width="250dp"
-                android:layout_height="match_parent"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentEnd="true"
-                android:layout_marginEnd="10dp"
-                android:background="@null"
-                android:textColorHint="@color/lightblack"
-                android:textSize="14sp" />
-        </RelativeLayout>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="10dp"
+                        android:gravity="center_vertical"
+                        android:text="@string/mCellSignalStrengthCdma_mEvdoDbm" />
+
+                    <TextView
+                        android:id="@+id/mCellSignalStrengthCdma_mEvdoDbm"
+                        android:layout_width="250dp"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="10dp"
+                        android:background="@null"
+                        android:textColorHint="@color/lightblack"
+                        android:textSize="14sp" />
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@color/lightbackground" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="10dp"
+                        android:gravity="center_vertical"
+                        android:text="@string/mCellSignalStrengthCdma_mEvdoEcio" />
+
+                    <TextView
+                        android:id="@+id/mCellSignalStrengthCdma_mEvdoEcio"
+                        android:layout_width="250dp"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="10dp"
+                        android:background="@null"
+                        android:textColorHint="@color/lightblack"
+                        android:textSize="14sp" />
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@color/lightbackground" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="10dp"
+                        android:gravity="center_vertical"
+                        android:text="@string/mCellSignalStrengthCdma_mEvdoSnr" />
+
+                    <TextView
+                        android:id="@+id/mCellSignalStrengthCdma_mEvdoSnr"
+                        android:layout_width="250dp"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="10dp"
+                        android:background="@null"
+                        android:textColorHint="@color/lightblack"
+                        android:textSize="14sp" />
+                </RelativeLayout>
+
+                <!--<TextView-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="1dp"-->
+                    <!--android:layout_marginLeft="20dp"-->
+                    <!--android:layout_marginRight="20dp"-->
+                    <!--android:background="@color/lightbackground" />-->
+
+                <!--<RelativeLayout-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="20dp">-->
+
+                    <!--<TextView-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="match_parent"-->
+                        <!--android:layout_marginStart="10dp"-->
+                        <!--android:gravity="center_vertical"-->
+                        <!--android:text="@string/mCellIdentityCdma_mRegistered" />-->
+
+                    <!--<TextView-->
+                        <!--android:id="@+id/mCellIdentityCdma_mRegistered"-->
+                        <!--android:layout_width="250dp"-->
+                        <!--android:layout_height="match_parent"-->
+                        <!--android:layout_alignParentBottom="true"-->
+                        <!--android:layout_alignParentEnd="true"-->
+                        <!--android:layout_marginEnd="10dp"-->
+                        <!--android:background="@null"-->
+                        <!--android:textColorHint="@color/lightblack"-->
+                        <!--android:textSize="14sp" />-->
+                <!--</RelativeLayout>-->
 
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:background="@color/lightbackground" />
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="20dp">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginStart="10dp"
-                android:gravity="center_vertical"
-                android:text="@string/mCellIdentityCdma_mTimeStampType" />
-            <TextView
-                android:id="@+id/mCellIdentityCdma_mTimeStampType"
-                android:layout_width="250dp"
-                android:layout_height="match_parent"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentEnd="true"
-                android:layout_marginEnd="10dp"
-                android:background="@null"
-                android:textColorHint="@color/lightblack"
-                android:textSize="14sp" />
-        </RelativeLayout>
+                <!--<TextView-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="1dp"-->
+                    <!--android:layout_marginLeft="20dp"-->
+                    <!--android:layout_marginRight="20dp"-->
+                    <!--android:background="@color/lightbackground" />-->
+
+                <!--<RelativeLayout-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="20dp">-->
+
+                    <!--<TextView-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="match_parent"-->
+                        <!--android:layout_marginStart="10dp"-->
+                        <!--android:gravity="center_vertical"-->
+                        <!--android:text="@string/mCellIdentityCdma_mTimeStamp" />-->
+
+                    <!--<TextView-->
+                        <!--android:id="@+id/mCellIdentityCdma_mTimeStamp"-->
+                        <!--android:layout_width="250dp"-->
+                        <!--android:layout_height="match_parent"-->
+                        <!--android:layout_alignParentBottom="true"-->
+                        <!--android:layout_alignParentEnd="true"-->
+                        <!--android:layout_marginEnd="10dp"-->
+                        <!--android:background="@null"-->
+                        <!--android:textColorHint="@color/lightblack"-->
+                        <!--android:textSize="14sp" />-->
+                <!--</RelativeLayout>-->
 
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:background="@color/lightbackground" />
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="20dp">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginStart="10dp"
-                android:gravity="center_vertical"
-                android:text="@string/mCellIdentityLte_mCi" />
-            <TextView
-                android:id="@+id/mCellIdentityLte_mCi"
-                android:layout_width="250dp"
-                android:layout_height="match_parent"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentEnd="true"
-                android:layout_marginEnd="10dp"
-                android:background="@null"
-                android:textColorHint="@color/lightblack"
-                android:textSize="14sp" />
-        </RelativeLayout>
+                <!--<TextView-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="1dp"-->
+                    <!--android:layout_marginLeft="20dp"-->
+                    <!--android:layout_marginRight="20dp"-->
+                    <!--android:background="@color/lightbackground" />-->
+
+                <!--<RelativeLayout-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="20dp">-->
+
+                    <!--<TextView-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="match_parent"-->
+                        <!--android:layout_marginStart="10dp"-->
+                        <!--android:gravity="center_vertical"-->
+                        <!--android:text="@string/mCellIdentityCdma_mTimeStampType" />-->
+
+                    <!--<TextView-->
+                        <!--android:id="@+id/mCellIdentityCdma_mTimeStampType"-->
+                        <!--android:layout_width="250dp"-->
+                        <!--android:layout_height="match_parent"-->
+                        <!--android:layout_alignParentBottom="true"-->
+                        <!--android:layout_alignParentEnd="true"-->
+                        <!--android:layout_marginEnd="10dp"-->
+                        <!--android:background="@null"-->
+                        <!--android:textColorHint="@color/lightblack"-->
+                        <!--android:textSize="14sp" />-->
+                <!--</RelativeLayout>-->
+            </LinearLayout>
 
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:background="@color/lightbackground" />
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="20dp">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginStart="10dp"
-                android:gravity="center_vertical"
-                android:text="@string/mCellIdentityLte_mEarfcn" />
-            <TextView
-                android:id="@+id/mCellIdentityLte_mEarfcn"
-                android:layout_width="250dp"
-                android:layout_height="match_parent"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentEnd="true"
-                android:layout_marginEnd="10dp"
-                android:background="@null"
-                android:textColorHint="@color/lightblack"
-                android:textSize="14sp" />
-        </RelativeLayout>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:background="@color/lightbackground" />
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="20dp">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginStart="10dp"
-                android:gravity="center_vertical"
-                android:text="@string/mCellIdentityLte_mMcc" />
-            <TextView
-                android:id="@+id/mCellIdentityLte_mMcc"
-                android:layout_width="250dp"
-                android:layout_height="match_parent"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentEnd="true"
-                android:layout_marginEnd="10dp"
-                android:background="@null"
-                android:textColorHint="@color/lightblack"
-                android:textSize="14sp" />
-        </RelativeLayout>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:background="@color/lightbackground" />
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="20dp">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginStart="10dp"
-                android:gravity="center_vertical"
-                android:text="@string/mCellIdentityLte_mMnc" />
-            <TextView
-                android:id="@+id/mCellIdentityLte_mMnc"
-                android:layout_width="250dp"
-                android:layout_height="match_parent"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentEnd="true"
-                android:layout_marginEnd="10dp"
-                android:background="@null"
-                android:textColorHint="@color/lightblack"
-                android:textSize="14sp" />
-        </RelativeLayout>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:background="@color/lightbackground" />
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="20dp">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginStart="10dp"
-                android:gravity="center_vertical"
-                android:text="@string/mCellIdentityLte_mPci" />
-            <TextView
-                android:id="@+id/mCellIdentityLte_mPci"
-                android:layout_width="250dp"
-                android:layout_height="match_parent"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentEnd="true"
-                android:layout_marginEnd="10dp"
-                android:background="@null"
-                android:textColorHint="@color/lightblack"
-                android:textSize="14sp" />
-        </RelativeLayout>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:background="@color/lightbackground" />
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="20dp">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginStart="10dp"
-                android:gravity="center_vertical"
-                android:text="@string/mCellIdentityLte_mTac" />
-            <TextView
-                android:id="@+id/mCellIdentityLte_mTac"
-                android:layout_width="250dp"
-                android:layout_height="match_parent"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentEnd="true"
-                android:layout_marginEnd="10dp"
-                android:background="@null"
-                android:textColorHint="@color/lightblack"
-                android:textSize="14sp" />
-        </RelativeLayout>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:background="@color/lightbackground" />
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="20dp">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginStart="10dp"
-                android:gravity="center_vertical"
-                android:text="@string/mCellSignalStrengthLte_mCqi" />
-            <TextView
-                android:id="@+id/mCellSignalStrengthLte_mCqi"
-                android:layout_width="250dp"
-                android:layout_height="match_parent"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentEnd="true"
-                android:layout_marginEnd="10dp"
-                android:background="@null"
-                android:textColorHint="@color/lightblack"
-                android:textSize="14sp" />
-        </RelativeLayout>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:background="@color/lightbackground" />
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="20dp">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginStart="10dp"
-                android:gravity="center_vertical"
-                android:text="@string/mCellSignalStrengthLte_mRsrp" />
-            <TextView
-                android:id="@+id/mCellSignalStrengthLte_mRsrp"
-                android:layout_width="250dp"
-                android:layout_height="match_parent"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentEnd="true"
-                android:layout_marginEnd="10dp"
-                android:background="@null"
-                android:textColorHint="@color/lightblack"
-                android:textSize="14sp" />
-        </RelativeLayout>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:background="@color/lightbackground" />
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="20dp">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginStart="10dp"
-                android:gravity="center_vertical"
-                android:text="@string/mCellSignalStrengthLte_mRssnr" />
-            <TextView
-                android:id="@+id/mCellSignalStrengthLte_mRssnr"
-                android:layout_width="250dp"
-                android:layout_height="match_parent"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentEnd="true"
-                android:layout_marginEnd="10dp"
-                android:background="@null"
-                android:textColorHint="@color/lightblack"
-                android:textSize="14sp" />
-        </RelativeLayout>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:background="@color/lightbackground" />
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="20dp">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginStart="10dp"
-                android:gravity="center_vertical"
-                android:text="@string/mCellSignalStrengthLte_mSignalStrength" />
-            <TextView
-                android:id="@+id/mCellSignalStrengthLte_mSignalStrength"
-                android:layout_width="250dp"
-                android:layout_height="match_parent"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentEnd="true"
-                android:layout_marginEnd="10dp"
-                android:background="@null"
-                android:textColorHint="@color/lightblack"
-                android:textSize="14sp" />
-        </RelativeLayout>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:background="@color/lightbackground" />
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="20dp">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginStart="10dp"
-                android:gravity="center_vertical"
-                android:text="@string/mCellSignalStrengthLte_mTimingAdvance" />
-            <TextView
-                android:id="@+id/mCellSignalStrengthLte_mTimingAdvance"
-                android:layout_width="250dp"
-                android:layout_height="match_parent"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentEnd="true"
-                android:layout_marginEnd="10dp"
-                android:background="@null"
-                android:textColorHint="@color/lightblack"
-                android:textSize="14sp" />
-        </RelativeLayout>
-
-    </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>

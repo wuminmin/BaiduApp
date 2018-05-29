@@ -18,14 +18,14 @@
 
     <string name="order_upload_data">上传数据</string>
 
-    <string name="mCellIdentityCdma_mBasestationId">基站标识号</string>
+    <string name="mCellIdentityCdma_mBasestationId">BID</string>
     <string name="mCellIdentityCdma_mLatitude">纬度</string>
     <string name="mCellIdentityCdma_mLongitude">经度</string>
     <string name="mCellIdentityCdma_mNetworkId">网络号</string>
-    <string name="mCellIdentityCdma_mSystemId">系统号</string>
-    <string name="mCellSignalStrengthCdma_mCdmaDbm">CDMA信号强度</string>
+    <string name="mCellIdentityCdma_mSystemId">SID</string>
+    <string name="mCellSignalStrengthCdma_mCdmaDbm">CDMA DBM</string>
     <string name="mCellSignalStrengthCdma_mCdmaEcio">CDMA EC/IO</string>
-    <string name="mCellSignalStrengthCdma_mEvdoDbm">EVDO 信号强度</string>
+    <string name="mCellSignalStrengthCdma_mEvdoDbm">EVDO DBM</string>
     <string name="mCellSignalStrengthCdma_mEvdoEcio">EVDO EC/IO</string>
     <string name="mCellSignalStrengthCdma_mEvdoSnr">EVDO SNR</string>
     <string name="mCellIdentityCdma_mRegistered">注册小区</string>
@@ -42,7 +42,7 @@
     <string name="mCellSignalStrengthLte_mRssnr">LTE SNR</string>
     <string name="mCellSignalStrengthLte_mSignalStrength">LTE 信号强度</string>
     <string name="mCellSignalStrengthLte_mTimingAdvance">LTE </string>
-
+    <string name="button">获取小区信息</string>
 
 
 </resources>
