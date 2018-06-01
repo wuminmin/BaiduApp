@@ -2,6 +2,7 @@ package com.ysc.baiduapp.fragment;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.telephony.TelephonyManager;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,6 +23,8 @@ import com.ysc.baiduapp.viewcustom.BaseFragment;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+
+import java.util.Map;
 
 /**
  * Created by wjx on 2016-1-12.
@@ -104,8 +107,8 @@ public class HomeFragment extends BaseFragment {
                 try {
                      String strGetCellInfo;
                      String mCellIdentityCdma_mBasestationId;
-                     String mCellIdentityCdma_mLatitude;
-                     String mCellIdentityCdma_mLongitude;
+                    String mCellIdentityCdma_mLatitude;
+                    String mCellIdentityCdma_mLongitude;
                      String mCellIdentityCdma_mNetworkId;
                      String mCellIdentityCdma_mSystemId;
                      String mCellSignalStrengthCdma_mCdmaDbm;
@@ -132,13 +135,16 @@ public class HomeFragment extends BaseFragment {
                      String mCellIdentityLte_mTimeStamp;
                      String mCellIdentityLte_mTimeStampType;
                     strGetCellInfo = getCellInfo.myCell();
-                    String strGetcell = getCellInfo.getCellInfoLte();
+                    Map<String,Double> map = getCellInfo.getLatitude();
+                    Double getLongitude = getCellInfo.getLongitude();
                     if(strGetCellInfo != null){
                         JSONArray jsonarray = new JSONArray(strGetCellInfo);
                         JSONObject jsonobject0 = jsonarray.getJSONObject(0);
                         mCellIdentityCdma_mBasestationId = jsonobject0.getJSONObject("mCellIdentityCdma").getString("mBasestationId");
-                        mCellIdentityCdma_mLatitude = jsonobject0.getJSONObject("mCellIdentityCdma").getString("mLatitude");
-                        mCellIdentityCdma_mLongitude = jsonobject0.getJSONObject("mCellIdentityCdma").getString("mLongitude");
+//                        mCellIdentityCdma_mLatitude = jsonobject0.getJSONObject("mCellIdentityCdma").getString("mLatitude");
+                        mCellIdentityCdma_mLatitude = Double.toString(map.get("getLatitude"));
+//                        mCellIdentityCdma_mLongitude = jsonobject0.getJSONObject("mCellIdentityCdma").getString("mLongitude");
+                        mCellIdentityCdma_mLongitude = Double.toString(map.get("getLongitude"));
                         mCellIdentityCdma_mNetworkId = jsonobject0.getJSONObject("mCellIdentityCdma").getString("mNetworkId");
                         mCellIdentityCdma_mSystemId = jsonobject0.getJSONObject("mCellIdentityCdma").getString("mSystemId");
                         mCellSignalStrengthCdma_mCdmaDbm = jsonobject0.getJSONObject("mCellSignalStrengthCdma").getString("mCdmaDbm");
@@ -191,7 +197,7 @@ public class HomeFragment extends BaseFragment {
                         textView_mCellSignalStrengthLte_mTimingAdvance.setText(mCellSignalStrengthLte_mTimingAdvance);
 //                        textView24.setText(mCellSignalStrengthLte_mTimingAdvance);
                     }else{
-                        textViewm_CellIdentityCdma_mBasestationId.setText("无法识别小区信息，可能需要您给APP授权！！");
+                        textViewm_CellIdentityCdma_mBasestationId.setText("无法识别小区信息，可能需要授权");
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -202,10 +208,24 @@ public class HomeFragment extends BaseFragment {
     }
 
     //Ecio 除以10
+    @NonNull
     private String modiferEcio(String ecio){
         int ecio_int = Integer.parseInt(ecio);
         int ecio_int_result = ecio_int/10;
         return String.valueOf(ecio_int_result);
+    }
+
+    private String modifmLatitude(Double d){
+//        Double d = Double.valueOf(mLatitude);
+        d = d * 1E6;
+//        d = d/10;
+        return String.valueOf(d);
+    }
+
+    private String modifLongitude(Double d) {
+        d = d * 1E6;
+//        d = d/10;
+        return String.valueOf(d);
     }
 
 }
