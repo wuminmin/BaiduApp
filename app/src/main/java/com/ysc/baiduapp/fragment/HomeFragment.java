@@ -30,6 +30,8 @@ import java.util.Map;
  * Created by wjx on 2016-1-12.
  */
 public class HomeFragment extends BaseFragment {
+
+//    private FusedLocationProviderClient mFusedLocationClient;
     private GetCellInfo getCellInfo;
     private View view;
     private EditText et_search;
@@ -135,8 +137,8 @@ public class HomeFragment extends BaseFragment {
                      String mCellIdentityLte_mTimeStamp;
                      String mCellIdentityLte_mTimeStampType;
                     strGetCellInfo = getCellInfo.myCell();
-                    Map<String,Double> map = getCellInfo.getLatitude();
-                    Double getLongitude = getCellInfo.getLongitude();
+                    Map<String,Double> map = getCellInfo.myGps();
+//                    Double getLongitude = getCellInfo.getLongitude();
                     if(strGetCellInfo != null){
                         JSONArray jsonarray = new JSONArray(strGetCellInfo);
                         JSONObject jsonobject0 = jsonarray.getJSONObject(0);
@@ -213,19 +215,6 @@ public class HomeFragment extends BaseFragment {
         int ecio_int = Integer.parseInt(ecio);
         int ecio_int_result = ecio_int/10;
         return String.valueOf(ecio_int_result);
-    }
-
-    private String modifmLatitude(Double d){
-//        Double d = Double.valueOf(mLatitude);
-        d = d * 1E6;
-//        d = d/10;
-        return String.valueOf(d);
-    }
-
-    private String modifLongitude(Double d) {
-        d = d * 1E6;
-//        d = d/10;
-        return String.valueOf(d);
     }
 
 }
