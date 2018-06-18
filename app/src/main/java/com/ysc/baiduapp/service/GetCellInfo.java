@@ -46,34 +46,6 @@ public class GetCellInfo {
         mymainActivity = m;
     }
 
-    public String myBase() {
-        if (telephonyManager == null) {
-            new AlertDialog.Builder(mycontext).setTitle("错误").setMessage("内部错误 telephonyManager").setPositiveButton("确定", null).show();
-        } else {
-            if (telephonyManager.getPhoneType() == TelephonyManager.PHONE_TYPE_CDMA) {
-                if (ActivityCompat.checkSelfPermission(mycontext, ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                    ActivityCompat.requestPermissions(mymainActivity,
-                            new String[]{ACCESS_COARSE_LOCATION},
-                            MY_PERMISSIONS_REQUEST_ACCESS_COARSE_LOCATION);
-                    Toast.makeText(this.mycontext, "需要卫星和网络权限！！", Toast.LENGTH_LONG).show();
-                    return "需要卫星和网络权限！！";
-                }
-                CdmaCellLocation cdmaCellLocation = (CdmaCellLocation)
-                        telephonyManager.getCellLocation();
-                int cid = cdmaCellLocation.getBaseStationId(); //获取cdma基站识别标号 BID
-                int lac = cdmaCellLocation.getNetworkId(); //获取cdma网络编号NID
-                int sid = cdmaCellLocation.getSystemId(); //用谷歌API的话cdma网络的mnc要用这个getSystemId()取得→SID
-                strTmp = Integer.toString(cid) + Integer.toString(lac) + Integer.toString(sid);
-            } else {
-                GsmCellLocation gsmCellLocation = (GsmCellLocation) telephonyManager.getCellLocation();
-                int cid = gsmCellLocation.getCid(); //获取gsm基站识别标号
-                int lac = gsmCellLocation.getLac(); //获取gsm网络编号
-                strTmp = Integer.toString(cid) + Integer.toString(lac);
-            }
-        }
-        return strTmp;
-    }
-
     public String myCell() {
         if (telephonyManager == null) {
             new AlertDialog.Builder(mycontext).setTitle("错误").setMessage("内部错误 telephonyManager").setPositiveButton("确定", null).show();
