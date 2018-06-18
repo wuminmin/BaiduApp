@@ -99,33 +99,9 @@ public class GetCellInfo {
                         criteria.setAltitudeRequired(false);
                         criteria.setBearingRequired(false);
                         criteria.setCostAllowed(true);
-                        criteria.setPowerRequirement(Criteria.POWER_LOW);// 低功耗
+                        criteria.setPowerRequirement(Criteria.POWER_HIGH);// 低功耗
                         String provider = Objects.requireNonNull(locationManager).getBestProvider(criteria, true); // 获取GPS信息
-//                        Location location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);// 通过GPS获取位置
                         Location location = getLastKnownLocation();
-//                        locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 1000, 0, (LocationListener) mymainActivity);
-                        locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 2000, 0, new LocationListener() {
-                            @Override
-                            public void onLocationChanged(Location location) {
-
-                            }
-
-                            @Override
-                            public void onStatusChanged(String provider, int status, Bundle extras) {
-
-                            }
-
-                            @Override
-                            public void onProviderEnabled(String provider) {
-
-                            }
-
-                            @Override
-                            public void onProviderDisabled(String provider) {
-
-                            }
-                        });
-
 
                         if (location != null) {
                             Log.e("TAG", "GPS is on");
@@ -157,7 +133,6 @@ public class GetCellInfo {
                             });
                         }
 
-
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -168,8 +143,6 @@ public class GetCellInfo {
         map.put("getLongitude", (double) 0);
         return map;
     }
-
-
 
     private Location getLastKnownLocation() {
         LocationManager mLocationManager;
