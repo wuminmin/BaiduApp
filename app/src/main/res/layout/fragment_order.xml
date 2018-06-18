@@ -3,20 +3,21 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <Button
+        android:id="@+id/order_upload_data"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/order_upload_data" />
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:layout_marginTop="20dp"
-                android:background="@color/lgrey"></LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -27,13 +28,13 @@
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="50dp">
+                    android:layout_height="20dp">
 
                     <TextView
                         android:id="@+id/tv_MyFragement_Personal"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        
+                        android:layout_marginStart="10dp"
                         android:gravity="center_vertical"
                         android:text="@string/order_Building_location" />
 
@@ -60,14 +61,14 @@
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="50dp">
+                    android:layout_height="20dp">
 
                     
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        
+                        android:layout_marginStart="10dp"
                         android:gravity="center_vertical"
                         android:text="@string/order_Building_layers" />
 
@@ -79,7 +80,7 @@
                         android:layout_alignParentEnd="true"
                         android:layout_marginEnd="10dp"
                         android:background="@null"
-                        android:inputType="numberSigned"
+                        android:inputType="text"
                         android:textColorHint="@color/lightblack"
                         android:textSize="14sp" />
                 </RelativeLayout>
@@ -93,14 +94,14 @@
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="50dp">
+                    android:layout_height="20dp">
 
                     
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        
+                        android:layout_marginStart="10dp"
                         android:gravity="center_vertical"
                         android:text="@string/order_Current_layer" />
 
@@ -112,7 +113,7 @@
                         android:layout_alignParentEnd="true"
                         android:layout_marginEnd="10dp"
                         android:background="@null"
-                        android:inputType="numberSigned"
+                        android:inputType="text"
                         android:textColorHint="@color/lightblack"
                         android:textSize="14sp" />
                 </RelativeLayout>
@@ -120,7 +121,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="2dp"
+                android:layout_height="20dp"
                 android:layout_marginTop="20dp"
                 android:background="@color/lgrey">
             </LinearLayout>
@@ -131,20 +132,15 @@
                 android:layout_marginTop="0dp"
                 android:background="@color/white"
                 android:orientation="vertical">
-
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="50dp">
-
-                    
-
+                    android:layout_height="20dp">
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        
+                        android:layout_marginStart="10dp"
                         android:gravity="center_vertical"
                         android:text="@string/shi" />
-
                     <EditText
                         android:id="@+id/shi"
                         android:layout_width="250dp"
@@ -156,7 +152,6 @@
                         android:inputType="text"
                         android:textColorHint="@color/lightblack"
                         android:textSize="14sp" />
-
                 </RelativeLayout>
 
                 <TextView
@@ -167,14 +162,14 @@
                     android:background="@color/lightbackground" />
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="50dp">
+                    android:layout_height="20dp">
 
                     
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        
+                        android:layout_marginStart="10dp"
                         android:gravity="center_vertical"
                         android:text="@string/quxian" />
                     <EditText
@@ -185,7 +180,7 @@
                         android:layout_alignParentEnd="true"
                         android:layout_marginEnd="10dp"
                         android:background="@null"
-                        android:inputType="numberSigned"
+                        android:inputType="text"
                         android:textColorHint="@color/lightblack"
                         android:textSize="14sp" />
                 </RelativeLayout>
@@ -200,14 +195,14 @@
                     android:background="@color/lightbackground" />
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="50dp">
+                    android:layout_height="20dp">
 
                     
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        
+                        android:layout_marginStart="10dp"
                         android:gravity="center_vertical"
                         android:text="@string/wanggeid" />
 
@@ -219,7 +214,7 @@
                         android:layout_alignParentEnd="true"
                         android:layout_marginEnd="10dp"
                         android:background="@null"
-                        android:inputType="numberSigned"
+                        android:inputType="text"
                         android:textColorHint="@color/lightblack"
                         android:textSize="14sp" />
                 </RelativeLayout>
@@ -232,14 +227,14 @@
                     android:background="@color/lightbackground" />
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="50dp">
+                    android:layout_height="20dp">
 
                     
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        
+                        android:layout_marginStart="10dp"
                         android:gravity="center_vertical"
                         android:text="@string/wangedanyuanmingchen" />
 
@@ -251,7 +246,7 @@
                         android:layout_alignParentEnd="true"
                         android:layout_marginEnd="10dp"
                         android:background="@null"
-                        android:inputType="numberSigned"
+                        android:inputType="text"
                         android:textColorHint="@color/lightblack"
                         android:textSize="14sp" />
                 </RelativeLayout>
@@ -264,14 +259,14 @@
                     android:background="@color/lightbackground" />
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="50dp">
+                    android:layout_height="20dp">
 
                     
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        
+                        android:layout_marginStart="10dp"
                         android:gravity="center_vertical"
                         android:text="@string/wanggedanyuanxiaolei" />
 
@@ -283,7 +278,7 @@
                         android:layout_alignParentEnd="true"
                         android:layout_marginEnd="10dp"
                         android:background="@null"
-                        android:inputType="numberSigned"
+                        android:inputType="text"
                         android:textColorHint="@color/lightblack"
                         android:textSize="14sp" />
                 </RelativeLayout>
@@ -296,14 +291,14 @@
                     android:background="@color/lightbackground" />
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="50dp">
+                    android:layout_height="20dp">
 
                     
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        
+                        android:layout_marginStart="10dp"
                         android:gravity="center_vertical"
                         android:text="@string/wangluoredianleixing" />
 
@@ -315,7 +310,7 @@
                         android:layout_alignParentEnd="true"
                         android:layout_marginEnd="10dp"
                         android:background="@null"
-                        android:inputType="numberSigned"
+                        android:inputType="text"
                         android:textColorHint="@color/lightblack"
                         android:textSize="14sp" />
                 </RelativeLayout>
@@ -328,14 +323,14 @@
                     android:background="@color/lightbackground" />
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="50dp">
+                    android:layout_height="20dp">
 
                     
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        
+                        android:layout_marginStart="10dp"
                         android:gravity="center_vertical"
                         android:text="@string/wanggesangaoleixing" />
 
@@ -347,7 +342,7 @@
                         android:layout_alignParentEnd="true"
                         android:layout_marginEnd="10dp"
                         android:background="@null"
-                        android:inputType="numberSigned"
+                        android:inputType="text"
                         android:textColorHint="@color/lightblack"
                         android:textSize="14sp" />
                 </RelativeLayout>
@@ -360,14 +355,14 @@
                     android:background="@color/lightbackground" />
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="50dp">
+                    android:layout_height="20dp">
 
                     
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        
+                        android:layout_marginStart="10dp"
                         android:gravity="center_vertical"
                         android:text="@string/wanggezhuhushu" />
 
@@ -379,7 +374,7 @@
                         android:layout_alignParentEnd="true"
                         android:layout_marginEnd="10dp"
                         android:background="@null"
-                        android:inputType="numberSigned"
+                        android:inputType="text"
                         android:textColorHint="@color/lightblack"
                         android:textSize="14sp" />
                 </RelativeLayout>
@@ -392,14 +387,14 @@
                     android:background="@color/lightbackground" />
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="50dp">
+                    android:layout_height="20dp">
 
                     
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        
+                        android:layout_marginStart="10dp"
                         android:gravity="center_vertical"
                         android:text="@string/wanggedianxinyonghushu" />
 
@@ -411,7 +406,7 @@
                         android:layout_alignParentEnd="true"
                         android:layout_marginEnd="10dp"
                         android:background="@null"
-                        android:inputType="numberSigned"
+                        android:inputType="text"
                         android:textColorHint="@color/lightblack"
                         android:textSize="14sp" />
                 </RelativeLayout>
@@ -424,14 +419,14 @@
                     android:background="@color/lightbackground" />
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="50dp">
+                    android:layout_height="20dp">
 
                     
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        
+                        android:layout_marginStart="10dp"
                         android:gravity="center_vertical"
                         android:text="@string/wanggeruzhubili" />
 
@@ -443,7 +438,7 @@
                         android:layout_alignParentEnd="true"
                         android:layout_marginEnd="10dp"
                         android:background="@null"
-                        android:inputType="numberSigned"
+                        android:inputType="text"
                         android:textColorHint="@color/lightblack"
                         android:textSize="14sp" />
                 </RelativeLayout>
@@ -456,14 +451,14 @@
                     android:background="@color/lightbackground" />
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="50dp">
+                    android:layout_height="20dp">
 
                     
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        
+                        android:layout_marginStart="10dp"
                         android:gravity="center_vertical"
                         android:text="@string/louyushifenfugaibili" />
 
@@ -475,7 +470,7 @@
                         android:layout_alignParentEnd="true"
                         android:layout_marginEnd="10dp"
                         android:background="@null"
-                        android:inputType="numberSigned"
+                        android:inputType="text"
                         android:textColorHint="@color/lightblack"
                         android:textSize="14sp" />
                 </RelativeLayout>
@@ -488,14 +483,14 @@
                     android:background="@color/lightbackground" />
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="50dp">
+                    android:layout_height="20dp">
 
                     
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        
+                        android:layout_marginStart="10dp"
                         android:gravity="center_vertical"
                         android:text="@string/mrshineifugaizhiliang" />
 
@@ -507,7 +502,7 @@
                         android:layout_alignParentEnd="true"
                         android:layout_marginEnd="10dp"
                         android:background="@null"
-                        android:inputType="numberSigned"
+                        android:inputType="text"
                         android:textColorHint="@color/lightblack"
                         android:textSize="14sp" />
                 </RelativeLayout>
@@ -520,14 +515,12 @@
                     android:background="@color/lightbackground" />
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="50dp">
-
-                    
+                    android:layout_height="20dp">
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        
+                        android:layout_marginStart="10dp"
                         android:gravity="center_vertical"
                         android:text="@string/lteshineifugaizhiliang" />
 
@@ -539,11 +532,10 @@
                         android:layout_alignParentEnd="true"
                         android:layout_marginEnd="10dp"
                         android:background="@null"
-                        android:inputType="numberSigned"
+                        android:inputType="text"
                         android:textColorHint="@color/lightblack"
                         android:textSize="14sp" />
                 </RelativeLayout>
-
 
                 <TextView
                     android:layout_width="match_parent"
@@ -553,14 +545,12 @@
                     android:background="@color/lightbackground" />
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="50dp">
-
-                    
+                    android:layout_height="20dp">
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        
+                        android:layout_marginStart="10dp"
                         android:gravity="center_vertical"
                         android:text="@string/xinxilaiyuan" />
 
@@ -572,7 +562,7 @@
                         android:layout_alignParentEnd="true"
                         android:layout_marginEnd="10dp"
                         android:background="@null"
-                        android:inputType="numberSigned"
+                        android:inputType="text"
                         android:textColorHint="@color/lightblack"
                         android:textSize="14sp" />
                 </RelativeLayout>
@@ -585,13 +575,12 @@
                     android:background="@color/lightbackground" />
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="50dp">
-
-          
+                    android:layout_height="20dp">
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:layout_marginStart="10dp"
                         android:gravity="center_vertical"
                         android:text="@string/wanggejianzuwuleixing" />
 
@@ -603,7 +592,7 @@
                         android:layout_alignParentEnd="true"
                         android:layout_marginEnd="10dp"
                         android:background="@null"
-                        android:inputType="numberSigned"
+                        android:inputType="text"
                         android:textColorHint="@color/lightblack"
                         android:textSize="14sp" />
                 </RelativeLayout>
@@ -616,14 +605,12 @@
                     android:background="@color/lightbackground" />
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="50dp">
-
-                    
+                    android:layout_height="20dp">
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        
+                        android:layout_marginStart="10dp"
                         android:gravity="center_vertical"
                         android:text="@string/shifouyiyoushifenguihua" />
 
@@ -635,7 +622,7 @@
                         android:layout_alignParentEnd="true"
                         android:layout_marginEnd="10dp"
                         android:background="@null"
-                        android:inputType="numberSigned"
+                        android:inputType="text"
                         android:textColorHint="@color/lightblack"
                         android:textSize="14sp" />
                 </RelativeLayout>
@@ -648,14 +635,12 @@
                     android:background="@color/lightbackground" />
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="50dp">
-
-                    
+                    android:layout_height="20dp">
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        
+                        android:layout_marginStart="10dp"
                         android:gravity="center_vertical"
                         android:text="@string/shifouyouyiwangshifen" />
 
@@ -667,7 +652,7 @@
                         android:layout_alignParentEnd="true"
                         android:layout_marginEnd="10dp"
                         android:background="@null"
-                        android:inputType="numberSigned"
+                        android:inputType="text"
                         android:textColorHint="@color/lightblack"
                         android:textSize="14sp" />
                 </RelativeLayout>
@@ -680,14 +665,12 @@
                     android:background="@color/lightbackground" />
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="50dp">
-
-                    
+                    android:layout_height="20dp">
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        
+                        android:layout_marginStart="10dp"
                         android:gravity="center_vertical"
                         android:text="@string/shifouyoudianti" />
 
@@ -699,7 +682,7 @@
                         android:layout_alignParentEnd="true"
                         android:layout_marginEnd="10dp"
                         android:background="@null"
-                        android:inputType="numberSigned"
+                        android:inputType="text"
                         android:textColorHint="@color/lightblack"
                         android:textSize="14sp" />
                 </RelativeLayout>
@@ -712,14 +695,12 @@
                     android:background="@color/lightbackground" />
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="50dp">
-
-                    
+                    android:layout_height="20dp">
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        
+                        android:layout_marginStart="10dp"
                         android:gravity="center_vertical"
                         android:text="@string/shifouyoudixiatingchechang" />
 
@@ -731,7 +712,7 @@
                         android:layout_alignParentEnd="true"
                         android:layout_marginEnd="10dp"
                         android:background="@null"
-                        android:inputType="numberSigned"
+                        android:inputType="text"
                         android:textColorHint="@color/lightblack"
                         android:textSize="14sp" />
                 </RelativeLayout>
@@ -744,14 +725,12 @@
                     android:background="@color/lightbackground" />
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="50dp">
-
-                    
+                    android:layout_height="20dp">
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        
+                        android:layout_marginStart="10dp"
                         android:gravity="center_vertical"
                         android:text="@string/gengxinriqi" />
 
@@ -763,7 +742,7 @@
                         android:layout_alignParentEnd="true"
                         android:layout_marginEnd="10dp"
                         android:background="@null"
-                        android:inputType="numberSigned"
+                        android:inputType="text"
                         android:textColorHint="@color/lightblack"
                         android:textSize="14sp" />
                 </RelativeLayout>
@@ -776,14 +755,12 @@
                     android:background="@color/lightbackground" />
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="50dp">
-
-                    
+                    android:layout_height="20dp">
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        
+                        android:layout_marginStart="10dp"
                         android:gravity="center_vertical"
                         android:text="@string/beizhu" />
 
@@ -795,74 +772,40 @@
                         android:layout_alignParentEnd="true"
                         android:layout_marginEnd="10dp"
                         android:background="@null"
-                        android:inputType="numberSigned"
+                        android:inputType="text"
                         android:textColorHint="@color/lightblack"
                         android:textSize="14sp" />
                 </RelativeLayout>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:layout_marginTop="0dp"
-                android:background="@color/lgrey">
-            </LinearLayout>
+            <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="20dp"-->
+                <!--android:layout_marginTop="0dp"-->
+                <!--android:background="@color/lgrey">-->
+            <!--</LinearLayout>-->
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:layout_marginTop="20dp"
-                android:background="@color/lgrey">
-            </LinearLayout>
+            <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="40dp"-->
+                <!--android:layout_marginTop="0dp"-->
+                <!--android:background="@color/white"-->
+                <!--android:orientation="vertical">-->
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:layout_marginTop="20dp"
-                android:background="@color/lgrey"></LinearLayout>
+                <!--<RelativeLayout-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="20dp">-->
+                        <!--<TextView-->
+                            <!--android:gravity="center"-->
+                            <!--android:id="@+id/order_upload_data"-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="match_parent"-->
+                            <!--android:layout_marginStart="5dp"-->
+                            <!--android:textColor="@color/title_red"-->
+                            <!--android:text="@string/order_upload_data" />-->
+                <!--</RelativeLayout>-->
+            <!--</LinearLayout>-->
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="0dp"
-                android:background="@color/white"
-                android:orientation="vertical">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp">
-
-                        <TextView
-                            android:gravity="center"
-                            android:id="@+id/order_upload_data"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_marginStart="5dp"
-                            android:textColor="@color/title_red"
-                            android:text="@string/order_upload_data" />
-                </RelativeLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginTop="0dp"
-                android:background="@color/lgrey">
-            </LinearLayout>
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
