@@ -61,6 +61,7 @@
     <string name="mCellIdentityLte_mTac">LTE TAC</string>
     <string name="mCellSignalStrengthLte_mCqi">LTE CQI</string>
     <string name="mCellSignalStrengthLte_mRsrp">LTE RSRP</string>
+    <string name="mCellSignalStrengthLte_mRsrq">LTE RSRQ</string>
     <string name="mCellSignalStrengthLte_mRssnr">LTE SNR</string>
     <string name="mCellSignalStrengthLte_mSignalStrength">LTE 信号强度</string>
     <string name="mCellSignalStrengthLte_mTimingAdvance">LTE </string>

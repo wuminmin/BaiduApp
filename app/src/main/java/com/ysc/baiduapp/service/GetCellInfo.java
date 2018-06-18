@@ -20,9 +20,18 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import com.ysc.baiduapp.MainActivity;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -39,6 +48,29 @@ public class GetCellInfo {
     private TelephonyManager telephonyManager;
     private String strTmp = "";
     private String strCellInfo = "";
+
+    public static void main(String[] args){
+        String jsonstr = "[{\"mCellIdentityCdma\":{\"mBasestationId\":60621,\"mLatitude\":441299,\"mLongitude\":1691876,\"mNetworkId\":18,\"mSystemId\":14166},\"mCellSignalStrengthCdma\":{\"mCdmaDbm\":-92,\"mCdmaEcio\":-70,\"mEvdoDbm\":2147483647,\"mEvdoEcio\":2147483647,\"mEvdoSnr\":2147483647},\"mRegistered\":true,\"mTimeStamp\":178344181197155,\"mTimeStampType\":3},{\"mCellIdentityLte\":{\"mCi\":114555190,\"mEarfcn\":1825,\"mMcc\":460,\"mMnc\":11,\"mPci\":178,\"mTac\":27963},\"mCellSignalStrengthLte\":{\"mCqi\":2147483647,\"mRsrp\":-99,\"mRsrq\":-8,\"mRssnr\":2147483647,\"mSignalStrength\":21,\"mTimingAdvance\":2147483647},\"mRegistered\":true,\"mTimeStamp\":178344181197155,\"mTimeStampType\":3},{\"mCellIdentityLte\":{\"mCi\":2147483647,\"mEarfcn\":1825,\"mMcc\":2147483647,\"mMnc\":2147483647,\"mPci\":72,\"mTac\":2147483647},\"mCellSignalStrengthLte\":{\"mCqi\":2147483647,\"mRsrp\":-113,\"mRsrq\":-20,\"mRssnr\":2147483647,\"mSignalStrength\":15,\"mTimingAdvance\":2147483647},\"mRegistered\":false,\"mTimeStamp\":178344181197155,\"mTimeStampType\":3},{\"mCellIdentityLte\":{\"mCi\":2147483647,\"mEarfcn\":1825,\"mMcc\":2147483647,\"mMnc\":2147483647,\"mPci\":73,\"mTac\":2147483647},\"mCellSignalStrengthLte\":{\"mCqi\":2147483647,\"mRsrp\":-110,\"mRsrq\":-12,\"mRssnr\":2147483647,\"mSignalStrength\":15,\"mTimingAdvance\":2147483647},\"mRegistered\":false,\"mTimeStamp\":178344181197155,\"mTimeStampType\":3},{\"mCellIdentityLte\":{\"mCi\":2147483647,\"mEarfcn\":1825,\"mMcc\":2147483647,\"mMnc\":2147483647,\"mPci\":341,\"mTac\":2147483647},\"mCellSignalStrengthLte\":{\"mCqi\":2147483647,\"mRsrp\":-110,\"mRsrq\":-16,\"mRssnr\":2147483647,\"mSignalStrength\":14,\"mTimingAdvance\":2147483647},\"mRegistered\":false,\"mTimeStamp\":178344181197155,\"mTimeStampType\":3},{\"mCellIdentityLte\":{\"mCi\":2147483647,\"mEarfcn\":1825,\"mMcc\":2147483647,\"mMnc\":2147483647,\"mPci\":353,\"mTac\":2147483647},\"mCellSignalStrengthLte\":{\"mCqi\":2147483647,\"mRsrp\":-109,\"mRsrq\":-19,\"mRssnr\":2147483647,\"mSignalStrength\":17,\"mTimingAdvance\":2147483647},\"mRegistered\":false,\"mTimeStamp\":178344181197155,\"mTimeStampType\":3},{\"mCellIdentityLte\":{\"mCi\":2147483647,\"mEarfcn\":1825,\"mMcc\":2147483647,\"mMnc\":2147483647,\"mPci\":48,\"mTac\":2147483647},\"mCellSignalStrengthLte\":{\"mCqi\":2147483647,\"mRsrp\":-113,\"mRsrq\":-18,\"mRssnr\":2147483647,\"mSignalStrength\":14,\"mTimingAdvance\":2147483647},\"mRegistered\":false,\"mTimeStamp\":178344181197155,\"mTimeStampType\":3},{\"mCellIdentityLte\":{\"mCi\":2147483647,\"mEarfcn\":1825,\"mMcc\":2147483647,\"mMnc\":2147483647,\"mPci\":249,\"mTac\":2147483647},\"mCellSignalStrengthLte\":{\"mCqi\":2147483647,\"mRsrp\":-112,\"mRsrq\":-14,\"mRssnr\":2147483647,\"mSignalStrength\":14,\"mTimingAdvance\":2147483647},\"mRegistered\":false,\"mTimeStamp\":178344181197155,\"mTimeStampType\":3},{\"mCellIdentityLte\":{\"mCi\":2147483647,\"mEarfcn\":2147483647,\"mMcc\":2147483647,\"mMnc\":2147483647,\"mPci\":2147483647,\"mTac\":2147483647},\"mCellSignalStrengthLte\":{\"mCqi\":2147483647,\"mRsrp\":-118,\"mRsrq\":-9,\"mRssnr\":2147483647,\"mSignalStrength\":6,\"mTimingAdvance\":2147483647},\"mRegistered\":false,\"mTimeStamp\":178344181197155,\"mTimeStampType\":3},{\"mCellIdentityLte\":{\"mCi\":2147483647,\"mEarfcn\":2147483647,\"mMcc\":2147483647,\"mMnc\":2147483647,\"mPci\":2147483647,\"mTac\":2147483647},\"mCellSignalStrengthLte\":{\"mCqi\":2147483647,\"mRsrp\":-111,\"mRsrq\":-20,\"mRssnr\":2147483647,\"mSignalStrength\":16,\"mTimingAdvance\":2147483647},\"mRegistered\":false,\"mTimeStamp\":178344181197155,\"mTimeStampType\":3},{\"mCellIdentityLte\":{\"mCi\":2147483647,\"mEarfcn\":2147483647,\"mMcc\":2147483647,\"mMnc\":2147483647,\"mPci\":2147483647,\"mTac\":2147483647},\"mCellSignalStrengthLte\":{\"mCqi\":2147483647,\"mRsrp\":-105,\"mRsrq\":-16,\"mRssnr\":2147483647,\"mSignalStrength\":16,\"mTimingAdvance\":2147483647},\"mRegistered\":false,\"mTimeStamp\":178344181197155,\"mTimeStampType\":3},{\"mCellIdentityLte\":{\"mCi\":2147483647,\"mEarfcn\":2147483647,\"mMcc\":2147483647,\"mMnc\":2147483647,\"mPci\":2147483647,\"mTac\":2147483647},\"mCellSignalStrengthLte\":{\"mCqi\":2147483647,\"mRsrp\":-101,\"mRsrq\":-12,\"mRssnr\":2147483647,\"mSignalStrength\":16,\"mTimingAdvance\":2147483647},\"mRegistered\":false,\"mTimeStamp\":178344181197155,\"mTimeStampType\":3}]\n";
+//        JsonParser parser = new JsonParser();
+//        JsonObject o = parser.parse(jsonstr).getAsJsonObject();
+//        System.out.print(o);
+        JsonParser parser = new JsonParser();
+        JsonElement tradeElement = parser.parse(jsonstr);
+        JsonArray jsonArray = tradeElement.getAsJsonArray();
+        for(int i=0; i<jsonArray.size(); i++){
+//            System.out.println(jsonArray.get(i));
+            try {
+                JSONObject json = new JSONObject (String.valueOf(jsonArray.get(i)));
+                Object r = json.get("mCellIdentityCdma");
+                System.out.println(r);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+
+
+
+    }
 
     public GetCellInfo(Context c, TelephonyManager t, FragmentActivity m) {
         mycontext = c;
@@ -62,8 +94,14 @@ public class GetCellInfo {
                     try {
                         Gson gson = new Gson();
                         strCellInfo = gson.toJson(cellInfoList);
-//                    System.out.print(strCellInfo);
-                    } catch (Exception e) {
+
+
+                        Log.e("strCellInfo", strCellInfo);
+//                        JsonParser parser = new JsonParser();
+//                        JsonObject o = parser.parse(strCellInfo).getAsJsonObject();
+//                        Log.e("JsonObject", o.toString());
+
+                        } catch (Exception e) {
                         e.printStackTrace();
                     }
                     return strCellInfo;
@@ -132,7 +170,6 @@ public class GetCellInfo {
                                 }
                             });
                         }
-
                     } catch (Exception e) {
                         e.printStackTrace();
                     }

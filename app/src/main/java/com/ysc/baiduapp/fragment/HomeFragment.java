@@ -30,20 +30,10 @@ import java.util.Map;
  * Created by wjx on 2016-1-12.
  */
 public class HomeFragment extends BaseFragment {
-
-//    private FusedLocationProviderClient mFusedLocationClient;
     private GetCellInfo getCellInfo;
     private View view;
-    private EditText et_search;
-    private ListView lv_market;
-    private ListViewAdapter listViewAdapter;
-    private GridView grid;
-    private GridViewAdapter gridViewAdapter;
-    private ArrayAdapter<View> gridAdapter;
-    private String[] MOBILE_OS = new String[]{"buy","deliver","fruit","medicine"};
     private static final int REQUEST_READ_PHONE_STATE = 0;
     private static final int MY_PERMISSIONS_REQUEST_ACCESS_COARSE_LOCATION = 0;
-    private TextView textViewBase;
     private TextView textViewm_CellIdentityCdma_mBasestationId;
     private Button button;
     private TextView textViewm_CellIdentityCdma_mLatitude;
@@ -65,6 +55,7 @@ public class HomeFragment extends BaseFragment {
     private TextView textView_mCellIdentityLte_mTac;
     private TextView textView_mCellSignalStrengthLte_mCqi;
     private TextView textView_mCellSignalStrengthLte_mRsrp;
+    private TextView textView_mCellSignalStrengthLte_mRsrq;
     private TextView textView_mCellSignalStrengthLte_mRssnr;
     private TextView textView_mCellSignalStrengthLte_mSignalStrength;
     private TextView textView_mCellSignalStrengthLte_mTimingAdvance;
@@ -100,6 +91,7 @@ public class HomeFragment extends BaseFragment {
         textView_mCellIdentityLte_mTac = view.findViewById(R.id.mCellIdentityLte_mTac);
         textView_mCellSignalStrengthLte_mCqi = view.findViewById(R.id.mCellSignalStrengthLte_mCqi);
         textView_mCellSignalStrengthLte_mRsrp = view.findViewById(R.id.mCellSignalStrengthLte_mRsrp);
+        textView_mCellSignalStrengthLte_mRsrq = view.findViewById(R.id.mCellSignalStrengthLte_mRsrq);
         textView_mCellSignalStrengthLte_mRssnr = view.findViewById(R.id.mCellSignalStrengthLte_mRssnr);
         textView_mCellSignalStrengthLte_mSignalStrength = view.findViewById(R.id.mCellSignalStrengthLte_mSignalStrength);
         textView_mCellSignalStrengthLte_mTimingAdvance = view.findViewById(R.id.mCellSignalStrengthLte_mTimingAdvance);
@@ -138,7 +130,6 @@ public class HomeFragment extends BaseFragment {
                      String mCellIdentityLte_mTimeStampType;
                     strGetCellInfo = getCellInfo.myCell();
                     Map<String,Double> map = getCellInfo.myGps();
-//                    Double getLongitude = getCellInfo.getLongitude();
                     if(strGetCellInfo != null){
                         JSONArray jsonarray = new JSONArray(strGetCellInfo);
                         JSONObject jsonobject0 = jsonarray.getJSONObject(0);
@@ -194,6 +185,7 @@ public class HomeFragment extends BaseFragment {
                         textView_mCellIdentityLte_mTac.setText(mCellIdentityLte_mTac);
                         textView_mCellSignalStrengthLte_mCqi.setText(mCellSignalStrengthLte_mCqi);
                         textView_mCellSignalStrengthLte_mRsrp.setText(mCellSignalStrengthLte_mRsrp);
+                        textView_mCellSignalStrengthLte_mRsrq.setText(mCellSignalStrengthLte_mRsrq);
                         textView_mCellSignalStrengthLte_mRssnr.setText(mCellSignalStrengthLte_mRssnr);
                         textView_mCellSignalStrengthLte_mSignalStrength.setText(mCellSignalStrengthLte_mSignalStrength);
                         textView_mCellSignalStrengthLte_mTimingAdvance.setText(mCellSignalStrengthLte_mTimingAdvance);
