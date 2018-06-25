@@ -74,7 +74,7 @@ public class MainActivity extends FragmentActivity {
         MineFragment grabOrderFragment = new MineFragment();
         grabOrderFragment.setTitle("我的");
         grabOrderFragment.setIconId(R.drawable.tab_grab_selector);
-        fragments.add(grabOrderFragment);
+//        fragments.add(grabOrderFragment);
 
 
         return fragments;

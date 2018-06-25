@@ -9,7 +9,6 @@
     <string name="order_Current_layer">当前层数</string>
 
 
-
     <string name="shi">市</string>
     <string name="quxian">区县</string>
     <string name="wanggeid">网格ID</string>
@@ -33,12 +32,12 @@
     <string name="beizhu">备注</string>
 
 
-
-
-
-
-
     <string name="order_upload_data">上传数据</string>
+    <string name="photo">拍照</string>
+    <string name="shineng">室内场景</string>
+    <string name="shiwai">室外场景</string>
+    <string name="problemdes">问题描述</string>
+    <string name="MultiAutoCompleteTextView">请描述问题，例如语音掉话，上网慢，玩游戏掉线等具体问题现象</string>
 
     <string name="mCellIdentityCdma_mBasestationId">BID</string>
     <string name="mCellIdentityCdma_mLatitude">纬度</string>
@@ -65,7 +64,10 @@
     <string name="mCellSignalStrengthLte_mRssnr">LTE SNR</string>
     <string name="mCellSignalStrengthLte_mSignalStrength">LTE 信号强度</string>
     <string name="mCellSignalStrengthLte_mTimingAdvance">LTE </string>
-    <string name="button">获取小区信息</string>
+    <string name="button">测速</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>

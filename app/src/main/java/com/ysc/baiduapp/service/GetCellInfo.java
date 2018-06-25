@@ -94,8 +94,6 @@ public class GetCellInfo {
                     try {
                         Gson gson = new Gson();
                         strCellInfo = gson.toJson(cellInfoList);
-
-
                         Log.e("strCellInfo", strCellInfo);
 //                        JsonParser parser = new JsonParser();
 //                        JsonObject o = parser.parse(strCellInfo).getAsJsonObject();
