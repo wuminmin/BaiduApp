@@ -47,7 +47,7 @@
     <string name="mCellIdentityCdma_mLongitude">经度</string>
     <string name="mCellIdentityCdma_mNetworkId">网络号</string>
     <string name="mCellIdentityCdma_mSystemId">SID</string>
-    <string name="mCellSignalStrengthCdma_mCdmaDbm">CDMA DBM</string>
+    <string name="mCellSignalStrengthCdma_mCdmaDbm">CDMA RX</string>
     <string name="mCellSignalStrengthCdma_mCdmaEcio">CDMA EC/IO</string>
     <string name="mCellSignalStrengthCdma_mEvdoDbm">EVDO DBM</string>
     <string name="mCellSignalStrengthCdma_mEvdoEcio">EVDO EC/IO</string>

@@ -279,6 +279,7 @@ public class HomeFragment extends BaseFragment {
                     JSONObject jsonobject0 = jsonarray.getJSONObject(0);
                     JSONObject jsonobject1 = jsonarray.getJSONObject(1);
                     if(jsonobject0.has("mCellIdentityCdma")) {
+
                         mCellIdentityCdma_mBasestationId = jsonobject0.getJSONObject("mCellIdentityCdma").getString("mBasestationId");
                         mCellIdentityCdma_mLatitude = Double.toString(map.get("getLatitude"));
                         mCellIdentityCdma_mLongitude = Double.toString(map.get("getLongitude"));
@@ -293,23 +294,39 @@ public class HomeFragment extends BaseFragment {
                         mCellIdentityCdma_mTimeStamp = jsonobject0.getString("mTimeStamp");
                         mCellIdentityCdma_mTimeStampType = jsonobject0.getString("mTimeStampType");
 
-                        mCellIdentityLte_mCi = str;
-                        mCellIdentityLte_mEarfcn = str;
-                        mCellIdentityLte_mMcc = str;
-                        mCellIdentityLte_mMnc = str;
-                        mCellIdentityLte_mPci = str;
-                        mCellIdentityLte_mTac = str;
-                        mCellSignalStrengthLte_mCqi = str;
-                        mCellSignalStrengthLte_mRsrp = str;
-                        mCellSignalStrengthLte_mRsrq = str;
-                        mCellSignalStrengthLte_mRssnr = str;
-                        mCellSignalStrengthLte_mSignalStrength = str;
-                        mCellSignalStrengthLte_mTimingAdvance = str;
-                        mCellIdentityLte_mRegistered = str;
-                        mCellIdentityLte_mTimeStamp = str;
-                        mCellIdentityLte_mTimeStampType = str;
-
-
+                        if(jsonobject1.has("mCellIdentityLte")){
+                            mCellIdentityLte_mCi = jsonobject1.getJSONObject("mCellIdentityLte").getString("mCi");
+                            mCellIdentityLte_mEarfcn = jsonobject1.getJSONObject("mCellIdentityLte").getString("mEarfcn");
+                            mCellIdentityLte_mMcc = jsonobject1.getJSONObject("mCellIdentityLte").getString("mMcc");
+                            mCellIdentityLte_mMnc = jsonobject1.getJSONObject("mCellIdentityLte").getString("mMnc");
+                            mCellIdentityLte_mPci = jsonobject1.getJSONObject("mCellIdentityLte").getString("mPci");
+                            mCellIdentityLte_mTac = jsonobject1.getJSONObject("mCellIdentityLte").getString("mTac");
+                            mCellSignalStrengthLte_mCqi = jsonobject1.getJSONObject("mCellSignalStrengthLte").getString("mCqi");
+                            mCellSignalStrengthLte_mRsrp = jsonobject1.getJSONObject("mCellSignalStrengthLte").getString("mRsrp");
+                            mCellSignalStrengthLte_mRsrq = jsonobject1.getJSONObject("mCellSignalStrengthLte").getString("mRsrq");
+                            mCellSignalStrengthLte_mRssnr = jsonobject1.getJSONObject("mCellSignalStrengthLte").getString("mRssnr");
+                            mCellSignalStrengthLte_mSignalStrength = jsonobject1.getJSONObject("mCellSignalStrengthLte").getString("mSignalStrength");
+                            mCellSignalStrengthLte_mTimingAdvance = jsonobject1.getJSONObject("mCellSignalStrengthLte").getString("mTimingAdvance");
+                            mCellIdentityLte_mRegistered = jsonobject1.getString("mRegistered");
+                            mCellIdentityLte_mTimeStamp = jsonobject1.getString("mTimeStamp");
+                            mCellIdentityLte_mTimeStampType = jsonobject1.getString("mTimeStampType");
+                        }else {
+                            mCellIdentityLte_mCi = str;
+                            mCellIdentityLte_mEarfcn = str;
+                            mCellIdentityLte_mMcc = str;
+                            mCellIdentityLte_mMnc = str;
+                            mCellIdentityLte_mPci = str;
+                            mCellIdentityLte_mTac = str;
+                            mCellSignalStrengthLte_mCqi = str;
+                            mCellSignalStrengthLte_mRsrp = str;
+                            mCellSignalStrengthLte_mRsrq = str;
+                            mCellSignalStrengthLte_mRssnr = str;
+                            mCellSignalStrengthLte_mSignalStrength = str;
+                            mCellSignalStrengthLte_mTimingAdvance = str;
+                            mCellIdentityLte_mRegistered = str;
+                            mCellIdentityLte_mTimeStamp = str;
+                            mCellIdentityLte_mTimeStampType = str;
+                        }
                     }else if(jsonobject0.has("mCellIdentityLte")){
                         mCellIdentityCdma_mBasestationId = str;
                         mCellIdentityCdma_mLatitude = Double.toString(map.get("getLatitude"));
@@ -340,68 +357,7 @@ public class HomeFragment extends BaseFragment {
                         mCellIdentityLte_mRegistered = jsonobject0.getString("mRegistered");
                         mCellIdentityLte_mTimeStamp = jsonobject0.getString("mTimeStamp");
                         mCellIdentityLte_mTimeStampType = jsonobject0.getString("mTimeStampType");
-                    }else if(jsonobject1.has("mCellIdentityCdma")){
-                        mCellIdentityCdma_mBasestationId = jsonobject0.getJSONObject("mCellIdentityCdma").getString("mBasestationId");
-                        mCellIdentityCdma_mLatitude = Double.toString(map.get("getLatitude"));
-                        mCellIdentityCdma_mLongitude = Double.toString(map.get("getLongitude"));
-                        mCellIdentityCdma_mNetworkId = jsonobject0.getJSONObject("mCellIdentityCdma").getString("mNetworkId");
-                        mCellIdentityCdma_mSystemId = jsonobject0.getJSONObject("mCellIdentityCdma").getString("mSystemId");
-                        mCellSignalStrengthCdma_mCdmaDbm = jsonobject0.getJSONObject("mCellSignalStrengthCdma").getString("mCdmaDbm");
-                        mCellSignalStrengthCdma_mCdmaEcio = jsonobject0.getJSONObject("mCellSignalStrengthCdma").getString("mCdmaEcio");
-                        mCellSignalStrengthCdma_mEvdoDbm = jsonobject0.getJSONObject("mCellSignalStrengthCdma").getString("mEvdoDbm");
-                        mCellSignalStrengthCdma_mEvdoEcio = jsonobject0.getJSONObject("mCellSignalStrengthCdma").getString("mEvdoEcio");
-                        mCellSignalStrengthCdma_mEvdoSnr = jsonobject0.getJSONObject("mCellSignalStrengthCdma").getString("mEvdoSnr");
-                        mCellIdentityCdma_mRegistered = jsonobject0.getString("mRegistered");
-                        mCellIdentityCdma_mTimeStamp = jsonobject0.getString("mTimeStamp");
-                        mCellIdentityCdma_mTimeStampType = jsonobject0.getString("mTimeStampType");
-
-                        mCellIdentityLte_mCi = str;
-                        mCellIdentityLte_mEarfcn = str;
-                        mCellIdentityLte_mMcc = str;
-                        mCellIdentityLte_mMnc = str;
-                        mCellIdentityLte_mPci = str;
-                        mCellIdentityLte_mTac = str;
-                        mCellSignalStrengthLte_mCqi = str;
-                        mCellSignalStrengthLte_mRsrp = str;
-                        mCellSignalStrengthLte_mRsrq = str;
-                        mCellSignalStrengthLte_mRssnr = str;
-                        mCellSignalStrengthLte_mSignalStrength = str;
-                        mCellSignalStrengthLte_mTimingAdvance = str;
-                        mCellIdentityLte_mRegistered = str;
-                        mCellIdentityLte_mTimeStamp = str;
-                        mCellIdentityLte_mTimeStampType = str;
-                    }else if(jsonobject1.has("mCellIdentityLte")){
-                        mCellIdentityCdma_mBasestationId = str;
-                        mCellIdentityCdma_mLatitude = Double.toString(map.get("getLatitude"));
-                        mCellIdentityCdma_mLongitude = Double.toString(map.get("getLongitude"));
-                        mCellIdentityCdma_mNetworkId = str;
-                        mCellIdentityCdma_mSystemId = str;
-                        mCellSignalStrengthCdma_mCdmaDbm = str;
-                        mCellSignalStrengthCdma_mCdmaEcio = str;
-                        mCellSignalStrengthCdma_mEvdoDbm = str;
-                        mCellSignalStrengthCdma_mEvdoEcio = str;
-                        mCellSignalStrengthCdma_mEvdoSnr = str;
-                        mCellIdentityCdma_mRegistered = str;
-                        mCellIdentityCdma_mTimeStamp = str;
-                        mCellIdentityCdma_mTimeStampType = str;
-
-                        mCellIdentityLte_mCi = jsonobject0.getJSONObject("mCellIdentityLte").getString("mCi");
-                        mCellIdentityLte_mEarfcn = jsonobject0.getJSONObject("mCellIdentityLte").getString("mEarfcn");
-                        mCellIdentityLte_mMcc = jsonobject0.getJSONObject("mCellIdentityLte").getString("mMcc");
-                        mCellIdentityLte_mMnc = jsonobject0.getJSONObject("mCellIdentityLte").getString("mMnc");
-                        mCellIdentityLte_mPci = jsonobject0.getJSONObject("mCellIdentityLte").getString("mPci");
-                        mCellIdentityLte_mTac = jsonobject0.getJSONObject("mCellIdentityLte").getString("mTac");
-                        mCellSignalStrengthLte_mCqi = jsonobject0.getJSONObject("mCellSignalStrengthLte").getString("mCqi");
-                        mCellSignalStrengthLte_mRsrp = jsonobject0.getJSONObject("mCellSignalStrengthLte").getString("mRsrp");
-                        mCellSignalStrengthLte_mRsrq = jsonobject0.getJSONObject("mCellSignalStrengthLte").getString("mRsrq");
-                        mCellSignalStrengthLte_mRssnr = jsonobject0.getJSONObject("mCellSignalStrengthLte").getString("mRssnr");
-                        mCellSignalStrengthLte_mSignalStrength = jsonobject0.getJSONObject("mCellSignalStrengthLte").getString("mSignalStrength");
-                        mCellSignalStrengthLte_mTimingAdvance = jsonobject0.getJSONObject("mCellSignalStrengthLte").getString("mTimingAdvance");
-                        mCellIdentityLte_mRegistered = jsonobject0.getString("mRegistered");
-                        mCellIdentityLte_mTimeStamp = jsonobject0.getString("mTimeStamp");
-                        mCellIdentityLte_mTimeStampType = jsonobject0.getString("mTimeStampType");
-                    }
-                    else {
+                    } else {
                         mCellIdentityCdma_mBasestationId = str;
                         mCellIdentityCdma_mLatitude = Double.toString(map.get("getLatitude"));
                         mCellIdentityCdma_mLongitude = Double.toString(map.get("getLongitude"));
