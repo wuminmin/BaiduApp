@@ -27,6 +27,77 @@
                 android:background="@color/white"
                 android:orientation="vertical">
 
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="10dp"
+                        android:gravity="center_vertical"
+                        android:text="@string/mCellIdentityCdma_mLatitude" />
+
+                    <TextView
+                        android:id="@+id/mCellIdentityCdma_mLatitude"
+                        android:layout_width="250dp"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="10dp"
+                        android:background="@null"
+                        android:textColorHint="@color/lightblack"
+                        android:textSize="14sp" />
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@color/lightbackground" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="10dp"
+                        android:gravity="center_vertical"
+                        android:text="@string/mCellIdentityCdma_mLongitude" />
+
+                    <TextView
+                        android:id="@+id/mCellIdentityCdma_mLongitude"
+                        android:layout_width="250dp"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="10dp"
+                        android:background="@null"
+                        android:textColorHint="@color/lightblack"
+                        android:textSize="14sp" />
+                </RelativeLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginTop="20dp"
+                android:background="@color/lgrey"></LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:background="@color/white"
+                android:orientation="vertical">
+
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="20dp">
@@ -201,35 +272,7 @@
                         android:textSize="14sp" />
                 </RelativeLayout>
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:background="@color/lightbackground" />
 
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="20dp">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginStart="10dp"
-                        android:gravity="center_vertical"
-                        android:text="@string/mCellSignalStrengthLte_mCqi" />
-
-                    <TextView
-                        android:id="@+id/mCellSignalStrengthLte_mCqi"
-                        android:layout_width="250dp"
-                        android:layout_height="match_parent"
-                        android:layout_alignParentBottom="true"
-                        android:layout_alignParentEnd="true"
-                        android:layout_marginEnd="10dp"
-                        android:background="@null"
-                        android:textColorHint="@color/lightblack"
-                        android:textSize="14sp" />
-                </RelativeLayout>
 
                 <TextView
                     android:layout_width="match_parent"
@@ -291,35 +334,7 @@
                         android:textSize="14sp" />
                 </RelativeLayout>
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:background="@color/lightbackground" />
 
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="20dp">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginStart="10dp"
-                        android:gravity="center_vertical"
-                        android:text="@string/mCellSignalStrengthLte_mRssnr" />
-
-                    <TextView
-                        android:id="@+id/mCellSignalStrengthLte_mRssnr"
-                        android:layout_width="250dp"
-                        android:layout_height="match_parent"
-                        android:layout_alignParentBottom="true"
-                        android:layout_alignParentEnd="true"
-                        android:layout_marginEnd="10dp"
-                        android:background="@null"
-                        android:textColorHint="@color/lightblack"
-                        android:textSize="14sp" />
-                </RelativeLayout>
 
                 <TextView
                     android:layout_width="match_parent"
@@ -351,36 +366,9 @@
                         android:textSize="14sp" />
                 </RelativeLayout>
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:background="@color/lightbackground" />
 
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="20dp">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginStart="10dp"
-                        android:gravity="center_vertical"
-                        android:text="@string/mCellSignalStrengthLte_mTimingAdvance" />
-
-                    <TextView
-                        android:id="@+id/mCellSignalStrengthLte_mTimingAdvance"
-                        android:layout_width="250dp"
-                        android:layout_height="match_parent"
-                        android:layout_alignParentBottom="true"
-                        android:layout_alignParentEnd="true"
-                        android:layout_marginEnd="10dp"
-                        android:background="@null"
-                        android:textColorHint="@color/lightblack"
-                        android:textSize="14sp" />
-                </RelativeLayout>
             </LinearLayout>
+
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -409,66 +397,6 @@
 
                     <TextView
                         android:id="@+id/mCellIdentityCdma_mBasestationId"
-                        android:layout_width="250dp"
-                        android:layout_height="match_parent"
-                        android:layout_alignParentBottom="true"
-                        android:layout_alignParentEnd="true"
-                        android:layout_marginEnd="10dp"
-                        android:background="@null"
-                        android:textColorHint="@color/lightblack"
-                        android:textSize="14sp" />
-                </RelativeLayout>
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:background="@color/lightbackground" />
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="20dp">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginStart="10dp"
-                        android:gravity="center_vertical"
-                        android:text="@string/mCellIdentityCdma_mLatitude" />
-
-                    <TextView
-                        android:id="@+id/mCellIdentityCdma_mLatitude"
-                        android:layout_width="250dp"
-                        android:layout_height="match_parent"
-                        android:layout_alignParentBottom="true"
-                        android:layout_alignParentEnd="true"
-                        android:layout_marginEnd="10dp"
-                        android:background="@null"
-                        android:textColorHint="@color/lightblack"
-                        android:textSize="14sp" />
-                </RelativeLayout>
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:background="@color/lightbackground" />
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="20dp">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginStart="10dp"
-                        android:gravity="center_vertical"
-                        android:text="@string/mCellIdentityCdma_mLongitude" />
-
-                    <TextView
-                        android:id="@+id/mCellIdentityCdma_mLongitude"
                         android:layout_width="250dp"
                         android:layout_height="match_parent"
                         android:layout_alignParentBottom="true"
@@ -540,20 +468,7 @@
                         android:textSize="14sp" />
                 </RelativeLayout>
 
-            </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:layout_marginTop="20dp"
-                android:background="@color/lgrey"></LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="0dp"
-                android:background="@color/white"
-                android:orientation="vertical">
 
                 <TextView
                     android:layout_width="match_parent"

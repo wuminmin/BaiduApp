@@ -39,12 +39,13 @@ public class OrderFragment extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_order2, null, false);
-        TelephonyManager telephonyManager = (TelephonyManager)  getActivity().getSystemService(Context.TELEPHONY_SERVICE);
-        getCellInfo = new GetCellInfo(getActivity().getApplicationContext(),telephonyManager,getActivity());
+        TelephonyManager telephonyManager = (TelephonyManager) getActivity().getSystemService(Context.TELEPHONY_SERVICE);
+        getCellInfo = new GetCellInfo(getActivity().getApplicationContext(), telephonyManager, getActivity());
 //        init();
         return view;
     }
-    private void psottoweb(){
+
+    private void psottoweb() {
         try {
             String strGetCellInfo;
             String mCellIdentityCdma_mBasestationId;
@@ -76,40 +77,296 @@ public class OrderFragment extends BaseFragment {
             String mCellIdentityLte_mTimeStamp;
             String mCellIdentityLte_mTimeStampType;
             strGetCellInfo = getCellInfo.myCell();
-            Map<String,Double> map = getCellInfo.myGps();
-            if(strGetCellInfo != null){
-                JSONArray jsonarray = new JSONArray(strGetCellInfo);
-                JSONObject jsonobject0 = jsonarray.getJSONObject(0);
-                mCellIdentityCdma_mBasestationId = jsonobject0.getJSONObject("mCellIdentityCdma").getString("mBasestationId");
-                mCellIdentityCdma_mLatitude = Double.toString(map.get("getLatitude"));
-                mCellIdentityCdma_mLongitude = Double.toString(map.get("getLongitude"));
-                mCellIdentityCdma_mNetworkId = jsonobject0.getJSONObject("mCellIdentityCdma").getString("mNetworkId");
-                mCellIdentityCdma_mSystemId = jsonobject0.getJSONObject("mCellIdentityCdma").getString("mSystemId");
-                mCellSignalStrengthCdma_mCdmaDbm = jsonobject0.getJSONObject("mCellSignalStrengthCdma").getString("mCdmaDbm");
-                mCellSignalStrengthCdma_mCdmaEcio = jsonobject0.getJSONObject("mCellSignalStrengthCdma").getString("mCdmaEcio");
-                mCellSignalStrengthCdma_mEvdoDbm = jsonobject0.getJSONObject("mCellSignalStrengthCdma").getString("mEvdoDbm");
-                mCellSignalStrengthCdma_mEvdoEcio = jsonobject0.getJSONObject("mCellSignalStrengthCdma").getString("mEvdoEcio");
-                mCellSignalStrengthCdma_mEvdoSnr = jsonobject0.getJSONObject("mCellSignalStrengthCdma").getString("mEvdoSnr");
-                mCellIdentityCdma_mRegistered = jsonobject0.getString("mRegistered");
-                mCellIdentityCdma_mTimeStamp = jsonobject0.getString("mTimeStamp");
-                mCellIdentityCdma_mTimeStampType = jsonobject0.getString("mTimeStampType");
-                JSONObject jsonobject1 = jsonarray.getJSONObject(1);
-                mCellIdentityLte_mCi = jsonobject1.getJSONObject("mCellIdentityLte").getString("mCi");
-                mCellIdentityLte_mEarfcn = jsonobject1.getJSONObject("mCellIdentityLte").getString("mEarfcn");
-                mCellIdentityLte_mMcc = jsonobject1.getJSONObject("mCellIdentityLte").getString("mMcc");
-                mCellIdentityLte_mMnc = jsonobject1.getJSONObject("mCellIdentityLte").getString("mMnc");
-                mCellIdentityLte_mPci = jsonobject1.getJSONObject("mCellIdentityLte").getString("mPci");
-                mCellIdentityLte_mTac = jsonobject1.getJSONObject("mCellIdentityLte").getString("mTac");
-                mCellSignalStrengthLte_mCqi = jsonobject1.getJSONObject("mCellSignalStrengthLte").getString("mCqi");
-                mCellSignalStrengthLte_mRsrp = jsonobject1.getJSONObject("mCellSignalStrengthLte").getString("mRsrp");
-                mCellSignalStrengthLte_mRsrq = jsonobject1.getJSONObject("mCellSignalStrengthLte").getString("mRsrq");
-                mCellSignalStrengthLte_mRssnr = jsonobject1.getJSONObject("mCellSignalStrengthLte").getString("mRssnr");
-                mCellSignalStrengthLte_mSignalStrength = jsonobject1.getJSONObject("mCellSignalStrengthLte").getString("mSignalStrength");
-                mCellSignalStrengthLte_mTimingAdvance = jsonobject1.getJSONObject("mCellSignalStrengthLte").getString("mTimingAdvance");
-                mCellIdentityLte_mRegistered = jsonobject1.getString("mRegistered");
-                mCellIdentityLte_mTimeStamp = jsonobject1.getString("mTimeStamp");
-                mCellIdentityLte_mTimeStampType = jsonobject1.getString("mTimeStampType");
+            Map<String, Double> map = getCellInfo.myGps();
 
+            if (strGetCellInfo != null) {
+                String str = "无法获取基站信息";
+                JSONArray jsonarray = new JSONArray(strGetCellInfo);
+                int length = jsonarray.length();
+                if (length == 0) {
+//                    JSONObject jsonobject0 = jsonarray.getJSONObject(0);
+
+                    mCellIdentityCdma_mBasestationId = str;
+                    mCellIdentityCdma_mLatitude = Double.toString(map.get("getLatitude"));
+                    mCellIdentityCdma_mLongitude = Double.toString(map.get("getLongitude"));
+                    mCellIdentityCdma_mNetworkId = str;
+                    mCellIdentityCdma_mSystemId = str;
+                    mCellSignalStrengthCdma_mCdmaDbm = str;
+                    mCellSignalStrengthCdma_mCdmaEcio = str;
+                    mCellSignalStrengthCdma_mEvdoDbm = str;
+                    mCellSignalStrengthCdma_mEvdoEcio = str;
+                    mCellSignalStrengthCdma_mEvdoSnr = str;
+                    mCellIdentityCdma_mRegistered = str;
+                    mCellIdentityCdma_mTimeStamp = str;
+                    mCellIdentityCdma_mTimeStampType = str;
+//                    JSONObject jsonobject1 = jsonarray.getJSONObject(1);
+                    mCellIdentityLte_mCi = str;
+                    mCellIdentityLte_mEarfcn = str;
+                    mCellIdentityLte_mMcc = str;
+                    mCellIdentityLte_mMnc = str;
+                    mCellIdentityLte_mPci = str;
+                    mCellIdentityLte_mTac = str;
+                    mCellSignalStrengthLte_mCqi = str;
+                    mCellSignalStrengthLte_mRsrp = str;
+                    mCellSignalStrengthLte_mRsrq = str;
+                    mCellSignalStrengthLte_mRssnr = str;
+                    mCellSignalStrengthLte_mSignalStrength = str;
+                    mCellSignalStrengthLte_mTimingAdvance = str;
+                    mCellIdentityLte_mRegistered = str;
+                    mCellIdentityLte_mTimeStamp = str;
+                    mCellIdentityLte_mTimeStampType = str;
+                } else if (length == 1) {
+                    JSONObject jsonobject0 = jsonarray.getJSONObject(0);
+                    if (jsonobject0.has("mCellIdentityCdma")) {
+                        mCellIdentityCdma_mBasestationId = jsonobject0.getJSONObject("mCellIdentityCdma").getString("mBasestationId");
+                        mCellIdentityCdma_mLatitude = Double.toString(map.get("getLatitude"));
+                        mCellIdentityCdma_mLongitude = Double.toString(map.get("getLongitude"));
+                        mCellIdentityCdma_mNetworkId = jsonobject0.getJSONObject("mCellIdentityCdma").getString("mNetworkId");
+                        mCellIdentityCdma_mSystemId = jsonobject0.getJSONObject("mCellIdentityCdma").getString("mSystemId");
+                        mCellSignalStrengthCdma_mCdmaDbm = jsonobject0.getJSONObject("mCellSignalStrengthCdma").getString("mCdmaDbm");
+                        mCellSignalStrengthCdma_mCdmaEcio = jsonobject0.getJSONObject("mCellSignalStrengthCdma").getString("mCdmaEcio");
+                        mCellSignalStrengthCdma_mEvdoDbm = jsonobject0.getJSONObject("mCellSignalStrengthCdma").getString("mEvdoDbm");
+                        mCellSignalStrengthCdma_mEvdoEcio = jsonobject0.getJSONObject("mCellSignalStrengthCdma").getString("mEvdoEcio");
+                        mCellSignalStrengthCdma_mEvdoSnr = jsonobject0.getJSONObject("mCellSignalStrengthCdma").getString("mEvdoSnr");
+                        mCellIdentityCdma_mRegistered = jsonobject0.getString("mRegistered");
+                        mCellIdentityCdma_mTimeStamp = jsonobject0.getString("mTimeStamp");
+                        mCellIdentityCdma_mTimeStampType = jsonobject0.getString("mTimeStampType");
+
+                        mCellIdentityLte_mCi = str;
+                        mCellIdentityLte_mEarfcn = str;
+                        mCellIdentityLte_mMcc = str;
+                        mCellIdentityLte_mMnc = str;
+                        mCellIdentityLte_mPci = str;
+                        mCellIdentityLte_mTac = str;
+                        mCellSignalStrengthLte_mCqi = str;
+                        mCellSignalStrengthLte_mRsrp = str;
+                        mCellSignalStrengthLte_mRsrq = str;
+                        mCellSignalStrengthLte_mRssnr = str;
+                        mCellSignalStrengthLte_mSignalStrength = str;
+                        mCellSignalStrengthLte_mTimingAdvance = str;
+                        mCellIdentityLte_mRegistered = str;
+                        mCellIdentityLte_mTimeStamp = str;
+                        mCellIdentityLte_mTimeStampType = str;
+                    } else if (jsonobject0.has("mCellIdentityLte")) {
+                        mCellIdentityCdma_mBasestationId = str;
+                        mCellIdentityCdma_mLatitude = Double.toString(map.get("getLatitude"));
+                        mCellIdentityCdma_mLongitude = Double.toString(map.get("getLongitude"));
+                        mCellIdentityCdma_mNetworkId = str;
+                        mCellIdentityCdma_mSystemId = str;
+                        mCellSignalStrengthCdma_mCdmaDbm = str;
+                        mCellSignalStrengthCdma_mCdmaEcio = str;
+                        mCellSignalStrengthCdma_mEvdoDbm = str;
+                        mCellSignalStrengthCdma_mEvdoEcio = str;
+                        mCellSignalStrengthCdma_mEvdoSnr = str;
+                        mCellIdentityCdma_mRegistered = str;
+                        mCellIdentityCdma_mTimeStamp = str;
+                        mCellIdentityCdma_mTimeStampType = str;
+
+                        mCellIdentityLte_mCi = jsonobject0.getJSONObject("mCellIdentityLte").getString("mCi");
+                        mCellIdentityLte_mEarfcn = jsonobject0.getJSONObject("mCellIdentityLte").getString("mEarfcn");
+                        mCellIdentityLte_mMcc = jsonobject0.getJSONObject("mCellIdentityLte").getString("mMcc");
+                        mCellIdentityLte_mMnc = jsonobject0.getJSONObject("mCellIdentityLte").getString("mMnc");
+                        mCellIdentityLte_mPci = jsonobject0.getJSONObject("mCellIdentityLte").getString("mPci");
+                        mCellIdentityLte_mTac = jsonobject0.getJSONObject("mCellIdentityLte").getString("mTac");
+                        mCellSignalStrengthLte_mCqi = jsonobject0.getJSONObject("mCellSignalStrengthLte").getString("mCqi");
+                        mCellSignalStrengthLte_mRsrp = jsonobject0.getJSONObject("mCellSignalStrengthLte").getString("mRsrp");
+                        mCellSignalStrengthLte_mRsrq = jsonobject0.getJSONObject("mCellSignalStrengthLte").getString("mRsrq");
+                        mCellSignalStrengthLte_mRssnr = jsonobject0.getJSONObject("mCellSignalStrengthLte").getString("mRssnr");
+                        mCellSignalStrengthLte_mSignalStrength = jsonobject0.getJSONObject("mCellSignalStrengthLte").getString("mSignalStrength");
+                        mCellSignalStrengthLte_mTimingAdvance = jsonobject0.getJSONObject("mCellSignalStrengthLte").getString("mTimingAdvance");
+                        mCellIdentityLte_mRegistered = jsonobject0.getString("mRegistered");
+                        mCellIdentityLte_mTimeStamp = jsonobject0.getString("mTimeStamp");
+                        mCellIdentityLte_mTimeStampType = jsonobject0.getString("mTimeStampType");
+                    } else {
+                        mCellIdentityCdma_mBasestationId = str;
+                        mCellIdentityCdma_mLatitude = Double.toString(map.get("getLatitude"));
+                        mCellIdentityCdma_mLongitude = Double.toString(map.get("getLongitude"));
+                        mCellIdentityCdma_mNetworkId = str;
+                        mCellIdentityCdma_mSystemId = str;
+                        mCellSignalStrengthCdma_mCdmaDbm = str;
+                        mCellSignalStrengthCdma_mCdmaEcio = str;
+                        mCellSignalStrengthCdma_mEvdoDbm = str;
+                        mCellSignalStrengthCdma_mEvdoEcio = str;
+                        mCellSignalStrengthCdma_mEvdoSnr = str;
+                        mCellIdentityCdma_mRegistered = str;
+                        mCellIdentityCdma_mTimeStamp = str;
+                        mCellIdentityCdma_mTimeStampType = str;
+//                    JSONObject jsonobject1 = jsonarray.getJSONObject(1);
+                        mCellIdentityLte_mCi = str;
+                        mCellIdentityLte_mEarfcn = str;
+                        mCellIdentityLte_mMcc = str;
+                        mCellIdentityLte_mMnc = str;
+                        mCellIdentityLte_mPci = str;
+                        mCellIdentityLte_mTac = str;
+                        mCellSignalStrengthLte_mCqi = str;
+                        mCellSignalStrengthLte_mRsrp = str;
+                        mCellSignalStrengthLte_mRsrq = str;
+                        mCellSignalStrengthLte_mRssnr = str;
+                        mCellSignalStrengthLte_mSignalStrength = str;
+                        mCellSignalStrengthLte_mTimingAdvance = str;
+                        mCellIdentityLte_mRegistered = str;
+                        mCellIdentityLte_mTimeStamp = str;
+                        mCellIdentityLte_mTimeStampType = str;
+                    }
+                } else {
+                    JSONObject jsonobject0 = jsonarray.getJSONObject(0);
+                    JSONObject jsonobject1 = jsonarray.getJSONObject(1);
+                    if(jsonobject0.has("mCellIdentityCdma")) {
+                        mCellIdentityCdma_mBasestationId = jsonobject0.getJSONObject("mCellIdentityCdma").getString("mBasestationId");
+                        mCellIdentityCdma_mLatitude = Double.toString(map.get("getLatitude"));
+                        mCellIdentityCdma_mLongitude = Double.toString(map.get("getLongitude"));
+                        mCellIdentityCdma_mNetworkId = jsonobject0.getJSONObject("mCellIdentityCdma").getString("mNetworkId");
+                        mCellIdentityCdma_mSystemId = jsonobject0.getJSONObject("mCellIdentityCdma").getString("mSystemId");
+                        mCellSignalStrengthCdma_mCdmaDbm = jsonobject0.getJSONObject("mCellSignalStrengthCdma").getString("mCdmaDbm");
+                        mCellSignalStrengthCdma_mCdmaEcio = jsonobject0.getJSONObject("mCellSignalStrengthCdma").getString("mCdmaEcio");
+                        mCellSignalStrengthCdma_mEvdoDbm = jsonobject0.getJSONObject("mCellSignalStrengthCdma").getString("mEvdoDbm");
+                        mCellSignalStrengthCdma_mEvdoEcio = jsonobject0.getJSONObject("mCellSignalStrengthCdma").getString("mEvdoEcio");
+                        mCellSignalStrengthCdma_mEvdoSnr = jsonobject0.getJSONObject("mCellSignalStrengthCdma").getString("mEvdoSnr");
+                        mCellIdentityCdma_mRegistered = jsonobject0.getString("mRegistered");
+                        mCellIdentityCdma_mTimeStamp = jsonobject0.getString("mTimeStamp");
+                        mCellIdentityCdma_mTimeStampType = jsonobject0.getString("mTimeStampType");
+
+                        mCellIdentityLte_mCi = str;
+                        mCellIdentityLte_mEarfcn = str;
+                        mCellIdentityLte_mMcc = str;
+                        mCellIdentityLte_mMnc = str;
+                        mCellIdentityLte_mPci = str;
+                        mCellIdentityLte_mTac = str;
+                        mCellSignalStrengthLte_mCqi = str;
+                        mCellSignalStrengthLte_mRsrp = str;
+                        mCellSignalStrengthLte_mRsrq = str;
+                        mCellSignalStrengthLte_mRssnr = str;
+                        mCellSignalStrengthLte_mSignalStrength = str;
+                        mCellSignalStrengthLte_mTimingAdvance = str;
+                        mCellIdentityLte_mRegistered = str;
+                        mCellIdentityLte_mTimeStamp = str;
+                        mCellIdentityLte_mTimeStampType = str;
+
+
+                    }else if(jsonobject0.has("mCellIdentityLte")){
+                        mCellIdentityCdma_mBasestationId = str;
+                        mCellIdentityCdma_mLatitude = Double.toString(map.get("getLatitude"));
+                        mCellIdentityCdma_mLongitude = Double.toString(map.get("getLongitude"));
+                        mCellIdentityCdma_mNetworkId = str;
+                        mCellIdentityCdma_mSystemId = str;
+                        mCellSignalStrengthCdma_mCdmaDbm = str;
+                        mCellSignalStrengthCdma_mCdmaEcio = str;
+                        mCellSignalStrengthCdma_mEvdoDbm = str;
+                        mCellSignalStrengthCdma_mEvdoEcio = str;
+                        mCellSignalStrengthCdma_mEvdoSnr = str;
+                        mCellIdentityCdma_mRegistered = str;
+                        mCellIdentityCdma_mTimeStamp = str;
+                        mCellIdentityCdma_mTimeStampType = str;
+
+                        mCellIdentityLte_mCi = jsonobject0.getJSONObject("mCellIdentityLte").getString("mCi");
+                        mCellIdentityLte_mEarfcn = jsonobject0.getJSONObject("mCellIdentityLte").getString("mEarfcn");
+                        mCellIdentityLte_mMcc = jsonobject0.getJSONObject("mCellIdentityLte").getString("mMcc");
+                        mCellIdentityLte_mMnc = jsonobject0.getJSONObject("mCellIdentityLte").getString("mMnc");
+                        mCellIdentityLte_mPci = jsonobject0.getJSONObject("mCellIdentityLte").getString("mPci");
+                        mCellIdentityLte_mTac = jsonobject0.getJSONObject("mCellIdentityLte").getString("mTac");
+                        mCellSignalStrengthLte_mCqi = jsonobject0.getJSONObject("mCellSignalStrengthLte").getString("mCqi");
+                        mCellSignalStrengthLte_mRsrp = jsonobject0.getJSONObject("mCellSignalStrengthLte").getString("mRsrp");
+                        mCellSignalStrengthLte_mRsrq = jsonobject0.getJSONObject("mCellSignalStrengthLte").getString("mRsrq");
+                        mCellSignalStrengthLte_mRssnr = jsonobject0.getJSONObject("mCellSignalStrengthLte").getString("mRssnr");
+                        mCellSignalStrengthLte_mSignalStrength = jsonobject0.getJSONObject("mCellSignalStrengthLte").getString("mSignalStrength");
+                        mCellSignalStrengthLte_mTimingAdvance = jsonobject0.getJSONObject("mCellSignalStrengthLte").getString("mTimingAdvance");
+                        mCellIdentityLte_mRegistered = jsonobject0.getString("mRegistered");
+                        mCellIdentityLte_mTimeStamp = jsonobject0.getString("mTimeStamp");
+                        mCellIdentityLte_mTimeStampType = jsonobject0.getString("mTimeStampType");
+                    }else if(jsonobject1.has("mCellIdentityCdma")){
+                        mCellIdentityCdma_mBasestationId = jsonobject0.getJSONObject("mCellIdentityCdma").getString("mBasestationId");
+                        mCellIdentityCdma_mLatitude = Double.toString(map.get("getLatitude"));
+                        mCellIdentityCdma_mLongitude = Double.toString(map.get("getLongitude"));
+                        mCellIdentityCdma_mNetworkId = jsonobject0.getJSONObject("mCellIdentityCdma").getString("mNetworkId");
+                        mCellIdentityCdma_mSystemId = jsonobject0.getJSONObject("mCellIdentityCdma").getString("mSystemId");
+                        mCellSignalStrengthCdma_mCdmaDbm = jsonobject0.getJSONObject("mCellSignalStrengthCdma").getString("mCdmaDbm");
+                        mCellSignalStrengthCdma_mCdmaEcio = jsonobject0.getJSONObject("mCellSignalStrengthCdma").getString("mCdmaEcio");
+                        mCellSignalStrengthCdma_mEvdoDbm = jsonobject0.getJSONObject("mCellSignalStrengthCdma").getString("mEvdoDbm");
+                        mCellSignalStrengthCdma_mEvdoEcio = jsonobject0.getJSONObject("mCellSignalStrengthCdma").getString("mEvdoEcio");
+                        mCellSignalStrengthCdma_mEvdoSnr = jsonobject0.getJSONObject("mCellSignalStrengthCdma").getString("mEvdoSnr");
+                        mCellIdentityCdma_mRegistered = jsonobject0.getString("mRegistered");
+                        mCellIdentityCdma_mTimeStamp = jsonobject0.getString("mTimeStamp");
+                        mCellIdentityCdma_mTimeStampType = jsonobject0.getString("mTimeStampType");
+
+                        mCellIdentityLte_mCi = str;
+                        mCellIdentityLte_mEarfcn = str;
+                        mCellIdentityLte_mMcc = str;
+                        mCellIdentityLte_mMnc = str;
+                        mCellIdentityLte_mPci = str;
+                        mCellIdentityLte_mTac = str;
+                        mCellSignalStrengthLte_mCqi = str;
+                        mCellSignalStrengthLte_mRsrp = str;
+                        mCellSignalStrengthLte_mRsrq = str;
+                        mCellSignalStrengthLte_mRssnr = str;
+                        mCellSignalStrengthLte_mSignalStrength = str;
+                        mCellSignalStrengthLte_mTimingAdvance = str;
+                        mCellIdentityLte_mRegistered = str;
+                        mCellIdentityLte_mTimeStamp = str;
+                        mCellIdentityLte_mTimeStampType = str;
+                    }else if(jsonobject1.has("mCellIdentityLte")){
+                        mCellIdentityCdma_mBasestationId = str;
+                        mCellIdentityCdma_mLatitude = Double.toString(map.get("getLatitude"));
+                        mCellIdentityCdma_mLongitude = Double.toString(map.get("getLongitude"));
+                        mCellIdentityCdma_mNetworkId = str;
+                        mCellIdentityCdma_mSystemId = str;
+                        mCellSignalStrengthCdma_mCdmaDbm = str;
+                        mCellSignalStrengthCdma_mCdmaEcio = str;
+                        mCellSignalStrengthCdma_mEvdoDbm = str;
+                        mCellSignalStrengthCdma_mEvdoEcio = str;
+                        mCellSignalStrengthCdma_mEvdoSnr = str;
+                        mCellIdentityCdma_mRegistered = str;
+                        mCellIdentityCdma_mTimeStamp = str;
+                        mCellIdentityCdma_mTimeStampType = str;
+
+                        mCellIdentityLte_mCi = jsonobject0.getJSONObject("mCellIdentityLte").getString("mCi");
+                        mCellIdentityLte_mEarfcn = jsonobject0.getJSONObject("mCellIdentityLte").getString("mEarfcn");
+                        mCellIdentityLte_mMcc = jsonobject0.getJSONObject("mCellIdentityLte").getString("mMcc");
+                        mCellIdentityLte_mMnc = jsonobject0.getJSONObject("mCellIdentityLte").getString("mMnc");
+                        mCellIdentityLte_mPci = jsonobject0.getJSONObject("mCellIdentityLte").getString("mPci");
+                        mCellIdentityLte_mTac = jsonobject0.getJSONObject("mCellIdentityLte").getString("mTac");
+                        mCellSignalStrengthLte_mCqi = jsonobject0.getJSONObject("mCellSignalStrengthLte").getString("mCqi");
+                        mCellSignalStrengthLte_mRsrp = jsonobject0.getJSONObject("mCellSignalStrengthLte").getString("mRsrp");
+                        mCellSignalStrengthLte_mRsrq = jsonobject0.getJSONObject("mCellSignalStrengthLte").getString("mRsrq");
+                        mCellSignalStrengthLte_mRssnr = jsonobject0.getJSONObject("mCellSignalStrengthLte").getString("mRssnr");
+                        mCellSignalStrengthLte_mSignalStrength = jsonobject0.getJSONObject("mCellSignalStrengthLte").getString("mSignalStrength");
+                        mCellSignalStrengthLte_mTimingAdvance = jsonobject0.getJSONObject("mCellSignalStrengthLte").getString("mTimingAdvance");
+                        mCellIdentityLte_mRegistered = jsonobject0.getString("mRegistered");
+                        mCellIdentityLte_mTimeStamp = jsonobject0.getString("mTimeStamp");
+                        mCellIdentityLte_mTimeStampType = jsonobject0.getString("mTimeStampType");
+                    }
+                    else {
+                        mCellIdentityCdma_mBasestationId = str;
+                        mCellIdentityCdma_mLatitude = Double.toString(map.get("getLatitude"));
+                        mCellIdentityCdma_mLongitude = Double.toString(map.get("getLongitude"));
+                        mCellIdentityCdma_mNetworkId = str;
+                        mCellIdentityCdma_mSystemId = str;
+                        mCellSignalStrengthCdma_mCdmaDbm = str;
+                        mCellSignalStrengthCdma_mCdmaEcio = str;
+                        mCellSignalStrengthCdma_mEvdoDbm = str;
+                        mCellSignalStrengthCdma_mEvdoEcio = str;
+                        mCellSignalStrengthCdma_mEvdoSnr = str;
+                        mCellIdentityCdma_mRegistered = str;
+                        mCellIdentityCdma_mTimeStamp = str;
+                        mCellIdentityCdma_mTimeStampType = str;
+//                    JSONObject jsonobject1 = jsonarray.getJSONObject(1);
+                        mCellIdentityLte_mCi = str;
+                        mCellIdentityLte_mEarfcn = str;
+                        mCellIdentityLte_mMcc = str;
+                        mCellIdentityLte_mMnc = str;
+                        mCellIdentityLte_mPci = str;
+                        mCellIdentityLte_mTac = str;
+                        mCellSignalStrengthLte_mCqi = str;
+                        mCellSignalStrengthLte_mRsrp = str;
+                        mCellSignalStrengthLte_mRsrq = str;
+                        mCellSignalStrengthLte_mRssnr = str;
+                        mCellSignalStrengthLte_mSignalStrength = str;
+                        mCellSignalStrengthLte_mTimingAdvance = str;
+                        mCellIdentityLte_mRegistered = str;
+                        mCellIdentityLte_mTimeStamp = str;
+                        mCellIdentityLte_mTimeStampType = str;
+                    }
+
+                }
                 PostExample example = new PostExample();
                 EditText order_Building_location = view.findViewById(R.id.order_Building_location);
                 EditText order_Building_layers = view.findViewById(R.id.order_Building_layers);
@@ -137,59 +394,60 @@ public class OrderFragment extends BaseFragment {
                 EditText gengxinriqi = view.findViewById(R.id.gengxinriqi);
                 EditText beizhu = view.findViewById(R.id.beizhu);
 
+
                 String json = "{"
-                        + "\"order_Building_location\":\""+order_Building_location.getText()+"\","
-                        + "\"order_Building_layers\":\""+order_Building_layers.getText()+"\","
-                        + "\"order_Current_layer\":\""+order_Current_layer.getText()+"\","
-                        + "\"shi\":\""+shi.getText()+"\","
-                        + "\"quxian\":\""+quxian.getText()+"\","
-                        + "\"wanggeid\":\""+wanggeid.getText()+"\","
-                        + "\"wangedanyuanmingchen\":\""+wangedanyuanmingchen.getText()+"\","
-                        + "\"wanggedanyuanxiaolei\":\""+wanggedanyuanxiaolei.getText()+"\","
-                        + "\"wangluoredianleixing\":\""+wangluoredianleixing.getText()+"\","
-                        + "\"wanggesangaoleixing\":\""+wanggesangaoleixing.getText()+"\","
-                        + "\"wanggezhuhushu\":\""+wanggezhuhushu.getText()+"\","
-                        + "\"wanggedianxinyonghushu\":\""+wanggedianxinyonghushu.getText()+"\","
-                        + "\"wanggeruzhubili\":\""+wanggeruzhubili.getText()+"\","
-                        + "\"louyushifenfugaibili\":\""+louyushifenfugaibili.getText()+"\","
-                        + "\"mrshineifugaizhiliang\":\""+mrshineifugaizhiliang.getText()+"\","
-                        + "\"lteshineifugaizhiliang\":\""+lteshineifugaizhiliang.getText()+"\","
-                        + "\"xinxilaiyuan\":\""+xinxilaiyuan.getText()+"\","
-                        + "\"wanggejianzuwuleixing\":\""+wanggejianzuwuleixing.getText()+"\","
-                        + "\"shifouyiyoushifenguihua\":\""+shifouyiyoushifenguihua.getText()+"\","
-                        + "\"shifouyouyiwangshifen\":\""+shifouyouyiwangshifen.getText()+"\","
-                        + "\"shifouyoudianti\":\""+shifouyoudianti.getText()+"\","
-                        + "\"shifouyoudixiatingchechang\":\""+shifouyoudixiatingchechang.getText()+"\","
-                        + "\"gengxinriqi\":\""+gengxinriqi.getText()+"\","
-                        + "\"beizhu\":\""+beizhu.getText()+"\","
-                        + "\"mCellIdentityCdma_mBasestationId\":\""+mCellIdentityCdma_mBasestationId+"\","
-                        + "\"mCellIdentityCdma_mLatitude\":\""+mCellIdentityCdma_mLatitude+"\","
-                        + "\"mCellIdentityCdma_mLongitude\":\""+mCellIdentityCdma_mLongitude+"\","
-                        + "\"mCellIdentityCdma_mNetworkId\":\""+mCellIdentityCdma_mNetworkId+"\","
-                        + "\"mCellIdentityCdma_mSystemId\":\""+mCellIdentityCdma_mSystemId+"\","
-                        + "\"mCellSignalStrengthCdma_mCdmaDbm\":\""+mCellSignalStrengthCdma_mCdmaDbm+"\","
-                        + "\"mCellSignalStrengthCdma_mCdmaEcio\":\""+mCellSignalStrengthCdma_mCdmaEcio+"\","
-                        + "\"mCellSignalStrengthCdma_mEvdoDbm\":\""+mCellSignalStrengthCdma_mEvdoDbm+"\","
-                        + "\"mCellSignalStrengthCdma_mEvdoEcio\":\""+mCellSignalStrengthCdma_mEvdoEcio+"\","
-                        + "\"mCellSignalStrengthCdma_mEvdoSnr\":\""+mCellSignalStrengthCdma_mEvdoSnr+"\","
-                        + "\"mCellIdentityCdma_mRegistered\":\""+mCellIdentityCdma_mRegistered+"\","
-                        + "\"mCellIdentityCdma_mTimeStamp\":\""+mCellIdentityCdma_mTimeStamp+"\","
-                        + "\"mCellIdentityCdma_mTimeStampType\":\""+mCellIdentityCdma_mTimeStampType+"\","
-                        + "\"mCellIdentityLte_mCi\":\""+mCellIdentityLte_mCi+"\","
-                        + "\"mCellIdentityLte_mEarfcn\":\""+mCellIdentityLte_mEarfcn+"\","
-                        + "\"mCellIdentityLte_mMcc\":\""+mCellIdentityLte_mMcc+"\","
-                        + "\"mCellIdentityLte_mMnc\":\""+mCellIdentityLte_mMnc+"\","
-                        + "\"mCellIdentityLte_mPci\":\""+mCellIdentityLte_mPci+"\","
-                        + "\"mCellIdentityLte_mTac\":\""+mCellIdentityLte_mTac+"\","
-                        + "\"mCellSignalStrengthLte_mCqi\":\""+mCellSignalStrengthLte_mCqi+"\","
-                        + "\"mCellSignalStrengthLte_mRsrp\":\""+mCellSignalStrengthLte_mRsrp+"\","
-                        + "\"mCellSignalStrengthLte_mRsrq\":\""+mCellSignalStrengthLte_mRsrq+"\","
-                        + "\"mCellSignalStrengthLte_mRssnr\":\""+mCellSignalStrengthLte_mRssnr+"\","
-                        + "\"mCellSignalStrengthLte_mSignalStrength\":\""+mCellSignalStrengthLte_mSignalStrength+"\","
-                        + "\"mCellSignalStrengthLte_mTimingAdvance\":\""+mCellSignalStrengthLte_mTimingAdvance+"\","
-                        + "\"mCellIdentityLte_mRegistered\":\""+mCellIdentityLte_mRegistered+"\","
-                        + "\"mCellIdentityLte_mTimeStamp\":\""+mCellIdentityLte_mTimeStamp+"\","
-                        + "\"mCellIdentityLte_mTimeStampType\":\""+mCellIdentityLte_mTimeStampType+"\""
+                        + "\"order_Building_location\":\"" + order_Building_location.getText() + "\","
+                        + "\"order_Building_layers\":\"" + order_Building_layers.getText() + "\","
+                        + "\"order_Current_layer\":\"" + order_Current_layer.getText() + "\","
+                        + "\"shi\":\"" + shi.getText() + "\","
+                        + "\"quxian\":\"" + quxian.getText() + "\","
+                        + "\"wanggeid\":\"" + wanggeid.getText() + "\","
+                        + "\"wangedanyuanmingchen\":\"" + wangedanyuanmingchen.getText() + "\","
+                        + "\"wanggedanyuanxiaolei\":\"" + wanggedanyuanxiaolei.getText() + "\","
+                        + "\"wangluoredianleixing\":\"" + wangluoredianleixing.getText() + "\","
+                        + "\"wanggesangaoleixing\":\"" + wanggesangaoleixing.getText() + "\","
+                        + "\"wanggezhuhushu\":\"" + wanggezhuhushu.getText() + "\","
+                        + "\"wanggedianxinyonghushu\":\"" + wanggedianxinyonghushu.getText() + "\","
+                        + "\"wanggeruzhubili\":\"" + wanggeruzhubili.getText() + "\","
+                        + "\"louyushifenfugaibili\":\"" + louyushifenfugaibili.getText() + "\","
+                        + "\"mrshineifugaizhiliang\":\"" + mrshineifugaizhiliang.getText() + "\","
+                        + "\"lteshineifugaizhiliang\":\"" + lteshineifugaizhiliang.getText() + "\","
+                        + "\"xinxilaiyuan\":\"" + xinxilaiyuan.getText() + "\","
+                        + "\"wanggejianzuwuleixing\":\"" + wanggejianzuwuleixing.getText() + "\","
+                        + "\"shifouyiyoushifenguihua\":\"" + shifouyiyoushifenguihua.getText() + "\","
+                        + "\"shifouyouyiwangshifen\":\"" + shifouyouyiwangshifen.getText() + "\","
+                        + "\"shifouyoudianti\":\"" + shifouyoudianti.getText() + "\","
+                        + "\"shifouyoudixiatingchechang\":\"" + shifouyoudixiatingchechang.getText() + "\","
+                        + "\"gengxinriqi\":\"" + gengxinriqi.getText() + "\","
+                        + "\"beizhu\":\"" + beizhu.getText() + "\","
+                        + "\"mCellIdentityCdma_mBasestationId\":\"" + mCellIdentityCdma_mBasestationId + "\","
+                        + "\"mCellIdentityCdma_mLatitude\":\"" + mCellIdentityCdma_mLatitude + "\","
+                        + "\"mCellIdentityCdma_mLongitude\":\"" + mCellIdentityCdma_mLongitude + "\","
+                        + "\"mCellIdentityCdma_mNetworkId\":\"" + mCellIdentityCdma_mNetworkId + "\","
+                        + "\"mCellIdentityCdma_mSystemId\":\"" + mCellIdentityCdma_mSystemId + "\","
+                        + "\"mCellSignalStrengthCdma_mCdmaDbm\":\"" + mCellSignalStrengthCdma_mCdmaDbm + "\","
+                        + "\"mCellSignalStrengthCdma_mCdmaEcio\":\"" + mCellSignalStrengthCdma_mCdmaEcio + "\","
+                        + "\"mCellSignalStrengthCdma_mEvdoDbm\":\"" + mCellSignalStrengthCdma_mEvdoDbm + "\","
+                        + "\"mCellSignalStrengthCdma_mEvdoEcio\":\"" + mCellSignalStrengthCdma_mEvdoEcio + "\","
+                        + "\"mCellSignalStrengthCdma_mEvdoSnr\":\"" + mCellSignalStrengthCdma_mEvdoSnr + "\","
+                        + "\"mCellIdentityCdma_mRegistered\":\"" + mCellIdentityCdma_mRegistered + "\","
+                        + "\"mCellIdentityCdma_mTimeStamp\":\"" + mCellIdentityCdma_mTimeStamp + "\","
+                        + "\"mCellIdentityCdma_mTimeStampType\":\"" + mCellIdentityCdma_mTimeStampType + "\","
+                        + "\"mCellIdentityLte_mCi\":\"" + mCellIdentityLte_mCi + "\","
+                        + "\"mCellIdentityLte_mEarfcn\":\"" + mCellIdentityLte_mEarfcn + "\","
+                        + "\"mCellIdentityLte_mMcc\":\"" + mCellIdentityLte_mMcc + "\","
+                        + "\"mCellIdentityLte_mMnc\":\"" + mCellIdentityLte_mMnc + "\","
+                        + "\"mCellIdentityLte_mPci\":\"" + mCellIdentityLte_mPci + "\","
+                        + "\"mCellIdentityLte_mTac\":\"" + mCellIdentityLte_mTac + "\","
+                        + "\"mCellSignalStrengthLte_mCqi\":\"" + mCellSignalStrengthLte_mCqi + "\","
+                        + "\"mCellSignalStrengthLte_mRsrp\":\"" + mCellSignalStrengthLte_mRsrp + "\","
+                        + "\"mCellSignalStrengthLte_mRsrq\":\"" + mCellSignalStrengthLte_mRsrq + "\","
+                        + "\"mCellSignalStrengthLte_mRssnr\":\"" + mCellSignalStrengthLte_mRssnr + "\","
+                        + "\"mCellSignalStrengthLte_mSignalStrength\":\"" + mCellSignalStrengthLte_mSignalStrength + "\","
+                        + "\"mCellSignalStrengthLte_mTimingAdvance\":\"" + mCellSignalStrengthLte_mTimingAdvance + "\","
+                        + "\"mCellIdentityLte_mRegistered\":\"" + mCellIdentityLte_mRegistered + "\","
+                        + "\"mCellIdentityLte_mTimeStamp\":\"" + mCellIdentityLte_mTimeStamp + "\","
+                        + "\"mCellIdentityLte_mTimeStampType\":\"" + mCellIdentityLte_mTimeStampType + "\""
                         + "}";
                 String response = null;
                 try {
@@ -210,7 +468,7 @@ public class OrderFragment extends BaseFragment {
         order_upload_data.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Runnable runnable = new Runnable(){
+                Runnable runnable = new Runnable() {
                     @Override
                     public void run() {
                         psottoweb();
@@ -221,36 +479,6 @@ public class OrderFragment extends BaseFragment {
                 Toast.makeText(getActivity().getApplicationContext(), "上传成功！！！！", Toast.LENGTH_LONG).show();
             }
         });
-    }
-
-    public void onDoublePicker(View view, Activity activity) {
-        final ArrayList<String> firstData = new ArrayList<>();
-        firstData.add("2017年5月2日星期二");
-        firstData.add("2017年5月3日星期三");
-        firstData.add("2017年5月4日星期四");
-        firstData.add("2017年5月5日星期五");
-        firstData.add("2017年5月6日星期六");
-        final ArrayList<String> secondData = new ArrayList<>();
-        secondData.add("电动自行车");
-        secondData.add("二轮摩托车");
-        secondData.add("私家小汽车");
-        secondData.add("公共交通汽车");
-        final DoublePicker picker = new DoublePicker(activity, firstData, secondData);
-        picker.setDividerVisible(true);
-        picker.setCycleDisable(false);
-        picker.setSelectedIndex(0, 0);
-        picker.setFirstLabel("于", null);
-        picker.setSecondLabel("骑/乘", "出发");
-        picker.setTextSize(12);
-        picker.setContentPadding(15, 10);
-        picker.setOnPickListener(new DoublePicker.OnPickListener() {
-            @Override
-            public void onPicked(int selectedFirstIndex, int selectedSecondIndex) {
-//                showToast(firstData.get(selectedFirstIndex) + " " + secondData.get(selectedSecondIndex));
-                Toast.makeText(getActivity().getApplicationContext(), firstData.get(selectedFirstIndex) + " " + secondData.get(selectedSecondIndex) , Toast.LENGTH_LONG).show();
-            }
-        });
-        picker.show();
     }
 
 }

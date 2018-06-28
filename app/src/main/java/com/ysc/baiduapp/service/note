@@ -1,0 +1,160 @@
+在andorid上面要获取手机网络信息一般要调用TelephonyManagerl类来获取相关信息。
+
+ MCC，Mobile Country Code，移动国家代码（中国的为460）；
+
+ MNC，Mobile Network Code，移动网络号码（中国移动为0，中国联通为1，中国电信为2）；
+
+ LAC，Location Area Code，位置区域码；
+
+ CID，Cell Identity，基站编号；
+
+ BSSS，Base station signal strength，基站信号强度。
+
+eNB  E-UTRAN Node B   为LTE系统中E-UTRAN的组成部分
+
+计算eNB的方式是 ci = eNB*256+cid
+
+首先要设置一些权限来获取
+
+<uses-permission android:name="android.permission.ACCESS_COARSE_UPDATES" />
+<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+<uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+获取TelephonyManagerl
+
+telephonymanager = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);
+先获取小区信息
+
+getNeighboringCellInfo ()已经被谷歌弃用
+
+This method was deprecated in API level 23.
+Use (@link getAllCellInfo} which returns a superset of the information from NeighboringCellInfo.
+
+StringBuilder str = new StringBuilder();
+//获取小区信息
+List<CellInfo> cellInfoList = telephonymanager.getAllCellInfo();
+str.append("小区信息:"+"\n");
+int index = 0;
+for (CellInfo cellInfo : cellInfoList)
+{
+    //获取所有Lte网络信息
+    if (cellInfo instanceof CellInfoLte)
+    {
+        str.append("["+index+"]==CellInfoLte"+"\n");
+        if(cellInfo.isRegistered()){
+            str.append("isRegistered=YES"+"\n");
+        }
+        str.append("TimeStamp:"+cellInfo.getTimeStamp()+"\n");
+        str.append(((CellInfoLte)cellInfo).getCellIdentity().toString()+"\n");
+        str.append(((CellInfoLte)cellInfo).getCellSignalStrength().toString()+"\n");
+
+    }
+    //获取所有的cdma网络信息
+    if(cellInfo instanceof CellInfoCdma){
+        str.append("["+index+"]==CellInfoCdma"+"\n");
+        if(cellInfo.isRegistered()){
+            str.append("isRegistered=YES"+"\n");
+        }
+        str.append("TimeStamp:"+cellInfo.getTimeStamp()+"\n");
+        str.append(((CellInfoCdma)cellInfo).getCellIdentity().toString()+"\n");
+        str.append(((CellInfoCdma)cellInfo).getCellSignalStrength().toString()+"\n");
+    }
+    //获取所有的Gsm网络
+    if(cellInfo instanceof CellInfoGsm){
+        str.append("["+index+"]==CellInfoGsm"+"\n");
+        if(cellInfo.isRegistered()){
+            str.append("isRegistered=YES"+"\n");
+        }
+        str.append("TimeStamp:"+cellInfo.getTimeStamp()+"\n");
+        str.append(((CellInfoGsm)cellInfo).getCellIdentity().toString()+"\n");
+        str.append(((CellInfoGsm)cellInfo).getCellSignalStrength().toString()+"\n");
+    }
+    //获取所有的Wcdma网络
+    if(cellInfo instanceof CellInfoWcdma){
+        str.append("["+index+"]==CellInfoWcdma"+"\n");
+        if(cellInfo.isRegistered()){
+            str.append("isRegistered=YES"+"\n");
+        }
+        str.append("TimeStamp:"+cellInfo.getTimeStamp()+"\n");
+        str.append(((CellInfoWcdma)cellInfo).getCellIdentity().toString()+"\n");
+        str.append(((CellInfoWcdma)cellInfo).getCellSignalStrength().toString()+"\n");
+    }
+    index++;
+}
+获取手机的位置
+
+CellLocation location = telephonymanager.getCellLocation();
+if (location != null && location instanceof GsmCellLocation) {
+    GsmCellLocation l1 = (GsmCellLocation) location;
+    str.append("使用网络:" + "Gsm" + "\n");
+    str.append("cid"+l1.getCid()+ "\n");
+    str.append("lac"+l1.getLac()+ "\n");
+    str.append("Psc"+l1.getPsc()+ "\n");
+} else if(location != null && location instanceof CdmaCellLocation){
+    CdmaCellLocation l2 = (CdmaCellLocation) location;
+    str.append(l2.toString() + "\n");
+}
+然后可以将数据显示出来
+
+小区信息:
+
+    [0]==CellInfoLte
+
+    isRegistered=YES
+
+    TimeStamp:332243302229569
+
+    CellIdentityLte:{ mMcc=460 mMnc=1 mCi=135153925 mPci=442 mTac=22789}
+
+    CellSignalStrengthLte: ss=23 rsrp=-94 rsrq=-4 rssnr=2147483647 cqi=2147483647 ta=2147483647
+
+    [1]==CellInfoLte
+
+    TimeStamp:332243302229569
+
+    CellIdentityLte:{ mMcc=2147483647 mMnc=2147483647 mCi=2147483647 mPci=456 mTac=2147483647}
+
+    CellSignalStrengthLte: ss=14 rsrp=-99 rsrq=-4 rssnr=2147483647 cqi=2147483647 ta=2147483647
+
+    [2]==CellInfoLte
+
+    TimeStamp:332243302229569
+
+    CellIdentityLte:{ mMcc=2147483647 mMnc=2147483647 mCi=2147483647 mPci=144 mTac=2147483647}
+
+    CellSignalStrengthLte: ss=17 rsrp=-110 rsrq=-20 rssnr=2147483647 cqi=2147483647 ta=2147483647
+
+    [3]==CellInfoLte
+
+    TimeStamp:332243302229569
+
+    CellIdentityLte:{ mMcc=2147483647 mMnc=2147483647 mCi=2147483647 mPci=162 mTac=2147483647}
+
+    CellSignalStrengthLte: ss=17 rsrp=-110 rsrq=-14 rssnr=2147483647 cqi=2147483647 ta=2147483647
+
+    [4]==CellInfoLte
+
+    TimeStamp:332243302229569
+
+    CellIdentityLte:{ mMcc=2147483647 mMnc=2147483647 mCi=2147483647 mPci=303 mTac=2147483647}
+
+    CellSignalStrengthLte: ss=14 rsrp=-110 rsrq=-14 rssnr=2147483647 cqi=2147483647 ta=2147483647
+
+    [5]==CellInfoLte
+
+    TimeStamp:332243302229569
+
+    CellIdentityLte:{ mMcc=2147483647 mMnc=2147483647 mCi=2147483647 mPci=2 mTac=2147483647}
+
+    CellSignalStrengthLte: ss=16 rsrp=-113 rsrq=-20 rssnr=2147483647 cqi=2147483647 ta=2147483647
+
+
+
+这是我用自己的联通4g的手机获取到的数据信息，但是我获取到的cid和在小区信息中的CellInfoLte的ci是同一个值，原因我不是很清楚。
+
+Google api中对telephonymanager.getCellLocation()的解释是
+
+Returns the current location of the device.
+
+If there is only one radio in the device and that radio has an LTE connection, this method will return null. The implementation must not to try add LTE identifiers into the existing cdma/gsm classes.
+
+In the future this call will be deprecated.
