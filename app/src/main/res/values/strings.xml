@@ -5,7 +5,7 @@
 
 
     <string name="order_Building_location">楼宇名称</string>
-    <string name="order_Building_layers">楼宇层数</string>
+    <string name="order_Building_layers">选择楼宇层数</string>
     <string name="order_Current_layer">当前层数</string>
 
 
@@ -36,7 +36,10 @@
     <string name="photo">拍照</string>
     <string name="shineng">室内场景</string>
     <string name="shiwai">室外场景</string>
+    <string name="menpaihao">门牌号</string>
+    <string name="jutimenpaihao">请输入具体门牌号</string>
     <string name="problemdes">问题描述</string>
+    <string name="jutilouyumingchen">具体楼宇名称</string>
     <string name="MultiAutoCompleteTextView">请描述问题，例如语音掉话，上网慢，玩游戏掉线等具体问题现象</string>
 
     <string name="mCellIdentityCdma_mBasestationId">BID</string>

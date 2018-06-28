@@ -1,5 +1,6 @@
 package com.ysc.baiduapp.fragment;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Message;
@@ -22,8 +23,10 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Map;
 
+import cn.qqtheme.framework.picker.DoublePicker;
 
 /**
  * Created by wjx on 2016-1-12.
@@ -219,4 +222,35 @@ public class OrderFragment extends BaseFragment {
             }
         });
     }
+
+    public void onDoublePicker(View view, Activity activity) {
+        final ArrayList<String> firstData = new ArrayList<>();
+        firstData.add("2017年5月2日星期二");
+        firstData.add("2017年5月3日星期三");
+        firstData.add("2017年5月4日星期四");
+        firstData.add("2017年5月5日星期五");
+        firstData.add("2017年5月6日星期六");
+        final ArrayList<String> secondData = new ArrayList<>();
+        secondData.add("电动自行车");
+        secondData.add("二轮摩托车");
+        secondData.add("私家小汽车");
+        secondData.add("公共交通汽车");
+        final DoublePicker picker = new DoublePicker(activity, firstData, secondData);
+        picker.setDividerVisible(true);
+        picker.setCycleDisable(false);
+        picker.setSelectedIndex(0, 0);
+        picker.setFirstLabel("于", null);
+        picker.setSecondLabel("骑/乘", "出发");
+        picker.setTextSize(12);
+        picker.setContentPadding(15, 10);
+        picker.setOnPickListener(new DoublePicker.OnPickListener() {
+            @Override
+            public void onPicked(int selectedFirstIndex, int selectedSecondIndex) {
+//                showToast(firstData.get(selectedFirstIndex) + " " + secondData.get(selectedSecondIndex));
+                Toast.makeText(getActivity().getApplicationContext(), firstData.get(selectedFirstIndex) + " " + secondData.get(selectedSecondIndex) , Toast.LENGTH_LONG).show();
+            }
+        });
+        picker.show();
+    }
+
 }

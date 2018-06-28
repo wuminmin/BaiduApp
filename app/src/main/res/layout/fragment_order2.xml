@@ -1,5 +1,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -23,7 +24,8 @@
                 android:id="@+id/iv_11"
                 android:layout_width="480dp"
                 android:layout_height="320dp"
-                android:background="@drawable/jhs2" />
+                android:background="@drawable/jhs2"
+                android:contentDescription="TODO" />
 
             <Button
                 android:id="@+id/photo"
@@ -41,22 +43,57 @@
                     android:layout_width="0dp"
                     android:layout_height="50dp"
                     android:layout_weight="0.5"
-                    android:text="@string/shineng" />
-
-
+                    android:text="@string/shineng"
+                    tools:ignore="ButtonStyle" />
 
                 <Button
                     android:id="@+id/shiwai"
                     android:layout_width="0dp"
                     android:layout_height="50dp"
                     android:layout_weight="0.5"
-                    android:text="@string/shiwai" />
+                    android:text="@string/shiwai"
+                    tools:ignore="ButtonStyle" />
             </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/grey"
+                android:text="@string/order_Building_location"/>
+
+            <MultiAutoCompleteTextView
+                android:id="@+id/jutilouyumingchen"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@color/white"
+                android:text="@string/jutilouyumingchen"
+                tools:ignore="LabelFor" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/grey"
+                android:text="@string/menpaihao"/>
+
+            <MultiAutoCompleteTextView
+                android:id="@+id/jutimenpaihao"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@color/white"
+                android:text="@string/jutimenpaihao"
+                tools:ignore="LabelFor" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="onDoublePicker"
+                android:text="@string/order_Building_layers" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:baselineAligned="false">
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -69,7 +106,8 @@
                         android:layout_width="50dp"
                         android:layout_height="50dp"
                         android:layout_gravity="center"
-                        android:background="@drawable/plan" />
+                        android:background="@drawable/plan"
+                        android:contentDescription="TODO" />
 
                     <Switch
                         android:id="@+id/switch1"
@@ -159,7 +197,7 @@
                 android:id="@+id/multiAutoCompleteTextView"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
-                android:background="@color/colorLine"
+                android:background="@color/white"
                 android:text="@string/MultiAutoCompleteTextView" />
 
         </LinearLayout>

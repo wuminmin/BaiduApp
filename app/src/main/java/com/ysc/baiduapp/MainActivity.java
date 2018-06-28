@@ -1,6 +1,7 @@
 package com.ysc.baiduapp;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -12,8 +13,10 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.telephony.TelephonyManager;
 import android.view.Menu;
+import android.view.View;
 import android.view.Window;
 import android.widget.GridView;
+import android.widget.Toast;
 
 import com.tencent.bugly.crashreport.CrashReport;
 import com.ysc.baiduapp.fragment.OrderFragment;
@@ -26,6 +29,8 @@ import com.ysc.baiduapp.viewcustom.IconTabPageIndicator;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import cn.qqtheme.framework.picker.DoublePicker;
 
 public class MainActivity extends FragmentActivity {
     public GetCellInfo getCellInfo;
@@ -161,4 +166,60 @@ public class MainActivity extends FragmentActivity {
         super.onResume();
 
     }
+
+
+    public void onDoublePicker(View view) {
+        final ArrayList<String> firstData = new ArrayList<>();
+        firstData.add("-1");
+        firstData.add("1");
+        firstData.add("2");
+        firstData.add("3");
+        firstData.add("4");
+        firstData.add("5");
+        firstData.add("6");
+        firstData.add("7");
+        firstData.add("8");
+        firstData.add("9");
+        firstData.add("10");
+        firstData.add("11");
+        firstData.add("12");
+        firstData.add("13");
+        firstData.add("14");
+        firstData.add("15");
+        final ArrayList<String> secondData = new ArrayList<>();
+        secondData.add("-1");
+        secondData.add("1");
+        secondData.add("2");
+        secondData.add("3");
+        secondData.add("4");
+        secondData.add("5");
+        secondData.add("6");
+        secondData.add("7");
+        secondData.add("8");
+        secondData.add("9");
+        secondData.add("10");
+        secondData.add("11");
+        secondData.add("12");
+        secondData.add("13");
+        secondData.add("14");
+        secondData.add("15");
+        final DoublePicker picker = new DoublePicker(this, firstData, secondData);
+        picker.setDividerVisible(true);
+        picker.setCycleDisable(false);
+        picker.setSelectedIndex(0, 0);
+        picker.setFirstLabel("当前层数", null);
+        picker.setSecondLabel("总层数", "");
+        picker.setTextSize(12);
+        picker.setContentPadding(15, 10);
+        picker.setOnPickListener(new DoublePicker.OnPickListener() {
+            @Override
+            public void onPicked(int selectedFirstIndex, int selectedSecondIndex) {
+//                showToast(firstData.get(selectedFirstIndex) + " " + secondData.get(selectedSecondIndex));
+                Toast.makeText(MainActivity.this, firstData.get(selectedFirstIndex) + " " + secondData.get(selectedSecondIndex) , Toast.LENGTH_LONG).show();
+            }
+        });
+        picker.show();
+    }
+
+
 }
