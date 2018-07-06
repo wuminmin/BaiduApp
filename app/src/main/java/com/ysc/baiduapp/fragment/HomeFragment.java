@@ -147,7 +147,7 @@ public class HomeFragment extends BaseFragment {
 //            strGetCellInfo = "[]";
             Map<String, Double> map = getCellInfo.myGps();
             if (!"null".equals(strGetCellInfo) ) {
-                String str = "无法获取基站信息";
+                String str = "0";
                 JSONArray jsonarray = new JSONArray(strGetCellInfo);
                 int length = jsonarray.length();
                 if (length == 0) {

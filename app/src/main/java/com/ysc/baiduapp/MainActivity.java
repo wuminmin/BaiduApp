@@ -1,11 +1,17 @@
 package com.ysc.baiduapp;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -15,27 +21,41 @@ import android.telephony.TelephonyManager;
 import android.view.Menu;
 import android.view.View;
 import android.view.Window;
+import android.widget.Button;
 import android.widget.GridView;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.tencent.bugly.crashreport.CrashReport;
 import com.ysc.baiduapp.fragment.OrderFragment;
 import com.ysc.baiduapp.fragment.MineFragment;
 import com.ysc.baiduapp.fragment.HomeFragment;
 import com.ysc.baiduapp.service.GetCellInfo;
+import com.ysc.baiduapp.service.LQRPhotoSelectUtils;
 import com.ysc.baiduapp.viewcustom.BaseFragment;
 import com.ysc.baiduapp.viewcustom.IconPagerAdapter;
 import com.ysc.baiduapp.viewcustom.IconTabPageIndicator;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
 import cn.qqtheme.framework.picker.DoublePicker;
 
+import kr.co.namee.permissiongen.PermissionFail;
+import kr.co.namee.permissiongen.PermissionGen;
+import kr.co.namee.permissiongen.PermissionSuccess;
+
+
 public class MainActivity extends FragmentActivity {
     public GetCellInfo getCellInfo;
     private ViewPager mViewPager;
     private IconTabPageIndicator mIndicator;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         CrashReport.initCrashReport(getApplicationContext(), "5d728085f5", true);
@@ -44,7 +64,26 @@ public class MainActivity extends FragmentActivity {
         setContentView(R.layout.activityfragement_main);
         initViews();
         initData();
+
+
+
+        /**
+         * 动态获取权限，Android 6.0 新特性，一些保护权限，除了要在AndroidManifest中声明权限，还要使用如下代码动态获取
+         */
+        if (Build.VERSION.SDK_INT >= 23) {
+            int REQUEST_CODE_CONTACT = 101;
+            String[] permissions = {Manifest.permission.WRITE_EXTERNAL_STORAGE};
+            //验证是否许可权限
+            for (String str : permissions) {
+                if (this.checkSelfPermission(str) != PackageManager.PERMISSION_GRANTED) {
+                    //申请权限
+                    this.requestPermissions(permissions, REQUEST_CODE_CONTACT);
+                    return;
+                }
+            }
+        }
     }
+
 
     private void initViews(){
         mViewPager = (ViewPager) findViewById(R.id.view_pager);
