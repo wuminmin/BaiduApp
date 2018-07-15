@@ -17,6 +17,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -57,10 +59,25 @@ public class OrderFragment extends BaseFragment {
     private ImageView mIvPic;
     private Activity activity;
     private Context context;
+    private Button btn_shineng;
+    private Button btn_shiwai;
+    private ImageView imageButton1;
+    private Switch switch1;
+    private LinearLayout switchLiner1;
+    private LinearLayout switchLiner2;
+    private LinearLayout switchLiner3;
+    private LinearLayout switchLiner4;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_order2, null, false);
+        switchLiner1 = view.findViewById(R.id.switchLiner1);
+        switchLiner2 = view.findViewById(R.id.switchLiner2);
+        switchLiner3 = view.findViewById(R.id.switchLiner3);
+        switchLiner4 = view.findViewById(R.id.switchLiner4);
+
+
+
         activity = getActivity();
         if (activity != null) {
             context = activity.getApplicationContext();
@@ -587,6 +604,28 @@ public class OrderFragment extends BaseFragment {
                 Toast.makeText(context, "上传成功！！！！", Toast.LENGTH_LONG).show();
             }
         });
+
+        btn_shineng = view.findViewById(R.id.shineng);
+        btn_shiwai = view.findViewById(R.id.shiwai);
+        btn_shineng.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                switchLiner1.setVisibility(View.VISIBLE);
+                switchLiner2.setVisibility(View.VISIBLE);
+                switchLiner3.setVisibility(View.GONE);
+                switchLiner4.setVisibility(View.GONE);
+            }
+        });
+        btn_shiwai.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                switchLiner1.setVisibility(View.GONE);
+                switchLiner2.setVisibility(View.GONE);
+                switchLiner3.setVisibility(View.VISIBLE);
+                switchLiner4.setVisibility(View.VISIBLE);
+            }
+        });
+
     }
 
 }

@@ -71,6 +71,10 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="shifouyoutieta">是否有铁塔</string>
+    <string name="shifouyouganlu">是否有杆路</string>
+    <string name="shifouyouguihua">是否有规划</string>
+    <string name="shifouyouyiwangxinhao">是否有异网信号</string>
 
 
 </resources>
