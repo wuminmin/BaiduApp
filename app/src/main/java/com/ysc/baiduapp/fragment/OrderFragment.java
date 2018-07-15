@@ -59,8 +59,6 @@ public class OrderFragment extends BaseFragment {
     private ImageView mIvPic;
     private Activity activity;
     private Context context;
-    private Button btn_shineng;
-    private Button btn_shiwai;
     private ImageView imageButton1;
     private Switch switch1;
     private LinearLayout switchLiner1;
@@ -605,8 +603,8 @@ public class OrderFragment extends BaseFragment {
             }
         });
 
-        btn_shineng = view.findViewById(R.id.shineng);
-        btn_shiwai = view.findViewById(R.id.shiwai);
+        Button btn_shineng = view.findViewById(R.id.shineng);
+        Button btn_shiwai = view.findViewById(R.id.shiwai);
         btn_shineng.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
