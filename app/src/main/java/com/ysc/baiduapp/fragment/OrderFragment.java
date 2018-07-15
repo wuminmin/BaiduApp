@@ -36,6 +36,7 @@ import org.json.JSONObject;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 
 import cn.qqtheme.framework.picker.DoublePicker;
@@ -65,6 +66,7 @@ public class OrderFragment extends BaseFragment {
     private LinearLayout switchLiner2;
     private LinearLayout switchLiner3;
     private LinearLayout switchLiner4;
+    private Map  imageMap;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -73,9 +75,7 @@ public class OrderFragment extends BaseFragment {
         switchLiner2 = view.findViewById(R.id.switchLiner2);
         switchLiner3 = view.findViewById(R.id.switchLiner3);
         switchLiner4 = view.findViewById(R.id.switchLiner4);
-
-
-
+        imageMap = new HashMap<>();
         activity = getActivity();
         if (activity != null) {
             context = activity.getApplicationContext();
@@ -108,6 +108,7 @@ public class OrderFragment extends BaseFragment {
                 // 4、当拍照或从图库选取图片成功后回调
                 mTvPath.setText(outputFile.getAbsolutePath());
                 mTvUri.setText(outputUri.toString());
+                imageMap.put("url",outputUri.toString());
                 Glide.with(OrderFragment.this).load(outputUri).into(mIvPic);
             }
         }, false);//true裁剪，false不裁剪
@@ -599,6 +600,7 @@ public class OrderFragment extends BaseFragment {
                     }
                 };
                 new Thread(runnable).start();
+                Log.e("imageUrlMap",imageMap.toString());
                 Toast.makeText(context, "上传成功！！！！", Toast.LENGTH_LONG).show();
             }
         });

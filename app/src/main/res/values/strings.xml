@@ -75,6 +75,7 @@
     <string name="shifouyouganlu">是否有杆路</string>
     <string name="shifouyouguihua">是否有规划</string>
     <string name="shifouyouyiwangxinhao">是否有异网信号</string>
+    <string name="qingshurulouyumingcheng">请输入楼宇名称</string>
 
 
 </resources>
