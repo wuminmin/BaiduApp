@@ -1,14 +1,16 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/lightbackground"
+    android:background="@color/my_beijing"
     android:orientation="vertical">
 
     <Button
         android:id="@+id/button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/button" />
+        android:background="@color/my_beijing2"
+        android:text="@string/button"
+        android:textColor="@color/white" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -24,355 +26,440 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="0dp"
-                android:background="@color/white"
-                android:orientation="vertical">
-
-
+                android:background="@color/my_beijing"
+                android:orientation="horizontal"
+                android:weightSum="2">
 
                 <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="20dp">
+                    android:layout_width="0dp"
+                    android:layout_height="20dp"
+                    android:layout_weight="1">
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginStart="10dp"
                         android:gravity="center_vertical"
-                        android:text="@string/mCellIdentityCdma_mLatitude" />
+                        android:text="@string/mCellIdentityCdma_mLatitude"
+                        android:textColor="@color/white" />
 
                     <TextView
                         android:id="@+id/mCellIdentityCdma_mLatitude"
-                        android:layout_width="250dp"
+                        android:layout_width="100dp"
                         android:layout_height="match_parent"
                         android:layout_alignParentBottom="true"
                         android:layout_alignParentEnd="true"
                         android:layout_marginEnd="10dp"
                         android:background="@null"
-                        android:textColorHint="@color/lightblack"
+                        android:textColor="@color/my_beijing2"
+                        android:textColorHint="@color/white"
                         android:textSize="14sp" />
                 </RelativeLayout>
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:background="@color/lightbackground" />
-
                 <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="20dp">
+                    android:layout_width="0dp"
+                    android:layout_height="20dp"
+                    android:layout_weight="1">
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginStart="10dp"
                         android:gravity="center_vertical"
-                        android:text="@string/mCellIdentityCdma_mLongitude" />
+                        android:text="@string/mCellIdentityCdma_mLongitude"
+                        android:textColor="@color/white" />
 
                     <TextView
                         android:id="@+id/mCellIdentityCdma_mLongitude"
-                        android:layout_width="250dp"
+                        android:layout_width="100dp"
                         android:layout_height="match_parent"
                         android:layout_alignParentBottom="true"
                         android:layout_alignParentEnd="true"
                         android:layout_marginEnd="10dp"
                         android:background="@null"
+                        android:textColor="@color/my_beijing2"
                         android:textColorHint="@color/lightblack"
                         android:textSize="14sp" />
                 </RelativeLayout>
-
-
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="2dp"
+                android:layout_height="0dp"
                 android:layout_marginTop="20dp"
                 android:background="@color/lgrey"></LinearLayout>
+
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="0dp"
-                android:background="@color/white"
-                android:orientation="vertical">
+                android:background="@color/my_beijing"
+                android:orientation="horizontal"
+                android:weightSum="2">
 
                 <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="20dp">
+                    android:layout_width="0dp"
+                    android:layout_height="20dp"
+                    android:layout_weight="1">
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginStart="10dp"
                         android:gravity="center_vertical"
-                        android:text="@string/mCellIdentityLte_mCi" />
+                        android:text="@string/mCellIdentityLte_mCi"
+                        android:textColor="@color/white" />
 
                     <TextView
                         android:id="@+id/mCellIdentityLte_mCi"
-                        android:layout_width="250dp"
+                        android:layout_width="100dp"
                         android:layout_height="match_parent"
                         android:layout_alignParentBottom="true"
                         android:layout_alignParentEnd="true"
                         android:layout_marginEnd="10dp"
                         android:background="@null"
-                        android:textColorHint="@color/lightblack"
+                        android:textColor="@color/my_beijing2"
+                        android:textColorHint="@color/white"
                         android:textSize="14sp" />
                 </RelativeLayout>
 
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:background="@color/lightbackground" />
-
                 <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="20dp">
+                    android:layout_width="0dp"
+                    android:layout_height="20dp"
+                    android:layout_weight="1">
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginStart="10dp"
                         android:gravity="center_vertical"
-                        android:text="@string/mCellIdentityLte_mEarfcn" />
+                        android:text="@string/mCellIdentityLte_mEarfcn"
+                        android:textColor="@color/white" />
 
                     <TextView
                         android:id="@+id/mCellIdentityLte_mEarfcn"
-                        android:layout_width="250dp"
+                        android:layout_width="100dp"
                         android:layout_height="match_parent"
                         android:layout_alignParentBottom="true"
                         android:layout_alignParentEnd="true"
                         android:layout_marginEnd="10dp"
                         android:background="@null"
+                        android:textColor="@color/my_beijing2"
                         android:textColorHint="@color/lightblack"
                         android:textSize="14sp" />
                 </RelativeLayout>
+            </LinearLayout>
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:background="@color/lightbackground" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:background="@color/my_beijing"
+                android:orientation="horizontal"
+                android:weightSum="2">
 
                 <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="20dp">
+                    android:layout_width="0dp"
+                    android:layout_height="20dp"
+                    android:layout_weight="1">
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginStart="10dp"
                         android:gravity="center_vertical"
-                        android:text="@string/mCellIdentityLte_mMcc" />
+                        android:text="@string/mCellIdentityLte_mMcc"
+                        android:textColor="@color/white" />
 
                     <TextView
                         android:id="@+id/mCellIdentityLte_mMcc"
-                        android:layout_width="250dp"
+                        android:layout_width="100dp"
                         android:layout_height="match_parent"
                         android:layout_alignParentBottom="true"
                         android:layout_alignParentEnd="true"
                         android:layout_marginEnd="10dp"
                         android:background="@null"
-                        android:textColorHint="@color/lightblack"
+                        android:textColor="@color/my_beijing2"
+                        android:textColorHint="@color/white"
                         android:textSize="14sp" />
                 </RelativeLayout>
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:background="@color/lightbackground" />
-
                 <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="20dp">
+                    android:layout_width="0dp"
+                    android:layout_height="20dp"
+                    android:layout_weight="1">
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginStart="10dp"
                         android:gravity="center_vertical"
-                        android:text="@string/mCellIdentityLte_mMnc" />
+                        android:text="@string/mCellIdentityLte_mMnc"
+                        android:textColor="@color/white" />
 
                     <TextView
                         android:id="@+id/mCellIdentityLte_mMnc"
-                        android:layout_width="250dp"
+                        android:layout_width="100dp"
                         android:layout_height="match_parent"
                         android:layout_alignParentBottom="true"
                         android:layout_alignParentEnd="true"
                         android:layout_marginEnd="10dp"
                         android:background="@null"
+                        android:textColor="@color/my_beijing2"
                         android:textColorHint="@color/lightblack"
                         android:textSize="14sp" />
                 </RelativeLayout>
+            </LinearLayout>
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:background="@color/lightbackground" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:background="@color/my_beijing"
+                android:orientation="horizontal"
+                android:weightSum="2">
 
                 <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="20dp">
+                    android:layout_width="0dp"
+                    android:layout_height="20dp"
+                    android:layout_weight="1">
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginStart="10dp"
                         android:gravity="center_vertical"
-                        android:text="@string/mCellIdentityLte_mPci" />
+                        android:text="@string/mCellIdentityLte_mPci"
+                        android:textColor="@color/white" />
 
                     <TextView
                         android:id="@+id/mCellIdentityLte_mPci"
-                        android:layout_width="250dp"
+                        android:layout_width="100dp"
                         android:layout_height="match_parent"
                         android:layout_alignParentBottom="true"
                         android:layout_alignParentEnd="true"
                         android:layout_marginEnd="10dp"
                         android:background="@null"
-                        android:textColorHint="@color/lightblack"
+                        android:textColor="@color/my_beijing2"
+                        android:textColorHint="@color/white"
                         android:textSize="14sp" />
                 </RelativeLayout>
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:background="@color/lightbackground" />
-
                 <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="20dp">
+                    android:layout_width="0dp"
+                    android:layout_height="20dp"
+                    android:layout_weight="1">
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginStart="10dp"
                         android:gravity="center_vertical"
-                        android:text="@string/mCellIdentityLte_mTac" />
+                        android:text="@string/mCellIdentityLte_mTac"
+                        android:textColor="@color/white" />
 
                     <TextView
                         android:id="@+id/mCellIdentityLte_mTac"
-                        android:layout_width="250dp"
+                        android:layout_width="100dp"
                         android:layout_height="match_parent"
                         android:layout_alignParentBottom="true"
                         android:layout_alignParentEnd="true"
                         android:layout_marginEnd="10dp"
                         android:background="@null"
+                        android:textColor="@color/my_beijing2"
                         android:textColorHint="@color/lightblack"
                         android:textSize="14sp" />
                 </RelativeLayout>
+            </LinearLayout>
 
-
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:background="@color/lightbackground" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:background="@color/my_beijing"
+                android:orientation="horizontal"
+                android:weightSum="2">
 
                 <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="20dp">
+                    android:layout_width="0dp"
+                    android:layout_height="20dp"
+                    android:layout_weight="1">
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginStart="10dp"
                         android:gravity="center_vertical"
-                        android:text="@string/mCellSignalStrengthLte_mRsrp" />
+                        android:text="@string/mCellSignalStrengthLte_mCqi"
+                        android:textColor="@color/white" />
+
+                    <TextView
+                        android:id="@+id/mCellSignalStrengthLte_mCqi"
+                        android:layout_width="100dp"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="10dp"
+                        android:background="@null"
+                        android:textColor="@color/my_beijing2"
+                        android:textColorHint="@color/white"
+                        android:textSize="14sp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="20dp"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="10dp"
+                        android:gravity="center_vertical"
+                        android:text="@string/mCellSignalStrengthLte_mRsrp"
+                        android:textColor="@color/white" />
 
                     <TextView
                         android:id="@+id/mCellSignalStrengthLte_mRsrp"
-                        android:layout_width="250dp"
+                        android:layout_width="100dp"
                         android:layout_height="match_parent"
                         android:layout_alignParentBottom="true"
                         android:layout_alignParentEnd="true"
                         android:layout_marginEnd="10dp"
                         android:background="@null"
+                        android:textColor="@color/my_beijing2"
                         android:textColorHint="@color/lightblack"
                         android:textSize="14sp" />
                 </RelativeLayout>
+            </LinearLayout>
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:background="@color/lightbackground" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:background="@color/my_beijing"
+                android:orientation="horizontal"
+                android:weightSum="2">
 
                 <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="20dp">
+                    android:layout_width="0dp"
+                    android:layout_height="20dp"
+                    android:layout_weight="1">
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginStart="10dp"
                         android:gravity="center_vertical"
-                        android:text="@string/mCellSignalStrengthLte_mRsrq" />
+                        android:text="@string/mCellSignalStrengthLte_mRsrq"
+                        android:textColor="@color/white" />
 
                     <TextView
                         android:id="@+id/mCellSignalStrengthLte_mRsrq"
-                        android:layout_width="250dp"
+                        android:layout_width="100dp"
                         android:layout_height="match_parent"
                         android:layout_alignParentBottom="true"
                         android:layout_alignParentEnd="true"
                         android:layout_marginEnd="10dp"
                         android:background="@null"
-                        android:textColorHint="@color/lightblack"
+                        android:textColor="@color/my_beijing2"
+                        android:textColorHint="@color/white"
                         android:textSize="14sp" />
                 </RelativeLayout>
 
-
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:background="@color/lightbackground" />
-
                 <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="20dp">
+                    android:layout_width="0dp"
+                    android:layout_height="20dp"
+                    android:layout_weight="1">
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginStart="10dp"
                         android:gravity="center_vertical"
-                        android:text="@string/mCellSignalStrengthLte_mSignalStrength" />
+                        android:text="@string/mCellSignalStrengthLte_mRssnr"
+                        android:textColor="@color/white" />
 
                     <TextView
-                        android:id="@+id/mCellSignalStrengthLte_mSignalStrength"
-                        android:layout_width="250dp"
+                        android:id="@+id/mCellSignalStrengthLte_mRssnr"
+                        android:layout_width="100dp"
                         android:layout_height="match_parent"
                         android:layout_alignParentBottom="true"
                         android:layout_alignParentEnd="true"
                         android:layout_marginEnd="10dp"
                         android:background="@null"
+                        android:textColor="@color/my_beijing2"
                         android:textColorHint="@color/lightblack"
                         android:textSize="14sp" />
                 </RelativeLayout>
+            </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:background="@color/my_beijing"
+                android:orientation="horizontal"
+                android:weightSum="2">
 
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="20dp"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="10dp"
+                        android:gravity="center_vertical"
+                        android:text="@string/mCellIdentityLte_mPci"
+                        android:textColor="@color/white" />
+
+                    <TextView
+                        android:id="@+id/mCellIdentityLte_mPci"
+                        android:layout_width="100dp"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="10dp"
+                        android:background="@null"
+                        android:textColor="@color/my_beijing2"
+                        android:textColorHint="@color/white"
+                        android:textSize="14sp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="20dp"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="10dp"
+                        android:gravity="center_vertical"
+                        android:text="@string/mCellIdentityLte_mTac"
+                        android:textColor="@color/white" />
+
+                    <TextView
+                        android:id="@+id/mCellIdentityLte_mTac"
+                        android:layout_width="100dp"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="10dp"
+                        android:background="@null"
+                        android:textColor="@color/my_beijing2"
+                        android:textColorHint="@color/lightblack"
+                        android:textSize="14sp" />
+                </RelativeLayout>
             </LinearLayout>
 
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="2dp"
+                android:layout_height="0dp"
                 android:layout_marginTop="20dp"
                 android:background="@color/lgrey"></LinearLayout>
 
@@ -380,7 +467,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="0dp"
-                android:background="@color/white"
+                android:background="@color/my_beijing"
                 android:orientation="vertical">
 
                 <RelativeLayout
@@ -393,7 +480,8 @@
                         android:layout_height="match_parent"
                         android:layout_marginStart="10dp"
                         android:gravity="center_vertical"
-                        android:text="@string/mCellIdentityCdma_mBasestationId" />
+                        android:text="@string/mCellIdentityCdma_mBasestationId"
+                        android:textColor="@color/white" />
 
                     <TextView
                         android:id="@+id/mCellIdentityCdma_mBasestationId"
@@ -403,17 +491,10 @@
                         android:layout_alignParentEnd="true"
                         android:layout_marginEnd="10dp"
                         android:background="@null"
+                        android:textColor="@color/white"
                         android:textColorHint="@color/lightblack"
                         android:textSize="14sp" />
                 </RelativeLayout>
-
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:background="@color/lightbackground" />
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -424,7 +505,8 @@
                         android:layout_height="match_parent"
                         android:layout_marginStart="10dp"
                         android:gravity="center_vertical"
-                        android:text="@string/mCellIdentityCdma_mNetworkId" />
+                        android:text="@string/mCellIdentityCdma_mNetworkId"
+                        android:textColor="@color/white" />
 
                     <TextView
                         android:id="@+id/mCellIdentityCdma_mNetworkId"
@@ -434,16 +516,10 @@
                         android:layout_alignParentEnd="true"
                         android:layout_marginEnd="10dp"
                         android:background="@null"
+                        android:textColor="@color/white"
                         android:textColorHint="@color/lightblack"
                         android:textSize="14sp" />
                 </RelativeLayout>
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:background="@color/lightbackground" />
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -454,7 +530,8 @@
                         android:layout_height="match_parent"
                         android:layout_marginStart="10dp"
                         android:gravity="center_vertical"
-                        android:text="@string/mCellIdentityCdma_mSystemId" />
+                        android:text="@string/mCellIdentityCdma_mSystemId"
+                        android:textColor="@color/white" />
 
                     <TextView
                         android:id="@+id/mCellIdentityCdma_mSystemId"
@@ -464,18 +541,10 @@
                         android:layout_alignParentEnd="true"
                         android:layout_marginEnd="10dp"
                         android:background="@null"
+                        android:textColor="@color/white"
                         android:textColorHint="@color/lightblack"
                         android:textSize="14sp" />
                 </RelativeLayout>
-
-
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:background="@color/lightbackground" />
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -486,7 +555,8 @@
                         android:layout_height="match_parent"
                         android:layout_marginStart="10dp"
                         android:gravity="center_vertical"
-                        android:text="@string/mCellSignalStrengthCdma_mCdmaDbm" />
+                        android:text="@string/mCellSignalStrengthCdma_mCdmaDbm"
+                        android:textColor="@color/white" />
 
                     <TextView
                         android:id="@+id/mCellSignalStrengthCdma_mCdmaDbm"
@@ -496,17 +566,10 @@
                         android:layout_alignParentEnd="true"
                         android:layout_marginEnd="10dp"
                         android:background="@null"
+                        android:textColor="@color/white"
                         android:textColorHint="@color/lightblack"
                         android:textSize="14sp" />
                 </RelativeLayout>
-
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:background="@color/lightbackground" />
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -517,7 +580,8 @@
                         android:layout_height="match_parent"
                         android:layout_marginStart="10dp"
                         android:gravity="center_vertical"
-                        android:text="@string/mCellSignalStrengthCdma_mCdmaEcio" />
+                        android:text="@string/mCellSignalStrengthCdma_mCdmaEcio"
+                        android:textColor="@color/white" />
 
                     <TextView
                         android:id="@+id/mCellSignalStrengthCdma_mCdmaEcio"
@@ -527,16 +591,10 @@
                         android:layout_alignParentEnd="true"
                         android:layout_marginEnd="10dp"
                         android:background="@null"
+                        android:textColor="@color/white"
                         android:textColorHint="@color/lightblack"
                         android:textSize="14sp" />
                 </RelativeLayout>
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:background="@color/lightbackground" />
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -547,7 +605,8 @@
                         android:layout_height="match_parent"
                         android:layout_marginStart="10dp"
                         android:gravity="center_vertical"
-                        android:text="@string/mCellSignalStrengthCdma_mEvdoDbm" />
+                        android:text="@string/mCellSignalStrengthCdma_mEvdoDbm"
+                        android:textColor="@color/white" />
 
                     <TextView
                         android:id="@+id/mCellSignalStrengthCdma_mEvdoDbm"
@@ -557,16 +616,10 @@
                         android:layout_alignParentEnd="true"
                         android:layout_marginEnd="10dp"
                         android:background="@null"
+                        android:textColor="@color/white"
                         android:textColorHint="@color/lightblack"
                         android:textSize="14sp" />
                 </RelativeLayout>
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:background="@color/lightbackground" />
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -577,7 +630,8 @@
                         android:layout_height="match_parent"
                         android:layout_marginStart="10dp"
                         android:gravity="center_vertical"
-                        android:text="@string/mCellSignalStrengthCdma_mEvdoEcio" />
+                        android:text="@string/mCellSignalStrengthCdma_mEvdoEcio"
+                        android:textColor="@color/white" />
 
                     <TextView
                         android:id="@+id/mCellSignalStrengthCdma_mEvdoEcio"
@@ -587,16 +641,10 @@
                         android:layout_alignParentEnd="true"
                         android:layout_marginEnd="10dp"
                         android:background="@null"
+                        android:textColor="@color/white"
                         android:textColorHint="@color/lightblack"
                         android:textSize="14sp" />
                 </RelativeLayout>
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:background="@color/lightbackground" />
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -607,7 +655,8 @@
                         android:layout_height="match_parent"
                         android:layout_marginStart="10dp"
                         android:gravity="center_vertical"
-                        android:text="@string/mCellSignalStrengthCdma_mEvdoSnr" />
+                        android:text="@string/mCellSignalStrengthCdma_mEvdoSnr"
+                        android:textColor="@color/white" />
 
                     <TextView
                         android:id="@+id/mCellSignalStrengthCdma_mEvdoSnr"
@@ -617,104 +666,11 @@
                         android:layout_alignParentEnd="true"
                         android:layout_marginEnd="10dp"
                         android:background="@null"
+                        android:textColor="@color/white"
                         android:textColorHint="@color/lightblack"
                         android:textSize="14sp" />
                 </RelativeLayout>
-
-                <!--<TextView-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="1dp"-->
-                    <!--android:layout_marginLeft="20dp"-->
-                    <!--android:layout_marginRight="20dp"-->
-                    <!--android:background="@color/lightbackground" />-->
-
-                <!--<RelativeLayout-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="20dp">-->
-
-                    <!--<TextView-->
-                        <!--android:layout_width="match_parent"-->
-                        <!--android:layout_height="match_parent"-->
-                        <!--android:layout_marginStart="10dp"-->
-                        <!--android:gravity="center_vertical"-->
-                        <!--android:text="@string/mCellIdentityCdma_mRegistered" />-->
-
-                    <!--<TextView-->
-                        <!--android:id="@+id/mCellIdentityCdma_mRegistered"-->
-                        <!--android:layout_width="250dp"-->
-                        <!--android:layout_height="match_parent"-->
-                        <!--android:layout_alignParentBottom="true"-->
-                        <!--android:layout_alignParentEnd="true"-->
-                        <!--android:layout_marginEnd="10dp"-->
-                        <!--android:background="@null"-->
-                        <!--android:textColorHint="@color/lightblack"-->
-                        <!--android:textSize="14sp" />-->
-                <!--</RelativeLayout>-->
-
-
-                <!--<TextView-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="1dp"-->
-                    <!--android:layout_marginLeft="20dp"-->
-                    <!--android:layout_marginRight="20dp"-->
-                    <!--android:background="@color/lightbackground" />-->
-
-                <!--<RelativeLayout-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="20dp">-->
-
-                    <!--<TextView-->
-                        <!--android:layout_width="match_parent"-->
-                        <!--android:layout_height="match_parent"-->
-                        <!--android:layout_marginStart="10dp"-->
-                        <!--android:gravity="center_vertical"-->
-                        <!--android:text="@string/mCellIdentityCdma_mTimeStamp" />-->
-
-                    <!--<TextView-->
-                        <!--android:id="@+id/mCellIdentityCdma_mTimeStamp"-->
-                        <!--android:layout_width="250dp"-->
-                        <!--android:layout_height="match_parent"-->
-                        <!--android:layout_alignParentBottom="true"-->
-                        <!--android:layout_alignParentEnd="true"-->
-                        <!--android:layout_marginEnd="10dp"-->
-                        <!--android:background="@null"-->
-                        <!--android:textColorHint="@color/lightblack"-->
-                        <!--android:textSize="14sp" />-->
-                <!--</RelativeLayout>-->
-
-
-                <!--<TextView-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="1dp"-->
-                    <!--android:layout_marginLeft="20dp"-->
-                    <!--android:layout_marginRight="20dp"-->
-                    <!--android:background="@color/lightbackground" />-->
-
-                <!--<RelativeLayout-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="20dp">-->
-
-                    <!--<TextView-->
-                        <!--android:layout_width="match_parent"-->
-                        <!--android:layout_height="match_parent"-->
-                        <!--android:layout_marginStart="10dp"-->
-                        <!--android:gravity="center_vertical"-->
-                        <!--android:text="@string/mCellIdentityCdma_mTimeStampType" />-->
-
-                    <!--<TextView-->
-                        <!--android:id="@+id/mCellIdentityCdma_mTimeStampType"-->
-                        <!--android:layout_width="250dp"-->
-                        <!--android:layout_height="match_parent"-->
-                        <!--android:layout_alignParentBottom="true"-->
-                        <!--android:layout_alignParentEnd="true"-->
-                        <!--android:layout_marginEnd="10dp"-->
-                        <!--android:background="@null"-->
-                        <!--android:textColorHint="@color/lightblack"-->
-                        <!--android:textSize="14sp" />-->
-                <!--</RelativeLayout>-->
             </LinearLayout>
-
         </LinearLayout>
     </ScrollView>
-
 </LinearLayout>

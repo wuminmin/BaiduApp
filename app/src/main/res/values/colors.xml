@@ -14,7 +14,7 @@
     <color name="black">#2a2a2a</color>
     <color name="lightblack">#969696</color>
 
-    <color name="lightbackground">#f2494646</color>
+    <color name="lightbackground">#ffffff</color>
 
 
     <!--头、底部 layout 背景色-->
@@ -40,4 +40,8 @@
     <color name="province_line_border">#C7C7C7</color>
     <color name="text_order_stat_1">#07C7C7</color>
     <color name="no_color">@null</color>
+
+    <color name="my_beijing">#1E1E1E</color>
+    <color name="my_beijing2">#E0B96E</color>
+
 </resources>

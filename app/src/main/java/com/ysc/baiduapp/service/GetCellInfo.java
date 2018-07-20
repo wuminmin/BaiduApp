@@ -30,6 +30,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -141,8 +142,11 @@ public class GetCellInfo {
 
                         if (location != null) {
                             Log.e("TAG", "GPS is on");
-                            map.put("getLatitude", location.getLatitude());
-                            map.put("getLongitude", location.getLongitude());
+                            DecimalFormat df = new DecimalFormat("#.000000");
+                            String getLatitude = df.format(location.getLatitude());
+                            String getLongitude = df.format(location.getLongitude());
+                            map.put("getLatitude",   Double.valueOf(getLatitude)   );
+                            map.put("getLongitude",  Double.valueOf(getLongitude)    );
                             return map;
                         } else {
                             //This is what you need:
