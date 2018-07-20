@@ -68,9 +68,6 @@ public class GetCellInfo {
                 e.printStackTrace();
             }
         }
-
-
-
     }
 
     public GetCellInfo(Context c, TelephonyManager t, FragmentActivity m) {

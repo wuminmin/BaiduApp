@@ -413,11 +413,11 @@
                         android:layout_height="match_parent"
                         android:layout_marginStart="10dp"
                         android:gravity="center_vertical"
-                        android:text="@string/mCellIdentityLte_mPci"
+                        android:text="@string/mCellSignalStrengthLte_mSignalStrength"
                         android:textColor="@color/white" />
 
                     <TextView
-                        android:id="@+id/mCellIdentityLte_mPci"
+                        android:id="@+id/mCellSignalStrengthLte_mSignalStrength"
                         android:layout_width="100dp"
                         android:layout_height="match_parent"
                         android:layout_alignParentBottom="true"
@@ -429,31 +429,6 @@
                         android:textSize="14sp" />
                 </RelativeLayout>
 
-                <RelativeLayout
-                    android:layout_width="0dp"
-                    android:layout_height="20dp"
-                    android:layout_weight="1">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginStart="10dp"
-                        android:gravity="center_vertical"
-                        android:text="@string/mCellIdentityLte_mTac"
-                        android:textColor="@color/white" />
-
-                    <TextView
-                        android:id="@+id/mCellIdentityLte_mTac"
-                        android:layout_width="100dp"
-                        android:layout_height="match_parent"
-                        android:layout_alignParentBottom="true"
-                        android:layout_alignParentEnd="true"
-                        android:layout_marginEnd="10dp"
-                        android:background="@null"
-                        android:textColor="@color/my_beijing2"
-                        android:textColorHint="@color/lightblack"
-                        android:textSize="14sp" />
-                </RelativeLayout>
             </LinearLayout>
 
 
