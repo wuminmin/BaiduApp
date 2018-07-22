@@ -5,32 +5,41 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <Button
-        android:id="@+id/order_upload_data"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/order_upload_data" />
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:weightSum="3">
 
         <Button
             android:id="@+id/shineng"
             android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_weight="0.5"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/my_beijing2"
             android:text="@string/shineng"
+            android:textColor="@color/white"
             tools:ignore="ButtonStyle" />
 
         <Button
             android:id="@+id/shiwai"
             android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_weight="0.5"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/my_beijing2"
             android:text="@string/shiwai"
+            android:textColor="@color/white"
             tools:ignore="ButtonStyle" />
+
+        <Button
+            android:id="@+id/order_upload_data"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/white"
+            android:background="@color/my_beijing2"
+            android:text="@string/order_upload_data"
+            />
     </LinearLayout>
 
     <ScrollView
@@ -42,89 +51,108 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <Button
-                android:id="@+id/btnTakePhoto"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="拍照"/>
+                android:orientation="horizontal"
+                android:weightSum="2">
 
-            <Button
-                android:id="@+id/btnSelectPhoto"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="从图库中选取"/>
+                <Button
+                    android:textColor="@color/white"
+                    android:background="@color/my_beijing"
+                    android:id="@+id/btnTakePhoto"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="拍照" />
+
+                <Button
+                    android:textColor="@color/white"
+                    android:background="@color/my_beijing"
+                    android:id="@+id/btnSelectPhoto"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="相册" />
+            </LinearLayout>
 
             <TextView
-                android:visibility="gone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="图片路径："/>
+                android:text="图片路径："
+                android:visibility="gone" />
 
             <TextView
-                android:visibility="gone"
                 android:id="@+id/tvPath"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:visibility="gone" />
 
             <TextView
-                android:visibility="gone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="图片Uri："/>
+                android:text="图片Uri："
+                android:visibility="gone" />
 
             <TextView
-                android:visibility="gone"
                 android:id="@+id/tvUri"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:visibility="gone" />
 
             <ImageView
                 android:id="@+id/ivPic"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-
+                android:layout_height="wrap_content" />
 
 
             <TextView
+                android:textColor="@color/white"
+                android:background="@color/my_beijing"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/grey"
-                android:text="@string/order_Building_location"/>
+                android:text="@string/order_Building_location" />
 
             <MultiAutoCompleteTextView
                 android:id="@+id/jutilouyumingchen"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:background="@color/white"
+                android:textColor="@color/white"
+                android:background="@color/my_beijinggray"
                 android:text=""
                 tools:ignore="LabelFor" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/grey"
-                android:text="@string/menpaihao"/>
+                android:textColor="@color/white"
+                android:background="@color/my_beijing"
+                android:text="@string/menpaihao" />
 
             <MultiAutoCompleteTextView
                 android:id="@+id/jutimenpaihao"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:background="@color/white"
+                android:textColor="@color/white"
+                android:background="@color/my_beijinggray"
                 android:text=""
                 tools:ignore="LabelFor" />
 
             <Button
+                android:textColor="@color/white"
+                android:background="@color/my_beijing"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:onClick="onDoublePicker"
                 android:text="@string/order_Building_layers" />
 
             <LinearLayout
+                android:background="@color/my_beijinggray"
                 android:id="@+id/switchLiner1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:baselineAligned="false">
+                android:baselineAligned="false"
+                android:orientation="horizontal">
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -132,15 +160,16 @@
                     android:layout_weight="0.5"
                     android:orientation="vertical">
 
-                    <ImageView
-                        android:id="@+id/imageButton1"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:layout_gravity="center"
-                        android:background="@drawable/plan"
-                        android:contentDescription="TODO" />
+                    <!--<ImageView-->
+                        <!--android:id="@+id/imageButton1"-->
+                        <!--android:layout_width="50dp"-->
+                        <!--android:layout_height="50dp"-->
+                        <!--android:layout_gravity="center"-->
+                        <!--android:background="@drawable/plan"-->
+                        <!--android:contentDescription="TODO" />-->
 
                     <Switch
+                        android:textColor="@color/white"
                         android:id="@+id/switch1"
                         android:layout_width="128dp"
                         android:layout_height="128dp"
@@ -154,14 +183,15 @@
                     android:layout_weight="0.5"
                     android:orientation="vertical">
 
-                    <ImageView
-                        android:id="@+id/imageButton2"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:layout_gravity="center"
-                        android:background="@drawable/lte" />
+                    <!--<ImageView-->
+                        <!--android:id="@+id/imageButton2"-->
+                        <!--android:layout_width="50dp"-->
+                        <!--android:layout_height="50dp"-->
+                        <!--android:layout_gravity="center"-->
+                        <!--android:background="@drawable/lte" />-->
 
                     <Switch
+                        android:textColor="@color/white"
                         android:id="@+id/switch2"
                         android:layout_width="128dp"
                         android:layout_height="128dp"
@@ -171,6 +201,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:background="@color/my_beijinggray"
                 android:id="@+id/switchLiner2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -182,14 +213,15 @@
                     android:layout_weight="0.5"
                     android:orientation="vertical">
 
-                    <ImageView
-                        android:id="@+id/imageButton3"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:layout_gravity="center"
-                        android:background="@drawable/dianti" />
+                    <!--<ImageView-->
+                        <!--android:id="@+id/imageButton3"-->
+                        <!--android:layout_width="50dp"-->
+                        <!--android:layout_height="50dp"-->
+                        <!--android:layout_gravity="center"-->
+                        <!--android:background="@drawable/dianti" />-->
 
                     <Switch
+                        android:textColor="@color/white"
                         android:id="@+id/switch3"
                         android:layout_width="128dp"
                         android:layout_height="128dp"
@@ -203,14 +235,15 @@
                     android:layout_weight="0.5"
                     android:orientation="vertical">
 
-                    <ImageView
-                        android:id="@+id/imageButton4"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:layout_gravity="center"
-                        android:background="@drawable/cheku" />
+                    <!--<ImageView-->
+                        <!--android:id="@+id/imageButton4"-->
+                        <!--android:layout_width="50dp"-->
+                        <!--android:layout_height="50dp"-->
+                        <!--android:layout_gravity="center"-->
+                        <!--android:background="@drawable/cheku" />-->
 
                     <Switch
+                        android:textColor="@color/white"
                         android:id="@+id/switch4"
                         android:layout_width="128dp"
                         android:layout_height="128dp"
@@ -220,11 +253,12 @@
             </LinearLayout>
 
             <LinearLayout
+                android:background="@color/my_beijinggray"
                 android:id="@+id/switchLiner3"
-                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:visibility="gone">
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -232,14 +266,15 @@
                     android:layout_weight="0.5"
                     android:orientation="vertical">
 
-                    <ImageView
-                        android:id="@+id/imageButton31"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:layout_gravity="center"
-                        android:background="@drawable/plan" />
+                    <!--<ImageView-->
+                        <!--android:id="@+id/imageButton31"-->
+                        <!--android:layout_width="50dp"-->
+                        <!--android:layout_height="50dp"-->
+                        <!--android:layout_gravity="center"-->
+                        <!--android:background="@drawable/plan" />-->
 
                     <Switch
+                        android:textColor="@color/white"
                         android:id="@+id/switch32"
                         android:layout_width="128dp"
                         android:layout_height="128dp"
@@ -253,14 +288,15 @@
                     android:layout_weight="0.5"
                     android:orientation="vertical">
 
-                    <ImageView
-                        android:id="@+id/imageButton33"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:layout_gravity="center"
-                        android:background="@drawable/lte" />
+                    <!--<ImageView-->
+                        <!--android:id="@+id/imageButton33"-->
+                        <!--android:layout_width="50dp"-->
+                        <!--android:layout_height="50dp"-->
+                        <!--android:layout_gravity="center"-->
+                        <!--android:background="@drawable/lte" />-->
 
                     <Switch
+                        android:textColor="@color/white"
                         android:id="@+id/switch34"
                         android:layout_width="128dp"
                         android:layout_height="128dp"
@@ -270,11 +306,12 @@
             </LinearLayout>
 
             <LinearLayout
-                android:visibility="gone"
+                android:background="@color/my_beijinggray"
                 android:id="@+id/switchLiner4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:visibility="gone">
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -282,14 +319,15 @@
                     android:layout_weight="0.5"
                     android:orientation="vertical">
 
-                    <ImageView
-                        android:id="@+id/imageButton41"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:layout_gravity="center"
-                        android:background="@drawable/tieta" />
+                    <!--<ImageView-->
+                        <!--android:id="@+id/imageButton41"-->
+                        <!--android:layout_width="50dp"-->
+                        <!--android:layout_height="50dp"-->
+                        <!--android:layout_gravity="center"-->
+                        <!--android:background="@drawable/tieta" />-->
 
                     <Switch
+                        android:textColor="@color/white"
                         android:id="@+id/switch42"
                         android:layout_width="128dp"
                         android:layout_height="128dp"
@@ -303,14 +341,15 @@
                     android:layout_weight="0.5"
                     android:orientation="vertical">
 
-                    <ImageView
-                        android:id="@+id/imageButton43"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:layout_gravity="center"
-                        android:background="@drawable/ganlu" />
+                    <!--<ImageView-->
+                        <!--android:id="@+id/imageButton43"-->
+                        <!--android:layout_width="50dp"-->
+                        <!--android:layout_height="50dp"-->
+                        <!--android:layout_gravity="center"-->
+                        <!--android:background="@drawable/ganlu" />-->
 
                     <Switch
+                        android:textColor="@color/white"
                         android:id="@+id/switch44"
                         android:layout_width="128dp"
                         android:layout_height="128dp"
@@ -320,16 +359,18 @@
             </LinearLayout>
 
             <TextView
+                android:textColor="@color/white"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/grey"
-                android:text="@string/problemdes"/>
+                android:background="@color/my_beijing"
+                android:text="@string/problemdes" />
 
             <MultiAutoCompleteTextView
                 android:id="@+id/multiAutoCompleteTextView"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
-                android:background="@color/white"
+                android:textColor="@color/white"
+                android:background="@color/my_beijinggray"
                 android:text="@string/MultiAutoCompleteTextView" />
 
         </LinearLayout>

@@ -11,16 +11,21 @@ import android.telephony.TelephonyManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ListView;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ysc.baiduapp.GridViewAdapter;
 import com.ysc.baiduapp.ListViewAdapter;
+import com.ysc.baiduapp.MyWebViewClient;
 import com.ysc.baiduapp.R;
 import com.ysc.baiduapp.WebViewFragment;
 import com.ysc.baiduapp.service.GetCellInfo;
@@ -35,6 +40,8 @@ import java.util.Map;
  * Created by wjx on 2016-1-12.
  */
 public class HomeFragment extends BaseFragment {
+    private WebView cesuWebview;
+    private ScrollView scrollXinxi;
     private GetCellInfo getCellInfo;
     private View view;
     private static final int REQUEST_READ_PHONE_STATE = 0;
@@ -72,17 +79,51 @@ public class HomeFragment extends BaseFragment {
         super.onDestroy();
     }
 
+    private void webViewInit(){
+//        cesuWebview =  view.findViewById(R.id.cesuWebview);
+
+        // Force links and redirects to open in the WebView instead of in a browser
+        cesuWebview.setWebViewClient(new WebViewClient());
+
+        // Enable Javascript
+        WebSettings webSettings = cesuWebview.getSettings();
+        webSettings.setJavaScriptEnabled(true);
+
+        // REMOTE RESOURCE
+        cesuWebview.loadUrl("http://ahdx.speedtestcustom.com/");
+        cesuWebview.setWebViewClient(new MyWebViewClient());
+
+        // LOCAL RESOURCE
+        // mWebView.loadUrl("file:///android_asset/index.html");
+    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_home, null, false);
         TelephonyManager telephonyManager = (TelephonyManager) getActivity().getSystemService(Context.TELEPHONY_SERVICE);
         getCellInfo = new GetCellInfo(getActivity().getApplicationContext(), telephonyManager, getActivity());
-        Button button = view.findViewById(R.id.button);
-        button.setOnClickListener(new View.OnClickListener() {
+        cesuWebview = view.findViewById(R.id.cesuWebview);
+        scrollXinxi = view.findViewById(R.id.scorllXinxi);
+//        webViewInit();
+        cesuWebview.setVisibility(View.GONE);
+        Button buttonXinxi = view.findViewById(R.id.xinxi);
+        Button buttonCesu = view.findViewById(R.id.cesu);
+        buttonXinxi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 //                changeToAnotherFragment();
-                Toast.makeText(getActivity().getApplicationContext(), "测速页面", Toast.LENGTH_LONG).show();
+//                Toast.makeText(getActivity().getApplicationContext(), "测速页面", Toast.LENGTH_LONG).show();
+                cesuWebview.setVisibility(View.GONE);
+                scrollXinxi.setVisibility(View.VISIBLE);
+            }
+        });
+
+        buttonCesu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                cesuWebview.setVisibility(View.VISIBLE);
+                scrollXinxi.setVisibility(View.GONE);
+                webViewInit();
             }
         });
         init();

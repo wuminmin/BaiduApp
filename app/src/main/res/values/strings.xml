@@ -36,15 +36,15 @@
     <string name="problemdes">问题描述</string>
     <string name="jutilouyumingchen">具体楼宇名称</string>
     <string name="MultiAutoCompleteTextView">请描述问题，例如语音掉话，上网慢，玩游戏掉线等具体问题现象</string>
-    <string name="mCellIdentityCdma_mBasestationId">BID</string>
     <string name="mCellIdentityCdma_mLatitude">纬度</string>
     <string name="mCellIdentityCdma_mLongitude">经度</string>
-    <string name="mCellIdentityCdma_mNetworkId">网络号</string>
+    <string name="mCellIdentityCdma_mBasestationId">BID</string>
     <string name="mCellIdentityCdma_mSystemId">SID</string>
-    <string name="mCellSignalStrengthCdma_mCdmaDbm">CDMA RX</string>
-    <string name="mCellSignalStrengthCdma_mCdmaEcio">CDMA EC/IO</string>
-    <string name="mCellSignalStrengthCdma_mEvdoDbm">EVDO DBM</string>
-    <string name="mCellSignalStrengthCdma_mEvdoEcio">EVDO EC/IO</string>
+    <string name="mCellIdentityCdma_mNetworkId">网络号</string>
+    <string name="mCellSignalStrengthCdma_mCdmaDbm">C网RX</string>
+    <string name="mCellSignalStrengthCdma_mCdmaEcio">C王EC/IO</string>
+    <string name="mCellSignalStrengthCdma_mEvdoDbm">C网DBM</string>
+    <string name="mCellSignalStrengthCdma_mEvdoEcio">C网EC/IO</string>
     <string name="mCellSignalStrengthCdma_mEvdoSnr">EVDO SNR</string>
     <string name="mCellIdentityCdma_mRegistered">注册小区</string>
     <string name="mCellIdentityCdma_mTimeStamp">时间</string>
@@ -68,4 +68,6 @@
     <string name="shifouyouguihua">是否有规划</string>
     <string name="shifouyouyiwangxinhao">是否有异网信号</string>
     <string name="qingshurulouyumingcheng">请输入楼宇名称</string>
+    <string name="xinxi">手机信息</string>
+    <string name="cesu">测试网速</string>
 </resources>
