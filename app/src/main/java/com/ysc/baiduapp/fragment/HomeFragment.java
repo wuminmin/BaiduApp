@@ -91,7 +91,9 @@ public class HomeFragment extends BaseFragment {
 
         // REMOTE RESOURCE
         cesuWebview.loadUrl("http://ahdx.speedtestcustom.com/");
-        cesuWebview.setWebViewClient(new MyWebViewClient());
+//        cesuWebview.loadUrl("http://www.baidu.com/");
+
+//        cesuWebview.setWebViewClient(new MyWebViewClient());
 
         // LOCAL RESOURCE
         // mWebView.loadUrl("file:///android_asset/index.html");
