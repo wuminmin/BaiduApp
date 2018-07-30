@@ -18,6 +18,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ScrollView;
 import android.widget.TextView;
@@ -107,8 +108,8 @@ public class HomeFragment extends BaseFragment {
         scrollXinxi = view.findViewById(R.id.scorllXinxi);
 //        webViewInit();
         cesuWebview.setVisibility(View.GONE);
-        Button buttonXinxi = view.findViewById(R.id.xinxi);
-        Button buttonCesu = view.findViewById(R.id.cesu);
+        ImageView buttonXinxi = view.findViewById(R.id.xinxi);
+        ImageView buttonCesu = view.findViewById(R.id.cesu);
         buttonXinxi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -122,7 +123,6 @@ public class HomeFragment extends BaseFragment {
         buttonCesu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 cesuWebview.setVisibility(View.VISIBLE);
                 scrollXinxi.setVisibility(View.GONE);
                 webViewInit();

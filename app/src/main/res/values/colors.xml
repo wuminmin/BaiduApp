@@ -44,5 +44,7 @@
     <color name="my_beijing">#1E1E1E</color>
     <color name="my_beijing2">#E0B96E</color>
     <color name="my_beijinggray">#5c5b5b</color>
-
+    <color name="my_bule">#015BA9</color>
+    <color name="my_gray">#777879</color>
+    <color name="my_orange">#fa6e03</color>
 </resources>

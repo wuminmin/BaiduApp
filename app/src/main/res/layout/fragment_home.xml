@@ -5,36 +5,70 @@
     android:orientation="vertical">
 
     <LinearLayout
+        android:background="@color/my_beijing"
+        android:weightSum="6"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <Button
-            android:background="@color/my_beijing2"
-            android:textColor="@color/white"
+        <ImageView
             android:id="@+id/xinxi"
+            android:src="@drawable/dianxin"
+            android:textColor="@color/white"
             android:layout_width="0dp"
             android:layout_height="50dp"
-            android:layout_weight="0.5"
-            android:text="@string/xinxi"
-        />
+            android:layout_weight="1"
+            />
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_weight="3"
+            android:layout_height="wrap_content">
 
-        <Button
-            android:background="@color/my_beijing2"
+            <TextView
+                android:gravity="center"
+                android:textSize="20sp"
+                android:text="@string/app_tittle"
+                android:textColor="@color/white"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <TextView
+                android:gravity="center"
+                android:textSize="12sp"
+                android:text="@string/banbeng"
+                android:textColor="@color/white"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:src="@drawable/speedtest2"
             android:textColor="@color/white"
             android:id="@+id/cesu"
             android:layout_width="0dp"
             android:layout_height="50dp"
-            android:layout_weight="0.5"
-            android:text="@string/cesu"
+            android:layout_weight="1"
              />
+
+        <ImageView
+            android:src="@drawable/map"
+            android:textColor="@color/white"
+            android:id="@+id/ditu"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:text="@string/cesu"
+            />
     </LinearLayout>
 
     <WebView
-
         android:id="@+id/cesuWebview"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+
+
 
     <ScrollView
         android:id="@+id/scorllXinxi"
