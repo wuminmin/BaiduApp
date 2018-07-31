@@ -8,9 +8,11 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.telephony.TelephonyManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.JavascriptInterface;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -24,6 +26,10 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapView;
+import com.google.android.gms.maps.MapsInitializer;
+import com.google.android.gms.maps.OnMapReadyCallback;
 import com.ysc.baiduapp.GridViewAdapter;
 import com.ysc.baiduapp.ListViewAdapter;
 import com.ysc.baiduapp.MyWebViewClient;
@@ -40,14 +46,19 @@ import java.util.Map;
 /**
  * Created by wjx on 2016-1-12.
  */
-public class HomeFragment extends BaseFragment {
+public class HomeFragment extends BaseFragment implements OnMapReadyCallback {
+    MapView mMapView;
+    GoogleMap map;
     private WebView cesuWebview;
+    private WebView xinxiWebview;
     private ScrollView scrollXinxi;
+    private com.google.android.gms.maps.MapView mapView;
     private GetCellInfo getCellInfo;
     private View view;
     private static final int REQUEST_READ_PHONE_STATE = 0;
     private static final int MY_PERMISSIONS_REQUEST_ACCESS_COARSE_LOCATION = 0;
     private TextView msg;
+    private Bundle bundle;
     private Handler handler = new Handler();
     private Runnable runnable = new Runnable() {
         public void run() {
@@ -56,7 +67,8 @@ public class HomeFragment extends BaseFragment {
         }
         void update() {
             //刷新msg的内容
-            init();
+//            init();
+//            cesuWebview.loadUrl("http://ahdx.speedtestcustom.com/");
         }
     };
 
@@ -80,43 +92,88 @@ public class HomeFragment extends BaseFragment {
         super.onDestroy();
     }
 
-    private void webViewInit(){
+    private void cesuWebViewInit(){
 //        cesuWebview =  view.findViewById(R.id.cesuWebview);
-
         // Force links and redirects to open in the WebView instead of in a browser
         cesuWebview.setWebViewClient(new WebViewClient());
-
         // Enable Javascript
         WebSettings webSettings = cesuWebview.getSettings();
         webSettings.setJavaScriptEnabled(true);
-
         // REMOTE RESOURCE
+//        cesuWebview.loadUrl("file:///android_asset/indexBase.html?a=1");
         cesuWebview.loadUrl("http://ahdx.speedtestcustom.com/");
 //        cesuWebview.loadUrl("http://www.baidu.com/");
-
 //        cesuWebview.setWebViewClient(new MyWebViewClient());
-
         // LOCAL RESOURCE
-        // mWebView.loadUrl("file:///android_asset/index.html");
+//        cesuWebview.loadUrl("file:///android_asset/index.html");
     }
+
+    private void xinxiWebViewInit(){
+//        cesuWebview =  view.findViewById(R.id.cesuWebview);
+        // Force links and redirects to open in the WebView instead of in a browser
+        xinxiWebview.setWebViewClient(new WebViewClient());
+        // Enable Javascript
+        WebSettings webSettings = xinxiWebview.getSettings();
+        webSettings.setJavaScriptEnabled(true);
+
+        final String json="{title1:孔子,title2:孟子,title3:庄子}";
+        xinxiWebview.addJavascriptInterface(new Object() {
+            //@param message:  html页面传进来的数据
+            @JavascriptInterface
+            public String getLocationData(String message) {
+                return json; // 把本地数据弄成json串，传给html
+            }
+
+        }, "MyBrowserAPI");//MyBrowserAPI:自定义的js函数名
+
+        xinxiWebview.loadUrl("file:///android_asset/xinxi.html");
+//        cesuWebview.loadUrl("http://ahdx.speedtestcustom.com/");
+//        cesuWebview.loadUrl("http://www.baidu.com/");
+//        cesuWebview.setWebViewClient(new MyWebViewClient());
+        // LOCAL RESOURCE
+//        cesuWebview.loadUrl("file:///android_asset/index.html");
+    }
+
+    private void MapViewInit(Bundle savedInstanceState){
+        try {
+            MapsInitializer.initialize(this.getActivity());
+        mMapView = (MapView) view.findViewById(R.id.mapView);
+        mMapView.onCreate(savedInstanceState);
+        mMapView.getMapAsync(this);
+    }
+catch (Exception e){
+        Log.e("地图报错", "Inflate exception");
+    }
+}
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_home, null, false);
         TelephonyManager telephonyManager = (TelephonyManager) getActivity().getSystemService(Context.TELEPHONY_SERVICE);
         getCellInfo = new GetCellInfo(getActivity().getApplicationContext(), telephonyManager, getActivity());
         cesuWebview = view.findViewById(R.id.cesuWebview);
+        xinxiWebview = view.findViewById(R.id.xinxiWebview);
         scrollXinxi = view.findViewById(R.id.scorllXinxi);
+        mapView = view.findViewById(R.id.mapView);
+        bundle = savedInstanceState;
+
 //        webViewInit();
+        scrollXinxi.setVisibility(View.GONE);
         cesuWebview.setVisibility(View.GONE);
+        mapView.setVisibility(View.GONE);
         ImageView buttonXinxi = view.findViewById(R.id.xinxi);
         ImageView buttonCesu = view.findViewById(R.id.cesu);
+        ImageView buttonDitu = view.findViewById(R.id.ditu);
         buttonXinxi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 //                changeToAnotherFragment();
 //                Toast.makeText(getActivity().getApplicationContext(), "测速页面", Toast.LENGTH_LONG).show();
                 cesuWebview.setVisibility(View.GONE);
-                scrollXinxi.setVisibility(View.VISIBLE);
+                xinxiWebview.setVisibility(View.VISIBLE);
+                mapView.setVisibility(View.GONE);
+                xinxiWebViewInit();
+
             }
         });
 
@@ -124,10 +181,23 @@ public class HomeFragment extends BaseFragment {
             @Override
             public void onClick(View view) {
                 cesuWebview.setVisibility(View.VISIBLE);
-                scrollXinxi.setVisibility(View.GONE);
-                webViewInit();
+                xinxiWebview.setVisibility(View.GONE);
+                mapView.setVisibility(View.GONE);
+                cesuWebViewInit();
             }
         });
+
+        buttonDitu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                cesuWebview.setVisibility(View.GONE);
+                xinxiWebview.setVisibility(View.GONE);
+                mapView.setVisibility(View.VISIBLE);
+                MapViewInit(bundle);
+
+            }
+        });
+
         init();
         handler.postDelayed(runnable, 1000 * 5);
         return view;
@@ -479,4 +549,8 @@ public class HomeFragment extends BaseFragment {
         }
     }
 
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+
+    }
 }

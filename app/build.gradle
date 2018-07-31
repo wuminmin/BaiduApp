@@ -5,7 +5,7 @@ android {
     buildToolsVersion "27.0.3"
     defaultConfig {
         applicationId "com.ysc.baiduapp"
-        minSdkVersion 26
+        minSdkVersion 23
         targetSdkVersion 27
         versionCode 1
         versionName "1.0"
@@ -38,4 +38,5 @@ dependencies {
     implementation 'com.lovedise:permissiongen:0.0.6'
     implementation 'com.github.bumptech.glide:glide:3.7.0'
 //    implementation 'cn.qqtheme.framework:DoublePicker:1.5.6'
+    implementation 'com.google.android.gms:play-services-maps:15.0.1'
 }

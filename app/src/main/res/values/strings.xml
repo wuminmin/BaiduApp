@@ -72,4 +72,19 @@
     <string name="xinxi">手机信息</string>
     <string name="cesu">测试网速</string>
     <string name="banbeng">V 1.0.0</string>
+    <string name="shoujipinpai">手机品牌</string>
+    <string name="shoujixinghao">手机型号</string>
+    <string name="shoujibanben">手机版本</string>
+    <string name="yingjianbanben">硬件版本</string>
+    <string name="xitongbanben">系统版本</string>
+    <string name="shoujidianliang">手机电量</string>
+    <string name="wangluoleixing">网络类型</string>
+    <string name="shoujixinxi">手机信息：</string>
+    <string name="dingweixinxi">定位信息：</string>
+    <string name="dingweijingdu">定位精度</string>
+    <string name="dingweifangshi">定位方式</string>
+    <string name="dingweidizhi">定位地址</string>
+    <string name="fuwuxinxi">服务信息：</string>
+    <string name="xinhaoqiangdu">信号强度：</string>
+    <string name="lishishuju">历史数据：</string>
 </resources>
