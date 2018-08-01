@@ -156,6 +156,7 @@ catch (Exception e){
         scrollXinxi = view.findViewById(R.id.scorllXinxi);
         mapView = view.findViewById(R.id.mapView);
         bundle = savedInstanceState;
+        xinxiWebViewInit();
 
 //        webViewInit();
         scrollXinxi.setVisibility(View.GONE);

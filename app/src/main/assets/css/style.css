@@ -3343,7 +3343,7 @@ a.forum-item-title:hover {
 body {
     font-family: "open sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 13px;
-    color: #676a6c;
+    color: #ffffff;
     overflow-x: hidden;
 }
 
@@ -4021,24 +4021,24 @@ code {
     -moz-border-left-colors: none;
     -moz-border-right-colors: none;
     -moz-border-top-colors: none;
-    background-color: #ffffff;
-    border-color: #e7eaec;
+    background-color: #262626;
+    border-color: #262626;
     -webkit-border-image: none;
     -o-border-image: none;
     border-image: none;
     border-style: solid solid none;
-    border-width: 4px 0px 0;
+    border-width: 4px 4px 0px;
     color: inherit;
     margin-bottom: 0;
     padding: 14px 15px 7px;
-    min-height: 48px;
+    min-height: 18px;
 }
 
 .ibox-content {
-    background-color: #ffffff;
+    background-color: #1E1E1E;
     color: inherit;
     padding: 15px 20px 20px 20px;
-    border-color: #e7eaec;
+    border-color: #1E1E1E;
     -webkit-border-image: none;
     -o-border-image: none;
     border-image: none;
@@ -7890,3 +7890,5 @@ body.skin-3 {
         font-size: 12px
     }
 }
+
+
