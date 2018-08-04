@@ -36,6 +36,7 @@ import com.ysc.baiduapp.MyWebViewClient;
 import com.ysc.baiduapp.R;
 import com.ysc.baiduapp.WebViewFragment;
 import com.ysc.baiduapp.service.GetCellInfo;
+import com.ysc.baiduapp.service.MyTest;
 import com.ysc.baiduapp.viewcustom.BaseFragment;
 
 import org.json.JSONArray;
@@ -117,7 +118,9 @@ public class HomeFragment extends BaseFragment implements OnMapReadyCallback {
         WebSettings webSettings = xinxiWebview.getSettings();
         webSettings.setJavaScriptEnabled(true);
         String rsrp = getCellInfo.getRsrp();
-        String rsrpstirng = "[1, 34], [2, 0],  [3, 0],  [4, 34],  [5, 32], [6, "+rsrp+"]";
+        MyTest myTest = new MyTest();
+
+        String rsrpstirng = "[1, -90], [2, -98],  [3, -80],  [4, -85],  [5, "+myTest.getSec()+"], [6, "+rsrp+"]";
 //        final String json = "[1, 34], [2, 0],  [3, 0],    [4, 34],    [5, 32],   [6, 0]";
         final String json = rsrpstirng;
                 xinxiWebview.addJavascriptInterface(new Object() {
