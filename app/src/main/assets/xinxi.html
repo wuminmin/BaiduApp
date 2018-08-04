@@ -125,6 +125,16 @@
     </tr>
     </tbody>
 </table>
+<table class="table">
+    <thead>
+    <tr>
+        <th>信号强度：</th>
+        <th>RSRP</th>
+        <th>RSRQ</th>
+        <th>RX</th>
+    </tr>
+    </thead>
+</table>
 <div class="ibox float-e-margins">
     <div class="ibox-content">
         <div class="flot-chart">
@@ -133,11 +143,17 @@
     </div>
 </div>
 
+<div>
+    <input  value="点我试试"   onclick="getData()"/>
+</div>
+<div>
+    <p id="test">没有数据</p>
+</div>
+
+
 <!-- 全局js -->
 <script src="file:///android_asset/js/jquery.min.js?v=2.1.4"></script>
 <script src="file:///android_asset/js/bootstrap.min.js?v=3.3.6"></script>
-
-
 
 <!-- Flot -->
 <script src="file:///android_asset/js/plugins/flot/jquery.flot.js"></script>
@@ -145,11 +161,19 @@
 <script src="file:///android_asset/js/plugins/flot/jquery.flot.resize.js"></script>
 <script src="file:///android_asset/js/plugins/flot/jquery.flot.pie.js"></script>
 
-
-
 <!-- Flot demo data -->
 <script src="file:///android_asset/js/demo/flot-demo.js"></script>
 
+
+<script language="javascript">
+    function  showjson(json){
+        document.getElementById("test").innerHTML=json;
+        }
+    function getData(){ //调用Android中自定义的拍照JavaScript接口
+        var json=window.MyBrowserAPI.getLocationData("从页面传给手机的message");//拿到本地数据,并可以传给手机一些内容，可选
+        showjson(json); //在页面上显示出结果
+        }
+</script>
 
 </body>
 
