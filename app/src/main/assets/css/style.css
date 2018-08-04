@@ -2420,7 +2420,6 @@ table.dataTable thead .sorting:after {
     right: 0px;
 }
 
-
 /* Nestable list */
 
 .dd {
@@ -3342,14 +3341,14 @@ a.forum-item-title:hover {
 
 body {
     font-family: "open sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 13px;
+    font-size: 10px;
     color: #ffffff;
     overflow-x: hidden;
 }
 
 html,
 body {
-    height: 100%;
+    height: 10%;
 }
 
 body.full-height-layout #wrapper,
@@ -5344,6 +5343,12 @@ dd.project-people {
     color: #676a6c;
     font-weight: 600;
 }
+
+table tr{
+   height: 10px;
+}
+
+
 
 .project-list table tr td {
     border-top: none;

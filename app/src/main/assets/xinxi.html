@@ -7,223 +7,149 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
-    <title>H+ 后台主题UI框架 - Bootstrap Table</title>
+    <title>H+ 后台主题UI框架 - Flot图表</title>
     <meta name="keywords" content="H+后台主题,后台bootstrap框架,会员中心主题,后台HTML,响应式后台">
     <meta name="description" content="H+是一个完全响应式，基于Bootstrap3最新版本开发的扁平化主题，她采用了主流的左右两栏式布局，使用了Html5+CSS3等现代技术">
 
-    <link rel="shortcut icon" href="file:///android_asset/favicon.ico">
-    <link href="file:///android_asset/css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link rel="shortcut icon" href="favicon.ico"> <link href="file:///android_asset/css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
     <link href="file:///android_asset/css/font-awesome.css?v=4.4.0" rel="stylesheet">
-    <link href="file:///android_asset/css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+
     <link href="file:///android_asset/css/animate.css" rel="stylesheet">
     <link href="file:///android_asset/css/style.css?v=4.1.0" rel="stylesheet">
-
 
 </head>
 
 <body class="black-bg">
-<div class="wrapper wrapper-content animated fadeInRight">
-    <div class="row black-bg ">
-        <div class="ibox float-e-margins black-bg ">
-            <div class="ibox-title black-bg">
-                <h5 class="black-bg">手机信息:</h5>
-            </div>
-            <div class="ibox-content">
-                <table class="table">
-                    <tbody>
-                    <tr>
-                        <td>品牌</td>
-                        <td>xiaoxi</td>
-                        <td>型号</td>
-                        <td>MIX2</td>
-                    </tr>
-                    <tr>
-                        <td>硬件</td>
-                        <td></td>
-                        <td>安卓版本</td>
-                        <td>8.0</td>
-                    </tr>
-                    <tr>
-                        <td>网络类型</td>
-                        <td>4G</td>
-                        <td>手机类型</td>
-                        <td>安卓</td>
-                    </tr>
-                    </tbody>
-                </table>
+<table class="table">
+    <thead style="
+    height: 10px;">
+    <tr>
+        <th >手机信息：</th>
+    </tr>
+    </thead>
+    <tbody>
 
-            </div>
+    <tr>
+        <td>品牌</td>
+        <td>xiaoxi</td>
+        <td>型号</td>
+        <td>MIX2</td>
+    </tr>
+    <tr>
+        <td>硬件</td>
+        <td></td>
+        <td>安卓版本</td>
+        <td>8.0</td>
+    </tr>
+    <tr>
+        <td>网络类型</td>
+        <td>4G</td>
+        <td>手机类型</td>
+        <td>安卓</td>
+    </tr>
+    </tbody>
+</table>
+<table class="table">
+    <thead>
+    <tr>
+        <th>网络定位：</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>经度</td>
+        <td>117.30</td>
+        <td>纬度</td>
+        <td>30.30</td>
+    </tr>
+    <tr>
+        <td>定位精度</td>
+        <td>100米</td>
+        <td>定位方式</td>
+        <td>GPS</td>
+    </tr>
+    </tbody>
+
+</table>
+<table class="table">
+    <tbody>
+    <tr>
+        <td>定位地址</td>
+        <td>某某省某某市某某小区某某栋1106号</td>
+    </tr>
+    </tbody>
+</table>
+<table class="table">
+    <thead>
+    <tr>
+        <th>服务小区：</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>数据网</td>
+        <td>LTE</td>
+        <td>小区类型</td>
+        <td>LTE</td>
+    </tr>
+    <tr>
+        <td>TAC</td>
+        <td>6245</td>
+        <td>PCI</td>
+        <td>12</td>
+    </tr>
+    <tr>
+        <td>ECI</td>
+        <td>6245</td>
+        <td>BAND</td>
+        <td>1</td>
+    </tr>
+    <tr>
+        <td>EARFCN</td>
+        <td>6245</td>
+        <td>FREQUENCY</td>
+        <td>1</td>
+    </tr>
+    </tr>
+    <tr>
+        <td>NID</td>
+        <td>3</td>
+        <td>BID</td>
+        <td>53347</td>
+    </tr>
+    <tr>
+        <td>SID</td>
+        <td>13824</td>
+        <td></td>
+        <td></td>
+    </tr>
+    </tbody>
+</table>
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="flot-chart">
+            <div class="flot-chart-content" id="flot-line-chart"></div>
         </div>
-
-        <div class="ibox float-e-margins black-bg">
-            <div class="ibox-title black-bg">
-                <h5 class="black-bg">网络定位：</h5>
-            </div>
-            <div class="ibox-content">
-                <table class="table">
-                    <tbody>
-                    <tr>
-                        <td>经度</td>
-                        <td>117.30</td>
-                        <td>纬度</td>
-                        <td>30.30</td>
-                    </tr>
-                    <tr>
-                        <td>定位精度</td>
-                        <td>100米</td>
-                        <td>定位方式</td>
-                        <td>GPS</td>
-                    </tr>
-                    </tbody>
-
-                </table>
-                <table class="table">
-                    <tbody>
-                    <tr>
-                        <td>定位地址</td>
-                        <td>某某省某某市某某小区某某栋1106号</td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <div class="ibox float-e-margins black-bg">
-            <div class="ibox-title black-bg">
-                <h5 class="black-bg">服务信息：</h5>
-            </div>
-            <div class="ibox-content">
-                <table class="table">
-                    <tbody>
-                    <tr>
-                        <td>数据网</td>
-                        <td>LTE</td>
-                        <td>小区类型</td>
-                        <td>LTE</td>
-                    </tr>
-                    <tr>
-                        <td>TAC</td>
-                        <td>6245</td>
-                        <td>PCI</td>
-                        <td>12</td>
-                    </tr>
-                    <tr>
-                        <td>ECI</td>
-                        <td>6245</td>
-                        <td>BAND</td>
-                        <td>1</td>
-                    </tr>
-                    <tr>
-                        <td>EARFCN</td>
-                        <td>6245</td>
-                        <td>FREQUENCY</td>
-                        <td>1</td>
-                    </tr>
-                    </tr>
-                    <tr>
-                        <td>NID</td>
-                        <td>3</td>
-                        <td>BID</td>
-                        <td>53347</td>
-                    </tr>
-                    <tr>
-                        <td>SID</td>
-                        <td>13824</td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <div class="ibox float-e-margins">
-                    <div class="ibox-title">
-                        <h5>动态图</h5>
-                        <div class="ibox-tools">
-                            <a class="collapse-link">
-                                <i class="fa fa-chevron-up"></i>
-                            </a>
-                            <a class="dropdown-toggle" data-toggle="dropdown" href="graph_flot.html#">
-                                <i class="fa fa-wrench"></i>
-                            </a>
-                            <ul class="dropdown-menu dropdown-user">
-                                <li><a href="graph_flot.html#">选项1</a>
-                                </li>
-                                <li><a href="graph_flot.html#">选项2</a>
-                                </li>
-                            </ul>
-                            <a class="close-link">
-                                <i class="fa fa-times"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="ibox-content">
-
-                        <div class="flot-chart">
-                            <div class="flot-chart-content" id="flot-line-chart-moving"></div>
-                        </div>
-                    </div>
-                </div>
-
-
-
-        <div class="ibox float-e-margins">
-                    <div class="ibox-title">
-                        <h5>多轴线图表示例</h5>
-                        <div class="ibox-tools">
-                            <a class="collapse-link">
-                                <i class="fa fa-chevron-up"></i>
-                            </a>
-                            <a class="dropdown-toggle" data-toggle="dropdown" href="graph_flot.html#">
-                                <i class="fa fa-wrench"></i>
-                            </a>
-                            <ul class="dropdown-menu dropdown-user">
-                                <li><a href="graph_flot.html#">选项1</a>
-                                </li>
-                                <li><a href="graph_flot.html#">选项2</a>
-                                </li>
-                            </ul>
-                            <a class="close-link">
-                                <i class="fa fa-times"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="ibox-content">
-                        <div class="flot-chart">
-                            <div class="flot-chart-content" id="flot-line-chart-multi"></div>
-                        </div>
-                    </div>
-                </div>
-
-
-
     </div>
-
-
 </div>
 
 <!-- 全局js -->
 <script src="file:///android_asset/js/jquery.min.js?v=2.1.4"></script>
 <script src="file:///android_asset/js/bootstrap.min.js?v=3.3.6"></script>
 
-<!-- Bootstrap table -->
-<script src="file:///android_asset/js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
-<script src="file:///android_asset/js/plugins/bootstrap-table/bootstrap-table-mobile.min.js"></script>
-<script src="file:///android_asset/js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
-
-    <!-- Flot -->
-    <script src="file:///android_asset/js/plugins/flot/jquery.flot.js"></script>
-    <script src="file:///android_asset/js/plugins/flot/jquery.flot.tooltip.min.js"></script>
-    <script src="file:///android_asset/js/plugins/flot/jquery.flot.resize.js"></script>
-    <script src="file:///android_asset/js/plugins/flot/jquery.flot.pie.js"></script>
-
-    <!-- 自定义js -->
-    <script src="file:///android_asset/js/content.js?v=1.0.0"></script>
 
 
-    <!-- Flot demo data -->
-    <script src="file:///android_asset/js/demo/flot-demo.js"></script>
+<!-- Flot -->
+<script src="file:///android_asset/js/plugins/flot/jquery.flot.js"></script>
+<script src="file:///android_asset/js/plugins/flot/jquery.flot.tooltip.min.js"></script>
+<script src="file:///android_asset/js/plugins/flot/jquery.flot.resize.js"></script>
+<script src="file:///android_asset/js/plugins/flot/jquery.flot.pie.js"></script>
+
+
+
+<!-- Flot demo data -->
+<script src="file:///android_asset/js/demo/flot-demo.js"></script>
+
 
 </body>
 
