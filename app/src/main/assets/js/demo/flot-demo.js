@@ -86,20 +86,20 @@ $(function () {
     };
     var obj = JSON.parse('[ { "1":"34"},{ "2": "6"},{"3":"19"},{"4":"34"},{"5":"32"},{"6":"44" }  ]');
     var myString = '[1, 34], [2, 0],  [3, 19],    [4, 34],    [5, 32],   [6, 44] ';
-    var json = window.MyBrowserAPI.getLocationData("从页面传给手机的message");//拿到本地数据,并可以传给手机一些内容，可选
-    var arr = eval("[" + json + "]");
+    // var json = window.MyBrowserAPI.getLocationData("从页面传给手机的message");//拿到本地数据,并可以传给手机一些内容，可选
+    // var arr = eval("[" + json + "]");
 
     var barData = {
         label: "bar",
-        data: arr,
-        // data: [
-        //     [1, 34],
-        //     [2, 0],
-        //     [3, 19],
-        //     [4, 34],
-        //     [5, 32],
-        //     [6, 44]
-        // ]
+        // data: arr,
+        data: [
+            [1, 34],
+            [2, 0],
+            [3, 19],
+            [4, 34],
+            [5, 32],
+            [6, 44]
+        ]
     };
 
     console.log(barData.toString());

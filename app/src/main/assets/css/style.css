@@ -3341,7 +3341,7 @@ a.forum-item-title:hover {
 
 body {
     font-family: "open sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 10px;
+    font-size: 12px;
     color: #ffffff;
     overflow-x: hidden;
 }
@@ -3733,13 +3733,13 @@ nav.page-tabs .page-tabs-content {
 /* TABLES */
 
 .table-bordered {
-    border: 1px solid #EBEBEB;
+    /*border: 1px solid #EBEBEB;*/
 }
 
 .table-bordered > thead > tr > th,
 .table-bordered > thead > tr > td {
-    background-color: #F5F5F6;
-    border-bottom-width: 1px;
+    /*background-color: #F5F5F6;*/
+    /*border-bottom-width: 1px;*/
 }
 
 .table-bordered > thead > tr > th,
@@ -3748,12 +3748,12 @@ nav.page-tabs .page-tabs-content {
 .table-bordered > thead > tr > td,
 .table-bordered > tbody > tr > td,
 .table-bordered > tfoot > tr > td {
-    border: 1px solid #e7e7e7;
+    /*border: 1px solid #e7e7e7;*/
 }
 
 .table > thead > tr > th {
-    border-bottom: 1px solid #DDDDDD;
-    vertical-align: bottom;
+    /*border-bottom: 0px solid #DDDDDD;*/
+    /*vertical-align: bottom;*/
 }
 
 .table > thead > tr > th,
@@ -3762,10 +3762,10 @@ nav.page-tabs .page-tabs-content {
 .table > thead > tr > td,
 .table > tbody > tr > td,
 .table > tfoot > tr > td {
-    border-top: 1px solid #e7eaec;
-    line-height: 1.42857;
-    padding: 8px;
-    vertical-align: middle;
+    /*border-top: 1px solid #e7eaec;*/
+    /*line-height: 1.22857;*/
+    /*padding: 8px;*/
+    /*vertical-align: middle;*/
 }
 
 

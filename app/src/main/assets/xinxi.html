@@ -11,7 +11,8 @@
     <meta name="keywords" content="H+后台主题,后台bootstrap框架,会员中心主题,后台HTML,响应式后台">
     <meta name="description" content="H+是一个完全响应式，基于Bootstrap3最新版本开发的扁平化主题，她采用了主流的左右两栏式布局，使用了Html5+CSS3等现代技术">
 
-    <link rel="shortcut icon" href="favicon.ico"> <link href="file:///android_asset/css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href="file:///android_asset/css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
     <link href="file:///android_asset/css/font-awesome.css?v=4.4.0" rel="stylesheet">
 
     <link href="file:///android_asset/css/animate.css" rel="stylesheet">
@@ -21,34 +22,33 @@
 
 <body class="black-bg">
 <table class="table">
-    <thead style="
-    height: 10px;">
+    <thead >
     <tr>
-        <th >手机信息：</th>
+        <th>手机信息：</th>
     </tr>
     </thead>
     <tbody>
 
     <tr>
-        <td>品牌</td>
+        <th>品牌</th>
         <td>xiaoxi</td>
-        <td>型号</td>
+        <th>型号</th>
         <td>MIX2</td>
+        <th>硬件</th>
+        <td>0000012</td>
     </tr>
     <tr>
-        <td>硬件</td>
-        <td></td>
-        <td>安卓版本</td>
+
+        <th>安卓</th>
         <td>8.0</td>
-    </tr>
-    <tr>
-        <td>网络类型</td>
+        <th>网络</th>
         <td>4G</td>
-        <td>手机类型</td>
+        <th>类型</th>
         <td>安卓</td>
     </tr>
     </tbody>
 </table>
+<hr>
 <table class="table">
     <thead>
     <tr>
@@ -57,15 +57,18 @@
     </thead>
     <tbody>
     <tr>
-        <td>经度</td>
+        <th>经度</th>
         <td>117.30</td>
-        <td>纬度</td>
+        <th>纬度</th>
         <td>30.30</td>
+
+
     </tr>
     <tr>
-        <td>定位精度</td>
+
+        <th>精度</th>
         <td>100米</td>
-        <td>定位方式</td>
+        <th>方式</th>
         <td>GPS</td>
     </tr>
     </tbody>
@@ -74,11 +77,12 @@
 <table class="table">
     <tbody>
     <tr>
-        <td>定位地址</td>
+        <th>定位地址</th>
         <td>某某省某某市某某小区某某栋1106号</td>
     </tr>
     </tbody>
 </table>
+<hr>
 <table class="table">
     <thead>
     <tr>
@@ -87,73 +91,135 @@
     </thead>
     <tbody>
     <tr>
-        <td>数据网</td>
+        <th>数据</th>
         <td>LTE</td>
-        <td>小区类型</td>
+        <th>小区</th>
         <td>LTE</td>
+        <th>TAC</th>
+        <td>6245</td>
     </tr>
     <tr>
-        <td>TAC</td>
-        <td>6245</td>
-        <td>PCI</td>
+
+        <th>PCI</th>
         <td>12</td>
-    </tr>
-    <tr>
-        <td>ECI</td>
+        <th>ECI</th>
         <td>6245</td>
-        <td>BAND</td>
+        <th>BAND</th>
         <td>1</td>
     </tr>
     <tr>
-        <td>EARFCN</td>
+        <th>EARF</th>
         <td>6245</td>
-        <td>FREQUENCY</td>
+        <th>FREQ</th>
         <td>1</td>
-    </tr>
-    </tr>
-    <tr>
-        <td>NID</td>
+        <th>NID</th>
         <td>3</td>
-        <td>BID</td>
-        <td>53347</td>
+    </tr>
     </tr>
     <tr>
-        <td>SID</td>
+        <th>BID</th>
+        <td>53347</td>
+        <th>SID</th>
         <td>13824</td>
-        <td></td>
+        <th></th>
         <td></td>
     </tr>
     </tbody>
 </table>
+<hr>
+<div class="alert" >
+    <table class="table" >
+        <thead>
+        <tr>
+            <th>信号强度：</th>
+        </tr>
+        </thead>
+        <tbody >
+        <tr>
+            <th>RSRP</th>
+            <th>RSRQ</th>
+            <th>SNIR</th>
+            <th>DBM</th>
+            <th>EC/IO</th>
+        </tr>
+        <tr>
+            <td>-100</td>
+            <td>8</td>
+            <td>-80</td>
+            <td>-100</td>
+            <td>-80</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<hr>
 <table class="table">
     <thead>
     <tr>
-        <th>信号强度：</th>
-        <th>RSRP</th>
-        <th>RSRQ</th>
-        <th>RX</th>
+        <th>测试记录：</th>
     </tr>
     </thead>
+    <tbody>
+    <tr>
+        <th>Time</th>
+        <th>Tac</th>
+        <th>Pci</th>
+        <th>eNB</th>
+        <th>CellId</th>
+        <th>RSRP</th>
+        <th>SINR</th>
+    </tr>
+    <tr>
+        <td>09:41:22</td>
+        <td>28668</td>
+        <td>394</td>
+        <td>430174</td>
+        <td>54</td>
+        <td>-63</td>
+        <td>21</td>
+    </tr>
+    <tr>
+        <td>09:41:22</td>
+        <td>28668</td>
+        <td>394</td>
+        <td>430174</td>
+        <td>54</td>
+        <td>-63</td>
+        <td>21</td>
+    </tr>
+    <tr>
+        <td>09:41:22</td>
+        <td>28668</td>
+        <td>394</td>
+        <td>430174</td>
+        <td>54</td>
+        <td>-63</td>
+        <td>21</td>
+    </tr>
+    <tr>
+        <td>09:41:22</td>
+        <td>28668</td>
+        <td>394</td>
+        <td>430174</td>
+        <td>54</td>
+        <td>-63</td>
+        <td>21</td>
+    </tr>
+    <tr>
+        <td>09:41:22</td>
+        <td>28668</td>
+        <td>394</td>
+        <td>430174</td>
+        <td>54</td>
+        <td>-63</td>
+        <td>21</td>
+    </tr>
+    </tbody>
 </table>
-<div class="ibox float-e-margins">
-    <div class="ibox-content">
-        <div class="flot-chart">
-            <div class="flot-chart-content" id="flot-line-chart"></div>
-        </div>
-    </div>
-</div>
-
-<div>
-    <input  value="点我试试"   onclick="getData()"/>
-</div>
-<div>
-    <p id="test">没有数据</p>
-</div>
-
-
 <!-- 全局js -->
 <script src="file:///android_asset/js/jquery.min.js?v=2.1.4"></script>
 <script src="file:///android_asset/js/bootstrap.min.js?v=3.3.6"></script>
+
 
 <!-- Flot -->
 <script src="file:///android_asset/js/plugins/flot/jquery.flot.js"></script>
@@ -161,19 +227,10 @@
 <script src="file:///android_asset/js/plugins/flot/jquery.flot.resize.js"></script>
 <script src="file:///android_asset/js/plugins/flot/jquery.flot.pie.js"></script>
 
+
 <!-- Flot demo data -->
 <script src="file:///android_asset/js/demo/flot-demo.js"></script>
 
-
-<script language="javascript">
-    function  showjson(json){
-        document.getElementById("test").innerHTML=json;
-        }
-    function getData(){ //调用Android中自定义的拍照JavaScript接口
-        var json=window.MyBrowserAPI.getLocationData("从页面传给手机的message");//拿到本地数据,并可以传给手机一些内容，可选
-        showjson(json); //在页面上显示出结果
-        }
-</script>
 
 </body>
 
