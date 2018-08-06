@@ -61,6 +61,7 @@ public class HomeFragment extends BaseFragment implements OnMapReadyCallback {
     private TextView msg;
     private Bundle bundle;
     private Handler handler = new Handler();
+
     private Runnable runnable = new Runnable() {
         public void run() {
             this.update();
@@ -104,6 +105,35 @@ public class HomeFragment extends BaseFragment implements OnMapReadyCallback {
         // REMOTE RESOURCE
 //        cesuWebview.loadUrl("file:///android_asset/indexBase.html?a=1");
         cesuWebview.loadUrl("http://ahdx.speedtestcustom.com/");
+//        cesuWebview.loadUrl("http://www.baidu.com/");
+//        cesuWebview.setWebViewClient(new MyWebViewClient());
+        // LOCAL RESOURCE
+//        cesuWebview.loadUrl("file:///android_asset/index.html");
+    }
+
+    private void xinxiInit(){
+//        cesuWebview =  view.findViewById(R.id.cesuWebview);
+        // Force links and redirects to open in the WebView instead of in a browser
+        xinxiWebview.setWebViewClient(new WebViewClient());
+        // Enable Javascript
+        WebSettings webSettings = xinxiWebview.getSettings();
+        webSettings.setJavaScriptEnabled(true);
+        MyTest myTest = new MyTest();
+
+        String rsrpstirng = "[1, -90], [2, -98],  [3, -80],  [4, -85],  [5, "+myTest.getSec()+"], [6, -100]";
+//        final String json = "[1, 34], [2, 0],  [3, 0],    [4, 34],    [5, 32],   [6, 0]";
+        final String json = rsrpstirng;
+        xinxiWebview.addJavascriptInterface(new Object() {
+            //@param message:  html页面传进来的数据
+            @JavascriptInterface
+            public String getLocationData(String message) {
+                return json; // 把本地数据弄成json串，传给html
+            }
+
+        }, "MyBrowserAPI");//MyBrowserAPI:自定义的js函数名
+
+        xinxiWebview.loadUrl("file:///android_asset/xinxi.html");
+//        cesuWebview.loadUrl("http://ahdx.speedtestcustom.com/");
 //        cesuWebview.loadUrl("http://www.baidu.com/");
 //        cesuWebview.setWebViewClient(new MyWebViewClient());
         // LOCAL RESOURCE
@@ -162,7 +192,7 @@ catch (Exception e){
         scrollXinxi = view.findViewById(R.id.scorllXinxi);
         mapView = view.findViewById(R.id.mapView);
         bundle = savedInstanceState;
-        xinxiWebViewInit();
+//        xinxiInit();
 
 //        webViewInit();
         scrollXinxi.setVisibility(View.GONE);

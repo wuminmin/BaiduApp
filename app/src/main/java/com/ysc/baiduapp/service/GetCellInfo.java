@@ -33,9 +33,11 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.text.DecimalFormat;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 import java.util.Map;
 import java.util.Objects;
 
@@ -79,6 +81,146 @@ public class GetCellInfo {
         mycontext = c;
         telephonyManager = t;
         mymainActivity = m;
+    }
+
+    private List<CellInfo> getList(){
+        if (telephonyManager == null) {
+            new AlertDialog.Builder(mycontext).setTitle("错误").setMessage("内部错误 telephonyManager").setPositiveButton("确定", null).show();
+        } else {
+            if (telephonyManager.getPhoneType() == TelephonyManager.PHONE_TYPE_CDMA) {
+                if (ActivityCompat.checkSelfPermission(mycontext, ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                    ActivityCompat.requestPermissions(mymainActivity,
+                            new String[]{ACCESS_COARSE_LOCATION},
+                            MY_PERMISSIONS_REQUEST_ACCESS_COARSE_LOCATION);
+                    Toast.makeText(this.mycontext, "请求卫星和网络权限！！", Toast.LENGTH_LONG).show();
+                } else {
+                    cellInfoList = telephonyManager.getAllCellInfo();
+                    return cellInfoList ;
+                }
+            }
+        }
+        return new List<CellInfo>() {
+            @Override
+            public int size() {
+                return 0;
+            }
+
+            @Override
+            public boolean isEmpty() {
+                return false;
+            }
+
+            @Override
+            public boolean contains(Object o) {
+                return false;
+            }
+
+            @NonNull
+            @Override
+            public Iterator<CellInfo> iterator() {
+                return null;
+            }
+
+            @NonNull
+            @Override
+            public Object[] toArray() {
+                return new Object[0];
+            }
+
+            @NonNull
+            @Override
+            public <T> T[] toArray(@NonNull T[] ts) {
+                return null;
+            }
+
+            @Override
+            public boolean add(CellInfo cellInfo) {
+                return false;
+            }
+
+            @Override
+            public boolean remove(Object o) {
+                return false;
+            }
+
+            @Override
+            public boolean containsAll(@NonNull Collection<?> collection) {
+                return false;
+            }
+
+            @Override
+            public boolean addAll(@NonNull Collection<? extends CellInfo> collection) {
+                return false;
+            }
+
+            @Override
+            public boolean addAll(int i, @NonNull Collection<? extends CellInfo> collection) {
+                return false;
+            }
+
+            @Override
+            public boolean removeAll(@NonNull Collection<?> collection) {
+                return false;
+            }
+
+            @Override
+            public boolean retainAll(@NonNull Collection<?> collection) {
+                return false;
+            }
+
+            @Override
+            public void clear() {
+
+            }
+
+            @Override
+            public CellInfo get(int i) {
+                return null;
+            }
+
+            @Override
+            public CellInfo set(int i, CellInfo cellInfo) {
+                return null;
+            }
+
+            @Override
+            public void add(int i, CellInfo cellInfo) {
+
+            }
+
+            @Override
+            public CellInfo remove(int i) {
+                return null;
+            }
+
+            @Override
+            public int indexOf(Object o) {
+                return 0;
+            }
+
+            @Override
+            public int lastIndexOf(Object o) {
+                return 0;
+            }
+
+            @NonNull
+            @Override
+            public ListIterator<CellInfo> listIterator() {
+                return null;
+            }
+
+            @NonNull
+            @Override
+            public ListIterator<CellInfo> listIterator(int i) {
+                return null;
+            }
+
+            @NonNull
+            @Override
+            public List<CellInfo> subList(int i, int i1) {
+                return null;
+            }
+        };
     }
 
     public String myCell() {
@@ -141,7 +283,6 @@ public class GetCellInfo {
                         criteria.setPowerRequirement(Criteria.POWER_HIGH);// 低功耗
                         String provider = Objects.requireNonNull(locationManager).getBestProvider(criteria, true); // 获取GPS信息
                         Location location = getLastKnownLocation();
-
                         if (location != null) {
                             Log.e("TAG", "GPS is on");
                             DecimalFormat df = new DecimalFormat("#.000000");
@@ -155,22 +296,18 @@ public class GetCellInfo {
                             locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 1000, 0, new LocationListener() {
                                 @Override
                                 public void onLocationChanged(Location location) {
-
                                 }
 
                                 @Override
                                 public void onStatusChanged(String provider, int status, Bundle extras) {
-
                                 }
 
                                 @Override
                                 public void onProviderEnabled(String provider) {
-
                                 }
 
                                 @Override
                                 public void onProviderDisabled(String provider) {
-
                                 }
                             });
                         }
@@ -217,8 +354,8 @@ public class GetCellInfo {
     }
 
     public String getRsrp(){
-        String mycell = this.myCell();
         String rsrp  = "";
+        cellInfoList = this.getList();
         for (CellInfo cellInfo : cellInfoList)
         {
             //获取所有Lte网络信息
@@ -231,8 +368,6 @@ public class GetCellInfo {
                     int intRsrp = cellSignalStrengthLte.getRsrp();
                     rsrp = Integer.toString(intRsrp);
                 }
-
-
             }
             //获取所有的cdma网络信息
 //            if(cellInfo instanceof CellInfoCdma){

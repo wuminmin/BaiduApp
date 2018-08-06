@@ -14,6 +14,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -51,7 +54,8 @@ public class OrderFragment extends BaseFragment {
     private ImageView iv_order;
     private View view;
     private GetCellInfo getCellInfo;
-
+    private WebView shinengWebview;
+    private WebView shiwaiWebview;
     private Button mBtnTakePhoto;
     private Button mBtnSelectPhoto;
     private TextView mTvPath;
@@ -67,37 +71,75 @@ public class OrderFragment extends BaseFragment {
     private LinearLayout switchLiner3;
     private LinearLayout switchLiner4;
     private Map  imageMap;
+    private Bundle bundle;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_order2, null, false);
-        switchLiner1 = view.findViewById(R.id.switchLiner1);
-        switchLiner2 = view.findViewById(R.id.switchLiner2);
-        switchLiner3 = view.findViewById(R.id.switchLiner3);
-        switchLiner4 = view.findViewById(R.id.switchLiner4);
-        imageMap = new HashMap<>();
-        activity = getActivity();
-        if (activity != null) {
-            context = activity.getApplicationContext();
-        }
-        TelephonyManager telephonyManager = null;
-        if (activity != null) {
-            telephonyManager = (TelephonyManager) activity.getSystemService(Context.TELEPHONY_SERVICE);
-        }
-        getCellInfo = new GetCellInfo(context, telephonyManager, getActivity());
+        view = inflater.inflate(R.layout.fragment_order3, null, false);
+        shinengWebview = view.findViewById(R.id.shinengWebview);
+        shiwaiWebview = view.findViewById(R.id.shiwaiWebview);
+        TelephonyManager telephonyManager = (TelephonyManager) getActivity().getSystemService(Context.TELEPHONY_SERVICE);
+        getCellInfo = new GetCellInfo(getActivity().getApplicationContext(), telephonyManager, getActivity());
+        shiwaiWebview = view.findViewById(R.id.shiwaiWebview);
+        bundle = savedInstanceState;
 
-//        startActivityForResult();
+        Button shinengBtn = view.findViewById(R.id.shineng);
+        Button shiwaiBtn = view.findViewById(R.id.shiwai);
+        shinengBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                shiwaiWebview.setVisibility(View.GONE);
+                shinengWebview.setVisibility(View.VISIBLE);
+                shinengWebviewInit(shinengWebview);
 
-        mBtnTakePhoto = view.findViewById(R.id.btnTakePhoto);
-        mBtnSelectPhoto = view.findViewById(R.id.btnSelectPhoto);
-        mTvPath = view.findViewById(R.id.tvPath);
-        mTvUri =  view.findViewById(R.id.tvUri);
-        mIvPic =  view.findViewById(R.id.ivPic);
-        init();
-        initLQRPhotoSelectUtils();
-        initListener();
-//        init();
+            }
+        });
+
+        shiwaiBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                shiwaiWebviewInit();
+                shiwaiWebview.setVisibility(View.VISIBLE);
+                shinengWebview.setVisibility(View.GONE);
+            }
+        });
+
+//        shinengWebviewInit(shinengWebview);
+
+
         return view;
+    }
+
+    private void shinengWebviewInit(WebView shinengWebview){
+//        cesuWebview =  view.findViewById(R.id.cesuWebview);
+        // Force links and redirects to open in the WebView instead of in a browser
+        shinengWebview.setWebViewClient(new WebViewClient());
+        // Enable Javascript
+        WebSettings webSettings = shinengWebview.getSettings();
+        webSettings.setJavaScriptEnabled(true);
+        // REMOTE RESOURCE
+//        cesuWebview.loadUrl("file:///android_asset/indexBase.html?a=1");
+//        caijiWebView.loadUrl("http://ahdx.speedtestcustom.com/");
+        shinengWebview.loadUrl("http://www.baidu.com/");
+//        cesuWebview.setWebViewClient(new MyWebViewClient());
+        // LOCAL RESOURCE
+//        cesuWebview.loadUrl("file:///android_asset/index.html");
+    }
+
+    private void shiwaiWebviewInit(){
+//        cesuWebview =  view.findViewById(R.id.cesuWebview);
+        // Force links and redirects to open in the WebView instead of in a browser
+        shiwaiWebview.setWebViewClient(new WebViewClient());
+        // Enable Javascript
+        WebSettings webSettings = shiwaiWebview.getSettings();
+        webSettings.setJavaScriptEnabled(true);
+        // REMOTE RESOURCE
+//        cesuWebview.loadUrl("file:///android_asset/indexBase.html?a=1");
+//        caijiWebView.loadUrl("http://ahdx.speedtestcustom.com/");
+        shiwaiWebview.loadUrl("http://www.baidu.com/");
+//        cesuWebview.setWebViewClient(new MyWebViewClient());
+        // LOCAL RESOURCE
+//        cesuWebview.loadUrl("file:///android_asset/index.html");
     }
 
     private void initLQRPhotoSelectUtils() {

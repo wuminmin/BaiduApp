@@ -31,15 +31,15 @@
             android:textColor="@color/white"
             tools:ignore="ButtonStyle" />
 
-        <Button
-            android:id="@+id/order_upload_data"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:textColor="@color/white"
-            android:background="@color/my_beijing2"
-            android:text="@string/order_upload_data"
-            />
+        <!--<Button-->
+            <!--android:id="@+id/order_upload_data"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_weight="1"-->
+            <!--android:textColor="@color/white"-->
+            <!--android:background="@color/my_beijing2"-->
+            <!--android:text="@string/order_upload_data"-->
+            <!--/>-->
     </LinearLayout>
 
     <ScrollView
