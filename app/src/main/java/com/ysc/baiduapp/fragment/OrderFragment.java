@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.JavascriptInterface;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -40,6 +41,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import cn.qqtheme.framework.picker.DoublePicker;
@@ -73,15 +75,20 @@ public class OrderFragment extends BaseFragment {
     private Map  imageMap;
     private Bundle bundle;
 
+    final int SELECT_PHOTO = 1;
+     List<String> imagelist = new ArrayList<>();
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_order3, null, false);
+        activity = getActivity();
         shinengWebview = view.findViewById(R.id.shinengWebview);
         shiwaiWebview = view.findViewById(R.id.shiwaiWebview);
         TelephonyManager telephonyManager = (TelephonyManager) getActivity().getSystemService(Context.TELEPHONY_SERVICE);
         getCellInfo = new GetCellInfo(getActivity().getApplicationContext(), telephonyManager, getActivity());
         shiwaiWebview = view.findViewById(R.id.shiwaiWebview);
         bundle = savedInstanceState;
+        initLQRPhotoSelectUtils();
 
         Button shinengBtn = view.findViewById(R.id.shineng);
         Button shiwaiBtn = view.findViewById(R.id.shiwai);
@@ -91,55 +98,78 @@ public class OrderFragment extends BaseFragment {
                 shiwaiWebview.setVisibility(View.GONE);
                 shinengWebview.setVisibility(View.VISIBLE);
                 shinengWebviewInit(shinengWebview);
-
             }
         });
 
         shiwaiBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                shiwaiWebviewInit();
                 shiwaiWebview.setVisibility(View.VISIBLE);
                 shinengWebview.setVisibility(View.GONE);
+                shiwaiWebviewInit(shiwaiWebview);
             }
         });
-
-//        shinengWebviewInit(shinengWebview);
-
-
+        shinengWebviewInit(shinengWebview);
         return view;
     }
 
     private void shinengWebviewInit(WebView shinengWebview){
-//        cesuWebview =  view.findViewById(R.id.cesuWebview);
-        // Force links and redirects to open in the WebView instead of in a browser
         shinengWebview.setWebViewClient(new WebViewClient());
-        // Enable Javascript
         WebSettings webSettings = shinengWebview.getSettings();
         webSettings.setJavaScriptEnabled(true);
-        // REMOTE RESOURCE
-//        cesuWebview.loadUrl("file:///android_asset/indexBase.html?a=1");
-//        caijiWebView.loadUrl("http://ahdx.speedtestcustom.com/");
-        shinengWebview.loadUrl("http://www.baidu.com/");
-//        cesuWebview.setWebViewClient(new MyWebViewClient());
-        // LOCAL RESOURCE
-//        cesuWebview.loadUrl("file:///android_asset/index.html");
+        shinengWebview.addJavascriptInterface(new MyJavascriptInterface(activity), "Android");
+        final String json = imagelist.toString();
+        shinengWebview.addJavascriptInterface(new Object() {
+            //@param message:  html页面传进来的数据
+            @JavascriptInterface
+            public String getLocationData(String message) {
+                return json; // 把本地数据弄成json串，传给html
+            }
+
+        }, "MyBrowserAPI");//MyBrowserAPI:自定义的js函数名
+        shinengWebview.loadUrl("file:///android_asset/shineng.html");
     }
 
-    private void shiwaiWebviewInit(){
-//        cesuWebview =  view.findViewById(R.id.cesuWebview);
-        // Force links and redirects to open in the WebView instead of in a browser
+    private void shiwaiWebviewInit(WebView shiwaiWebview){
         shiwaiWebview.setWebViewClient(new WebViewClient());
-        // Enable Javascript
         WebSettings webSettings = shiwaiWebview.getSettings();
         webSettings.setJavaScriptEnabled(true);
-        // REMOTE RESOURCE
-//        cesuWebview.loadUrl("file:///android_asset/indexBase.html?a=1");
-//        caijiWebView.loadUrl("http://ahdx.speedtestcustom.com/");
-        shiwaiWebview.loadUrl("http://www.baidu.com/");
-//        cesuWebview.setWebViewClient(new MyWebViewClient());
-        // LOCAL RESOURCE
-//        cesuWebview.loadUrl("file:///android_asset/index.html");
+        shiwaiWebview.addJavascriptInterface(new MyJavascriptInterface(activity), "Android");
+
+        shiwaiWebview.loadUrl("file:///android_asset/shiwai.html");
+    }
+
+    class MyJavascriptInterface
+    {
+        Context myContext;
+        /** Instantiate the interface and set the context */
+        MyJavascriptInterface(Context c)
+        {
+            myContext = c;
+        }
+        /** Show a toast from the web page */
+        @JavascriptInterface
+        public void showToast(String toast)
+        {
+            Toast.makeText(myContext, toast, Toast.LENGTH_SHORT).show();
+        }
+        @JavascriptInterface
+        public List<String> choosePhoto()
+        {
+            PermissionGen.with(OrderFragment.this)
+                    .addRequestCode(LQRPhotoSelectUtils.REQ_TAKE_PHOTO)
+                    .permissions(Manifest.permission.READ_EXTERNAL_STORAGE,
+                            Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                            Manifest.permission.CAMERA
+                    ).request();
+            // TODO Auto-generated method stub
+//            String file = "test";
+//            Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
+//            photoPickerIntent.setType("image/*");
+//            startActivityForResult(photoPickerIntent, SELECT_PHOTO);
+//            return file;
+            return imagelist ;
+        }
     }
 
     private void initLQRPhotoSelectUtils() {
@@ -147,11 +177,13 @@ public class OrderFragment extends BaseFragment {
         mLqrPhotoSelectUtils = new LQRPhotoSelectUtils(activity, new LQRPhotoSelectUtils.PhotoSelectListener() {
             @Override
             public void onFinish(File outputFile, Uri outputUri) {
+                Log.e("initLQRPhotoSelectUtils",outputFile.getAbsolutePath());
+                imagelist.add(outputUri.toString());
                 // 4、当拍照或从图库选取图片成功后回调
-                mTvPath.setText(outputFile.getAbsolutePath());
-                mTvUri.setText(outputUri.toString());
-                imageMap.put("url",outputUri.toString());
-                Glide.with(OrderFragment.this).load(outputUri).into(mIvPic);
+//                mTvPath.setText(outputFile.getAbsolutePath());
+//                mTvUri.setText(outputUri.toString());
+//                imageMap.put("url",outputUri.toString());
+//                Glide.with(OrderFragment.this).load(outputUri).into(mIvPic);
             }
         }, false);//true裁剪，false不裁剪
         //        mLqrPhotoSelectUtils.setAuthorities("com.lqr.lqrnativepicselect.fileprovider");
@@ -169,6 +201,7 @@ public class OrderFragment extends BaseFragment {
                                 Manifest.permission.WRITE_EXTERNAL_STORAGE,
                                 Manifest.permission.CAMERA
                         ).request();
+
             }
         });
 
@@ -217,6 +250,7 @@ public class OrderFragment extends BaseFragment {
         super.onActivityResult(requestCode, resultCode, data);
         // 2、在Activity中的onActivityResult()方法里与LQRPhotoSelectUtils关联
         mLqrPhotoSelectUtils.attachToActivityForResult(requestCode, resultCode, data);
+
     }
 
     public void showDialog() {

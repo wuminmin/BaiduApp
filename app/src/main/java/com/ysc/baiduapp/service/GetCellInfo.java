@@ -57,7 +57,7 @@ public class GetCellInfo {
     private List<CellInfo> cellInfoList = null;
 
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         String jsonstr = "[{\"mCellIdentityCdma\":{\"mBasestationId\":60621,\"mLatitude\":441299,\"mLongitude\":1691876,\"mNetworkId\":18,\"mSystemId\":14166},\"mCellSignalStrengthCdma\":{\"mCdmaDbm\":-92,\"mCdmaEcio\":-70,\"mEvdoDbm\":2147483647,\"mEvdoEcio\":2147483647,\"mEvdoSnr\":2147483647},\"mRegistered\":true,\"mTimeStamp\":178344181197155,\"mTimeStampType\":3},{\"mCellIdentityLte\":{\"mCi\":114555190,\"mEarfcn\":1825,\"mMcc\":460,\"mMnc\":11,\"mPci\":178,\"mTac\":27963},\"mCellSignalStrengthLte\":{\"mCqi\":2147483647,\"mRsrp\":-99,\"mRsrq\":-8,\"mRssnr\":2147483647,\"mSignalStrength\":21,\"mTimingAdvance\":2147483647},\"mRegistered\":true,\"mTimeStamp\":178344181197155,\"mTimeStampType\":3},{\"mCellIdentityLte\":{\"mCi\":2147483647,\"mEarfcn\":1825,\"mMcc\":2147483647,\"mMnc\":2147483647,\"mPci\":72,\"mTac\":2147483647},\"mCellSignalStrengthLte\":{\"mCqi\":2147483647,\"mRsrp\":-113,\"mRsrq\":-20,\"mRssnr\":2147483647,\"mSignalStrength\":15,\"mTimingAdvance\":2147483647},\"mRegistered\":false,\"mTimeStamp\":178344181197155,\"mTimeStampType\":3},{\"mCellIdentityLte\":{\"mCi\":2147483647,\"mEarfcn\":1825,\"mMcc\":2147483647,\"mMnc\":2147483647,\"mPci\":73,\"mTac\":2147483647},\"mCellSignalStrengthLte\":{\"mCqi\":2147483647,\"mRsrp\":-110,\"mRsrq\":-12,\"mRssnr\":2147483647,\"mSignalStrength\":15,\"mTimingAdvance\":2147483647},\"mRegistered\":false,\"mTimeStamp\":178344181197155,\"mTimeStampType\":3},{\"mCellIdentityLte\":{\"mCi\":2147483647,\"mEarfcn\":1825,\"mMcc\":2147483647,\"mMnc\":2147483647,\"mPci\":341,\"mTac\":2147483647},\"mCellSignalStrengthLte\":{\"mCqi\":2147483647,\"mRsrp\":-110,\"mRsrq\":-16,\"mRssnr\":2147483647,\"mSignalStrength\":14,\"mTimingAdvance\":2147483647},\"mRegistered\":false,\"mTimeStamp\":178344181197155,\"mTimeStampType\":3},{\"mCellIdentityLte\":{\"mCi\":2147483647,\"mEarfcn\":1825,\"mMcc\":2147483647,\"mMnc\":2147483647,\"mPci\":353,\"mTac\":2147483647},\"mCellSignalStrengthLte\":{\"mCqi\":2147483647,\"mRsrp\":-109,\"mRsrq\":-19,\"mRssnr\":2147483647,\"mSignalStrength\":17,\"mTimingAdvance\":2147483647},\"mRegistered\":false,\"mTimeStamp\":178344181197155,\"mTimeStampType\":3},{\"mCellIdentityLte\":{\"mCi\":2147483647,\"mEarfcn\":1825,\"mMcc\":2147483647,\"mMnc\":2147483647,\"mPci\":48,\"mTac\":2147483647},\"mCellSignalStrengthLte\":{\"mCqi\":2147483647,\"mRsrp\":-113,\"mRsrq\":-18,\"mRssnr\":2147483647,\"mSignalStrength\":14,\"mTimingAdvance\":2147483647},\"mRegistered\":false,\"mTimeStamp\":178344181197155,\"mTimeStampType\":3},{\"mCellIdentityLte\":{\"mCi\":2147483647,\"mEarfcn\":1825,\"mMcc\":2147483647,\"mMnc\":2147483647,\"mPci\":249,\"mTac\":2147483647},\"mCellSignalStrengthLte\":{\"mCqi\":2147483647,\"mRsrp\":-112,\"mRsrq\":-14,\"mRssnr\":2147483647,\"mSignalStrength\":14,\"mTimingAdvance\":2147483647},\"mRegistered\":false,\"mTimeStamp\":178344181197155,\"mTimeStampType\":3},{\"mCellIdentityLte\":{\"mCi\":2147483647,\"mEarfcn\":2147483647,\"mMcc\":2147483647,\"mMnc\":2147483647,\"mPci\":2147483647,\"mTac\":2147483647},\"mCellSignalStrengthLte\":{\"mCqi\":2147483647,\"mRsrp\":-118,\"mRsrq\":-9,\"mRssnr\":2147483647,\"mSignalStrength\":6,\"mTimingAdvance\":2147483647},\"mRegistered\":false,\"mTimeStamp\":178344181197155,\"mTimeStampType\":3},{\"mCellIdentityLte\":{\"mCi\":2147483647,\"mEarfcn\":2147483647,\"mMcc\":2147483647,\"mMnc\":2147483647,\"mPci\":2147483647,\"mTac\":2147483647},\"mCellSignalStrengthLte\":{\"mCqi\":2147483647,\"mRsrp\":-111,\"mRsrq\":-20,\"mRssnr\":2147483647,\"mSignalStrength\":16,\"mTimingAdvance\":2147483647},\"mRegistered\":false,\"mTimeStamp\":178344181197155,\"mTimeStampType\":3},{\"mCellIdentityLte\":{\"mCi\":2147483647,\"mEarfcn\":2147483647,\"mMcc\":2147483647,\"mMnc\":2147483647,\"mPci\":2147483647,\"mTac\":2147483647},\"mCellSignalStrengthLte\":{\"mCqi\":2147483647,\"mRsrp\":-105,\"mRsrq\":-16,\"mRssnr\":2147483647,\"mSignalStrength\":16,\"mTimingAdvance\":2147483647},\"mRegistered\":false,\"mTimeStamp\":178344181197155,\"mTimeStampType\":3},{\"mCellIdentityLte\":{\"mCi\":2147483647,\"mEarfcn\":2147483647,\"mMcc\":2147483647,\"mMnc\":2147483647,\"mPci\":2147483647,\"mTac\":2147483647},\"mCellSignalStrengthLte\":{\"mCqi\":2147483647,\"mRsrp\":-101,\"mRsrq\":-12,\"mRssnr\":2147483647,\"mSignalStrength\":16,\"mTimingAdvance\":2147483647},\"mRegistered\":false,\"mTimeStamp\":178344181197155,\"mTimeStampType\":3}]\n";
 //        JsonParser parser = new JsonParser();
 //        JsonObject o = parser.parse(jsonstr).getAsJsonObject();
@@ -65,10 +65,10 @@ public class GetCellInfo {
         JsonParser parser = new JsonParser();
         JsonElement tradeElement = parser.parse(jsonstr);
         JsonArray jsonArray = tradeElement.getAsJsonArray();
-        for(int i=0; i<jsonArray.size(); i++){
+        for (int i = 0; i < jsonArray.size(); i++) {
 //            System.out.println(jsonArray.get(i));
             try {
-                JSONObject json = new JSONObject (String.valueOf(jsonArray.get(i)));
+                JSONObject json = new JSONObject(String.valueOf(jsonArray.get(i)));
                 Object r = json.get("mCellIdentityCdma");
                 System.out.println(r);
             } catch (JSONException e) {
@@ -81,9 +81,14 @@ public class GetCellInfo {
         mycontext = c;
         telephonyManager = t;
         mymainActivity = m;
+        cellInfoList = initList();
     }
 
-    private List<CellInfo> getList(){
+    public List<CellInfo> getList() {
+        return this.cellInfoList;
+    }
+
+    private List<CellInfo> initList() {
         if (telephonyManager == null) {
             new AlertDialog.Builder(mycontext).setTitle("错误").setMessage("内部错误 telephonyManager").setPositiveButton("确定", null).show();
         } else {
@@ -95,7 +100,7 @@ public class GetCellInfo {
                     Toast.makeText(this.mycontext, "请求卫星和网络权限！！", Toast.LENGTH_LONG).show();
                 } else {
                     cellInfoList = telephonyManager.getAllCellInfo();
-                    return cellInfoList ;
+                    return cellInfoList;
                 }
             }
         }
@@ -235,7 +240,7 @@ public class GetCellInfo {
                     Toast.makeText(this.mycontext, "请求卫星和网络权限！！", Toast.LENGTH_LONG).show();
                     return null;
                 } else {
-                     cellInfoList = telephonyManager.getAllCellInfo();
+                    cellInfoList = telephonyManager.getAllCellInfo();
                     try {
                         Gson gson = new Gson();
                         strCellInfo = gson.toJson(cellInfoList);
@@ -244,7 +249,7 @@ public class GetCellInfo {
 //                        JsonObject o = parser.parse(strCellInfo).getAsJsonObject();
 //                        Log.e("JsonObject", o.toString());
 
-                        } catch (Exception e) {
+                    } catch (Exception e) {
                         e.printStackTrace();
                     }
                     return strCellInfo;
@@ -288,8 +293,8 @@ public class GetCellInfo {
                             DecimalFormat df = new DecimalFormat("#.000000");
                             String getLatitude = df.format(location.getLatitude());
                             String getLongitude = df.format(location.getLongitude());
-                            map.put("getLatitude",   Double.valueOf(getLatitude)   );
-                            map.put("getLongitude",  Double.valueOf(getLongitude)    );
+                            map.put("getLatitude", Double.valueOf(getLatitude));
+                            map.put("getLongitude", Double.valueOf(getLongitude));
                             return map;
                         } else {
                             //This is what you need:
@@ -353,53 +358,21 @@ public class GetCellInfo {
         return bestLocation;
     }
 
-    public String getRsrp(){
-        String rsrp  = "";
-        cellInfoList = this.getList();
-        for (CellInfo cellInfo : cellInfoList)
-        {
-            //获取所有Lte网络信息
-            if (cellInfo instanceof CellInfoLte)
-            {
-//                str.append("["+index+"]==CellInfoLte"+"\n");
-                if(cellInfo.isRegistered()){
-//                    str.append("isRegistered=YES"+"\n");
-                    CellSignalStrengthLte cellSignalStrengthLte = ((CellInfoLte)cellInfo).getCellSignalStrength();
-                    int intRsrp = cellSignalStrengthLte.getRsrp();
-                    rsrp = Integer.toString(intRsrp);
+    public String getRsrp() {
+        String rsrp = "";
+        try {
+            for (CellInfo cellInfo : cellInfoList) {
+                //获取所有Lte网络信息
+                if (cellInfo instanceof CellInfoLte) {
+                    if (cellInfo.isRegistered()) {
+                        CellSignalStrengthLte cellSignalStrengthLte = ((CellInfoLte) cellInfo).getCellSignalStrength();
+                        int intRsrp = cellSignalStrengthLte.getRsrp();
+                        rsrp = Integer.toString(intRsrp);
+                    }
                 }
             }
-            //获取所有的cdma网络信息
-//            if(cellInfo instanceof CellInfoCdma){
-//                str.append("["+index+"]==CellInfoCdma"+"\n");
-//                if(cellInfo.isRegistered()){
-//                    str.append("isRegistered=YES"+"\n");
-//                }
-//                str.append("TimeStamp:"+cellInfo.getTimeStamp()+"\n");
-//                str.append(((CellInfoCdma)cellInfo).getCellIdentity().toString()+"\n");
-//                str.append(((CellInfoCdma)cellInfo).getCellSignalStrength().toString()+"\n");
-//            }
-//            //获取所有的Gsm网络
-//            if(cellInfo instanceof CellInfoGsm){
-//                str.append("["+index+"]==CellInfoGsm"+"\n");
-//                if(cellInfo.isRegistered()){
-//                    str.append("isRegistered=YES"+"\n");
-//                }
-//                str.append("TimeStamp:"+cellInfo.getTimeStamp()+"\n");
-//                str.append(((CellInfoGsm)cellInfo).getCellIdentity().toString()+"\n");
-//                str.append(((CellInfoGsm)cellInfo).getCellSignalStrength().toString()+"\n");
-//            }
-//            //获取所有的Wcdma网络
-//            if(cellInfo instanceof CellInfoWcdma){
-//                str.append("["+index+"]==CellInfoWcdma"+"\n");
-//                if(cellInfo.isRegistered()){
-//                    str.append("isRegistered=YES"+"\n");
-//                }
-//                str.append("TimeStamp:"+cellInfo.getTimeStamp()+"\n");
-//                str.append(((CellInfoWcdma)cellInfo).getCellIdentity().toString()+"\n");
-//                str.append(((CellInfoWcdma)cellInfo).getCellSignalStrength().toString()+"\n");
-//            }
-//            index++;
+        } catch (Exception e) {
+            Log.e("getRsrp", e.toString());
         }
         return rsrp;
     }
