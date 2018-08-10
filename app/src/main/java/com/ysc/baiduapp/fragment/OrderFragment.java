@@ -7,7 +7,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Message;
 import android.support.annotation.NonNull;
 import android.telephony.TelephonyManager;
 import android.util.Log;
@@ -26,9 +25,9 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
-import com.ysc.baiduapp.MainActivity;
 import com.ysc.baiduapp.R;
+import com.ysc.baiduapp.database.DatabaseHelper;
+import com.ysc.baiduapp.database.model.Note;
 import com.ysc.baiduapp.service.GetCellInfo;
 import com.ysc.baiduapp.service.LQRPhotoSelectUtils;
 import com.ysc.baiduapp.service.PostExample;
@@ -40,11 +39,9 @@ import org.json.JSONObject;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import cn.qqtheme.framework.picker.DoublePicker;
 import kr.co.namee.permissiongen.PermissionFail;
 import kr.co.namee.permissiongen.PermissionGen;
 import kr.co.namee.permissiongen.PermissionSuccess;
@@ -74,6 +71,8 @@ public class OrderFragment extends BaseFragment {
     private LinearLayout switchLiner4;
     private Map  imageMap;
     private Bundle bundle;
+    private DatabaseHelper databaseHelper;
+
 
     final int SELECT_PHOTO = 1;
      List<String> imagelist = new ArrayList<>();
@@ -82,13 +81,15 @@ public class OrderFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_order3, null, false);
         activity = getActivity();
+        context = getActivity().getApplicationContext();
+        databaseHelper = new DatabaseHelper(context);
         shinengWebview = view.findViewById(R.id.shinengWebview);
         shiwaiWebview = view.findViewById(R.id.shiwaiWebview);
         TelephonyManager telephonyManager = (TelephonyManager) getActivity().getSystemService(Context.TELEPHONY_SERVICE);
-        getCellInfo = new GetCellInfo(getActivity().getApplicationContext(), telephonyManager, getActivity());
+        getCellInfo = new GetCellInfo( context , telephonyManager, getActivity());
         shiwaiWebview = view.findViewById(R.id.shiwaiWebview);
         bundle = savedInstanceState;
-        initLQRPhotoSelectUtils();
+
 
         Button shinengBtn = view.findViewById(R.id.shineng);
         Button shiwaiBtn = view.findViewById(R.id.shiwai);
@@ -118,7 +119,25 @@ public class OrderFragment extends BaseFragment {
         WebSettings webSettings = shinengWebview.getSettings();
         webSettings.setJavaScriptEnabled(true);
         shinengWebview.addJavascriptInterface(new MyJavascriptInterface(activity), "Android");
-        final String json = imagelist.toString();
+
+        initLQRPhotoSelectUtils();
+
+        StringBuilder jsontmp = new StringBuilder();
+        List<Note> notes = databaseHelper.getAllNotes();
+        boolean first = true;
+        for( Note  note : notes  ){
+            if(first){
+                jsontmp.append("\"").append(note.getNote()).append("\"");
+                first=false;
+            }else {
+                jsontmp.append(",");
+                jsontmp.append("\"").append(note.getNote()).append("\"");
+            }
+
+        }
+
+        final String json = "["+jsontmp.toString()+"]";
+        Log.e("传递给webview的note",json);
         shinengWebview.addJavascriptInterface(new Object() {
             //@param message:  html页面传进来的数据
             @JavascriptInterface
@@ -154,7 +173,7 @@ public class OrderFragment extends BaseFragment {
             Toast.makeText(myContext, toast, Toast.LENGTH_SHORT).show();
         }
         @JavascriptInterface
-        public List<String> choosePhoto()
+        public void choosePhoto()
         {
             PermissionGen.with(OrderFragment.this)
                     .addRequestCode(LQRPhotoSelectUtils.REQ_TAKE_PHOTO)
@@ -168,7 +187,6 @@ public class OrderFragment extends BaseFragment {
 //            photoPickerIntent.setType("image/*");
 //            startActivityForResult(photoPickerIntent, SELECT_PHOTO);
 //            return file;
-            return imagelist ;
         }
     }
 
@@ -178,7 +196,8 @@ public class OrderFragment extends BaseFragment {
             @Override
             public void onFinish(File outputFile, Uri outputUri) {
                 Log.e("initLQRPhotoSelectUtils",outputFile.getAbsolutePath());
-                imagelist.add(outputUri.toString());
+                databaseHelper.insertNote(outputUri.toString());
+
                 // 4、当拍照或从图库选取图片成功后回调
 //                mTvPath.setText(outputFile.getAbsolutePath());
 //                mTvUri.setText(outputUri.toString());

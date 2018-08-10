@@ -158,3 +158,67 @@ Returns the current location of the device.
 If there is only one radio in the device and that radio has an LTE connection, this method will return null. The implementation must not to try add LTE identifiers into the existing cdma/gsm classes.
 
 In the future this call will be deprecated.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    if(json !== "[]"){
+        var jsonarr = eval("[" + json + "]");
+        var first = true ;
+         $.each( jsonarr,function(i,item ){
+          if( first ){
+                         htmlsum =   htmlsum + "<div class=\"item active\">\n" +
+                             "<img alt=\"image\" class=\"img-responsive\" src=\""+item+"\">\n" +
+                             "</div>";
+                         first = false ;
+                     }else {
+                          htmlsum = htmlsum +  "<div class=\"item \">\n" +
+                                  "<img alt=\"image\" class=\"img-responsive\" src=\""+item+"\">\n" +
+                                  "</div>";
+                     }
+     　　});
+         document.getElementById("myImage").innerHTML =  htmlsum;
+      }else{
+          var html = document.getElementById("myImage").innerHTML;
+          //再跟你想追加的代码加到一起插入div中
+          document.getElementById("myImage").innerHTML = html + htmlsum;
+      }
