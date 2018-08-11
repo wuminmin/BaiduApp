@@ -340,17 +340,33 @@ public class GetCellInfo {
     public String getRsrpCellSignalStrengthLte() {
         String rsrp = "";
         try {
-            for (CellInfo cellInfo : cellInfoList) {
-                //获取所有Lte网络信息
-                if (cellInfo instanceof CellInfoLte) {
-                    if (cellInfo.isRegistered()) {
-                        CellSignalStrengthLte cellSignalStrengthLte = ((CellInfoLte) cellInfo).getCellSignalStrength();
-                        int intRsrp = cellSignalStrengthLte.getRsrp();
-                        rsrp = Integer.toString(intRsrp);
-                        break;
+                if (telephonyManager == null) {
+                    new AlertDialog.Builder(mycontext).setTitle("错误").setMessage("内部错误 telephonyManager").setPositiveButton("确定", null).show();
+                } else {
+                    if (telephonyManager.getPhoneType() == TelephonyManager.PHONE_TYPE_CDMA) {
+                        if (ActivityCompat.checkSelfPermission(mycontext, ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                            ActivityCompat.requestPermissions(mymainActivity,
+                                    new String[]{ACCESS_COARSE_LOCATION},
+                                    MY_PERMISSIONS_REQUEST_ACCESS_COARSE_LOCATION);
+                            Toast.makeText(this.mycontext, "请求卫星和网络权限！！", Toast.LENGTH_LONG).show();
+                            return "";
+                        } else {
+                            List<CellInfo> myCellInfoList = telephonyManager.getAllCellInfo();
+                            for (CellInfo cellInfo : myCellInfoList) {
+                                //获取所有Lte网络信息
+                                if (cellInfo instanceof CellInfoLte) {
+                                    if (cellInfo.isRegistered()) {
+                                        CellSignalStrengthLte cellSignalStrengthLte = ((CellInfoLte) cellInfo).getCellSignalStrength();
+                                        int intRsrp = cellSignalStrengthLte.getRsrp();
+                                        rsrp = Integer.toString(intRsrp);
+                                        Log.e("当前RSRP值", rsrp);
+                                        break;
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
-            }
         } catch (Exception e) {
             Log.e("getRsrpCellSignalStrengthLte", e.toString());
         }

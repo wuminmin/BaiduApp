@@ -39,7 +39,7 @@ public class XinxiJson {
             JsonObject getCellInfojson = new JsonObject();
             getCellInfojson.addProperty("rsrp", getCellInfo.getRsrpCellSignalStrengthLte());
             databaseHelper.insertXinxi(getCellInfojson.toString());
-
+            Log.e("保持手机信息", getCellInfojson.toString());
         } catch (Exception e) {
             Log.e("获取手机信息拼装json失败", e.toString());
         }
@@ -50,20 +50,26 @@ public class XinxiJson {
         try {
             List<Xinxi> notes = databaseHelper.getAllXinxi();
             boolean first = true;
+            int i = 0 ;
             StringBuilder jsontmp = new StringBuilder();
             for( Xinxi  note : notes  ){
+                i++;
                 if(first){
-                    jsontmp.append("\"").append(note.getNote()).append("\"");
+                    jsontmp.append(note.getNote());
                     first=false;
                 }else {
                     jsontmp.append(",");
-                    jsontmp.append("\"").append(note.getNote()).append("\"");
+                    jsontmp.append(note.getNote());
+                }
+                if(i>6){
+                    break;
                 }
             }
              json = "["+jsontmp.toString()+"]";
         }catch (Exception e){
             Log.e("查询Xinxi数据库出错",e.toString());
         }
+        Log.e("查询全部Xinxi值", json);
         return json;
     }
 
