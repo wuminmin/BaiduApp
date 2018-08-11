@@ -25,21 +25,13 @@ public class XinxiJson {
 
     public void saveXinxiJson() {
         try {
-            JsonArray arr = new JsonArray();
-            JsonObject object2 = new JsonObject();
-            object2.addProperty("反贼", "宋江");
-            object2.addProperty("反贼年龄", 45);
-            arr.add(object2);
-            JsonObject object3 = new JsonObject();
-            object3.addProperty("反贼", "武松");
-            object3.addProperty("反贼年龄", 23);
-            arr.add(object3);
-            System.out.println(arr.toString());
-
-            JsonObject getCellInfojson = new JsonObject();
-            getCellInfojson.addProperty("rsrp", getCellInfo.getRsrpCellSignalStrengthLte());
-            databaseHelper.insertXinxi(getCellInfojson.toString());
-            Log.e("保持手机信息", getCellInfojson.toString());
+            JsonObject getCellInfojson = getCellInfo.getRsrpCellSignalStrengthLte() ;
+            JsonObject XinxiJson = new JsonObject();
+            if ( getCellInfojson.has("getRsrpCellInfoLte" )){
+                XinxiJson.addProperty("rsrp", String.valueOf(getCellInfojson.get("getRsrpCellInfoLte")));
+            }
+            Log.e("手机小区信息json格式", String.valueOf(XinxiJson)) ;
+            databaseHelper.insertXinxi(XinxiJson.toString());
         } catch (Exception e) {
             Log.e("获取手机信息拼装json失败", e.toString());
         }
@@ -61,7 +53,7 @@ public class XinxiJson {
                     jsontmp.append(",");
                     jsontmp.append(note.getNote());
                 }
-                if(i>6){
+                if(i>8){
                     break;
                 }
             }

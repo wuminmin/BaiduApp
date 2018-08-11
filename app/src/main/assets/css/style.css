@@ -1719,12 +1719,11 @@ a.list-group-item.active:focus {
     padding: 25px;
 }
 
-
 /* FLOT CHART  */
 
 .flot-chart {
     display: block;
-    height: 200px;
+    height: 180px;
 }
 
 .widget .flot-chart.dashboard-chart {
@@ -2115,6 +2114,10 @@ table.dataTable thead .sorting:after {
     border-color: #1ab394;
 }
 
+.has-success .form-control-shiwai {
+    border-color: #1a7bb9;
+}
+
 .has-warning .form-control {
     border-color: #f8ac59;
 }
@@ -2125,6 +2128,10 @@ table.dataTable thead .sorting:after {
 
 .has-success .control-label {
     color: #1ab394;
+}
+
+.has-success .control-label-shiwai {
+    color: #1a7bb9;
 }
 
 .has-warning .control-label {

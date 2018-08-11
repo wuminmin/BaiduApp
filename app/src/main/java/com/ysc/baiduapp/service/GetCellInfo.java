@@ -15,7 +15,9 @@ import android.telephony.CellIdentityCdma;
 import android.telephony.CellIdentityLte;
 import android.telephony.CellInfo;
 import android.telephony.CellInfoCdma;
+import android.telephony.CellInfoGsm;
 import android.telephony.CellInfoLte;
+import android.telephony.CellInfoWcdma;
 import android.telephony.CellSignalStrengthCdma;
 import android.telephony.CellSignalStrengthLte;
 import android.telephony.TelephonyManager;
@@ -36,6 +38,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.Serializable;
 import java.text.DecimalFormat;
 import java.util.Collection;
 import java.util.HashMap;
@@ -337,589 +340,112 @@ public class GetCellInfo {
         return bestLocation;
     }
 
-    public String getRsrpCellSignalStrengthLte() {
-        String rsrp = "";
+    public JsonObject getRsrpCellSignalStrengthLte() {
+        JsonObject cellJson = new JsonObject();
         try {
-                if (telephonyManager == null) {
-                    new AlertDialog.Builder(mycontext).setTitle("错误").setMessage("内部错误 telephonyManager").setPositiveButton("确定", null).show();
-                } else {
-                    if (telephonyManager.getPhoneType() == TelephonyManager.PHONE_TYPE_CDMA) {
-                        if (ActivityCompat.checkSelfPermission(mycontext, ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                            ActivityCompat.requestPermissions(mymainActivity,
-                                    new String[]{ACCESS_COARSE_LOCATION},
-                                    MY_PERMISSIONS_REQUEST_ACCESS_COARSE_LOCATION);
-                            Toast.makeText(this.mycontext, "请求卫星和网络权限！！", Toast.LENGTH_LONG).show();
-                            return "";
-                        } else {
-                            List<CellInfo> myCellInfoList = telephonyManager.getAllCellInfo();
-                            for (CellInfo cellInfo : myCellInfoList) {
-                                //获取所有Lte网络信息
-                                if (cellInfo instanceof CellInfoLte) {
-                                    if (cellInfo.isRegistered()) {
-                                        CellSignalStrengthLte cellSignalStrengthLte = ((CellInfoLte) cellInfo).getCellSignalStrength();
-                                        int intRsrp = cellSignalStrengthLte.getRsrp();
-                                        rsrp = Integer.toString(intRsrp);
-                                        Log.e("当前RSRP值", rsrp);
-                                        break;
-                                    }
+            if (telephonyManager == null) {
+                new AlertDialog.Builder(mycontext).setTitle("错误").setMessage("内部错误 telephonyManager").setPositiveButton("确定", null).show();
+            } else {
+                if (telephonyManager.getPhoneType() == TelephonyManager.PHONE_TYPE_CDMA) {
+                    if (ActivityCompat.checkSelfPermission(mycontext, ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                        ActivityCompat.requestPermissions(mymainActivity,
+                                new String[]{ACCESS_COARSE_LOCATION},
+                                MY_PERMISSIONS_REQUEST_ACCESS_COARSE_LOCATION);
+                        Toast.makeText(this.mycontext, "请求卫星和网络权限！！", Toast.LENGTH_LONG).show();
+                        return cellJson;
+                    } else {
+                        List<CellInfo> myCellInfoList = telephonyManager.getAllCellInfo();
+                        for (CellInfo cellInfo : myCellInfoList) {
+                            //获取所有Lte网络信息
+                            if ( cellInfo instanceof CellInfoLte ) {
+                                if (cellInfo.isRegistered()) {
+                                    CellSignalStrengthLte cellSignalStrengthLte = ((CellInfoLte) cellInfo).getCellSignalStrength();
+                                    int getRsrp = cellSignalStrengthLte.getRsrp() == 2147483647 ? 0 : cellSignalStrengthLte.getRsrp();
+                                    int getRssnr = cellSignalStrengthLte.getRssnr() == 2147483647 ? 0 : (cellSignalStrengthLte.getRssnr());
+                                    int getAsuLevel = cellSignalStrengthLte.getAsuLevel() == 2147483647 ? 0 : (cellSignalStrengthLte.getAsuLevel());
+                                    int getLevel = cellSignalStrengthLte.getLevel() == 2147483647 ? 0 : (cellSignalStrengthLte.getLevel());
+                                    int getCqi = cellSignalStrengthLte.getCqi() == 2147483647 ? 0 : (cellSignalStrengthLte.getCqi());
+                                    int getDbm = cellSignalStrengthLte.getDbm() == 2147483647 ? 0 : (cellSignalStrengthLte.getDbm());
+                                    int getRsrq = cellSignalStrengthLte.getRsrq() == 2147483647 ? 0 : (cellSignalStrengthLte.getRsrq());
+                                    int getTimingAdvance = cellSignalStrengthLte.getTimingAdvance() == 2147483647 ? 0 : (cellSignalStrengthLte.getTimingAdvance());
+                                    cellJson.addProperty("getRsrpCellInfoLte",getRsrp);
+                                    cellJson.addProperty("getRssnrCellInfoLte",getRssnr);
+                                    cellJson.addProperty("getAsuLevelCellInfoLte",getAsuLevel);
+                                    cellJson.addProperty("getLevelCellInfoLte",getLevel);
+                                    cellJson.addProperty("getCqiCellInfoLte",getCqi);
+                                    cellJson.addProperty("getDbmCellInfoLte",getDbm);
+                                    cellJson.addProperty("getRsrqCellInfoLte",getRsrq);
+                                    cellJson.addProperty("getTimingAdvanceCellInfoLte",getTimingAdvance);
+
+                                    CellIdentityLte cellIdentityLte = ((CellInfoLte) cellInfo).getCellIdentity();
+                                    int getCi = cellIdentityLte.getCi() == 2147483647 ? 0 : ( cellIdentityLte.getCi() );
+                                    int getEarfcn = cellIdentityLte.getEarfcn() == 2147483647 ? 0 : ( cellIdentityLte.getEarfcn() );
+                                    int getMcc = cellIdentityLte.getMcc() == 2147483647 ? 0 : ( cellIdentityLte.getMcc() );
+                                    int getMnc = cellIdentityLte.getMnc() == 2147483647 ? 0 : ( cellIdentityLte.getMnc() );
+                                    int getPci = cellIdentityLte.getPci() == 2147483647 ? 0 : ( cellIdentityLte.getPci() );
+                                    int getTac = cellIdentityLte.getTac() == 2147483647 ? 0 : ( cellIdentityLte.getTac() );
+                                    cellJson.addProperty("getCiCellIdentityLte",getCi);
+                                    cellJson.addProperty("getEarfcnCellIdentityLte",getEarfcn);
+                                    cellJson.addProperty("getMccCellIdentityLte",getMcc);
+                                    cellJson.addProperty("getMncCellIdentityLte",getMnc);
+                                    cellJson.addProperty("getPciCellIdentityLte",getPci);
+                                    cellJson.addProperty("getTacCellIdentityLte",getTac);
                                 }
+                            }
+
+                            if ( cellInfo instanceof CellInfoCdma ) {
+                                if (cellInfo.isRegistered()) {
+                                    CellSignalStrengthCdma cellSignalStrengthCdma = ((CellInfoCdma) cellInfo).getCellSignalStrength();
+                                    int getAsuLevel = cellSignalStrengthCdma.getAsuLevel() == 2147483647 ? 0 : ( cellSignalStrengthCdma.getAsuLevel() );
+                                    int getLevel = cellSignalStrengthCdma.getLevel() == 2147483647 ? 0 : ( cellSignalStrengthCdma.getLevel() );
+                                    int getCdmaLevel = cellSignalStrengthCdma.getCdmaLevel() == 2147483647 ? 0 : ( cellSignalStrengthCdma.getCdmaLevel() );
+                                    int getEvdoLevel = cellSignalStrengthCdma.getEvdoLevel() == 2147483647 ? 0 : ( cellSignalStrengthCdma.getEvdoLevel() );
+                                    int getCdmaDbm = cellSignalStrengthCdma.getCdmaDbm() == 2147483647 ? 0 : ( cellSignalStrengthCdma.getCdmaDbm() );
+                                    int getCdmaEcio = cellSignalStrengthCdma.getCdmaEcio() == 2147483647 ? 0 : ( cellSignalStrengthCdma.getCdmaEcio() );
+                                    int getDbm = cellSignalStrengthCdma.getDbm() == 2147483647 ? 0 : ( cellSignalStrengthCdma.getDbm() );
+                                    int getEvdoDbm = cellSignalStrengthCdma.getEvdoDbm() == 2147483647 ? 0 : ( cellSignalStrengthCdma.getEvdoDbm() );
+                                    int getEvdoEcio = cellSignalStrengthCdma.getEvdoEcio() == 2147483647 ? 0 : ( cellSignalStrengthCdma.getEvdoEcio() );
+                                    int getEvdoSnr = cellSignalStrengthCdma.getEvdoSnr() == 2147483647 ? 0 : ( cellSignalStrengthCdma.getEvdoSnr() );
+                                    cellJson.addProperty("getAsuLevelCellSignalStrengthCdma",getAsuLevel);
+                                    cellJson.addProperty("getLevelCellSignalStrengthCdma",getLevel);
+                                    cellJson.addProperty("getCdmaLevelCellSignalStrengthCdma",getCdmaLevel);
+                                    cellJson.addProperty("getEvdoLevelCellSignalStrengthCdma",getEvdoLevel);
+                                    cellJson.addProperty("getCdmaDbmCellSignalStrengthCdma",getCdmaDbm);
+                                    cellJson.addProperty("getCdmaEcioCellSignalStrengthCdma",getCdmaEcio);
+                                    cellJson.addProperty("getDbmCellSignalStrengthCdma",getDbm);
+                                    cellJson.addProperty("getEvdoDbmCellSignalStrengthCdma",getEvdoDbm);
+                                    cellJson.addProperty("getEvdoEcioCellSignalStrengthCdma",getEvdoEcio);
+                                    cellJson.addProperty("getEvdoSnrCellSignalStrengthCdma",getEvdoSnr);
+
+                                    CellIdentityCdma cellIdentityCdma = ((CellInfoCdma) cellInfo).getCellIdentity();
+                                    int getBasestationId = cellIdentityCdma.getBasestationId() == 2147483647 ? 0 : ( cellIdentityCdma.getBasestationId() );
+                                    int getNetworkId = cellIdentityCdma.getNetworkId() == 2147483647 ? 0 : ( cellIdentityCdma.getNetworkId() );
+                                    int getSystemId = cellIdentityCdma.getSystemId() == 2147483647 ? 0 : ( cellIdentityCdma.getSystemId() );
+                                    int getLatitude = cellIdentityCdma.getLatitude() == 2147483647 ? 0 : ( cellIdentityCdma.getLatitude() );
+                                    int getLongitude = cellIdentityCdma.getLongitude() == 2147483647 ? 0 : ( cellIdentityCdma.getLongitude() );
+                                    cellJson.addProperty("getBasestationIdCellIdentityCdma",getBasestationId);
+                                    cellJson.addProperty("getNetworkIdCellIdentityCdma",getNetworkId);
+                                    cellJson.addProperty("getSystemIdCellIdentityCdma",getSystemId);
+                                    cellJson.addProperty("getLatitudeCellIdentityCdma",getLatitude);
+                                    cellJson.addProperty("getLongitudeCellIdentityCdma",getLongitude);
+
+                                }
+                            }
+
+                            if ( cellInfo instanceof CellInfoGsm) {
+                            }
+
+                            if ( cellInfo instanceof CellInfoWcdma) {
                             }
                         }
                     }
                 }
-        } catch (Exception e) {
-            Log.e("getRsrpCellSignalStrengthLte", e.toString());
-        }
-        return rsrp;
-    }
-
-    public String getRssnrCellSignalStrengthLte() {
-        String result = "";
-        try {
-            for (CellInfo cellInfo : cellInfoList) {
-                //获取所有Lte网络信息
-                if (cellInfo instanceof CellInfoLte) {
-                    if (cellInfo.isRegistered()) {
-                        CellSignalStrengthLte cellSignalStrengthLte = ((CellInfoLte) cellInfo).getCellSignalStrength();
-                        int intResult = cellSignalStrengthLte.getRssnr();
-                        result = Integer.toString(intResult);
-                        break;
-                    }
-                }
             }
         } catch (Exception e) {
             Log.e("getRsrpCellSignalStrengthLte", e.toString());
         }
-        return result;
+        return cellJson;
     }
-
-    public String getRsrqCellSignalStrengthLte() {
-        String result = "";
-        try {
-            for (CellInfo cellInfo : cellInfoList) {
-                //获取所有Lte网络信息
-                if (cellInfo instanceof CellInfoLte) {
-                    if (cellInfo.isRegistered()) {
-                        CellSignalStrengthLte cellSignalStrengthLte = ((CellInfoLte) cellInfo).getCellSignalStrength();
-                        int intResult = cellSignalStrengthLte.getRsrq();
-                        result = Integer.toString(intResult);
-                        break;
-                    }
-                }
-            }
-        } catch (Exception e) {
-            Log.e("getRsrpCellSignalStrengthLte", e.toString());
-        }
-        return result;
-    }
-
-    public String getCqiCellSignalStrengthLte() {
-        String result = "";
-        try {
-            for (CellInfo cellInfo : cellInfoList) {
-                //获取所有Lte网络信息
-                if (cellInfo instanceof CellInfoLte) {
-                    if (cellInfo.isRegistered()) {
-                        CellSignalStrengthLte cellSignalStrengthLte = ((CellInfoLte) cellInfo).getCellSignalStrength();
-                        int intResult = cellSignalStrengthLte.getCqi();
-                        result = Integer.toString(intResult);
-                        break;
-                    }
-                }
-            }
-        } catch (Exception e) {
-            Log.e("getRsrpCellSignalStrengthLte", e.toString());
-        }
-        return result;
-    }
-
-    public String getDbmCellSignalStrengthLte() {
-        String result = "";
-        try {
-            for (CellInfo cellInfo : cellInfoList) {
-                //获取所有Lte网络信息
-                if (cellInfo instanceof CellInfoLte) {
-                    if (cellInfo.isRegistered()) {
-                        CellSignalStrengthLte cellSignalStrengthLte = ((CellInfoLte) cellInfo).getCellSignalStrength();
-                        int intResult = cellSignalStrengthLte.getDbm();
-                        result = Integer.toString(intResult);
-                        break;
-                    }
-                }
-            }
-        } catch (Exception e) {
-            Log.e("getRsrpCellSignalStrengthLte", e.toString());
-        }
-        return result;
-    }
-
-    public String getLevelCellSignalStrengthLte() {
-        String result = "";
-        try {
-            for (CellInfo cellInfo : cellInfoList) {
-                //获取所有Lte网络信息
-                if (cellInfo instanceof CellInfoLte) {
-                    if (cellInfo.isRegistered()) {
-                        CellSignalStrengthLte cellSignalStrengthLte = ((CellInfoLte) cellInfo).getCellSignalStrength();
-                        int intResult = cellSignalStrengthLte.getLevel();
-                        result = Integer.toString(intResult);
-                        break;
-                    }
-                }
-            }
-        } catch (Exception e) {
-            Log.e("getRsrpCellSignalStrengthLte", e.toString());
-        }
-        return result;
-    }
-
-    public String getAsuLevelCellSignalStrengthLte() {
-        String result = "";
-        try {
-            for (CellInfo cellInfo : cellInfoList) {
-                //获取所有Lte网络信息
-                if (cellInfo instanceof CellInfoLte) {
-                    if (cellInfo.isRegistered()) {
-                        CellSignalStrengthLte cellSignalStrengthLte = ((CellInfoLte) cellInfo).getCellSignalStrength();
-                        int intResult = cellSignalStrengthLte.getAsuLevel();
-                        result = Integer.toString(intResult);
-                        break;
-                    }
-                }
-            }
-        } catch (Exception e) {
-            Log.e("getRsrpCellSignalStrengthLte", e.toString());
-        }
-        return result;
-    }
-
-    public String getCiCellIdentityLte() {
-        String result = "";
-        try {
-            for (CellInfo cellInfo : cellInfoList) {
-                //获取所有Lte网络信息
-                if (cellInfo instanceof CellInfoLte) {
-                    if (cellInfo.isRegistered()) {
-                        CellIdentityLte mycell = ((CellInfoLte) cellInfo).getCellIdentity();
-                        int intResult = mycell.getCi();
-                        result = Integer.toString(intResult);
-                        break;
-                    }
-                }
-            }
-        } catch (Exception e) {
-            Log.e("getRsrpCellSignalStrengthLte", e.toString());
-        }
-        return result;
-    }
-
-    public String getEarfcnCellIdentityLte() {
-        String result = "";
-        try {
-            for (CellInfo cellInfo : cellInfoList) {
-                //获取所有Lte网络信息
-                if (cellInfo instanceof CellInfoLte) {
-                    if (cellInfo.isRegistered()) {
-                        CellIdentityLte mycell = ((CellInfoLte) cellInfo).getCellIdentity();
-                        int intResult = mycell.getEarfcn();
-                        result = Integer.toString(intResult);
-                        break;
-                    }
-                }
-            }
-        } catch (Exception e) {
-            Log.e("getRsrpCellSignalStrengthLte", e.toString());
-        }
-        return result;
-    }
-
-public String getMccCellIdentityLte() {
-        String result = "";
-        try {
-            for (CellInfo cellInfo : cellInfoList) {
-                //获取所有Lte网络信息
-                if (cellInfo instanceof CellInfoLte) {
-                    if (cellInfo.isRegistered()) {
-                        CellIdentityLte mycell = ((CellInfoLte) cellInfo).getCellIdentity();
-                        int intResult = mycell.getMcc();
-                        result = Integer.toString(intResult);
-                        break;
-                    }
-                }
-            }
-        } catch (Exception e) {
-            Log.e("getRsrpCellSignalStrengthLte", e.toString());
-        }
-        return result;
-    }
-
-    public String getMncCellIdentityLte() {
-        String result = "";
-        try {
-            for (CellInfo cellInfo : cellInfoList) {
-                //获取所有Lte网络信息
-                if (cellInfo instanceof CellInfoLte) {
-                    if (cellInfo.isRegistered()) {
-                        CellIdentityLte mycell = ((CellInfoLte) cellInfo).getCellIdentity();
-                        int intResult = mycell.getMnc();
-                        result = Integer.toString(intResult);
-                        break;
-                    }
-                }
-            }
-        } catch (Exception e) {
-            Log.e("getRsrpCellSignalStrengthLte", e.toString());
-        }
-        return result;
-    }
-
-    public String getPciCellIdentityLte() {
-        String result = "";
-        try {
-            for (CellInfo cellInfo : cellInfoList) {
-                //获取所有Lte网络信息
-                if (cellInfo instanceof CellInfoLte) {
-                    if (cellInfo.isRegistered()) {
-                        CellIdentityLte mycell = ((CellInfoLte) cellInfo).getCellIdentity();
-                        int intResult = mycell.getPci();
-                        result = Integer.toString(intResult);
-                        break;
-                    }
-                }
-            }
-        } catch (Exception e) {
-            Log.e("getRsrpCellSignalStrengthLte", e.toString());
-        }
-        return result;
-    }
-
-    public String getTacCellIdentityLte() {
-        String result = "";
-        try {
-            for (CellInfo cellInfo : cellInfoList) {
-                //获取所有Lte网络信息
-                if (cellInfo instanceof CellInfoLte) {
-                    if (cellInfo.isRegistered()) {
-                        CellIdentityLte mycell = ((CellInfoLte) cellInfo).getCellIdentity();
-                        int intResult = mycell.getTac();
-                        result = Integer.toString(intResult);
-                        break;
-                    }
-                }
-            }
-        } catch (Exception e) {
-            Log.e("getRsrpCellSignalStrengthLte", e.toString());
-        }
-        return result;
-    }
-
-    public String getAsuLevelCellSignalStrengthCdma() {
-        String result = "";
-        try {
-            for (CellInfo cellInfo : cellInfoList) {
-                //获取所有Lte网络信息
-                if (cellInfo instanceof CellInfoCdma) {
-                    if (cellInfo.isRegistered()) {
-                        CellSignalStrengthCdma mycell = ((CellInfoCdma) cellInfo).getCellSignalStrength();
-                        int intResult = mycell.getAsuLevel();
-                        result = Integer.toString(intResult);
-                        break;
-                    }
-                }
-            }
-        } catch (Exception e) {
-            Log.e("getRsrpCellSignalStrengthLte", e.toString());
-        }
-        return result;
-    }
-
-
-    public String getCdmaDbmCellSignalStrengthCdma() {
-        String result = "";
-        try {
-            for (CellInfo cellInfo : cellInfoList) {
-                //获取所有Lte网络信息
-                if (cellInfo instanceof CellInfoCdma) {
-                    if (cellInfo.isRegistered()) {
-                        CellSignalStrengthCdma mycell = ((CellInfoCdma) cellInfo).getCellSignalStrength();
-                        int intResult = mycell.getCdmaDbm();
-                        result = Integer.toString(intResult);
-                        break;
-                    }
-                }
-            }
-        } catch (Exception e) {
-            Log.e("getRsrpCellSignalStrengthLte", e.toString());
-        }
-        return result;
-    }
-
-
-    public String getCdmaEcioCellSignalStrengthCdma() {
-        String result = "";
-        try {
-            for (CellInfo cellInfo : cellInfoList) {
-                //获取所有Lte网络信息
-                if (cellInfo instanceof CellInfoCdma) {
-                    if (cellInfo.isRegistered()) {
-                        CellSignalStrengthCdma mycell = ((CellInfoCdma) cellInfo).getCellSignalStrength();
-                        int intResult = mycell.getCdmaEcio();
-                        result = Integer.toString(intResult);
-                        break;
-                    }
-                }
-            }
-        } catch (Exception e) {
-            Log.e("getRsrpCellSignalStrengthLte", e.toString());
-        }
-        return result;
-    }
-
-
-    public String getCdmaLevelCellSignalStrengthCdma() {
-        String result = "";
-        try {
-            for (CellInfo cellInfo : cellInfoList) {
-                //获取所有Lte网络信息
-                if (cellInfo instanceof CellInfoCdma) {
-                    if (cellInfo.isRegistered()) {
-                        CellSignalStrengthCdma mycell = ((CellInfoCdma) cellInfo).getCellSignalStrength();
-                        int intResult = mycell.getCdmaLevel();
-                        result = Integer.toString(intResult);
-                        break;
-                    }
-                }
-            }
-        } catch (Exception e) {
-            Log.e("getRsrpCellSignalStrengthLte", e.toString());
-        }
-        return result;
-    }
-
-    public String getDbmCellSignalStrengthCdma() {
-        String result = "";
-        try {
-            for (CellInfo cellInfo : cellInfoList) {
-                //获取所有Lte网络信息
-                if (cellInfo instanceof CellInfoCdma) {
-                    if (cellInfo.isRegistered()) {
-                        CellSignalStrengthCdma mycell = ((CellInfoCdma) cellInfo).getCellSignalStrength();
-                        int intResult = mycell.getDbm();
-                        result = Integer.toString(intResult);
-                        break;
-                    }
-                }
-            }
-        } catch (Exception e) {
-            Log.e("getRsrpCellSignalStrengthLte", e.toString());
-        }
-        return result;
-    }
-
-    public String getEvdoDbmCellSignalStrengthCdma() {
-        String result = "";
-        try {
-            for (CellInfo cellInfo : cellInfoList) {
-                //获取所有Lte网络信息
-                if (cellInfo instanceof CellInfoCdma) {
-                    if (cellInfo.isRegistered()) {
-                        CellSignalStrengthCdma mycell = ((CellInfoCdma) cellInfo).getCellSignalStrength();
-                        int intResult = mycell.getEvdoDbm();
-                        result = Integer.toString(intResult);
-                        break;
-                    }
-                }
-            }
-        } catch (Exception e) {
-            Log.e("getRsrpCellSignalStrengthLte", e.toString());
-        }
-        return result;
-    }
-
-    public String getEvdoEcioCellSignalStrengthCdma() {
-        String result = "";
-        try {
-            for (CellInfo cellInfo : cellInfoList) {
-                //获取所有Lte网络信息
-                if (cellInfo instanceof CellInfoCdma) {
-                    if (cellInfo.isRegistered()) {
-                        CellSignalStrengthCdma mycell = ((CellInfoCdma) cellInfo).getCellSignalStrength();
-                        int intResult = mycell.getEvdoEcio();
-                        result = Integer.toString(intResult);
-                        break;
-                    }
-                }
-            }
-        } catch (Exception e) {
-            Log.e("getRsrpCellSignalStrengthLte", e.toString());
-        }
-        return result;
-    }
-
-    public String getEvdoLevelCellSignalStrengthCdma() {
-        String result = "";
-        try {
-            for (CellInfo cellInfo : cellInfoList) {
-                //获取所有Lte网络信息
-                if (cellInfo instanceof CellInfoCdma) {
-                    if (cellInfo.isRegistered()) {
-                        CellSignalStrengthCdma mycell = ((CellInfoCdma) cellInfo).getCellSignalStrength();
-                        int intResult = mycell.getEvdoLevel();
-                        result = Integer.toString(intResult);
-                        break;
-                    }
-                }
-            }
-        } catch (Exception e) {
-            Log.e("getRsrpCellSignalStrengthLte", e.toString());
-        }
-        return result;
-    }
-
-    public String getEvdoSnrCellSignalStrengthCdma() {
-        String result = "";
-        try {
-            for (CellInfo cellInfo : cellInfoList) {
-                //获取所有Lte网络信息
-                if (cellInfo instanceof CellInfoCdma) {
-                    if (cellInfo.isRegistered()) {
-                        CellSignalStrengthCdma mycell = ((CellInfoCdma) cellInfo).getCellSignalStrength();
-                        int intResult = mycell.getEvdoSnr();
-                        result = Integer.toString(intResult);
-                        break;
-                    }
-                }
-            }
-        } catch (Exception e) {
-            Log.e("getRsrpCellSignalStrengthLte", e.toString());
-        }
-        return result;
-    }
-
-    public String getLevelCellSignalStrengthCdma() {
-        String result = "";
-        try {
-            for (CellInfo cellInfo : cellInfoList) {
-                //获取所有Lte网络信息
-                if (cellInfo instanceof CellInfoCdma) {
-                    if (cellInfo.isRegistered()) {
-                        CellSignalStrengthCdma mycell = ((CellInfoCdma) cellInfo).getCellSignalStrength();
-                        int intResult = mycell.getLevel();
-                        result = Integer.toString(intResult);
-                        break;
-                    }
-                }
-            }
-        } catch (Exception e) {
-            Log.e("getRsrpCellSignalStrengthLte", e.toString());
-        }
-        return result;
-    }
-
-    public String getBasestationIdCellIdentityCdma() {
-        String result = "";
-        try {
-            for (CellInfo cellInfo : cellInfoList) {
-                //获取所有Lte网络信息
-                if (cellInfo instanceof CellInfoCdma) {
-                    if (cellInfo.isRegistered()) {
-                        CellIdentityCdma mycell = ((CellInfoCdma) cellInfo).getCellIdentity();
-                        int intResult = mycell.getBasestationId();
-                        result = Integer.toString(intResult);
-                        break;
-                    }
-                }
-            }
-        } catch (Exception e) {
-            Log.e("getRsrpCellSignalStrengthLte", e.toString());
-        }
-        return result;
-    }
-
-    public String getLatitudeCellIdentityCdma() {
-        String result = "";
-        try {
-            for (CellInfo cellInfo : cellInfoList) {
-                //获取所有Lte网络信息
-                if (cellInfo instanceof CellInfoCdma) {
-                    if (cellInfo.isRegistered()) {
-                        CellIdentityCdma mycell = ((CellInfoCdma) cellInfo).getCellIdentity();
-                        int intResult = mycell.getLatitude();
-                        result = Integer.toString(intResult);
-                        break;
-                    }
-                }
-            }
-        } catch (Exception e) {
-            Log.e("getRsrpCellSignalStrengthLte", e.toString());
-        }
-        return result;
-    }
-
-    public String getLongitudeCellIdentityCdma() {
-        String result = "";
-        try {
-            for (CellInfo cellInfo : cellInfoList) {
-                //获取所有Lte网络信息
-                if (cellInfo instanceof CellInfoCdma) {
-                    if (cellInfo.isRegistered()) {
-                        CellIdentityCdma mycell = ((CellInfoCdma) cellInfo).getCellIdentity();
-                        int intResult = mycell.getLongitude();
-                        result = Integer.toString(intResult);
-                        break;
-                    }
-                }
-            }
-        } catch (Exception e) {
-            Log.e("getRsrpCellSignalStrengthLte", e.toString());
-        }
-        return result;
-    }
-
-    public String getNetworkIdCellIdentityCdma() {
-        String result = "";
-        try {
-            for (CellInfo cellInfo : cellInfoList) {
-                //获取所有Lte网络信息
-                if (cellInfo instanceof CellInfoCdma) {
-                    if (cellInfo.isRegistered()) {
-                        CellIdentityCdma mycell = ((CellInfoCdma) cellInfo).getCellIdentity();
-                        int intResult = mycell.getNetworkId();
-                        result = Integer.toString(intResult);
-                        break;
-                    }
-                }
-            }
-        } catch (Exception e) {
-            Log.e("getRsrpCellSignalStrengthLte", e.toString());
-        }
-        return result;
-    }
-
-    public String getSystemIdCellIdentityCdma() {
-        String result = "";
-        try {
-            for (CellInfo cellInfo : cellInfoList) {
-                //获取所有Lte网络信息
-                if (cellInfo instanceof CellInfoCdma) {
-                    if (cellInfo.isRegistered()) {
-                        CellIdentityCdma mycell = ((CellInfoCdma) cellInfo).getCellIdentity();
-                        int intResult = mycell.getSystemId();
-                        result = Integer.toString(intResult);
-                        break;
-                    }
-                }
-            }
-        } catch (Exception e) {
-            Log.e("getRsrpCellSignalStrengthLte", e.toString());
-        }
-        return result;
-    }
-
-
-
-
-
 
 
 

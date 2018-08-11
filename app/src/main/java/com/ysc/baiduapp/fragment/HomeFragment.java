@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.JavascriptInterface;
+import android.webkit.ValueCallback;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -94,9 +95,6 @@ public class HomeFragment extends BaseFragment implements OnMapReadyCallback {
         void update() {
             xinxiJson.saveXinxiJson();
             xinxiWebViewInit(xinxiWebview);
-            //刷新msg的内容
-//            init();
-//            cesuWebview.loadUrl("http://ahdx.speedtestcustom.com/");
         }
     };
 
@@ -140,6 +138,12 @@ public class HomeFragment extends BaseFragment implements OnMapReadyCallback {
         }, "MyBrowserAPI");//MyBrowserAPI:自定义的js函数名
 
         xinxiWebview.loadUrl("file:///android_asset/xinxi.html");
+//        xinxiWebview.evaluateJavascript("file:///android_asset/xinxi.html", new ValueCallback<String>() {
+//            @Override
+//            public void onReceiveValue(String s) {
+//
+//            }
+//        });
 //        cesuWebview.loadUrl("http://ahdx.speedtestcustom.com/");
 //        cesuWebview.loadUrl("http://www.baidu.com/");
 //        cesuWebview.setWebViewClient(new MyWebViewClient());
