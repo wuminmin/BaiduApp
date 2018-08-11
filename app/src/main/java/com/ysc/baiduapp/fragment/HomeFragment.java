@@ -1,14 +1,10 @@
 package com.ysc.baiduapp.fragment;
 
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.telephony.TelephonyManager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,33 +12,15 @@ import android.webkit.JavascriptInterface;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.GridView;
 import android.widget.ImageView;
-import android.widget.ListView;
-import android.widget.ScrollView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.MapView;
-import com.google.android.gms.maps.MapsInitializer;
 import com.google.android.gms.maps.OnMapReadyCallback;
-import com.ysc.baiduapp.GridViewAdapter;
-import com.ysc.baiduapp.ListViewAdapter;
-import com.ysc.baiduapp.MyWebViewClient;
 import com.ysc.baiduapp.R;
-import com.ysc.baiduapp.WebViewFragment;
 import com.ysc.baiduapp.service.GetCellInfo;
 import com.ysc.baiduapp.service.MyTest;
 import com.ysc.baiduapp.viewcustom.BaseFragment;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
-
-import java.util.Map;
 
 /**
  * Created by wjx on 2016-1-12.
@@ -149,7 +127,7 @@ public class HomeFragment extends BaseFragment implements OnMapReadyCallback {
         // Enable Javascript
         WebSettings webSettings = xinxiWebview.getSettings();
         webSettings.setJavaScriptEnabled(true);
-        String rsrp = getCellInfo.getRsrp();
+        String rsrp = getCellInfo.getRsrpCellSignalStrengthLte();
         MyTest myTest = new MyTest();
 
         String rsrpstirng = "[1, -90], [2, -98],  [3, -80],  [4, -85],  [5, "+myTest.getSec()+"], [6, "+rsrp+"]";
@@ -179,7 +157,7 @@ public class HomeFragment extends BaseFragment implements OnMapReadyCallback {
         // Enable Javascript
         WebSettings webSettings = xinxiWebview.getSettings();
         webSettings.setJavaScriptEnabled(true);
-        String rsrp = getCellInfo.getRsrp();
+        String rsrp = getCellInfo.getRsrpCellSignalStrengthLte();
         MyTest myTest = new MyTest();
 
         String rsrpstirng = "[1, -90], [2, -98],  [3, -80],  [4, -85],  [5, "+myTest.getSec()+"], [6, "+rsrp+"]";
