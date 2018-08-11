@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import com.ysc.baiduapp.database.model.Note;
+import com.ysc.baiduapp.database.model.Xinxi;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,6 +36,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         // create notes table
         db.execSQL(Note.CREATE_TABLE);
+
+        // create notes table
+        db.execSQL(Xinxi.CREATE_TABLE);
     }
 
     // Upgrading database
@@ -42,6 +46,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         // Drop older table if existed
         db.execSQL("DROP TABLE IF EXISTS " + Note.TABLE_NAME);
+
+        // Drop older table if existed
+        db.execSQL("DROP TABLE IF EXISTS " + Xinxi.TABLE_NAME);
 
         // Create tables again
         onCreate(db);
@@ -58,6 +65,25 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         // insert row
         long id = db.insert(Note.TABLE_NAME, null, values);
+
+        // close db connection
+        db.close();
+
+        // return newly inserted row id
+        return id;
+    }
+
+    public long insertXinxi(String note) {
+        // get writable database as we want to write data
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        // `id` and `timestamp` will be inserted automatically.
+        // no need to add them
+        values.put(Xinxi.COLUMN_NOTE, note);
+
+        // insert row
+        long id = db.insert(Xinxi.TABLE_NAME, null, values);
 
         // close db connection
         db.close();
@@ -107,6 +133,35 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 note.setId(cursor.getInt(cursor.getColumnIndex(Note.COLUMN_ID)));
                 note.setNote(cursor.getString(cursor.getColumnIndex(Note.COLUMN_NOTE)));
                 note.setTimestamp(cursor.getString(cursor.getColumnIndex(Note.COLUMN_TIMESTAMP)));
+
+                notes.add(note);
+            } while (cursor.moveToNext());
+        }
+
+        // close db connection
+        db.close();
+
+        // return notes list
+        return notes;
+    }
+
+    public List<Xinxi> getAllXinxi() {
+        List<Xinxi> notes = new ArrayList<>();
+
+        // Select All Query
+        String selectQuery = "SELECT  * FROM " + Xinxi.TABLE_NAME + " ORDER BY " +
+                Xinxi.COLUMN_TIMESTAMP + " DESC";
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        // looping through all rows and adding to list
+        if (cursor.moveToFirst()) {
+            do {
+                Xinxi note = new Xinxi();
+                note.setId(cursor.getInt(cursor.getColumnIndex(Xinxi.COLUMN_ID)));
+                note.setNote(cursor.getString(cursor.getColumnIndex(Xinxi.COLUMN_NOTE)));
+                note.setTimestamp(cursor.getString(cursor.getColumnIndex(Xinxi.COLUMN_TIMESTAMP)));
 
                 notes.add(note);
             } while (cursor.moveToNext());

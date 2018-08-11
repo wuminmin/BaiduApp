@@ -5,7 +5,7 @@ package com.ysc.baiduapp.database.model;
  */
 
 public class Xinxi {
-    public static final String TABLE_NAME = "notes";
+    public static final String TABLE_NAME = "xinxis";
 
     public static final String COLUMN_ID = "id";
     public static final String COLUMN_NOTE = "note";

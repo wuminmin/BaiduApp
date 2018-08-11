@@ -197,7 +197,6 @@ public class OrderFragment extends BaseFragment {
                             Manifest.permission.WRITE_EXTERNAL_STORAGE,
                             Manifest.permission.CAMERA
                     ).request();
-            shinengWebviewInit(shinengWebview);
             // TODO Auto-generated method stub
 //            String file = "test";
 //            Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
@@ -214,7 +213,6 @@ public class OrderFragment extends BaseFragment {
                     new String[]{Manifest.permission.READ_EXTERNAL_STORAGE,
                             Manifest.permission.WRITE_EXTERNAL_STORAGE}
             );
-            shinengWebviewInit(shinengWebview);
             // TODO Auto-generated method stub
 //            String file = "test";
 //            Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
