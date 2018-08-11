@@ -36,9 +36,6 @@ $(document).ready(function(){
             document.getElementById("myImage").innerHTML = html;
         }
 
-
-
-
 });
 
  function showAndroidToast(toast) {
@@ -56,4 +53,8 @@ $(document).ready(function(){
         var file = Android.choosePhoto();
         window.alert("file = " + file);
     }
+        function selectPhoto() {
+            var file = Android.selectPhoto();
+            window.alert("file = " + file);
+        }
 

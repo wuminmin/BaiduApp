@@ -41,6 +41,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 import kr.co.namee.permissiongen.PermissionFail;
 import kr.co.namee.permissiongen.PermissionGen;
@@ -81,7 +82,7 @@ public class OrderFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_order3, null, false);
         activity = getActivity();
-        context = getActivity().getApplicationContext();
+        context = Objects.requireNonNull(getActivity()).getApplicationContext();
         databaseHelper = new DatabaseHelper(context);
         shinengWebview = view.findViewById(R.id.shinengWebview);
         shiwaiWebview = view.findViewById(R.id.shiwaiWebview);
@@ -89,7 +90,6 @@ public class OrderFragment extends BaseFragment {
         getCellInfo = new GetCellInfo( context , telephonyManager, getActivity());
         shiwaiWebview = view.findViewById(R.id.shiwaiWebview);
         bundle = savedInstanceState;
-
 
         Button shinengBtn = view.findViewById(R.id.shineng);
         Button shiwaiBtn = view.findViewById(R.id.shiwai);
@@ -101,7 +101,6 @@ public class OrderFragment extends BaseFragment {
                 shinengWebviewInit(shinengWebview);
             }
         });
-
         shiwaiBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -119,9 +118,7 @@ public class OrderFragment extends BaseFragment {
         WebSettings webSettings = shinengWebview.getSettings();
         webSettings.setJavaScriptEnabled(true);
         shinengWebview.addJavascriptInterface(new MyJavascriptInterface(activity), "Android");
-
         initLQRPhotoSelectUtils();
-
         StringBuilder jsontmp = new StringBuilder();
         List<Note> notes = databaseHelper.getAllNotes();
         boolean first = true;
@@ -133,9 +130,7 @@ public class OrderFragment extends BaseFragment {
                 jsontmp.append(",");
                 jsontmp.append("\"").append(note.getNote()).append("\"");
             }
-
         }
-
         final String json = "["+jsontmp.toString()+"]";
         Log.e("传递给webview的note",json);
         shinengWebview.addJavascriptInterface(new Object() {
@@ -144,7 +139,6 @@ public class OrderFragment extends BaseFragment {
             public String getLocationData(String message) {
                 return json; // 把本地数据弄成json串，传给html
             }
-
         }, "MyBrowserAPI");//MyBrowserAPI:自定义的js函数名
         shinengWebview.loadUrl("file:///android_asset/shineng.html");
     }
@@ -154,7 +148,28 @@ public class OrderFragment extends BaseFragment {
         WebSettings webSettings = shiwaiWebview.getSettings();
         webSettings.setJavaScriptEnabled(true);
         shiwaiWebview.addJavascriptInterface(new MyJavascriptInterface(activity), "Android");
-
+        initLQRPhotoSelectUtils();
+        StringBuilder jsontmp = new StringBuilder();
+        List<Note> notes = databaseHelper.getAllNotes();
+        boolean first = true;
+        for( Note  note : notes  ){
+            if(first){
+                jsontmp.append("\"").append(note.getNote()).append("\"");
+                first=false;
+            }else {
+                jsontmp.append(",");
+                jsontmp.append("\"").append(note.getNote()).append("\"");
+            }
+        }
+        final String json = "["+jsontmp.toString()+"]";
+        Log.e("传递给webview的note",json);
+        shiwaiWebview.addJavascriptInterface(new Object() {
+            //@param message:  html页面传进来的数据
+            @JavascriptInterface
+            public String getLocationData(String message) {
+                return json; // 把本地数据弄成json串，传给html
+            }
+        }, "MyBrowserAPI");//MyBrowserAPI:自定义的js函数名
         shiwaiWebview.loadUrl("file:///android_asset/shiwai.html");
     }
 
@@ -172,6 +187,7 @@ public class OrderFragment extends BaseFragment {
         {
             Toast.makeText(myContext, toast, Toast.LENGTH_SHORT).show();
         }
+
         @JavascriptInterface
         public void choosePhoto()
         {
@@ -181,6 +197,24 @@ public class OrderFragment extends BaseFragment {
                             Manifest.permission.WRITE_EXTERNAL_STORAGE,
                             Manifest.permission.CAMERA
                     ).request();
+            shinengWebviewInit(shinengWebview);
+            // TODO Auto-generated method stub
+//            String file = "test";
+//            Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
+//            photoPickerIntent.setType("image/*");
+//            startActivityForResult(photoPickerIntent, SELECT_PHOTO);
+//            return file;
+        }
+        @JavascriptInterface
+        public void selectPhoto()
+        {
+            // 3、调用从图库选取图片方法
+            PermissionGen.needPermission(OrderFragment.this,
+                    LQRPhotoSelectUtils.REQ_SELECT_PHOTO,
+                    new String[]{Manifest.permission.READ_EXTERNAL_STORAGE,
+                            Manifest.permission.WRITE_EXTERNAL_STORAGE}
+            );
+            shinengWebviewInit(shinengWebview);
             // TODO Auto-generated method stub
 //            String file = "test";
 //            Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
