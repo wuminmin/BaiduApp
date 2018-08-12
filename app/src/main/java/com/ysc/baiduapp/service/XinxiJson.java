@@ -66,7 +66,7 @@ public class XinxiJson {
                 XinxiJson.addProperty("getTimingAdvanceCellInfoLte", String.valueOf(getCellInfojson.get("getTimingAdvanceCellInfoLte")));
             }
             if ( getCellInfojson.has("getCiCellIdentityLte" ) ) {
-                XinxiJson.addProperty("enb", String.valueOf(getCellInfojson.get("getCiCellIdentityLte")));
+                XinxiJson.addProperty("eci",  Integer.toHexString(getCellInfojson.get("getCiCellIdentityLte").getAsInt()));
             }
             if ( getCellInfojson.has("getEarfcnCellIdentityLte" ) ) {
                 XinxiJson.addProperty("earf", String.valueOf(getCellInfojson.get("getEarfcnCellIdentityLte")));
@@ -138,6 +138,8 @@ public class XinxiJson {
             XinxiJson.addProperty("leixing","安卓");
             XinxiJson.addProperty("jingque","300米");
             XinxiJson.addProperty("fangshi","GPS");
+            XinxiJson.addProperty("enb", String.valueOf( getCellInfojson.get("getCiCellIdentityLte").getAsInt()/256 ));
+            XinxiJson.addProperty("cellid", String.valueOf( getCellInfojson.get("getCiCellIdentityLte").getAsInt()%256 ));
             Log.e("手机小区信息json格式", String.valueOf(XinxiJson)) ;
             databaseHelper.insertXinxi(XinxiJson.toString());
         } catch (Exception e) {
