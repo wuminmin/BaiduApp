@@ -61,184 +61,11 @@ public class GetCellInfo {
     private String strTmp = "";
     private String strCellInfo = "";
     private JSONObject jsonObject = null;
-    private List<CellInfo> cellInfoList = null;
 
     public GetCellInfo(Context c, TelephonyManager t, FragmentActivity m) {
         mycontext = c;
         telephonyManager = t;
         mymainActivity = m;
-        cellInfoList = initList();
-    }
-
-    public List<CellInfo> getList() {
-        return this.cellInfoList;
-    }
-
-    private List<CellInfo> initList() {
-        if (telephonyManager == null) {
-            new AlertDialog.Builder(mycontext).setTitle("错误").setMessage("内部错误 telephonyManager").setPositiveButton("确定", null).show();
-        } else {
-            if (telephonyManager.getPhoneType() == TelephonyManager.PHONE_TYPE_CDMA) {
-                if (ActivityCompat.checkSelfPermission(mycontext, ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                    ActivityCompat.requestPermissions(mymainActivity,
-                            new String[]{ACCESS_COARSE_LOCATION},
-                            MY_PERMISSIONS_REQUEST_ACCESS_COARSE_LOCATION);
-                    Toast.makeText(this.mycontext, "请求卫星和网络权限！！", Toast.LENGTH_LONG).show();
-                } else {
-                    cellInfoList = telephonyManager.getAllCellInfo();
-                    return cellInfoList;
-                }
-            }
-        }
-        return new List<CellInfo>() {
-            @Override
-            public int size() {
-                return 0;
-            }
-
-            @Override
-            public boolean isEmpty() {
-                return false;
-            }
-
-            @Override
-            public boolean contains(Object o) {
-                return false;
-            }
-
-            @NonNull
-            @Override
-            public Iterator<CellInfo> iterator() {
-                return null;
-            }
-
-            @NonNull
-            @Override
-            public Object[] toArray() {
-                return new Object[0];
-            }
-
-            @NonNull
-            @Override
-            public <T> T[] toArray(@NonNull T[] ts) {
-                return null;
-            }
-
-            @Override
-            public boolean add(CellInfo cellInfo) {
-                return false;
-            }
-
-            @Override
-            public boolean remove(Object o) {
-                return false;
-            }
-
-            @Override
-            public boolean containsAll(@NonNull Collection<?> collection) {
-                return false;
-            }
-
-            @Override
-            public boolean addAll(@NonNull Collection<? extends CellInfo> collection) {
-                return false;
-            }
-
-            @Override
-            public boolean addAll(int i, @NonNull Collection<? extends CellInfo> collection) {
-                return false;
-            }
-
-            @Override
-            public boolean removeAll(@NonNull Collection<?> collection) {
-                return false;
-            }
-
-            @Override
-            public boolean retainAll(@NonNull Collection<?> collection) {
-                return false;
-            }
-
-            @Override
-            public void clear() {
-
-            }
-
-            @Override
-            public CellInfo get(int i) {
-                return null;
-            }
-
-            @Override
-            public CellInfo set(int i, CellInfo cellInfo) {
-                return null;
-            }
-
-            @Override
-            public void add(int i, CellInfo cellInfo) {
-
-            }
-
-            @Override
-            public CellInfo remove(int i) {
-                return null;
-            }
-
-            @Override
-            public int indexOf(Object o) {
-                return 0;
-            }
-
-            @Override
-            public int lastIndexOf(Object o) {
-                return 0;
-            }
-
-            @NonNull
-            @Override
-            public ListIterator<CellInfo> listIterator() {
-                return null;
-            }
-
-            @NonNull
-            @Override
-            public ListIterator<CellInfo> listIterator(int i) {
-                return null;
-            }
-
-            @NonNull
-            @Override
-            public List<CellInfo> subList(int i, int i1) {
-                return null;
-            }
-        };
-    }
-
-    public String myCell() {
-        if (telephonyManager == null) {
-            new AlertDialog.Builder(mycontext).setTitle("错误").setMessage("内部错误 telephonyManager").setPositiveButton("确定", null).show();
-        } else {
-            if (telephonyManager.getPhoneType() == TelephonyManager.PHONE_TYPE_CDMA) {
-                if (ActivityCompat.checkSelfPermission(mycontext, ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                    ActivityCompat.requestPermissions(mymainActivity,
-                            new String[]{ACCESS_COARSE_LOCATION},
-                            MY_PERMISSIONS_REQUEST_ACCESS_COARSE_LOCATION);
-                    Toast.makeText(this.mycontext, "请求卫星和网络权限！！", Toast.LENGTH_LONG).show();
-                    return null;
-                } else {
-                    cellInfoList = telephonyManager.getAllCellInfo();
-                    try {
-                        Gson gson = new Gson();
-                        strCellInfo = gson.toJson(cellInfoList);
-                        Log.e("strCellInfo", strCellInfo);
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                    return strCellInfo;
-                }
-            }
-        }
-        return null;
     }
 
     public Map<String, Double> myGps() {
@@ -368,6 +195,7 @@ public class GetCellInfo {
                                     int getDbm = cellSignalStrengthLte.getDbm() == 2147483647 ? 0 : (cellSignalStrengthLte.getDbm());
                                     int getRsrq = cellSignalStrengthLte.getRsrq() == 2147483647 ? 0 : (cellSignalStrengthLte.getRsrq());
                                     int getTimingAdvance = cellSignalStrengthLte.getTimingAdvance() == 2147483647 ? 0 : (cellSignalStrengthLte.getTimingAdvance());
+
                                     cellJson.addProperty("getRsrpCellInfoLte",getRsrp);
                                     cellJson.addProperty("getRssnrCellInfoLte",getRssnr);
                                     cellJson.addProperty("getAsuLevelCellInfoLte",getAsuLevel);
@@ -384,6 +212,7 @@ public class GetCellInfo {
                                     int getMnc = cellIdentityLte.getMnc() == 2147483647 ? 0 : ( cellIdentityLte.getMnc() );
                                     int getPci = cellIdentityLte.getPci() == 2147483647 ? 0 : ( cellIdentityLte.getPci() );
                                     int getTac = cellIdentityLte.getTac() == 2147483647 ? 0 : ( cellIdentityLte.getTac() );
+
                                     cellJson.addProperty("getCiCellIdentityLte",getCi);
                                     cellJson.addProperty("getEarfcnCellIdentityLte",getEarfcn);
                                     cellJson.addProperty("getMccCellIdentityLte",getMcc);

@@ -59,7 +59,6 @@ public class HomeFragment extends BaseFragment implements OnMapReadyCallback {
                 cesuWebview.setVisibility(View.GONE);
                 xinxiWebview.setVisibility(View.VISIBLE);
                 mapWebview.setVisibility(View.GONE);
-
             }
         });
 
