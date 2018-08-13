@@ -92,6 +92,7 @@ $(function () {
     document.getElementById("sid").innerText = firstJson['sid'];
     document.getElementById("rsrp").innerText = firstJson['rsrp'];
     document.getElementById("rsrq").innerText = firstJson['rsrq'];
+    document.getElementById("sinr").innerText = firstJson['sinr'];
     document.getElementById("dbm").innerText = firstJson['dbm'];
     document.getElementById("ecio").innerText = firstJson['ecio'];
 });

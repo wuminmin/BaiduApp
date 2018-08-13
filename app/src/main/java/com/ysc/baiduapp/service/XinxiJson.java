@@ -140,6 +140,7 @@ public class XinxiJson {
             xinxiJson.addProperty("leixing","安卓");
             xinxiJson.addProperty("jingque","300米");
             xinxiJson.addProperty("fangshi","GPS");
+            xinxiJson.addProperty("sinr",getSinr( getCellInfojson.get("getRsrqCellInfoLte").getAsInt() ));
             xinxiJson.addProperty("band",getBand(getCellInfojson.get("getEarfcnCellIdentityLte").getAsInt()));
             xinxiJson.addProperty("enb", String.valueOf( getCellInfojson.get("getCiCellIdentityLte").getAsInt()/256 ));
             xinxiJson.addProperty("cellid", String.valueOf( getCellInfojson.get("getCiCellIdentityLte").getAsInt()%256 ));
@@ -148,6 +149,10 @@ public class XinxiJson {
         } catch (Exception e) {
             Log.e("获取手机信息拼装json失败", e.toString());
         }
+    }
+
+    private int getSinr(int rsrq){
+        return 1/( 1/(12*rsrq) - 2);
     }
 
     private int getBand(int x){
