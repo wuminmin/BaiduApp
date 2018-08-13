@@ -40,111 +40,122 @@ public class XinxiJson {
     public void saveXinxiJson() {
         try {
             JsonObject getCellInfojson = getCellInfo.getRsrpCellSignalStrengthLte() ;
-            JsonObject XinxiJson = new JsonObject();
+            JsonObject xinxiJson = new JsonObject();
             if ( getCellInfojson.has("getRsrpCellInfoLte" )) {
-                XinxiJson.addProperty("rsrp", String.valueOf(getCellInfojson.get("getRsrpCellInfoLte")));
+                xinxiJson.addProperty("rsrp", String.valueOf(getCellInfojson.get("getRsrpCellInfoLte")));
             }
             if ( getCellInfojson.has("getRssnrCellInfoLte" ) ) {
-                XinxiJson.addProperty("rssnr", String.valueOf(getCellInfojson.get("getRssnrCellInfoLte")));
+                xinxiJson.addProperty("rssnr", String.valueOf(getCellInfojson.get("getRssnrCellInfoLte")));
             }
             if ( getCellInfojson.has("getAsuLevelCellInfoLte" ) ) {
-                XinxiJson.addProperty("getAsuLevelCellInfoLte", String.valueOf(getCellInfojson.get("getAsuLevelCellInfoLte")));
+                xinxiJson.addProperty("getAsuLevelCellInfoLte", String.valueOf(getCellInfojson.get("getAsuLevelCellInfoLte")));
             }
             if ( getCellInfojson.has("getLevelCellInfoLte" ) ) {
-                XinxiJson.addProperty("band", String.valueOf(getCellInfojson.get("getLevelCellInfoLte")));
+                xinxiJson.addProperty("getLevelCellInfoLte", String.valueOf(getCellInfojson.get("getLevelCellInfoLte")));
             }
             if ( getCellInfojson.has("getCqiCellInfoLte" ) ) {
-                XinxiJson.addProperty("cqi", String.valueOf(getCellInfojson.get("getCqiCellInfoLte")));
+                xinxiJson.addProperty("cqi", String.valueOf(getCellInfojson.get("getCqiCellInfoLte")));
             }
             if ( getCellInfojson.has("getDbmCellInfoLte" ) ) {
-                XinxiJson.addProperty("getDbmCellInfoLte", String.valueOf(getCellInfojson.get("getDbmCellInfoLte")));
+                xinxiJson.addProperty("getDbmCellInfoLte", String.valueOf(getCellInfojson.get("getDbmCellInfoLte")));
             }
             if ( getCellInfojson.has("getRsrqCellInfoLte" ) ) {
-                XinxiJson.addProperty("rsrq", String.valueOf(getCellInfojson.get("getRsrqCellInfoLte")));
+                xinxiJson.addProperty("rsrq", String.valueOf(getCellInfojson.get("getRsrqCellInfoLte")));
             }
             if ( getCellInfojson.has("getTimingAdvanceCellInfoLte" ) ) {
-                XinxiJson.addProperty("getTimingAdvanceCellInfoLte", String.valueOf(getCellInfojson.get("getTimingAdvanceCellInfoLte")));
+                xinxiJson.addProperty("getTimingAdvanceCellInfoLte", String.valueOf(getCellInfojson.get("getTimingAdvanceCellInfoLte")));
             }
             if ( getCellInfojson.has("getCiCellIdentityLte" ) ) {
-                XinxiJson.addProperty("eci",  Integer.toHexString(getCellInfojson.get("getCiCellIdentityLte").getAsInt()));
+                xinxiJson.addProperty("eci",  Integer.toHexString(getCellInfojson.get("getCiCellIdentityLte").getAsInt()));
             }
             if ( getCellInfojson.has("getEarfcnCellIdentityLte" ) ) {
-                XinxiJson.addProperty("earf", String.valueOf(getCellInfojson.get("getEarfcnCellIdentityLte")));
+                xinxiJson.addProperty("earf", String.valueOf(getCellInfojson.get("getEarfcnCellIdentityLte")));
             }
             if ( getCellInfojson.has("getMccCellIdentityLte" ) ) {
-                XinxiJson.addProperty("mcc", String.valueOf(getCellInfojson.get("getMccCellIdentityLte")));
+                xinxiJson.addProperty("mcc", String.valueOf(getCellInfojson.get("getMccCellIdentityLte")));
             }
             if ( getCellInfojson.has("getMncCellIdentityLte" ) ) {
-                XinxiJson.addProperty("mnc", String.valueOf(getCellInfojson.get("getMncCellIdentityLte")));
+                xinxiJson.addProperty("mnc", String.valueOf(getCellInfojson.get("getMncCellIdentityLte")));
             }
             if ( getCellInfojson.has("getPciCellIdentityLte" ) ) {
-                XinxiJson.addProperty("pci", String.valueOf(getCellInfojson.get("getPciCellIdentityLte")));
+                xinxiJson.addProperty("pci", String.valueOf(getCellInfojson.get("getPciCellIdentityLte")));
             }
             if ( getCellInfojson.has("getTacCellIdentityLte" ) ) {
-                XinxiJson.addProperty("tac", String.valueOf(getCellInfojson.get("getTacCellIdentityLte")));
+                xinxiJson.addProperty("tac", String.valueOf(getCellInfojson.get("getTacCellIdentityLte")));
             }
             if ( getCellInfojson.has("getAsuLevelCellSignalStrengthCdma" ) ) {
-                XinxiJson.addProperty("getAsuLevelCellSignalStrengthCdma", String.valueOf(getCellInfojson.get("getAsuLevelCellSignalStrengthCdma")));
+                xinxiJson.addProperty("getAsuLevelCellSignalStrengthCdma", String.valueOf(getCellInfojson.get("getAsuLevelCellSignalStrengthCdma")));
             }
             if ( getCellInfojson.has("getLevelCellSignalStrengthCdma" ) ) {
-                XinxiJson.addProperty("getLevelCellSignalStrengthCdma", String.valueOf(getCellInfojson.get("getLevelCellSignalStrengthCdma")));
+                xinxiJson.addProperty("getLevelCellSignalStrengthCdma", String.valueOf(getCellInfojson.get("getLevelCellSignalStrengthCdma")));
             }
             if ( getCellInfojson.has("getCdmaLevelCellSignalStrengthCdma" ) ) {
-                XinxiJson.addProperty("getCdmaLevelCellSignalStrengthCdma", String.valueOf(getCellInfojson.get("getCdmaLevelCellSignalStrengthCdma")));
+                xinxiJson.addProperty("getCdmaLevelCellSignalStrengthCdma", String.valueOf(getCellInfojson.get("getCdmaLevelCellSignalStrengthCdma")));
             }
             if ( getCellInfojson.has("getEvdoLevelCellSignalStrengthCdma" ) ) {
-                XinxiJson.addProperty("getEvdoLevelCellSignalStrengthCdma", String.valueOf(getCellInfojson.get("getEvdoLevelCellSignalStrengthCdma")));
+                xinxiJson.addProperty("getEvdoLevelCellSignalStrengthCdma", String.valueOf(getCellInfojson.get("getEvdoLevelCellSignalStrengthCdma")));
             }
             if ( getCellInfojson.has("getCdmaDbmCellSignalStrengthCdma" ) ) {
-                XinxiJson.addProperty("dbm", String.valueOf(getCellInfojson.get("getCdmaDbmCellSignalStrengthCdma")));
+                xinxiJson.addProperty("dbm", String.valueOf(getCellInfojson.get("getCdmaDbmCellSignalStrengthCdma")));
             }
             if ( getCellInfojson.has("getCdmaEcioCellSignalStrengthCdma" ) ) {
-                XinxiJson.addProperty("ecio", String.valueOf(getCellInfojson.get("getCdmaEcioCellSignalStrengthCdma")));
+                xinxiJson.addProperty("ecio", String.valueOf(getCellInfojson.get("getCdmaEcioCellSignalStrengthCdma")));
             }
             if ( getCellInfojson.has("getDbmCellSignalStrengthCdma" ) ) {
-                XinxiJson.addProperty("getDbmCellSignalStrengthCdma", String.valueOf(getCellInfojson.get("getDbmCellSignalStrengthCdma")));
+                xinxiJson.addProperty("getDbmCellSignalStrengthCdma", String.valueOf(getCellInfojson.get("getDbmCellSignalStrengthCdma")));
             }
             if ( getCellInfojson.has("getEvdoDbmCellSignalStrengthCdma" ) ) {
-                XinxiJson.addProperty("getEvdoDbmCellSignalStrengthCdma", String.valueOf(getCellInfojson.get("getEvdoDbmCellSignalStrengthCdma")));
+                xinxiJson.addProperty("getEvdoDbmCellSignalStrengthCdma", String.valueOf(getCellInfojson.get("getEvdoDbmCellSignalStrengthCdma")));
             }
             if ( getCellInfojson.has("getEvdoEcioCellSignalStrengthCdma" ) ) {
-                XinxiJson.addProperty("getEvdoEcioCellSignalStrengthCdma", String.valueOf(getCellInfojson.get("getEvdoEcioCellSignalStrengthCdma")));
+                xinxiJson.addProperty("getEvdoEcioCellSignalStrengthCdma", String.valueOf(getCellInfojson.get("getEvdoEcioCellSignalStrengthCdma")));
             }
             if ( getCellInfojson.has("getEvdoSnrCellSignalStrengthCdma" ) ) {
-                XinxiJson.addProperty("getEvdoSnrCellSignalStrengthCdma", String.valueOf(getCellInfojson.get("getEvdoSnrCellSignalStrengthCdma")));
+                xinxiJson.addProperty("getEvdoSnrCellSignalStrengthCdma", String.valueOf(getCellInfojson.get("getEvdoSnrCellSignalStrengthCdma")));
             }
             if ( getCellInfojson.has("getBasestationIdCellIdentityCdma" ) ) {
-                XinxiJson.addProperty("bid", String.valueOf(getCellInfojson.get("getBasestationIdCellIdentityCdma")));
+                xinxiJson.addProperty("bid", String.valueOf(getCellInfojson.get("getBasestationIdCellIdentityCdma")));
             }
             if ( getCellInfojson.has("getNetworkIdCellIdentityCdma" ) ) {
-                XinxiJson.addProperty("nid", String.valueOf(getCellInfojson.get("getNetworkIdCellIdentityCdma")));
+                xinxiJson.addProperty("nid", String.valueOf(getCellInfojson.get("getNetworkIdCellIdentityCdma")));
             }
             if ( getCellInfojson.has("getSystemIdCellIdentityCdma" ) ) {
-                XinxiJson.addProperty("sid", String.valueOf(getCellInfojson.get("getSystemIdCellIdentityCdma")));
+                xinxiJson.addProperty("sid", String.valueOf(getCellInfojson.get("getSystemIdCellIdentityCdma")));
             }
             if ( getCellInfojson.has("getLatitudeCellIdentityCdma" ) ) {
-                XinxiJson.addProperty("weidu", getCellInfo.myGps().get("getLatitude"));
+                xinxiJson.addProperty("weidu", getCellInfo.myGps().get("getLatitude"));
             }
             if ( getCellInfojson.has("getLongitudeCellIdentityCdma" ) ) {
-                XinxiJson.addProperty("jingdu", getCellInfo.myGps().get("getLongitude") );
+                xinxiJson.addProperty("jingdu", getCellInfo.myGps().get("getLongitude") );
             }
 
-            XinxiJson.addProperty("pingpai", android.os.Build.BRAND );
-            XinxiJson.addProperty("xinghao", android.os.Build.MODEL );
-            XinxiJson.addProperty("yingjian", android.os.Build.HARDWARE );
-            XinxiJson.addProperty("anzhuo", Build.VERSION.RELEASE );
-            XinxiJson.addProperty("wangluo", SystemUtil.getNetworkType(this.c,this.m) );
-            XinxiJson.addProperty("time", getCunrTime() );
-            XinxiJson.addProperty("leixing","安卓");
-            XinxiJson.addProperty("jingque","300米");
-            XinxiJson.addProperty("fangshi","GPS");
-            XinxiJson.addProperty("enb", String.valueOf( getCellInfojson.get("getCiCellIdentityLte").getAsInt()/256 ));
-            XinxiJson.addProperty("cellid", String.valueOf( getCellInfojson.get("getCiCellIdentityLte").getAsInt()%256 ));
-            Log.e("手机小区信息json格式", String.valueOf(XinxiJson)) ;
-            databaseHelper.insertXinxi(XinxiJson.toString());
+            xinxiJson.addProperty("pingpai", android.os.Build.BRAND );
+            xinxiJson.addProperty("xinghao", android.os.Build.MODEL );
+            xinxiJson.addProperty("yingjian", android.os.Build.HARDWARE );
+            xinxiJson.addProperty("anzhuo", Build.VERSION.RELEASE );
+            xinxiJson.addProperty("wangluo", SystemUtil.getNetworkType(this.c,this.m) );
+            xinxiJson.addProperty("shuju",SystemUtil.getNetworkType(this.c,this.m));
+            xinxiJson.addProperty("xiaoqu",SystemUtil.getNetworkType(this.c,this.m));
+            xinxiJson.addProperty("time", getCunrTime() );
+            xinxiJson.addProperty("leixing","安卓");
+            xinxiJson.addProperty("jingque","300米");
+            xinxiJson.addProperty("fangshi","GPS");
+            xinxiJson.addProperty("band",getBand(getCellInfojson.get("getEarfcnCellIdentityLte").getAsInt()));
+            xinxiJson.addProperty("enb", String.valueOf( getCellInfojson.get("getCiCellIdentityLte").getAsInt()/256 ));
+            xinxiJson.addProperty("cellid", String.valueOf( getCellInfojson.get("getCiCellIdentityLte").getAsInt()%256 ));
+            Log.e("手机小区信息json格式", String.valueOf(xinxiJson)) ;
+            databaseHelper.insertXinxi(xinxiJson.toString());
         } catch (Exception e) {
             Log.e("获取手机信息拼装json失败", e.toString());
         }
+    }
+
+    private int getBand(int x){
+        switch (x) {
+            case 100 : return 1;
+            case 1825 : return 3;
+        }
+            return 0 ;
     }
 
     private String getCunrTime(){
