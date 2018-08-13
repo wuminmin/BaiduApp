@@ -228,10 +228,10 @@ public class GetCellInfo {
                                 SignalStrengthListener signalStrengthListener = new SignalStrengthListener();
                                 telephonyManager.listen(signalStrengthListener, PhoneStateListener.LISTEN_SIGNAL_STRENGTHS);
                                 cellJson.addProperty("lte_sinr", signalStrengthListener.getlte_sinr() );
-                                cellJson.addProperty("getlte_rsrp", signalStrengthListener.getlte_rsrp() );
-                                cellJson.addProperty("getlte_rsrq", signalStrengthListener.getlte_rsrq() );
-                                cellJson.addProperty("getlte_rssnr", signalStrengthListener.getlte_rssnr() );
-                                cellJson.addProperty("getlte_cqi", signalStrengthListener.getlte_cqi() );
+                                cellJson.addProperty("getRsrpCellInfoLte", signalStrengthListener.getlte_rsrp() );
+                                cellJson.addProperty("getRsrqCellInfoLte", signalStrengthListener.getlte_rsrq() );
+                                cellJson.addProperty("getRssnrCellInfoLte", signalStrengthListener.getlte_rssnr() );
+                                cellJson.addProperty("getCqiCellInfoLte", signalStrengthListener.getlte_cqi() );
 
                             }
                         } else {

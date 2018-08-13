@@ -140,10 +140,18 @@ public class XinxiJson {
             xinxiJson.addProperty("leixing","安卓");
             xinxiJson.addProperty("jingque","300米");
             xinxiJson.addProperty("fangshi","GPS");
-            xinxiJson.addProperty("sinr",getSinr( getCellInfojson.get("getRsrqCellInfoLte").getAsInt() ));
-            xinxiJson.addProperty("band",getBand(getCellInfojson.get("getEarfcnCellIdentityLte").getAsInt()));
-            xinxiJson.addProperty("enb", String.valueOf( getCellInfojson.get("getCiCellIdentityLte").getAsInt()/256 ));
-            xinxiJson.addProperty("cellid", String.valueOf( getCellInfojson.get("getCiCellIdentityLte").getAsInt()%256 ));
+            if(getCellInfojson.has("lte_sinr")) {
+                xinxiJson.addProperty("sinr", getCellInfojson.get("lte_sinr").getAsInt());
+            }
+            if(getCellInfojson.has("getEarfcnCellIdentityLte")) {
+                xinxiJson.addProperty("band", getBand(getCellInfojson.get("getEarfcnCellIdentityLte").getAsInt()));
+            }
+            if(getCellInfojson.has("getCiCellIdentityLte")) {
+                xinxiJson.addProperty("enb", String.valueOf(getCellInfojson.get("getCiCellIdentityLte").getAsInt() / 256));
+            }
+            if(getCellInfojson.has("getCiCellIdentityLte")){
+                xinxiJson.addProperty("cellid", String.valueOf( getCellInfojson.get("getCiCellIdentityLte").getAsInt()%256 ));
+            }
             Log.e("手机小区信息json格式", String.valueOf(xinxiJson)) ;
             databaseHelper.insertXinxi(xinxiJson.toString());
         } catch (Exception e) {
