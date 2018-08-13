@@ -7,9 +7,11 @@ import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.INotificationSideChannel;
 import android.support.v7.app.AlertDialog;
 import android.telephony.CellIdentityCdma;
 import android.telephony.CellIdentityLte;
@@ -20,6 +22,8 @@ import android.telephony.CellInfoLte;
 import android.telephony.CellInfoWcdma;
 import android.telephony.CellSignalStrengthCdma;
 import android.telephony.CellSignalStrengthLte;
+import android.telephony.PhoneStateListener;
+import android.telephony.SignalStrength;
 import android.telephony.TelephonyManager;
 import android.telephony.cdma.CdmaCellLocation;
 import android.telephony.gsm.GsmCellLocation;
@@ -39,6 +43,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.Serializable;
+import java.lang.reflect.Method;
 import java.text.DecimalFormat;
 import java.util.Collection;
 import java.util.HashMap;
@@ -51,6 +56,7 @@ import java.util.Objects;
 import static android.Manifest.permission.ACCESS_COARSE_LOCATION;
 import static android.Manifest.permission.ACCESS_FINE_LOCATION;
 import static android.content.Context.LOCATION_SERVICE;
+import static android.telephony.TelephonyManager.NETWORK_TYPE_LTE;
 
 public class GetCellInfo {
     private static final int MY_PERMISSIONS_REQUEST_ACCESS_COARSE_LOCATION = 0;
@@ -181,101 +187,149 @@ public class GetCellInfo {
                         Toast.makeText(this.mycontext, "请求卫星和网络权限！！", Toast.LENGTH_LONG).show();
                         return cellJson;
                     } else {
-                        List<CellInfo> myCellInfoList = telephonyManager.getAllCellInfo();
-                        for (CellInfo cellInfo : myCellInfoList) {
-                            //获取所有Lte网络信息
-                            if ( cellInfo instanceof CellInfoLte ) {
-                                if (cellInfo.isRegistered()) {
-                                    CellSignalStrengthLte cellSignalStrengthLte = ((CellInfoLte) cellInfo).getCellSignalStrength();
-                                    int getRsrp = cellSignalStrengthLte.getRsrp() == 2147483647 ? 0 : cellSignalStrengthLte.getRsrp();
-                                    int getRssnr = cellSignalStrengthLte.getRssnr() == 2147483647 ? 0 : (cellSignalStrengthLte.getRssnr());
-                                    int getAsuLevel = cellSignalStrengthLte.getAsuLevel() == 2147483647 ? 0 : (cellSignalStrengthLte.getAsuLevel());
-                                    int getLevel = cellSignalStrengthLte.getLevel() == 2147483647 ? 0 : (cellSignalStrengthLte.getLevel());
-                                    int getCqi = cellSignalStrengthLte.getCqi() == 2147483647 ? 0 : (cellSignalStrengthLte.getCqi());
-                                    int getDbm = cellSignalStrengthLte.getDbm() == 2147483647 ? 0 : (cellSignalStrengthLte.getDbm());
-                                    int getRsrq = cellSignalStrengthLte.getRsrq() == 2147483647 ? 0 : (cellSignalStrengthLte.getRsrq());
-                                    int getTimingAdvance = cellSignalStrengthLte.getTimingAdvance() == 2147483647 ? 0 : (cellSignalStrengthLte.getTimingAdvance());
+                        if (Build.VERSION.SDK_INT < 26) {
+                            if (telephonyManager.getNetworkType() == NETWORK_TYPE_LTE) {
 
-                                    cellJson.addProperty("getRsrpCellInfoLte",getRsrp);
-                                    cellJson.addProperty("getRssnrCellInfoLte",getRssnr);
-                                    cellJson.addProperty("getAsuLevelCellInfoLte",getAsuLevel);
-                                    cellJson.addProperty("getLevelCellInfoLte",getLevel);
-                                    cellJson.addProperty("getCqiCellInfoLte",getCqi);
-                                    cellJson.addProperty("getDbmCellInfoLte",getDbm);
-                                    cellJson.addProperty("getRsrqCellInfoLte",getRsrq);
-                                    cellJson.addProperty("getTimingAdvanceCellInfoLte",getTimingAdvance);
+                                 class SignalStrengthListener extends PhoneStateListener {
+                                     private int lte_sinr;
+                                     private int lte_rsrp;
+                                     private int lte_rsrq;
+                                     private int lte_rssnr;
+                                     private int lte_cqi;
+                                    public void onSignalStrengthsChanged(SignalStrength signalStrength) {
+                                        super.onSignalStrengthsChanged(signalStrength);
+                                        try {
+                                             lte_sinr = (int) signalStrength.getClass().getMethod("getLteSignalStrength").invoke(signalStrength);
+                                             lte_rsrp = (int) signalStrength.getClass().getMethod("getLteRsrp").invoke(signalStrength);
+                                             lte_rsrq = (int) signalStrength.getClass().getMethod("getLteRsrq").invoke(signalStrength);
+                                             lte_rssnr = (int) signalStrength.getClass().getMethod("getLteRssnr").invoke(signalStrength);
+                                             lte_cqi = (int) signalStrength.getClass().getMethod("getLteCqi").invoke(signalStrength);
+                                        } catch (Exception e) {
+                                            e.printStackTrace();
+                                        }
+                                    }
 
-                                    CellIdentityLte cellIdentityLte = ((CellInfoLte) cellInfo).getCellIdentity();
-                                    int getCi = cellIdentityLte.getCi() == 2147483647 ? 0 : ( cellIdentityLte.getCi() );
-                                    int getEarfcn = cellIdentityLte.getEarfcn() == 2147483647 ? 0 : ( cellIdentityLte.getEarfcn() );
-                                    int getMcc = cellIdentityLte.getMcc() == 2147483647 ? 0 : ( cellIdentityLte.getMcc() );
-                                    int getMnc = cellIdentityLte.getMnc() == 2147483647 ? 0 : ( cellIdentityLte.getMnc() );
-                                    int getPci = cellIdentityLte.getPci() == 2147483647 ? 0 : ( cellIdentityLte.getPci() );
-                                    int getTac = cellIdentityLte.getTac() == 2147483647 ? 0 : ( cellIdentityLte.getTac() );
-
-                                    cellJson.addProperty("getCiCellIdentityLte",getCi);
-                                    cellJson.addProperty("getEarfcnCellIdentityLte",getEarfcn);
-                                    cellJson.addProperty("getMccCellIdentityLte",getMcc);
-                                    cellJson.addProperty("getMncCellIdentityLte",getMnc);
-                                    cellJson.addProperty("getPciCellIdentityLte",getPci);
-                                    cellJson.addProperty("getTacCellIdentityLte",getTac);
+                                    private int getlte_sinr(){
+                                        return this.lte_sinr;
+                                    }
+                                     private int getlte_rsrp(){
+                                         return this.lte_rsrp;
+                                     }
+                                     private int getlte_rsrq(){
+                                         return this.lte_rsrq;
+                                     }
+                                     private int getlte_rssnr(){
+                                         return this.lte_rssnr;
+                                     }
+                                     private int getlte_cqi(){
+                                         return this.lte_cqi;
+                                     }
                                 }
+                                SignalStrengthListener signalStrengthListener = new SignalStrengthListener();
+                                telephonyManager.listen(signalStrengthListener, PhoneStateListener.LISTEN_SIGNAL_STRENGTHS);
+                                cellJson.addProperty("lte_sinr", signalStrengthListener.getlte_sinr() );
+                                cellJson.addProperty("getlte_rsrp", signalStrengthListener.getlte_rsrp() );
+                                cellJson.addProperty("getlte_rsrq", signalStrengthListener.getlte_rsrq() );
+                                cellJson.addProperty("getlte_rssnr", signalStrengthListener.getlte_rssnr() );
+                                cellJson.addProperty("getlte_cqi", signalStrengthListener.getlte_cqi() );
+
                             }
+                        } else {
+                            List<CellInfo> myCellInfoList = telephonyManager.getAllCellInfo();
+                            for (CellInfo cellInfo : myCellInfoList) {
+                                //获取所有Lte网络信息
+                                if (cellInfo instanceof CellInfoLte) {
+                                    if (cellInfo.isRegistered()) {
+                                        CellSignalStrengthLte cellSignalStrengthLte = ((CellInfoLte) cellInfo).getCellSignalStrength();
+                                        int getRsrp = cellSignalStrengthLte.getRsrp() == 2147483647 ? 0 : cellSignalStrengthLte.getRsrp();
+                                        int getRssnr = cellSignalStrengthLte.getRssnr() == 2147483647 ? 0 : (cellSignalStrengthLte.getRssnr());
+                                        int getAsuLevel = cellSignalStrengthLte.getAsuLevel() == 2147483647 ? 0 : (cellSignalStrengthLte.getAsuLevel());
+                                        int getLevel = cellSignalStrengthLte.getLevel() == 2147483647 ? 0 : (cellSignalStrengthLte.getLevel());
+                                        int getCqi = cellSignalStrengthLte.getCqi() == 2147483647 ? 0 : (cellSignalStrengthLte.getCqi());
+                                        int getDbm = cellSignalStrengthLte.getDbm() == 2147483647 ? 0 : (cellSignalStrengthLte.getDbm());
+                                        int getRsrq = cellSignalStrengthLte.getRsrq() == 2147483647 ? 0 : (cellSignalStrengthLte.getRsrq());
+                                        int getTimingAdvance = cellSignalStrengthLte.getTimingAdvance() == 2147483647 ? 0 : (cellSignalStrengthLte.getTimingAdvance());
 
-                            if ( cellInfo instanceof CellInfoCdma ) {
-                                if (cellInfo.isRegistered()) {
-                                    CellSignalStrengthCdma cellSignalStrengthCdma = ((CellInfoCdma) cellInfo).getCellSignalStrength();
-                                    int getAsuLevel = cellSignalStrengthCdma.getAsuLevel() == 2147483647 ? 0 : ( cellSignalStrengthCdma.getAsuLevel() );
-                                    int getLevel = cellSignalStrengthCdma.getLevel() == 2147483647 ? 0 : ( cellSignalStrengthCdma.getLevel() );
-                                    int getCdmaLevel = cellSignalStrengthCdma.getCdmaLevel() == 2147483647 ? 0 : ( cellSignalStrengthCdma.getCdmaLevel() );
-                                    int getEvdoLevel = cellSignalStrengthCdma.getEvdoLevel() == 2147483647 ? 0 : ( cellSignalStrengthCdma.getEvdoLevel() );
-                                    int getCdmaDbm = cellSignalStrengthCdma.getCdmaDbm() == 2147483647 ? 0 : ( cellSignalStrengthCdma.getCdmaDbm() );
-                                    int getCdmaEcio = cellSignalStrengthCdma.getCdmaEcio() == 2147483647 ? 0 : ( cellSignalStrengthCdma.getCdmaEcio() );
-                                    int getDbm = cellSignalStrengthCdma.getDbm() == 2147483647 ? 0 : ( cellSignalStrengthCdma.getDbm() );
-                                    int getEvdoDbm = cellSignalStrengthCdma.getEvdoDbm() == 2147483647 ? 0 : ( cellSignalStrengthCdma.getEvdoDbm() );
-                                    int getEvdoEcio = cellSignalStrengthCdma.getEvdoEcio() == 2147483647 ? 0 : ( cellSignalStrengthCdma.getEvdoEcio() );
-                                    int getEvdoSnr = cellSignalStrengthCdma.getEvdoSnr() == 2147483647 ? 0 : ( cellSignalStrengthCdma.getEvdoSnr() );
-                                    cellJson.addProperty("getAsuLevelCellSignalStrengthCdma",getAsuLevel);
-                                    cellJson.addProperty("getLevelCellSignalStrengthCdma",getLevel);
-                                    cellJson.addProperty("getCdmaLevelCellSignalStrengthCdma",getCdmaLevel);
-                                    cellJson.addProperty("getEvdoLevelCellSignalStrengthCdma",getEvdoLevel);
-                                    cellJson.addProperty("getCdmaDbmCellSignalStrengthCdma",getCdmaDbm);
-                                    cellJson.addProperty("getCdmaEcioCellSignalStrengthCdma",getCdmaEcio);
-                                    cellJson.addProperty("getDbmCellSignalStrengthCdma",getDbm);
-                                    cellJson.addProperty("getEvdoDbmCellSignalStrengthCdma",getEvdoDbm);
-                                    cellJson.addProperty("getEvdoEcioCellSignalStrengthCdma",getEvdoEcio);
-                                    cellJson.addProperty("getEvdoSnrCellSignalStrengthCdma",getEvdoSnr);
+                                        cellJson.addProperty("getRsrpCellInfoLte", getRsrp);
+                                        cellJson.addProperty("getRssnrCellInfoLte", getRssnr);
+                                        cellJson.addProperty("getAsuLevelCellInfoLte", getAsuLevel);
+                                        cellJson.addProperty("getLevelCellInfoLte", getLevel);
+                                        cellJson.addProperty("getCqiCellInfoLte", getCqi);
+                                        cellJson.addProperty("getDbmCellInfoLte", getDbm);
+                                        cellJson.addProperty("getRsrqCellInfoLte", getRsrq);
+                                        cellJson.addProperty("getTimingAdvanceCellInfoLte", getTimingAdvance);
 
-                                    CellIdentityCdma cellIdentityCdma = ((CellInfoCdma) cellInfo).getCellIdentity();
-                                    int getBasestationId = cellIdentityCdma.getBasestationId() == 2147483647 ? 0 : ( cellIdentityCdma.getBasestationId() );
-                                    int getNetworkId = cellIdentityCdma.getNetworkId() == 2147483647 ? 0 : ( cellIdentityCdma.getNetworkId() );
-                                    int getSystemId = cellIdentityCdma.getSystemId() == 2147483647 ? 0 : ( cellIdentityCdma.getSystemId() );
-                                    int getLatitude = cellIdentityCdma.getLatitude() == 2147483647 ? 0 : ( cellIdentityCdma.getLatitude() );
-                                    int getLongitude = cellIdentityCdma.getLongitude() == 2147483647 ? 0 : ( cellIdentityCdma.getLongitude() );
-                                    cellJson.addProperty("getBasestationIdCellIdentityCdma",getBasestationId);
-                                    cellJson.addProperty("getNetworkIdCellIdentityCdma",getNetworkId);
-                                    cellJson.addProperty("getSystemIdCellIdentityCdma",getSystemId);
-                                    cellJson.addProperty("getLatitudeCellIdentityCdma",getLatitude);
-                                    cellJson.addProperty("getLongitudeCellIdentityCdma",getLongitude);
+                                        CellIdentityLte cellIdentityLte = ((CellInfoLte) cellInfo).getCellIdentity();
+                                        int getCi = cellIdentityLte.getCi() == 2147483647 ? 0 : (cellIdentityLte.getCi());
+                                        int getEarfcn = cellIdentityLte.getEarfcn() == 2147483647 ? 0 : (cellIdentityLte.getEarfcn());
+                                        int getMcc = cellIdentityLte.getMcc() == 2147483647 ? 0 : (cellIdentityLte.getMcc());
+                                        int getMnc = cellIdentityLte.getMnc() == 2147483647 ? 0 : (cellIdentityLte.getMnc());
+                                        int getPci = cellIdentityLte.getPci() == 2147483647 ? 0 : (cellIdentityLte.getPci());
+                                        int getTac = cellIdentityLte.getTac() == 2147483647 ? 0 : (cellIdentityLte.getTac());
 
+                                        cellJson.addProperty("getCiCellIdentityLte", getCi);
+                                        cellJson.addProperty("getEarfcnCellIdentityLte", getEarfcn);
+                                        cellJson.addProperty("getMccCellIdentityLte", getMcc);
+                                        cellJson.addProperty("getMncCellIdentityLte", getMnc);
+                                        cellJson.addProperty("getPciCellIdentityLte", getPci);
+                                        cellJson.addProperty("getTacCellIdentityLte", getTac);
+                                    }
                                 }
-                            }
 
-                            if ( cellInfo instanceof CellInfoGsm) {
-                            }
+                                if (cellInfo instanceof CellInfoCdma) {
+                                    if (cellInfo.isRegistered()) {
+                                        CellSignalStrengthCdma cellSignalStrengthCdma = ((CellInfoCdma) cellInfo).getCellSignalStrength();
+                                        int getAsuLevel = cellSignalStrengthCdma.getAsuLevel() == 2147483647 ? 0 : (cellSignalStrengthCdma.getAsuLevel());
+                                        int getLevel = cellSignalStrengthCdma.getLevel() == 2147483647 ? 0 : (cellSignalStrengthCdma.getLevel());
+                                        int getCdmaLevel = cellSignalStrengthCdma.getCdmaLevel() == 2147483647 ? 0 : (cellSignalStrengthCdma.getCdmaLevel());
+                                        int getEvdoLevel = cellSignalStrengthCdma.getEvdoLevel() == 2147483647 ? 0 : (cellSignalStrengthCdma.getEvdoLevel());
+                                        int getCdmaDbm = cellSignalStrengthCdma.getCdmaDbm() == 2147483647 ? 0 : (cellSignalStrengthCdma.getCdmaDbm());
+                                        int getCdmaEcio = cellSignalStrengthCdma.getCdmaEcio() == 2147483647 ? 0 : (cellSignalStrengthCdma.getCdmaEcio());
+                                        int getDbm = cellSignalStrengthCdma.getDbm() == 2147483647 ? 0 : (cellSignalStrengthCdma.getDbm());
+                                        int getEvdoDbm = cellSignalStrengthCdma.getEvdoDbm() == 2147483647 ? 0 : (cellSignalStrengthCdma.getEvdoDbm());
+                                        int getEvdoEcio = cellSignalStrengthCdma.getEvdoEcio() == 2147483647 ? 0 : (cellSignalStrengthCdma.getEvdoEcio());
+                                        int getEvdoSnr = cellSignalStrengthCdma.getEvdoSnr() == 2147483647 ? 0 : (cellSignalStrengthCdma.getEvdoSnr());
+                                        cellJson.addProperty("getAsuLevelCellSignalStrengthCdma", getAsuLevel);
+                                        cellJson.addProperty("getLevelCellSignalStrengthCdma", getLevel);
+                                        cellJson.addProperty("getCdmaLevelCellSignalStrengthCdma", getCdmaLevel);
+                                        cellJson.addProperty("getEvdoLevelCellSignalStrengthCdma", getEvdoLevel);
+                                        cellJson.addProperty("getCdmaDbmCellSignalStrengthCdma", getCdmaDbm);
+                                        cellJson.addProperty("getCdmaEcioCellSignalStrengthCdma", getCdmaEcio);
+                                        cellJson.addProperty("getDbmCellSignalStrengthCdma", getDbm);
+                                        cellJson.addProperty("getEvdoDbmCellSignalStrengthCdma", getEvdoDbm);
+                                        cellJson.addProperty("getEvdoEcioCellSignalStrengthCdma", getEvdoEcio);
+                                        cellJson.addProperty("getEvdoSnrCellSignalStrengthCdma", getEvdoSnr);
 
-                            if ( cellInfo instanceof CellInfoWcdma) {
+                                        CellIdentityCdma cellIdentityCdma = ((CellInfoCdma) cellInfo).getCellIdentity();
+                                        int getBasestationId = cellIdentityCdma.getBasestationId() == 2147483647 ? 0 : (cellIdentityCdma.getBasestationId());
+                                        int getNetworkId = cellIdentityCdma.getNetworkId() == 2147483647 ? 0 : (cellIdentityCdma.getNetworkId());
+                                        int getSystemId = cellIdentityCdma.getSystemId() == 2147483647 ? 0 : (cellIdentityCdma.getSystemId());
+                                        int getLatitude = cellIdentityCdma.getLatitude() == 2147483647 ? 0 : (cellIdentityCdma.getLatitude());
+                                        int getLongitude = cellIdentityCdma.getLongitude() == 2147483647 ? 0 : (cellIdentityCdma.getLongitude());
+                                        cellJson.addProperty("getBasestationIdCellIdentityCdma", getBasestationId);
+                                        cellJson.addProperty("getNetworkIdCellIdentityCdma", getNetworkId);
+                                        cellJson.addProperty("getSystemIdCellIdentityCdma", getSystemId);
+                                        cellJson.addProperty("getLatitudeCellIdentityCdma", getLatitude);
+                                        cellJson.addProperty("getLongitudeCellIdentityCdma", getLongitude);
+
+                                    }
+                                }
+
+                                if (cellInfo instanceof CellInfoGsm) {
+                                }
+
+                                if (cellInfo instanceof CellInfoWcdma) {
+                                }
                             }
                         }
                     }
                 }
             }
         } catch (Exception e) {
-            Log.e("getRsrpCellSignalStrengthLte", e.toString());
+            Log.e("获取手机参数报错", e.toString());
         }
         return cellJson;
     }
-
 
 
 }

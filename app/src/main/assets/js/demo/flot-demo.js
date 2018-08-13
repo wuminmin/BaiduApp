@@ -61,7 +61,7 @@ $(function () {
             "        <td>"+item['enb']+"</td>\n" +
             "        <td>"+item['cellid']+"</td>\n" +
             "        <td>"+item['rsrp']+"</td>\n" +
-            "        <td>"+item['snir']+"</td>\n" +
+            "        <td>"+item['sr']+"</td>\n" +
             "    </tr>\n";
 
     });
