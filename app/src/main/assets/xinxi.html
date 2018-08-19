@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=75NKDW73M2AYHu1xtPTGjDH1niOLCDbi"></script>
     <title>H+ 后台主题UI框架 - Flot图表</title>
     <meta name="keywords" content="H+后台主题,后台bootstrap框架,会员中心主题,后台HTML,响应式后台">
     <meta name="description" content="H+是一个完全响应式，基于Bootstrap3最新版本开发的扁平化主题，她采用了主流的左右两栏式布局，使用了Html5+CSS3等现代技术">
@@ -89,35 +89,26 @@
     <tr>
         <th>数据</th>
         <td id="shuju"></td>
-        <th>小区</th>
-        <td id="xiaoqu"></td>
-        <th>TAC</th>
-        <td id="tac"></td>
-    </tr>
-    <tr>
-        <th>PCI</th>
-        <td id="pci"></td>
-        <th>ECI</th>
-        <td id="eci"></td>
         <th>BAND</th>
         <td id="band"></td>
+        <th>PCI</th>
+        <td id="pci"></td>
     </tr>
     <tr>
-        <th>EARF</th>
+        <th>Enb</th>
+        <td id="enb"></td>
+        <th>CellId</th>
+        <td id="cellid"></td>
+        <th>Earf</th>
         <td id="earf"></td>
-        <th>FREQ</th>
-        <td id="freq"></td>
+    </tr>
+    <tr>
         <th>NID</th>
         <td id="nid"></td>
-    </tr>
-    </tr>
-    <tr>
         <th>BID</th>
         <td id="bid"></td>
         <th>SID</th>
         <td id="sid"></td>
-        <th></th>
-        <td></td>
     </tr>
     </tbody>
 </table>
@@ -128,21 +119,18 @@
             <th>RSRP</th>
             <th>RSRQ</th>
             <th>SNIR</th>
-            <th>DBM</th>
+            <th>Rx</th>
             <th>EC/IO</th>
         </tr>
         <tr>
             <td id="rsrp"></td>
             <td id="rsrq"></td>
             <td id="sinr"></td>
-            <td id="dbm"></td>
+            <td id="rx"></td>
             <td id="ecio"></td>
         </tr>
         </tbody>
     </table>
-    <div class="flot-chart">
-        <div class="flot-chart-content" id="flot-line-chart"></div>
-    </div>
 </div>
 <table class="table">
     <thead>
@@ -151,12 +139,11 @@
     </tr>
     <tr>
         <th>Time</th>
-        <th>Tac</th>
         <th>Pci</th>
-        <th>eNB</th>
-        <th>CellId</th>
-        <th>RSRP</th>
-        <th>SINR</th>
+        <th>Rsrp</th>
+        <th>Sinr</th>
+        <th>Rx</th>
+        <th>Ec/Io</th>
     </tr>
     </thead>
     <tbody id="ceshijilu">
