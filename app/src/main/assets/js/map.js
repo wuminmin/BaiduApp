@@ -26,7 +26,7 @@ $(document).ready(function () {
                 map.enableScrollWheelZoom();
                 map.centerAndZoom(mPoint, 15);
 
-                var circle = new BMap.Circle(mPoint, 500, {
+                var circle = new BMap.Circle(mPoint, 100, {
                     fillColor: "blue",
                     strokeWeight: 1,
                     fillOpacity: 0.3,
