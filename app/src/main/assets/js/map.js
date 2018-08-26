@@ -25,48 +25,19 @@ $(document).ready(function () {
                 var mPoint = new BMap.Point(data.points[i]['lng'], data.points[i]['lat']);
                 map.enableScrollWheelZoom();
                 map.centerAndZoom(mPoint, 15);
-                var circle = new BMap.Circle(mPoint, 100, {
+
+                var circle = new BMap.Circle(mPoint, 500, {
                     fillColor: "blue",
                     strokeWeight: 1,
                     fillOpacity: 0.3,
                     strokeOpacity: 0.3
                 });
-                map.addOverlay(circle);
+                map.addOverlay(mPoint);
+                 map.addOverlay(circle);
 
-                var local = new BMap.LocalSearch(map, {
-                    renderOptions: {map: map, panel: "r-result"}
-                });
-                local.searchNearby(["住宅", "机构", "酒店", "超市", "餐饮", "村", "路"], mPoint, 500);
-                local.setResultsHtmlSetCallback(function (result) {
-                    /*返回最近一次检索的结果*/
-                    $.each($("ol li"), function () {
-                        $(this).bind("click",this,function () {
-                            var flag = getQueryString("flag");
-                            if( flag === 'shineng'){
-                             var dizhi = $(this)[0]['innerText'] ;
-                                                       var t = dizhi.split('\n');
-                                                       var dizhi2 =  encodeURIComponent(t[3]);
-                                                       console.log(dizhi2);
-                                                         saveDizhi( dizhi );
-                                                         var dizhiUrl = '?'+'dizhi'+'='+dizhi2 ;
-                                                           window.location.href = "file:///android_asset/shineng.html"+dizhiUrl;
-                            }else{
-                             var dizhi = $(this)[0]['innerText'] ;
-                                                       var t = dizhi.split('\n');
-                                                       var dizhi2 =  encodeURIComponent(t[3]);
-                                                       console.log(dizhi2);
-                                                         saveDizhi( dizhi );
-                                                         var dizhiUrl = '?'+'dizhi'+'='+dizhi2 ;
-                                                           window.location.href = "file:///android_asset/shiwai.html"+dizhiUrl;
-                            }
-
-                        });
-                    });
-                });
             }
         }
     };
-
 
     setTimeout(function () {
         var convertor = new BMap.Convertor();
@@ -81,10 +52,6 @@ $(document).ready(function () {
         return result[1];
     }
 
-    function saveDizhi(s) {
-    var file = Android.saveDizhi(s);
-    window.alert("file = " + file);
-}
 
 });
 

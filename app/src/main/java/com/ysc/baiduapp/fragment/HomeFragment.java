@@ -157,26 +157,17 @@ public class HomeFragment extends BaseFragment implements OnMapReadyCallback {
         // Enable Javascript
         WebSettings webSettings = xinxiWebview.getSettings();
         webSettings.setJavaScriptEnabled(true);
-        MyTest myTest = new MyTest();
 
-        String rsrpstirng = "[1, -90], [2, -98],  [3, -80],  [4, -85],  [5, "+myTest.getSec()+"], [6, -100]";
-//        final String json = "[1, 34], [2, 0],  [3, 0],    [4, 34],    [5, 32],   [6, 0]";
-        final String json = rsrpstirng;
+        final String jsonXinxi = xinxiJson.getXinxiJsonOne();
         xinxiWebview.addJavascriptInterface(new Object() {
             //@param message:  html页面传进来的数据
             @JavascriptInterface
             public String getLocationData(String message) {
-                return json; // 把本地数据弄成json串，传给html
+                return jsonXinxi; // 把本地数据弄成json串，传给html
             }
-
-        }, "MyBrowserAPI");//MyBrowserAPI:自定义的js函数名
+        }, "getXinxiJsonOne");//MyBrowserAPI:自定义的js函数名
 
         xinxiWebview.loadUrl("file:///android_asset/map.html");
-//        cesuWebview.loadUrl("http://ahdx.speedtestcustom.com/");
-//        cesuWebview.loadUrl("http://www.baidu.com/");
-//        cesuWebview.setWebViewClient(new MyWebViewClient());
-        // LOCAL RESOURCE
-//        cesuWebview.loadUrl("file:///android_asset/index.html");
     }
 
     //Ecio 除以10
