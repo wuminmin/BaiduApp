@@ -1,7 +1,6 @@
 $(document).ready(function () {
-    var jsonstr = window.getXinxiJsonOne.getLocationData("从页面传给手机的message");//拿到本地数据,并可以传给手机一些内容，可选
-     console.log( "从页面传给手机的message" );
-     console.log( jsonstr );
+//    var jsonstr = window.getXinxiJsonOne.getLocationData("从页面传给手机的message");//拿到本地数据,并可以传给手机一些内容，可选
+    var jsonstr = '[{"rsrp":"-86","rssnr":"0","getAsuLevelCellInfoLte":"54","getLevelCellInfoLte":"4","cqi":"0","getDbmCellInfoLte":"-86","rsrq":"-13","getTimingAdvanceCellInfoLte":"2","eci":"6d3f835","earf":"1825","mcc":"460","mnc":"11","pci":"123","tac":"27953","getAsuLevelCellSignalStrengthCdma":"16","getLevelCellSignalStrengthCdma":"4","getCdmaLevelCellSignalStrengthCdma":"4","getEvdoLevelCellSignalStrengthCdma":"0","dbm":"-64","ecio":"-70","getDbmCellSignalStrengthCdma":"-64","getEvdoDbmCellSignalStrengthCdma":"0","getEvdoEcioCellSignalStrengthCdma":"0","getEvdoSnrCellSignalStrengthCdma":"0","bid":"60051","nid":"18","sid":"14166","weidu":30.657186,"jingdu":117.495127,"pingpai":"Xiaomi","xinghao":"MIX 2","yingjian":"qcom","anzhuo":"8.0.0","wangluo":"LTE","shuju":"LTE","xiaoqu":"LTE","time":"15:38:20","leixing":"安卓","jingque":"300米","fangshi":"GPS","band":3,"enb":"447480","cellid":"53"}]';
     var xinxiObj = JSON.parse(jsonstr);
     var firstJson = {};
     var first = true;
@@ -14,9 +13,6 @@ $(document).ready(function () {
 
 // 百度地图API功能
     var map = new BMap.Map("l-map");            // 创建Map实例
-       console.log( "测试经纬度1111111111111111111");
-    console.log( firstJson['jingdu']  );
-     console.log( firstJson['weidu']  );
 
     var points = [new BMap.Point(firstJson['jingdu'], firstJson['weidu'])];
     var myGeo = new BMap.Geocoder();
@@ -44,10 +40,14 @@ $(document).ready(function () {
                 local.setResultsHtmlSetCallback(function (result) {
                     /*返回最近一次检索的结果*/
                     $.each($("ol li"), function () {
-                        console.log(this);
                         $(this).bind("click",this,function () {
-                            console.log( $(this)[0]['innerText'] );
-                              saveDizhi( $(this)[0]['innerText'] );
+                            var dizhi = $(this)[0]['innerText'] ;
+                           var t = dizhi.split('\n');
+                           var dizhi2 =  encodeURIComponent(t[3]);
+                           console.log(dizhi2);
+                             saveDizhi( dizhi );
+                             var dizhiUrl = '?'+'dizhi'+'='+dizhi2 ;
+                               window.location.href = "file:///android_asset/shineng.html"+dizhiUrl;
                         });
                     });
                 });

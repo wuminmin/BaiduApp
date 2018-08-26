@@ -152,10 +152,19 @@ public class XinxiJson {
             if(getCellInfojson.has("getCiCellIdentityLte")){
                 xinxiJson.addProperty("cellid", String.valueOf( getCellInfojson.get("getCiCellIdentityLte").getAsInt()%256 ));
             }
-            Log.e("手机小区信息json格式", String.valueOf(xinxiJson)) ;
+            Log.e("保存小区信息json格式", String.valueOf(xinxiJson)) ;
             databaseHelper.insertXinxi(xinxiJson.toString());
         } catch (Exception e) {
-            Log.e("获取手机信息拼装json失败", e.toString());
+            Log.e("保存小区信息json格式失败", e.toString());
+        }
+    }
+
+    public void saveShiNeng(){
+        try{
+            Log.e("保存室内场景", "");
+            databaseHelper.insertXinxi("");
+        }catch (Exception e){
+            Log.e("保存室内场景失败", e.toString());
         }
     }
 

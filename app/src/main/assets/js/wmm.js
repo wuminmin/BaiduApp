@@ -26,9 +26,20 @@ $(document).ready(function () {
         //再跟你想追加的代码加到一起插入div中
         document.getElementById("myImage").innerHTML = html;
     }
+        var str = getQueryString("dizhi");
 
-
+         console.log(decodeURIComponent(str));
+         $("#dizhi").val( decodeURIComponent(str) );
 });
+
+
+function getQueryString(name) {
+    var result = window.location.search.match(new RegExp("[\?\&]" + name + "=([^\&]+)", "i"));
+    if (result == null || result.length < 1) {
+        return "";
+    }
+    return result[1];
+}
 
 function showAndroidToast(toast) {
     Android.showToast(toast);
