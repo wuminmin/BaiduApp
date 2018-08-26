@@ -27,7 +27,6 @@ $(document).ready(function () {
         document.getElementById("myImage").innerHTML = html;
     }
 
-
     var str = getQueryString("dizhi");
     if( str === ''){
           var jsonstr = window.getXinxiJsonOne.getLocationData("从页面传给手机的message");//拿到本地数据,并可以传给手机一些内容，可选

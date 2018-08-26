@@ -62,16 +62,8 @@ public class OrderFragment extends BaseFragment {
     private TextView mTvPath;
     private TextView mTvUri;
     private LQRPhotoSelectUtils mLqrPhotoSelectUtils;
-    private ImageView mIvPic;
     private Activity activity;
     private Context context;
-    private ImageView imageButton1;
-    private Switch switch1;
-    private LinearLayout switchLiner1;
-    private LinearLayout switchLiner2;
-    private LinearLayout switchLiner3;
-    private LinearLayout switchLiner4;
-    private Map  imageMap;
     private Bundle bundle;
     private DatabaseHelper databaseHelper;
     private XinxiJson xinxiJson;
@@ -372,47 +364,6 @@ public class OrderFragment extends BaseFragment {
     }
 
     private void psottoweb() {
-
-    }
-
-    private void init() {
-        TextView order_upload_data = view.findViewById(R.id.order_upload_data);
-        order_upload_data.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Runnable runnable = new Runnable() {
-                    @Override
-                    public void run() {
-                        psottoweb();
-//                        Toast.makeText(getActivity().getApplicationContext(), "上传成功！！！！"+response, Toast.LENGTH_LONG).show();
-                    }
-                };
-                new Thread(runnable).start();
-                Log.e("imageUrlMap",imageMap.toString());
-                Toast.makeText(context, "上传成功！！！！", Toast.LENGTH_LONG).show();
-            }
-        });
-
-        Button btn_shineng = view.findViewById(R.id.shineng);
-        Button btn_shiwai = view.findViewById(R.id.shiwai);
-        btn_shineng.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                switchLiner1.setVisibility(View.VISIBLE);
-                switchLiner2.setVisibility(View.VISIBLE);
-                switchLiner3.setVisibility(View.GONE);
-                switchLiner4.setVisibility(View.GONE);
-            }
-        });
-        btn_shiwai.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                switchLiner1.setVisibility(View.GONE);
-                switchLiner2.setVisibility(View.GONE);
-                switchLiner3.setVisibility(View.VISIBLE);
-                switchLiner4.setVisibility(View.VISIBLE);
-            }
-        });
 
     }
 
