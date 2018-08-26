@@ -122,6 +122,7 @@ public class OrderFragment extends BaseFragment {
         webSettings.setJavaScriptEnabled(true);
         shinengWebview.addJavascriptInterface(new MyJavascriptInterface(activity), "Android");
         initLQRPhotoSelectUtils();
+
         StringBuilder jsontmp = new StringBuilder();
         List<Note> notes = databaseHelper.getAllNotes();
         boolean first = true;
@@ -144,7 +145,7 @@ public class OrderFragment extends BaseFragment {
             }
         }, "MyBrowserAPI");//MyBrowserAPI:自定义的js函数名
 
-        final String jsonXinxi = xinxiJson.getXinxiJsonAll();
+        final String jsonXinxi = xinxiJson.getXinxiJsonOne();
         shinengWebview.addJavascriptInterface(new Object() {
             //@param message:  html页面传进来的数据
             @JavascriptInterface
@@ -152,7 +153,7 @@ public class OrderFragment extends BaseFragment {
                 return jsonXinxi; // 把本地数据弄成json串，传给html
             }
 
-        }, "MyBrowserAPIxinxiJson");//MyBrowserAPI:自定义的js函数名
+        }, "getXinxiJsonOne");//MyBrowserAPI:自定义的js函数名
 
         shinengWebview.loadUrl("file:///android_asset/shineng.html");
     }
@@ -234,6 +235,12 @@ public class OrderFragment extends BaseFragment {
 //            startActivityForResult(photoPickerIntent, SELECT_PHOTO);
 //            return file;
         }
+
+        @JavascriptInterface
+        public void saveDizhi(String dizhi){
+            Log.e("测试web android 传递参数",dizhi);
+        }
+
     }
 
     private void initLQRPhotoSelectUtils() {
