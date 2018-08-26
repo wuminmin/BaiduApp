@@ -41,13 +41,25 @@ $(document).ready(function () {
                     /*返回最近一次检索的结果*/
                     $.each($("ol li"), function () {
                         $(this).bind("click",this,function () {
-                            var dizhi = $(this)[0]['innerText'] ;
-                           var t = dizhi.split('\n');
-                           var dizhi2 =  encodeURIComponent(t[3]);
-                           console.log(dizhi2);
-                             saveDizhi( dizhi );
-                             var dizhiUrl = '?'+'dizhi'+'='+dizhi2 ;
-                               window.location.href = "file:///android_asset/shineng.html"+dizhiUrl;
+                            var flag = getQueryString("flag");
+                            if( flag === 'shineng'){
+                             var dizhi = $(this)[0]['innerText'] ;
+                                                       var t = dizhi.split('\n');
+                                                       var dizhi2 =  encodeURIComponent(t[3]);
+                                                       console.log(dizhi2);
+                                                         saveDizhi( dizhi );
+                                                         var dizhiUrl = '?'+'dizhi'+'='+dizhi2 ;
+                                                           window.location.href = "file:///android_asset/shineng.html"+dizhiUrl;
+                            }else{
+                             var dizhi = $(this)[0]['innerText'] ;
+                                                       var t = dizhi.split('\n');
+                                                       var dizhi2 =  encodeURIComponent(t[3]);
+                                                       console.log(dizhi2);
+                                                         saveDizhi( dizhi );
+                                                         var dizhiUrl = '?'+'dizhi'+'='+dizhi2 ;
+                                                           window.location.href = "file:///android_asset/shiwai.html"+dizhiUrl;
+                            }
+
                         });
                     });
                 });
@@ -55,10 +67,19 @@ $(document).ready(function () {
         }
     };
 
+
     setTimeout(function () {
         var convertor = new BMap.Convertor();
         convertor.translate(points, 1, 5, translateCallback)
     }, 1000);
+
+    function getQueryString(name) {
+        var result = window.location.search.match(new RegExp("[\?\&]" + name + "=([^\&]+)", "i"));
+        if (result == null || result.length < 1) {
+            return "";
+        }
+        return result[1];
+    }
 
     function saveDizhi(s) {
     var file = Android.saveDizhi(s);
