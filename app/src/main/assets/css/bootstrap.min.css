@@ -2708,6 +2708,10 @@ table {
     background-color: transparent
 }
 
+table-xinhao {
+    background-color: #0e9aef;
+}
+
 caption {
     padding-top: 8px;
     padding-bottom: 8px;
@@ -2724,6 +2728,12 @@ th {
 }
 
 .table {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 0px
+}
+
+.table-xinhao {
     width: 100%;
     max-width: 100%;
     margin-bottom: 0px

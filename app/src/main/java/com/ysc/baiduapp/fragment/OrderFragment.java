@@ -31,6 +31,7 @@ import com.ysc.baiduapp.database.model.Note;
 import com.ysc.baiduapp.service.GetCellInfo;
 import com.ysc.baiduapp.service.LQRPhotoSelectUtils;
 import com.ysc.baiduapp.service.PostExample;
+import com.ysc.baiduapp.service.XinxiJson;
 import com.ysc.baiduapp.viewcustom.BaseFragment;
 
 import org.json.JSONArray;
@@ -73,7 +74,7 @@ public class OrderFragment extends BaseFragment {
     private Map  imageMap;
     private Bundle bundle;
     private DatabaseHelper databaseHelper;
-
+    private XinxiJson xinxiJson;
 
     final int SELECT_PHOTO = 1;
      List<String> imagelist = new ArrayList<>();
@@ -83,10 +84,12 @@ public class OrderFragment extends BaseFragment {
         view = inflater.inflate(R.layout.fragment_order3, null, false);
         activity = getActivity();
         context = Objects.requireNonNull(getActivity()).getApplicationContext();
+        TelephonyManager telephonyManager = (TelephonyManager) getActivity().getSystemService(Context.TELEPHONY_SERVICE);
+        xinxiJson = new XinxiJson(  getActivity().getApplicationContext(), telephonyManager, getActivity()  );
+
         databaseHelper = new DatabaseHelper(context);
         shinengWebview = view.findViewById(R.id.shinengWebview);
         shiwaiWebview = view.findViewById(R.id.shiwaiWebview);
-        TelephonyManager telephonyManager = (TelephonyManager) getActivity().getSystemService(Context.TELEPHONY_SERVICE);
         getCellInfo = new GetCellInfo( context , telephonyManager, getActivity());
         shiwaiWebview = view.findViewById(R.id.shiwaiWebview);
         bundle = savedInstanceState;
@@ -140,6 +143,17 @@ public class OrderFragment extends BaseFragment {
                 return json; // 把本地数据弄成json串，传给html
             }
         }, "MyBrowserAPI");//MyBrowserAPI:自定义的js函数名
+
+        final String jsonXinxi = xinxiJson.getXinxiJsonAll();
+        shinengWebview.addJavascriptInterface(new Object() {
+            //@param message:  html页面传进来的数据
+            @JavascriptInterface
+            public String getLocationData(String message) {
+                return jsonXinxi; // 把本地数据弄成json串，传给html
+            }
+
+        }, "MyBrowserAPI");//MyBrowserAPI:自定义的js函数名
+
         shinengWebview.loadUrl("file:///android_asset/shineng.html");
     }
 
