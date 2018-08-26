@@ -192,10 +192,10 @@ public class XinxiJson {
 //        System.out.println(now.getTime());
 
         Date d = new Date();
-        System.out.println(d);
+//        System.out.println(d);
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String dateNowStr = sdf.format(d);
-        System.out.println("格式化后的日期：" + dateNowStr);
+//        System.out.println("格式化后的日期：" + dateNowStr);
 
         String str = "2012-1-13 17:26:33";	//要跟上面sdf定义的格式一样
         Date today = null;
@@ -204,7 +204,7 @@ public class XinxiJson {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        System.out.println("字符串转成日期：" + today);
+//        System.out.println("字符串转成日期：" + today);
         String result = now.get(Calendar.HOUR_OF_DAY) + ":" + now.get(Calendar.MINUTE) + ":" + now.get(Calendar.SECOND);;
         return result;
     }

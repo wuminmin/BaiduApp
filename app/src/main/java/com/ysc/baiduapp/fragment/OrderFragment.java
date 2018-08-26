@@ -152,7 +152,6 @@ public class OrderFragment extends BaseFragment {
             public String getLocationData(String message) {
                 return jsonXinxi; // 把本地数据弄成json串，传给html
             }
-
         }, "getXinxiJsonOne");//MyBrowserAPI:自定义的js函数名
 
         shinengWebview.loadUrl("file:///android_asset/shineng.html");
@@ -185,11 +184,21 @@ public class OrderFragment extends BaseFragment {
                 return json; // 把本地数据弄成json串，传给html
             }
         }, "MyBrowserAPI");//MyBrowserAPI:自定义的js函数名
+
+
+        final String jsonXinxi = xinxiJson.getXinxiJsonOne();
+        shinengWebview.addJavascriptInterface(new Object() {
+            //@param message:  html页面传进来的数据
+            @JavascriptInterface
+            public String getLocationData(String message) {
+                return jsonXinxi; // 把本地数据弄成json串，传给html
+            }
+        }, "getXinxiJsonOne");//MyBrowserAPI:自定义的js函数名
+
         shiwaiWebview.loadUrl("file:///android_asset/shiwai.html");
     }
 
-    class MyJavascriptInterface
-    {
+    class MyJavascriptInterface {
         Context myContext;
         /** Instantiate the interface and set the context */
         MyJavascriptInterface(Context c)

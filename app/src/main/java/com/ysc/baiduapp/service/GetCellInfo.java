@@ -106,7 +106,7 @@ public class GetCellInfo {
                             DecimalFormat df = new DecimalFormat("#.000000");
                             String getLatitude = df.format(location.getLatitude());
                             String getLongitude = df.format(location.getLongitude());
-                            Log.e("当前经纬度：",getLongitude+"    "+getLatitude);
+//                            Log.e("当前经纬度：",getLongitude+"    "+getLatitude);
                             map.put("getLatitude", Double.valueOf(getLatitude));
                             map.put("getLongitude", Double.valueOf(getLongitude));
                             return map;
@@ -328,7 +328,7 @@ public class GetCellInfo {
             }
             Location location = locationManager.getLastKnownLocation(bestProvider);
             if (location != null) {
-                Log.e("TAG", "GPS is on");
+//                Log.e("TAG", "GPS is on");
                 double latitude = location.getLatitude();
                 double longitude = location.getLongitude();
 //                Toast.makeText(mycontext, "latitude:" + latitude + " longitude:" + longitude, Toast.LENGTH_SHORT).show();
