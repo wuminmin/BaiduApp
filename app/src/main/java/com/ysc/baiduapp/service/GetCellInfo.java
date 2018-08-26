@@ -89,7 +89,6 @@ public class GetCellInfo {
                     map.put("getLongitude", (double) 0);
                     return map;
                 } else {
-//                    List<CellInfo> cellInfoList = telephonyManager.getAllCellInfo();
                     try {
                         // 获取位置管理服务
                         LocationManager locationManager;
@@ -102,12 +101,12 @@ public class GetCellInfo {
                         criteria.setCostAllowed(true);
                         criteria.setPowerRequirement(Criteria.POWER_HIGH);// 低功耗
                         String provider = Objects.requireNonNull(locationManager).getBestProvider(criteria, true); // 获取GPS信息
-                        Location location = getLastKnownLocation();
+                        Location location = getLocation();
                         if (location != null) {
-                            Log.e("TAG", "GPS is on");
                             DecimalFormat df = new DecimalFormat("#.000000");
                             String getLatitude = df.format(location.getLatitude());
                             String getLongitude = df.format(location.getLongitude());
+                            Log.e("当前经纬度：",getLongitude+"    "+getLatitude);
                             map.put("getLatitude", Double.valueOf(getLatitude));
                             map.put("getLongitude", Double.valueOf(getLongitude));
                             return map;
@@ -140,37 +139,6 @@ public class GetCellInfo {
         map.put("getLatitude", (double) 0);
         map.put("getLongitude", (double) 0);
         return map;
-    }
-
-    private Location getLastKnownLocation() {
-        LocationManager mLocationManager;
-        mLocationManager = (LocationManager) mycontext.getSystemService(LOCATION_SERVICE);
-        List<String> providers = mLocationManager.getProviders(true);
-        Location bestLocation = null;
-        for (String provider : providers) {
-            if (ActivityCompat.checkSelfPermission(mycontext, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(mycontext, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                // TODO: Consider calling
-                //    ActivityCompat#requestPermissions
-                // here to request the missing permissions, and then overriding
-                //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-                //                                          int[] grantResults)
-                // to handle the case where the user grants the permission. See the documentation
-                // for ActivityCompat#requestPermissions for more details.
-                ActivityCompat.requestPermissions(mymainActivity,
-                        new String[]{ACCESS_COARSE_LOCATION, ACCESS_FINE_LOCATION},
-                        MY_PERMISSIONS_REQUEST_ACCESS_COARSE_LOCATION);
-                return null;
-            }
-            Location l = mLocationManager.getLastKnownLocation(provider);
-            if (l == null) {
-                continue;
-            }
-            if (bestLocation == null || l.getAccuracy() < bestLocation.getAccuracy()) {
-                // Found best last known location: %s", l);
-                bestLocation = l;
-            }
-        }
-        return bestLocation;
     }
 
     public JsonObject getRsrpCellSignalStrengthLte() {
@@ -331,5 +299,52 @@ public class GetCellInfo {
         return cellJson;
     }
 
+    private static boolean isLocationEnabled(Context mycontext) {
+        //...............
+        return true;
+    }
 
+    protected Location getLocation() {
+        if (isLocationEnabled(mymainActivity)) {
+            LocationManager locationManager;
+            locationManager = (LocationManager) mymainActivity.getSystemService(Context.LOCATION_SERVICE);
+            Criteria criteria = new Criteria();
+            assert locationManager != null;
+            String bestProvider = String.valueOf(locationManager.getBestProvider(criteria, true));
+
+            //You can still do this if you like, you might get lucky:
+            if (ActivityCompat.checkSelfPermission(mycontext, ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(mycontext, ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                // TODO: Consider calling
+                ActivityCompat.requestPermissions(mymainActivity,
+                        new String[]{ACCESS_COARSE_LOCATION,ACCESS_FINE_LOCATION},
+                        MY_PERMISSIONS_REQUEST_ACCESS_COARSE_LOCATION);
+                //    ActivityCompat#requestPermissions
+                // here to request the missing permissions, and then overriding
+                //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                //                                          int[] grantResults)
+                // to handle the case where the user grants the permission. See the documentation
+                // for ActivityCompat#requestPermissions for more details.
+                return null;
+            }
+            Location location = locationManager.getLastKnownLocation(bestProvider);
+            if (location != null) {
+                Log.e("TAG", "GPS is on");
+                double latitude = location.getLatitude();
+                double longitude = location.getLongitude();
+//                Toast.makeText(mycontext, "latitude:" + latitude + " longitude:" + longitude, Toast.LENGTH_SHORT).show();
+                return location;
+            }
+            else{
+                //This is what you need:
+                locationManager.requestLocationUpdates(bestProvider, 1000, 0, (LocationListener) this);
+            }
+        }
+        else
+        {
+            //prompt user to enable location....
+            //.................
+            return null;
+        }
+        return null;
+    }
 }
