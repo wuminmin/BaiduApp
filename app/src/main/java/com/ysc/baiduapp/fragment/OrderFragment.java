@@ -152,7 +152,7 @@ public class OrderFragment extends BaseFragment {
                 return jsonXinxi; // 把本地数据弄成json串，传给html
             }
 
-        }, "MyBrowserAPI");//MyBrowserAPI:自定义的js函数名
+        }, "MyBrowserAPIxinxiJson");//MyBrowserAPI:自定义的js函数名
 
         shinengWebview.loadUrl("file:///android_asset/shineng.html");
     }
