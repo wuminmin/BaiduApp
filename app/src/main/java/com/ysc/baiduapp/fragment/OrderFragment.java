@@ -179,7 +179,7 @@ public class OrderFragment extends BaseFragment {
 
 
         final String jsonXinxi = xinxiJson.getXinxiJsonOne();
-        shinengWebview.addJavascriptInterface(new Object() {
+        shiwaiWebview.addJavascriptInterface(new Object() {
             //@param message:  html页面传进来的数据
             @JavascriptInterface
             public String getLocationData(String message) {
