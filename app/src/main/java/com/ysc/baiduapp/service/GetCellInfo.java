@@ -3,6 +3,7 @@ package com.ysc.baiduapp.service;
 import android.Manifest;
 import android.content.Context;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationListener;
@@ -29,6 +30,7 @@ import android.telephony.cdma.CdmaCellLocation;
 import android.telephony.gsm.GsmCellLocation;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
@@ -37,6 +39,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.ysc.baiduapp.MainActivity;
+import com.ysc.baiduapp.database.DatabaseHelper;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -45,7 +48,11 @@ import org.json.JSONObject;
 import java.io.Serializable;
 import java.lang.reflect.Method;
 import java.text.DecimalFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Collection;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -74,29 +81,50 @@ public class GetCellInfo {
         mymainActivity = m;
     }
 
-    public Map<String, Double> myGps(){
+    public Map<String, Double> myGps2(){
         Map<String, Double> map = new HashMap<String, Double>();
-
-
-
         GPSTracker gps = new GPSTracker(mycontext,mymainActivity);
         double _mylats = gps.getLatitude();
         double _mylongs = gps.getLongitude();
-
-//        map.put("getLatitude", (double) 0);
-//        map.put("getLongitude", (double) 0);
-
         map.put("getLatitude", _mylats );
         map.put("getLongitude", _mylongs );
         return map;
     }
 
-    public Map<String, Double> myGps2() {
+    private String getCunrTime(){
+        Calendar now = Calendar.getInstance();
+//        System.out.println("年: " + now.get(Calendar.YEAR));
+//        System.out.println("月: " + (now.get(Calendar.MONTH) + 1) + "");
+//        System.out.println("日: " + now.get(Calendar.DAY_OF_MONTH));
+//        System.out.println("时: " + now.get(Calendar.HOUR_OF_DAY));
+//        System.out.println("分: " + now.get(Calendar.MINUTE));
+//        System.out.println("秒: " + now.get(Calendar.SECOND));
+//        System.out.println("当前时间毫秒数：" + now.getTimeInMillis());
+//        System.out.println(now.getTime());
+
+        Date d = new Date();
+//        System.out.println(d);
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String dateNowStr = sdf.format(d);
+//        System.out.println("格式化后的日期：" + dateNowStr);
+
+        String str = "2012-1-13 17:26:33";	//要跟上面sdf定义的格式一样
+        Date today = null;
+        try {
+            today = sdf.parse(str);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+//        System.out.println("字符串转成日期：" + today);
+        String result = now.get(Calendar.HOUR_OF_DAY) + ":" + now.get(Calendar.MINUTE) + ":" + now.get(Calendar.SECOND);;
+        return result;
+    }
+
+    public Map<String, Double> myGps() {
         Map<String, Double> map = new HashMap<String, Double>();
         if (telephonyManager == null) {
             new AlertDialog.Builder(mycontext).setTitle("错误").setMessage("内部错误 telephonyManager").setPositiveButton("确定", null).show();
         } else {
-            if (telephonyManager.getPhoneType() == TelephonyManager.PHONE_TYPE_CDMA) {
                 if (ActivityCompat.checkSelfPermission(mycontext, ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
                     ActivityCompat.requestPermissions(mymainActivity,
                             new String[]{ACCESS_FINE_LOCATION},
@@ -168,20 +196,27 @@ public class GetCellInfo {
                         e.printStackTrace();
                     }
                 }
-            }
         }
         map.put("getLatitude", (double) 0);
         map.put("getLongitude", (double) 0);
         return map;
     }
 
+
+    private int getBand(int x){
+        switch (x) {
+            case 100 : return 1;
+            case 1825 : return 3;
+        }
+        return 0 ;
+    }
+
     public JsonObject getRsrpCellSignalStrengthLte() {
-        JsonObject cellJson = new JsonObject();
+        final JsonObject cellJson = new JsonObject();
         try {
             if (telephonyManager == null) {
                 new AlertDialog.Builder(mycontext).setTitle("错误").setMessage("内部错误 telephonyManager").setPositiveButton("确定", null).show();
             } else {
-                if (telephonyManager.getPhoneType() == TelephonyManager.PHONE_TYPE_CDMA) {
                     if (ActivityCompat.checkSelfPermission(mycontext, ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
                         ActivityCompat.requestPermissions(mymainActivity,
                                 new String[]{ACCESS_COARSE_LOCATION},
@@ -189,20 +224,12 @@ public class GetCellInfo {
                         Toast.makeText(this.mycontext, "请求卫星和网络权限！！", Toast.LENGTH_LONG).show();
                         return cellJson;
                     } else {
-                        if (Build.VERSION.SDK_INT < 26) {
-                            if (telephonyManager.getNetworkType() == NETWORK_TYPE_LTE) {
-                                SignalMethod a = new SignalMethod(METHOD_TD_SCDMA_LEVEL) {
-                                    @Override
-                                    public double getLevel(SignalStrength signalStrength) throws Exception {
-                                        Method method = signalStrength.getClass().getDeclaredMethod("getTdScdmaLevel");
-                                        method.setAccessible(true);
-                                        Log.e("signalStrength测试", signalStrength.toString());
-                                        Log.e("method.invoke测试", method.invoke(signalStrength).toString());
-                                        return (int) method.invoke(signalStrength);
-                                    }
-                                };
-                            }
-                        } else {
+                        if (Build.VERSION.SDK_INT == 26) {
+
+
+
+
+                        } else  if (Build.VERSION.SDK_INT >= 26) {
                             List<CellInfo> myCellInfoList = telephonyManager.getAllCellInfo();
                             for (CellInfo cellInfo : myCellInfoList) {
                                 //获取所有Lte网络信息
@@ -291,7 +318,6 @@ public class GetCellInfo {
                             }
                         }
                     }
-                }
             }
         } catch (Exception e) {
             Log.e("获取手机参数报错", e.toString());

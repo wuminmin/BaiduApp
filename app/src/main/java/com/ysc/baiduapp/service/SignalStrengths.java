@@ -29,7 +29,7 @@ public class SignalStrengths {
     public final static String METHOD_LTE_LEVEL = "getLteLevel (reflection)";
     public final static String METHOD_LTE_SIGNAL_STRENGTH = "getLteSignalStrength (reflection)";
     public final static String METHOD_LTE_DBM = "getLteDbm (reflection)";
-    public final static String METHOD_LTE_RSRP = "getLteRsrp (reflection)";
+    public final static String METHOD_LTE_RSRP = "getRsrpCellInfoLte";
     public final static String METHOD_LTE_RSRQ = "getLteRsrq (reflection)";
     public final static String METHOD_LTE_RSSNR = "getLteRssnr (reflection)";
     public final static String METHOD_LTE_CQI = "getLteCqi (reflection)";
