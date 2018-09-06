@@ -18,7 +18,7 @@
             android:layout_weight="1"
             android:background="@color/my_beijing"
             android:text="@string/shineng"
-            android:textColor="@color/white"
+            android:textColor="@color/shineng"
             tools:ignore="ButtonStyle" />
 
         <Button
@@ -28,7 +28,7 @@
             android:layout_weight="1"
             android:background="@color/my_beijing"
             android:text="@string/shiwai"
-            android:textColor="@color/white"
+            android:textColor="@color/shiwai"
             tools:ignore="ButtonStyle" />
 
     </LinearLayout>

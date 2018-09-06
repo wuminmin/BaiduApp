@@ -1,10 +1,14 @@
 package com.ysc.baiduapp.fragment;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
+import android.telephony.PhoneStateListener;
+import android.telephony.SignalStrength;
 import android.telephony.TelephonyManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +24,8 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.ysc.baiduapp.R;
 import com.ysc.baiduapp.service.MyTest;
+import com.ysc.baiduapp.service.SignalMethod;
+import com.ysc.baiduapp.service.SignalStrengths;
 import com.ysc.baiduapp.service.XinxiJson;
 import com.ysc.baiduapp.viewcustom.BaseFragment;
 
@@ -46,7 +52,7 @@ public class HomeFragment extends BaseFragment implements OnMapReadyCallback {
         xinxiWebview = view.findViewById(R.id.xinxiWebview);
         cesuWebview = view.findViewById(R.id.cesuWebview);
         mapWebview = view.findViewById(R.id.mapWebview);
-        xinxiInit(xinxiWebview);
+        xinxiInit(xinxiWebview ,  telephonyManager);
         bundle = savedInstanceState;
         ImageView buttonXinxi = view.findViewById(R.id.xinxi);
         ImageView buttonCesu = view.findViewById(R.id.cesu);
@@ -93,7 +99,7 @@ public class HomeFragment extends BaseFragment implements OnMapReadyCallback {
         }
         void update() {
             xinxiJson.saveXinxiJson();
-            xinxiWebViewInit(xinxiWebview);
+            xinxiWebViewInit(xinxiWebview );
         }
     };
 
@@ -110,7 +116,26 @@ public class HomeFragment extends BaseFragment implements OnMapReadyCallback {
         cesuWebview.loadUrl("http://ahdx.speedtestcustom.com/");
     }
 
-    private void xinxiInit(WebView xinxiWebview){
+    private void xinxiInit(WebView xinxiWebview  , TelephonyManager telephonyManager ){
+
+        telephonyManager.listen(new PhoneStateListener() {
+            public void onSignalStrengthsChanged(SignalStrength signalStrength) {
+                super.onSignalStrengthsChanged(signalStrength);
+
+
+                for (SignalMethod method : SignalStrengths.getMethods()) {
+                    double level = 0;
+                    try {
+                        level = method.getLevel(signalStrength);
+                        Log.e("SignalMethod测试", String.valueOf(level));
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+
+                }
+            }
+        }, PhoneStateListener.LISTEN_SIGNAL_STRENGTHS);
+
         xinxiWebview.setWebViewClient(new WebViewClient());
         WebSettings webSettings = xinxiWebview.getSettings();
         webSettings.setJavaScriptEnabled(true);
@@ -118,14 +143,12 @@ public class HomeFragment extends BaseFragment implements OnMapReadyCallback {
     }
 
     private void xinxiWebViewInit(WebView xinxiWebview ){
-//        cesuWebview =  view.findViewById(R.id.cesuWebview);
-        // Force links and redirects to open in the WebView instead of in a browser
+
+
+
         xinxiWebview.setWebViewClient(new WebViewClient());
-        // Enable Javascript
         WebSettings webSettings = xinxiWebview.getSettings();
         webSettings.setJavaScriptEnabled(true);
-
-//        final String json = "[1, 34], [2, 0],  [3, 0],    [4, 34],    [5, 32],   [6, 0]";
         final String json = xinxiJson.getXinxiJsonAll();
         xinxiWebview.addJavascriptInterface(new Object() {
             //@param message:  html页面传进来的数据
@@ -135,19 +158,7 @@ public class HomeFragment extends BaseFragment implements OnMapReadyCallback {
             }
 
         }, "MyBrowserAPI");//MyBrowserAPI:自定义的js函数名
-
         xinxiWebview.loadUrl("file:///android_asset/xinxi.html");
-//        xinxiWebview.evaluateJavascript("file:///android_asset/xinxi.html", new ValueCallback<String>() {
-//            @Override
-//            public void onReceiveValue(String s) {
-//
-//            }
-//        });
-//        cesuWebview.loadUrl("http://ahdx.speedtestcustom.com/");
-//        cesuWebview.loadUrl("http://www.baidu.com/");
-//        cesuWebview.setWebViewClient(new MyWebViewClient());
-        // LOCAL RESOURCE
-//        cesuWebview.loadUrl("file:///android_asset/index.html");
     }
 
     private void MapViewInit(WebView xinxiWebview ){

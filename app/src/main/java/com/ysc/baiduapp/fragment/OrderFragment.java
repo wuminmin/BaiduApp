@@ -1,6 +1,7 @@
 package com.ysc.baiduapp.fragment;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -86,8 +87,8 @@ public class OrderFragment extends BaseFragment {
         shiwaiWebview = view.findViewById(R.id.shiwaiWebview);
         bundle = savedInstanceState;
 
-        Button shinengBtn = view.findViewById(R.id.shineng);
-        Button shiwaiBtn = view.findViewById(R.id.shiwai);
+        final Button shinengBtn = view.findViewById(R.id.shineng);
+        final Button shiwaiBtn = view.findViewById(R.id.shiwai);
         shinengBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -67,7 +67,7 @@ public class GetCellInfo {
     private String strTmp = "";
     private String strCellInfo = "";
     private JSONObject jsonObject = null;
-
+    public final static String METHOD_TD_SCDMA_LEVEL = "getTdScdmaLevel (reflection)";
     public GetCellInfo(Context c, TelephonyManager t, FragmentActivity m) {
         mycontext = c;
         telephonyManager = t;
@@ -157,50 +157,16 @@ public class GetCellInfo {
                     } else {
                         if (Build.VERSION.SDK_INT < 26) {
                             if (telephonyManager.getNetworkType() == NETWORK_TYPE_LTE) {
-
-                                 class SignalStrengthListener extends PhoneStateListener {
-                                     private int lte_sinr;
-                                     private int lte_rsrp;
-                                     private int lte_rsrq;
-                                     private int lte_rssnr;
-                                     private int lte_cqi;
-                                    public void onSignalStrengthsChanged(SignalStrength signalStrength) {
-                                        super.onSignalStrengthsChanged(signalStrength);
-                                        try {
-                                             lte_sinr = (int) signalStrength.getClass().getMethod("getLteSignalStrength").invoke(signalStrength);
-                                             lte_rsrp = (int) signalStrength.getClass().getMethod("getLteRsrp").invoke(signalStrength);
-                                             lte_rsrq = (int) signalStrength.getClass().getMethod("getLteRsrq").invoke(signalStrength);
-                                             lte_rssnr = (int) signalStrength.getClass().getMethod("getLteRssnr").invoke(signalStrength);
-                                             lte_cqi = (int) signalStrength.getClass().getMethod("getLteCqi").invoke(signalStrength);
-                                        } catch (Exception e) {
-                                            e.printStackTrace();
-                                        }
+                                SignalMethod a = new SignalMethod(METHOD_TD_SCDMA_LEVEL) {
+                                    @Override
+                                    public double getLevel(SignalStrength signalStrength) throws Exception {
+                                        Method method = signalStrength.getClass().getDeclaredMethod("getTdScdmaLevel");
+                                        method.setAccessible(true);
+                                        Log.e("signalStrength测试", signalStrength.toString());
+                                        Log.e("method.invoke测试", method.invoke(signalStrength).toString());
+                                        return (int) method.invoke(signalStrength);
                                     }
-
-                                    private int getlte_sinr(){
-                                        return this.lte_sinr;
-                                    }
-                                     private int getlte_rsrp(){
-                                         return this.lte_rsrp;
-                                     }
-                                     private int getlte_rsrq(){
-                                         return this.lte_rsrq;
-                                     }
-                                     private int getlte_rssnr(){
-                                         return this.lte_rssnr;
-                                     }
-                                     private int getlte_cqi(){
-                                         return this.lte_cqi;
-                                     }
-                                }
-                                SignalStrengthListener signalStrengthListener = new SignalStrengthListener();
-                                telephonyManager.listen(signalStrengthListener, PhoneStateListener.LISTEN_SIGNAL_STRENGTHS);
-                                cellJson.addProperty("lte_sinr", signalStrengthListener.getlte_sinr() );
-                                cellJson.addProperty("getRsrpCellInfoLte", signalStrengthListener.getlte_rsrp() );
-                                cellJson.addProperty("getRsrqCellInfoLte", signalStrengthListener.getlte_rsrq() );
-                                cellJson.addProperty("getRssnrCellInfoLte", signalStrengthListener.getlte_rssnr() );
-                                cellJson.addProperty("getCqiCellInfoLte", signalStrengthListener.getlte_cqi() );
-
+                                };
                             }
                         } else {
                             List<CellInfo> myCellInfoList = telephonyManager.getAllCellInfo();
