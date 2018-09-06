@@ -122,12 +122,8 @@ public class XinxiJson {
             if ( getCellInfojson.has("getSystemIdCellIdentityCdma" ) ) {
                 xinxiJson.addProperty("sid", String.valueOf(getCellInfojson.get("getSystemIdCellIdentityCdma")));
             }
-            if ( getCellInfojson.has("getLatitudeCellIdentityCdma" ) ) {
                 xinxiJson.addProperty("weidu", getCellInfo.myGps().get("getLatitude"));
-            }
-            if ( getCellInfojson.has("getLongitudeCellIdentityCdma" ) ) {
                 xinxiJson.addProperty("jingdu", getCellInfo.myGps().get("getLongitude") );
-            }
 
             xinxiJson.addProperty("pingpai", android.os.Build.BRAND );
             xinxiJson.addProperty("xinghao", android.os.Build.MODEL );

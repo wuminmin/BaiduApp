@@ -67,14 +67,31 @@ public class GetCellInfo {
     private String strTmp = "";
     private String strCellInfo = "";
     private JSONObject jsonObject = null;
-    public final static String METHOD_TD_SCDMA_LEVEL = "getTdScdmaLevel (reflection)";
+    private final static String METHOD_TD_SCDMA_LEVEL = "getTdScdmaLevel (reflection)";
     public GetCellInfo(Context c, TelephonyManager t, FragmentActivity m) {
         mycontext = c;
         telephonyManager = t;
         mymainActivity = m;
     }
 
-    public Map<String, Double> myGps() {
+    public Map<String, Double> myGps(){
+        Map<String, Double> map = new HashMap<String, Double>();
+
+
+
+        GPSTracker gps = new GPSTracker(mycontext,mymainActivity);
+        double _mylats = gps.getLatitude();
+        double _mylongs = gps.getLongitude();
+
+//        map.put("getLatitude", (double) 0);
+//        map.put("getLongitude", (double) 0);
+
+        map.put("getLatitude", _mylats );
+        map.put("getLongitude", _mylongs );
+        return map;
+    }
+
+    public Map<String, Double> myGps2() {
         Map<String, Double> map = new HashMap<String, Double>();
         if (telephonyManager == null) {
             new AlertDialog.Builder(mycontext).setTitle("错误").setMessage("内部错误 telephonyManager").setPositiveButton("确定", null).show();
@@ -103,6 +120,23 @@ public class GetCellInfo {
                         String provider = Objects.requireNonNull(locationManager).getBestProvider(criteria, true); // 获取GPS信息
                         Location location = getLocation();
                         if (location != null) {
+                            locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 1000, 0, new LocationListener() {
+                                @Override
+                                public void onLocationChanged(Location location) {
+                                }
+
+                                @Override
+                                public void onStatusChanged(String provider, int status, Bundle extras) {
+                                }
+
+                                @Override
+                                public void onProviderEnabled(String provider) {
+                                }
+
+                                @Override
+                                public void onProviderDisabled(String provider) {
+                                }
+                            });
                             DecimalFormat df = new DecimalFormat("#.000000");
                             String getLatitude = df.format(location.getLatitude());
                             String getLongitude = df.format(location.getLongitude());
