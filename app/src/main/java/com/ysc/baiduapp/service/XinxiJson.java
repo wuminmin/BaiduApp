@@ -99,7 +99,7 @@ public class XinxiJson {
                 xinxiJson.addProperty("dbm", String.valueOf(getCellInfojson.get("getCdmaDbmCellSignalStrengthCdma")));
             }
             if (getCellInfojson.has("getCdmaEcioCellSignalStrengthCdma")) {
-                xinxiJson.addProperty("ecio", String.valueOf(getCellInfojson.get("getCdmaEcioCellSignalStrengthCdma")));
+                xinxiJson.addProperty("ecio", ( getCellInfojson.get("getCdmaEcioCellSignalStrengthCdma").getAsInt())/10 );
             }
             if (getCellInfojson.has("getDbmCellSignalStrengthCdma")) {
                 xinxiJson.addProperty("getDbmCellSignalStrengthCdma", String.valueOf(getCellInfojson.get("getDbmCellSignalStrengthCdma")));
