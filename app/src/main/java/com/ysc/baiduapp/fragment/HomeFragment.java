@@ -111,6 +111,8 @@ public class HomeFragment extends BaseFragment implements OnMapReadyCallback {
         void update() {
             GetCellInfo getCellInfo = new GetCellInfo(mycontext,telephonyManager,mymainActivity);
             getCellInfo.saveCel();
+            getCellInfo.saveLISTEN_CELL_INFO();
+            getCellInfo.saveSIN();
             xinxiJson.saveXinxiJson();
             xinxiWebViewInit(xinxiWebview );
         }
