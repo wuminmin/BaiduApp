@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.ysc.baiduapp.database.model.Cell;
 import com.ysc.baiduapp.database.model.Note;
 import com.ysc.baiduapp.database.model.Xinxi;
 
@@ -39,6 +40,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         // create notes table
         db.execSQL(Xinxi.CREATE_TABLE);
+
+        // create notes table
+        db.execSQL(Cell.CREATE_TABLE);
     }
 
     // Upgrading database
@@ -84,6 +88,25 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         // insert row
         long id = db.insert(Xinxi.TABLE_NAME, null, values);
+
+        // close db connection
+        db.close();
+
+        // return newly inserted row id
+        return id;
+    }
+
+    public long insertCell(String note) {
+        // get writable database as we want to write data
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        // `id` and `timestamp` will be inserted automatically.
+        // no need to add them
+        values.put(Cell.COLUMN_NOTE, note);
+
+        // insert row
+        long id = db.insert(Cell.TABLE_NAME, null, values);
 
         // close db connection
         db.close();
@@ -172,6 +195,25 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         // return notes list
         return notes;
+    }
+
+    public Cell getLastCell() {
+        // Select All Query
+        String selectQuery = "SELECT  * FROM " + Cell.TABLE_NAME + " ORDER BY " +
+                Cell.COLUMN_TIMESTAMP + " DESC";
+        Cell note = new Cell();
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        // looping through all rows and adding to list
+        if (cursor.moveToFirst()) {
+                note.setId(cursor.getInt(cursor.getColumnIndex(Xinxi.COLUMN_ID)));
+                note.setNote(cursor.getString(cursor.getColumnIndex(Xinxi.COLUMN_NOTE)));
+                note.setTimestamp(cursor.getString(cursor.getColumnIndex(Xinxi.COLUMN_TIMESTAMP)));
+        }
+        // close db connection
+        db.close();
+        // return notes list
+        return note;
     }
 
     public int getNotesCount() {

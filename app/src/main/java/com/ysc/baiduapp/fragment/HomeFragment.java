@@ -33,6 +33,8 @@ import com.ysc.baiduapp.service.SignalStrengths;
 import com.ysc.baiduapp.service.XinxiJson;
 import com.ysc.baiduapp.viewcustom.BaseFragment;
 
+import java.util.Arrays;
+
 /**
  * Created by wjx on 2016-1-12.
  */
@@ -107,6 +109,8 @@ public class HomeFragment extends BaseFragment implements OnMapReadyCallback {
             handler.postDelayed(this, 1000 * 5);// 间隔120秒
         }
         void update() {
+            GetCellInfo getCellInfo = new GetCellInfo(mycontext,telephonyManager,mymainActivity);
+            getCellInfo.saveCel();
             xinxiJson.saveXinxiJson();
             xinxiWebViewInit(xinxiWebview );
         }
@@ -133,10 +137,14 @@ public class HomeFragment extends BaseFragment implements OnMapReadyCallback {
 
 
                 for (SignalMethod method : SignalStrengths.getMethods()) {
-                    double level = 0;
+//                    double level = 0;
                     try {
-                        level = method.getLevel(signalStrength);
-                        Log.e("SignalMethod测试", String.valueOf(level));
+//                        level = method.getLevel(signalStrength);
+                        String ssignal = signalStrength.toString();
+
+                        String[] parts = ssignal.split(" ");
+
+                        Log.e("SignalMethod测试", Arrays.toString(parts));
                     } catch (Exception e) {
                         e.printStackTrace();
                     }

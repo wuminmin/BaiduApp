@@ -81,45 +81,6 @@ public class GetCellInfo {
         mymainActivity = m;
     }
 
-    public Map<String, Double> myGps2(){
-        Map<String, Double> map = new HashMap<String, Double>();
-        GPSTracker gps = new GPSTracker(mycontext,mymainActivity);
-        double _mylats = gps.getLatitude();
-        double _mylongs = gps.getLongitude();
-        map.put("getLatitude", _mylats );
-        map.put("getLongitude", _mylongs );
-        return map;
-    }
-
-    private String getCunrTime(){
-        Calendar now = Calendar.getInstance();
-//        System.out.println("年: " + now.get(Calendar.YEAR));
-//        System.out.println("月: " + (now.get(Calendar.MONTH) + 1) + "");
-//        System.out.println("日: " + now.get(Calendar.DAY_OF_MONTH));
-//        System.out.println("时: " + now.get(Calendar.HOUR_OF_DAY));
-//        System.out.println("分: " + now.get(Calendar.MINUTE));
-//        System.out.println("秒: " + now.get(Calendar.SECOND));
-//        System.out.println("当前时间毫秒数：" + now.getTimeInMillis());
-//        System.out.println(now.getTime());
-
-        Date d = new Date();
-//        System.out.println(d);
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        String dateNowStr = sdf.format(d);
-//        System.out.println("格式化后的日期：" + dateNowStr);
-
-        String str = "2012-1-13 17:26:33";	//要跟上面sdf定义的格式一样
-        Date today = null;
-        try {
-            today = sdf.parse(str);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-//        System.out.println("字符串转成日期：" + today);
-        String result = now.get(Calendar.HOUR_OF_DAY) + ":" + now.get(Calendar.MINUTE) + ":" + now.get(Calendar.SECOND);;
-        return result;
-    }
-
     public Map<String, Double> myGps() {
         Map<String, Double> map = new HashMap<String, Double>();
         if (telephonyManager == null) {
@@ -146,25 +107,31 @@ public class GetCellInfo {
                         criteria.setCostAllowed(true);
                         criteria.setPowerRequirement(Criteria.POWER_HIGH);// 低功耗
                         String provider = Objects.requireNonNull(locationManager).getBestProvider(criteria, true); // 获取GPS信息
-                        Location location = getLocation();
+                        LocationListener locationListener = new LocationListener() {
+                            @Override
+                            public void onLocationChanged(Location location) {
+
+                            }
+
+                            @Override
+                            public void onStatusChanged(String s, int i, Bundle bundle) {
+
+                            }
+
+                            @Override
+                            public void onProviderEnabled(String s) {
+
+                            }
+
+                            @Override
+                            public void onProviderDisabled(String s) {
+
+                            }
+                        };
+                        locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 1000, 0, locationListener);
+                        Location location = locationManager.getLastKnownLocation(provider);
+//                        Location location = getLocation(locationListener);
                         if (location != null) {
-                            locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 1000, 0, new LocationListener() {
-                                @Override
-                                public void onLocationChanged(Location location) {
-                                }
-
-                                @Override
-                                public void onStatusChanged(String provider, int status, Bundle extras) {
-                                }
-
-                                @Override
-                                public void onProviderEnabled(String provider) {
-                                }
-
-                                @Override
-                                public void onProviderDisabled(String provider) {
-                                }
-                            });
                             DecimalFormat df = new DecimalFormat("#.000000");
                             String getLatitude = df.format(location.getLatitude());
                             String getLongitude = df.format(location.getLongitude());
@@ -174,23 +141,7 @@ public class GetCellInfo {
                             return map;
                         } else {
                             //This is what you need:
-                            locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 1000, 0, new LocationListener() {
-                                @Override
-                                public void onLocationChanged(Location location) {
-                                }
-
-                                @Override
-                                public void onStatusChanged(String provider, int status, Bundle extras) {
-                                }
-
-                                @Override
-                                public void onProviderEnabled(String provider) {
-                                }
-
-                                @Override
-                                public void onProviderDisabled(String provider) {
-                                }
-                            });
+                            locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 1000, 0, locationListener);
                         }
                     } catch (Exception e) {
                         e.printStackTrace();
@@ -202,16 +153,7 @@ public class GetCellInfo {
         return map;
     }
 
-
-    private int getBand(int x){
-        switch (x) {
-            case 100 : return 1;
-            case 1825 : return 3;
-        }
-        return 0 ;
-    }
-
-    public JsonObject getRsrpCellSignalStrengthLte() {
+    public void saveCel() {
         final JsonObject cellJson = new JsonObject();
         try {
             if (telephonyManager == null) {
@@ -222,10 +164,29 @@ public class GetCellInfo {
                                 new String[]{ACCESS_COARSE_LOCATION},
                                 MY_PERMISSIONS_REQUEST_ACCESS_COARSE_LOCATION);
                         Toast.makeText(this.mycontext, "请求卫星和网络权限！！", Toast.LENGTH_LONG).show();
-                        return cellJson;
                     } else {
-                        if (Build.VERSION.SDK_INT == 26) {
-
+                        if (Build.VERSION.SDK_INT < 26) {
+//                                telephonyManager.listen(new PhoneStateListener() {
+//                                    public void onSignalStrengthsChanged(SignalStrength signalStrength) {
+//                                        super.onSignalStrengthsChanged(signalStrength);
+//                                        for (SignalMethod method : SignalStrengths.getMethods()) {
+//                                            double level = 0;
+//                                            String name = "";
+//                                            try {
+//                                                level = method.getLevel(signalStrength);
+//                                                 name = method.getName();
+//                                                cellJson.addProperty("name", level);
+//
+//                                            } catch (Exception e) {
+//                                                e.printStackTrace();
+//                                            }
+//                                            Log.e("测试5.0 rsrp", String.valueOf(level)+name);
+////                                            TextView valueView = (TextView) gridLayout.findViewWithTag(method.getName());
+////                                            valueView.setTextColor(method.isExcluded() ? Color.GRAY : (SignalUtils.isValidLevel(level) ? Color.BLACK : Color.RED));
+////                                            valueView.setText(String.valueOf(level));
+//                                        }
+//                                    }
+//                                }, PhoneStateListener.LISTEN_SIGNAL_STRENGTHS);
 
 
 
@@ -322,55 +283,8 @@ public class GetCellInfo {
         } catch (Exception e) {
             Log.e("获取手机参数报错", e.toString());
         }
-        return cellJson;
-    }
-
-    private static boolean isLocationEnabled(Context mycontext) {
-        //...............
-        return true;
-    }
-
-    protected Location getLocation() {
-        if (isLocationEnabled(mymainActivity)) {
-            LocationManager locationManager;
-            locationManager = (LocationManager) mymainActivity.getSystemService(Context.LOCATION_SERVICE);
-            Criteria criteria = new Criteria();
-            assert locationManager != null;
-            String bestProvider = String.valueOf(locationManager.getBestProvider(criteria, true));
-
-            //You can still do this if you like, you might get lucky:
-            if (ActivityCompat.checkSelfPermission(mycontext, ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(mycontext, ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                // TODO: Consider calling
-                ActivityCompat.requestPermissions(mymainActivity,
-                        new String[]{ACCESS_COARSE_LOCATION,ACCESS_FINE_LOCATION},
-                        MY_PERMISSIONS_REQUEST_ACCESS_COARSE_LOCATION);
-                //    ActivityCompat#requestPermissions
-                // here to request the missing permissions, and then overriding
-                //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-                //                                          int[] grantResults)
-                // to handle the case where the user grants the permission. See the documentation
-                // for ActivityCompat#requestPermissions for more details.
-                return null;
-            }
-            Location location = locationManager.getLastKnownLocation(bestProvider);
-            if (location != null) {
-//                Log.e("TAG", "GPS is on");
-                double latitude = location.getLatitude();
-                double longitude = location.getLongitude();
-//                Toast.makeText(mycontext, "latitude:" + latitude + " longitude:" + longitude, Toast.LENGTH_SHORT).show();
-                return location;
-            }
-            else{
-                //This is what you need:
-                locationManager.requestLocationUpdates(bestProvider, 1000, 0, (LocationListener) this);
-            }
-        }
-        else
-        {
-            //prompt user to enable location....
-            //.................
-            return null;
-        }
-        return null;
+        Log.e("cellJson内容：", cellJson.toString());
+        DatabaseHelper databaseHelper = new DatabaseHelper(mycontext);
+        databaseHelper.insertCell(cellJson.toString());
     }
 }
