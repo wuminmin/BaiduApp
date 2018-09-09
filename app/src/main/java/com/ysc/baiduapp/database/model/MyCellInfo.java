@@ -4,8 +4,8 @@ package com.ysc.baiduapp.database.model;
  * Created by ravi on 20/02/18.
  */
 
-public class Cell {
-    public static final String TABLE_NAME = "cell";
+public class MyCellInfo {
+    public static final String TABLE_NAME = "myCellInfo";
 
     public static final String COLUMN_ID = "id";
     public static final String COLUMN_NOTE = "note";
@@ -24,10 +24,10 @@ public class Cell {
                     + COLUMN_TIMESTAMP + " DATETIME DEFAULT CURRENT_TIMESTAMP"
                     + ")";
 
-    public Cell() {
+    public MyCellInfo() {
     }
 
-    public Cell(int id, String note, String timestamp) {
+    public MyCellInfo(int id, String note, String timestamp) {
         this.id = id;
         this.note = note;
         this.timestamp = timestamp;

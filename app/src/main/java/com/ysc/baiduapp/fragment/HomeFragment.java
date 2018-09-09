@@ -1,9 +1,6 @@
 package com.ysc.baiduapp.fragment;
 
-import android.app.Activity;
 import android.content.Context;
-import android.graphics.Color;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -16,7 +13,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.JavascriptInterface;
-import android.webkit.ValueCallback;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -27,7 +23,6 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.ysc.baiduapp.R;
 import com.ysc.baiduapp.service.GetCellInfo;
-import com.ysc.baiduapp.service.MyTest;
 import com.ysc.baiduapp.service.SignalMethod;
 import com.ysc.baiduapp.service.SignalStrengths;
 import com.ysc.baiduapp.service.XinxiJson;
@@ -111,8 +106,6 @@ public class HomeFragment extends BaseFragment implements OnMapReadyCallback {
         void update() {
             GetCellInfo getCellInfo = new GetCellInfo(mycontext,telephonyManager,mymainActivity);
             getCellInfo.saveCel();
-            getCellInfo.saveLISTEN_CELL_INFO();
-            getCellInfo.saveSIN();
             xinxiJson.saveXinxiJson();
             xinxiWebViewInit(xinxiWebview );
         }

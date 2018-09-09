@@ -193,19 +193,22 @@ public class GetCellInfo {
         }
     }
 
-    public void saveLISTEN_CELL_INFO() {
+    public JsonObject myGetAllCellInfo() {
+        JsonObject cellJson = new JsonObject();
         try {
             if (telephonyManager == null) {
                 new AlertDialog.Builder(mycontext).setTitle("错误").setMessage("内部错误 telephonyManager").setPositiveButton("确定", null).show();
+                return cellJson;
             } else {
                 if (ActivityCompat.checkSelfPermission(mycontext, READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
                     ActivityCompat.requestPermissions(mymainActivity,
                             new String[]{READ_PHONE_STATE},
                             MY_PERMISSIONS_REQUEST_ACCESS_COARSE_LOCATION);
                     Toast.makeText(this.mycontext, "请求卫星和网络权限！！", Toast.LENGTH_LONG).show();
+                    return cellJson;
                 } else {
                     telephonyManager.getAllCellInfo();
-                    JsonObject cellJson = new JsonObject();
+
                             List<CellInfo> myCellInfoList = telephonyManager.getAllCellInfo();
                             for (CellInfo cellInfo : myCellInfoList) {
                                 //获取所有Lte网络信息
@@ -275,19 +278,15 @@ public class GetCellInfo {
 
                                     }
                                 }
-
                                 if (cellInfo instanceof CellInfoGsm) {
                                 }
-
                             }
-                            Log.e("cellJson内容：", cellJson.toString());
-                            DatabaseHelper databaseHelper = new DatabaseHelper(mycontext);
-                            databaseHelper.insertCell(cellJson.toString());
                 }
             }
         } catch (Exception e) {
             Log.e("获取手机参数报错", e.toString());
         }
+        return cellJson;
     }
 
     public void saveSIN(){
