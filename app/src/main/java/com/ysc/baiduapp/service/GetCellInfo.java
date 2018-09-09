@@ -107,7 +107,7 @@ public class GetCellInfo {
                         criteria.setBearingRequired(false);
                         criteria.setCostAllowed(true);
                         criteria.setPowerRequirement(Criteria.POWER_HIGH);// 低功耗
-                        String provider = Objects.requireNonNull(locationManager).getBestProvider(criteria, true); // 获取GPS信息
+                        String provider = (locationManager).getBestProvider(criteria, true); // 获取GPS信息
                         LocationListener locationListener = new LocationListener() {
                             @Override
                             public void onLocationChanged(Location location) {
@@ -165,9 +165,6 @@ public class GetCellInfo {
                                 MY_PERMISSIONS_REQUEST_ACCESS_COARSE_LOCATION);
                         Toast.makeText(this.mycontext, "请求卫星和网络权限！！", Toast.LENGTH_LONG).show();
                     } else {
-
-
-
                         telephonyManager.listen(new PhoneStateListener() {
                             public void onSignalStrengthsChanged(SignalStrength signalStrength) {
                                 super.onSignalStrengthsChanged(signalStrength);
@@ -180,22 +177,28 @@ public class GetCellInfo {
                                 cellJson.addProperty("getSinrCellInfoLte", Integer.valueOf( parts[11] ));
                                 cellJson.addProperty("getCdmaDbmCellSignalStrengthCdma", Integer.valueOf( parts[3] ));
                                 cellJson.addProperty("getCdmaEcioCellSignalStrengthCdma", Integer.valueOf( parts[4] ));
-
 //                                cellJson.addProperty("getCdmaEcioCellSignalStrengthCdma", Integer.valueOf( parts[4] ));
 //                                cellJson.addProperty("getCdmaEcioCellSignalStrengthCdma", Integer.valueOf( parts[4] ));
 //                                cellJson.addProperty("getCdmaEcioCellSignalStrengthCdma", Integer.valueOf( parts[4] ));
 //                                cellJson.addProperty("getCdmaEcioCellSignalStrengthCdma", Integer.valueOf( parts[4] ));
 //                                cellJson.addProperty("getCdmaEcioCellSignalStrengthCdma", Integer.valueOf( parts[4] ));
-
                                 Log.e("cellJson内容：", cellJson.toString());
                                 DatabaseHelper databaseHelper = new DatabaseHelper(mycontext);
                                 databaseHelper.insertCell(cellJson.toString());
                             }
                         }, PhoneStateListener.LISTEN_SIGNAL_STRENGTHS);
 
-                        telephonyManager.listen(new PhoneStateListener(){
-
-                        }, PhoneStateListener.LISTEN_CELL_INFO);
+//                        telephonyManager.listen(new PhoneStateListener(){
+//                            public void onCellInfoChanged(List<CellInfo> cellInfo){
+//                                super.onCellInfoChanged(cellInfo);
+//                                if( !cellInfo.isEmpty() ){
+//                                    for(CellInfo cell :cellInfo){
+//
+//                                        Log.e("测试onCellInfoChanged：",cell.toString());
+//                                    }
+//                                }
+//                            }
+//                        }, PhoneStateListener.LISTEN_CELL_INFO);
 
 //                        if (Build.VERSION.SDK_INT == 26) {
 //                                telephonyManager.listen(new PhoneStateListener() {
