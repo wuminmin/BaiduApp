@@ -226,6 +226,11 @@ public class GetCellInfo {
                                         cellJson.addProperty("getTimingAdvanceCellInfoLte", getTimingAdvance);
 
                                         CellIdentityLte cellIdentityLte = ((CellInfoLte) cellInfo).getCellIdentity();
+
+                                        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+                                            int getEarfcn = cellIdentityLte.getCi() == 2147483647 ? 0 : (cellIdentityLte.getEarfcn());
+                                            cellJson.addProperty("getEarfcnCellIdentityLte", getEarfcn);
+                                        }
                                         int getCi = cellIdentityLte.getCi() == 2147483647 ? 0 : (cellIdentityLte.getCi());
                                         int getMcc = cellIdentityLte.getMcc() == 2147483647 ? 0 : (cellIdentityLte.getMcc());
                                         int getMnc = cellIdentityLte.getMnc() == 2147483647 ? 0 : (cellIdentityLte.getMnc());
