@@ -289,32 +289,4 @@ public class GetCellInfo {
         return cellJson;
     }
 
-    public void saveSIN(){
-        try {
-            if (telephonyManager == null) {
-                new AlertDialog.Builder(mycontext).setTitle("错误").setMessage("内部错误 telephonyManager").setPositiveButton("确定", null).show();
-            } else {
-                if (ActivityCompat.checkSelfPermission(mycontext, ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                    ActivityCompat.requestPermissions(mymainActivity,
-                            new String[]{ACCESS_COARSE_LOCATION},
-                            MY_PERMISSIONS_REQUEST_ACCESS_COARSE_LOCATION);
-                    Toast.makeText(this.mycontext, "请求卫星和网络权限！！", Toast.LENGTH_LONG).show();
-                } else {
-                    TelephonyManager tel = telephonyManager;
-                    CellLocation cel = tel.getCellLocation();
-                    int nPhoneType = tel.getPhoneType();
-            //电信   CdmaCellLocation
-                    if (nPhoneType == 2 && cel instanceof CdmaCellLocation) {
-                        CdmaCellLocation cdmaCellLocation = (CdmaCellLocation) cel;
-                        int sid = cdmaCellLocation.getSystemId();
-                        int nid = cdmaCellLocation.getNetworkId();
-                        int bid = cdmaCellLocation.getBaseStationId();
-                        Log.e("电信", "-----------------》电信"+sid+" "+nid+" "+sid);
-                    }
-                }
-            }
-        } catch (Exception e) {
-            Log.e("获取手机参数报错", e.toString());
-        }
-    }
 }
