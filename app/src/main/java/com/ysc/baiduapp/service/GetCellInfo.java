@@ -165,6 +165,9 @@ public class GetCellInfo {
                                 MY_PERMISSIONS_REQUEST_ACCESS_COARSE_LOCATION);
                         Toast.makeText(this.mycontext, "请求卫星和网络权限！！", Toast.LENGTH_LONG).show();
                     } else {
+
+
+
                         telephonyManager.listen(new PhoneStateListener() {
                             public void onSignalStrengthsChanged(SignalStrength signalStrength) {
                                 super.onSignalStrengthsChanged(signalStrength);
@@ -190,6 +193,9 @@ public class GetCellInfo {
                             }
                         }, PhoneStateListener.LISTEN_SIGNAL_STRENGTHS);
 
+                        telephonyManager.listen(new PhoneStateListener(){
+
+                        }, PhoneStateListener.LISTEN_CELL_INFO);
 
 //                        if (Build.VERSION.SDK_INT == 26) {
 //                                telephonyManager.listen(new PhoneStateListener() {
