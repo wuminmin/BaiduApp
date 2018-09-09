@@ -175,6 +175,15 @@ public class GetCellInfo {
                                 cellJson.addProperty("getRsrpCellInfoLte", Integer.valueOf( parts[9] ));
                                 cellJson.addProperty("getRsrqCellInfoLte", Integer.valueOf( parts[10] ));
                                 cellJson.addProperty("getSinrCellInfoLte", Integer.valueOf( parts[11] ));
+                                cellJson.addProperty("getCdmaDbmCellSignalStrengthCdma", Integer.valueOf( parts[3] ));
+                                cellJson.addProperty("getCdmaEcioCellSignalStrengthCdma", Integer.valueOf( parts[4] ));
+
+//                                cellJson.addProperty("getCdmaEcioCellSignalStrengthCdma", Integer.valueOf( parts[4] ));
+//                                cellJson.addProperty("getCdmaEcioCellSignalStrengthCdma", Integer.valueOf( parts[4] ));
+//                                cellJson.addProperty("getCdmaEcioCellSignalStrengthCdma", Integer.valueOf( parts[4] ));
+//                                cellJson.addProperty("getCdmaEcioCellSignalStrengthCdma", Integer.valueOf( parts[4] ));
+//                                cellJson.addProperty("getCdmaEcioCellSignalStrengthCdma", Integer.valueOf( parts[4] ));
+
                                 Log.e("cellJson内容：", cellJson.toString());
                                 DatabaseHelper databaseHelper = new DatabaseHelper(mycontext);
                                 databaseHelper.insertCell(cellJson.toString());
