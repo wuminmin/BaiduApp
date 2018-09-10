@@ -50,11 +50,8 @@ import kr.co.namee.permissiongen.PermissionSuccess;
 
 
 public class MainActivity extends FragmentActivity {
-    public GetCellInfo getCellInfo;
     private ViewPager mViewPager;
     private IconTabPageIndicator mIndicator;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,8 +61,6 @@ public class MainActivity extends FragmentActivity {
         setContentView(R.layout.activityfragement_main);
         initViews();
         initData();
-
-
 
         /**
          * 动态获取权限，Android 6.0 新特性，一些保护权限，除了要在AndroidManifest中声明权限，还要使用如下代码动态获取
@@ -84,14 +79,11 @@ public class MainActivity extends FragmentActivity {
         }
     }
 
-
     private void initViews(){
         mViewPager = (ViewPager) findViewById(R.id.view_pager);
         mIndicator = (IconTabPageIndicator) findViewById(R.id.indicator);
-
 //        GridView gridview = (GridView) findViewById(R.id.gridView);
 //        gridview.setAdapter(new ImageAdapter(this));
-
     }
 
     public void initData(){
@@ -119,8 +111,6 @@ public class MainActivity extends FragmentActivity {
         grabOrderFragment.setTitle("我的");
         grabOrderFragment.setIconId(R.drawable.tab_grab_selector);
 //        fragments.add(grabOrderFragment);
-
-
         return fragments;
     }
 

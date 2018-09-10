@@ -131,12 +131,12 @@ public class XinxiJson {
             if (getCellInfojson.has("ProvidersName")) {
                 xinxiJson.addProperty("leixing", getCellInfojson.get("ProvidersName").getAsString());
             }
-//            GPSTracker gps= new GPSTracker(c , m);
-//                xinxiJson.addProperty("weidu", gps.getLatitude());
-//                xinxiJson.addProperty("jingdu", gps.getLongitude() );
+            GPSTracker gps= new GPSTracker(c , m);
+                xinxiJson.addProperty("weidu", gps.getLatitude());
+                xinxiJson.addProperty("jingdu", gps.getLongitude() );
 
-            xinxiJson.addProperty("weidu", getCellInfo.myGps().get("getLatitude"));
-            xinxiJson.addProperty("jingdu", getCellInfo.myGps().get("getLongitude"));
+//            xinxiJson.addProperty("weidu", getCellInfo.myGps().get("getLatitude"));
+//            xinxiJson.addProperty("jingdu", getCellInfo.myGps().get("getLongitude"));
 
             xinxiJson.addProperty("pingpai", android.os.Build.BRAND);
             xinxiJson.addProperty("xinghao", android.os.Build.MODEL);
@@ -160,7 +160,7 @@ public class XinxiJson {
             if (getCellInfojson.has("getCiCellIdentityLte")) {
                 xinxiJson.addProperty("cellid", String.valueOf(getCellInfojson.get("getCiCellIdentityLte").getAsInt() % 256));
             }
-            Log.e("保存小区信息json格式", String.valueOf(xinxiJson));
+//            Log.e("保存小区信息json格式", String.valueOf(xinxiJson));
             databaseHelper.insertXinxi(xinxiJson.toString());
         } catch (Exception e) {
             Log.e("保存小区信息json格式失败", e.toString());

@@ -1,5 +1,8 @@
 package com.ysc.baiduapp.service;
 
+import android.os.Build;
+import android.support.annotation.RequiresApi;
+
 import java.io.IOException;
 
 import okhttp3.MediaType;

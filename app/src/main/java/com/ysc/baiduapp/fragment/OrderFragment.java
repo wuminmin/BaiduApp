@@ -76,7 +76,7 @@ public class OrderFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_order3, null, false);
         activity = getActivity();
-        context = Objects.requireNonNull(getActivity()).getApplicationContext();
+        context = getActivity().getApplicationContext();
         TelephonyManager telephonyManager = (TelephonyManager) getActivity().getSystemService(Context.TELEPHONY_SERVICE);
         xinxiJson = new XinxiJson(  getActivity().getApplicationContext(), telephonyManager, getActivity()  );
 
