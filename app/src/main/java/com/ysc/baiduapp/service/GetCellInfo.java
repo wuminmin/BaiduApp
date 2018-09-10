@@ -230,8 +230,8 @@ public class GetCellInfo {
 
                     CellLocation primaryLocation = telephonyManager.getCellLocation();
                     if (primaryLocation != null) {
-                        int primaryCellId = Integer.parseInt(primaryLocation.toString().split(",")[1]);
-                        int trackingAreaCode = Integer.parseInt(primaryLocation.toString().split(",")[0].replace("[", ""));
+//                        int primaryCellId = Integer.parseInt(primaryLocation.toString().split(",")[1]);
+//                        int trackingAreaCode = Integer.parseInt(primaryLocation.toString().split(",")[0].replace("[", ""));
 //                        Log.d("测试", primaryCellId + " "+ trackingAreaCode);
                         Log.d("测试", primaryLocation.toString());
                     } else {
@@ -315,7 +315,7 @@ public class GetCellInfo {
                 }
             }
         } catch (Exception e) {
-            Log.e("获取手机参数报错", e.toString());
+            Log.e("获取手机参数报错", Arrays.toString(e.getStackTrace()));
         }
         return cellJson;
     }
