@@ -16,7 +16,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@color/my_beijing"
+            android:background="@color/black"
             android:text="@string/shineng"
             android:textColor="@color/shineng"
             tools:ignore="ButtonStyle" />
@@ -26,7 +26,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@color/my_beijing"
+            android:background="@color/black"
             android:text="@string/shiwai"
             android:textColor="@color/shiwai"
             tools:ignore="ButtonStyle" />

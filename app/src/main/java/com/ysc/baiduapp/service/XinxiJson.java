@@ -1,7 +1,10 @@
 package com.ysc.baiduapp.service;
 
+import android.Manifest;
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.os.Build;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.telephony.TelephonyManager;
 import android.util.Log;
@@ -18,6 +21,8 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+
+import static android.Manifest.permission.READ_PHONE_STATE;
 
 public class XinxiJson {
     private GetCellInfo getCellInfo;
@@ -100,7 +105,7 @@ public class XinxiJson {
                 xinxiJson.addProperty("dbm", String.valueOf(ySignalStrengthJson.get("getCdmaDbmCellSignalStrengthCdma")));
             }
             if (ySignalStrengthJson.has("getCdmaEcioCellSignalStrengthCdma")) {
-                xinxiJson.addProperty("ecio", ( ySignalStrengthJson.get("getCdmaEcioCellSignalStrengthCdma").getAsInt())/10 );
+                xinxiJson.addProperty("ecio", (ySignalStrengthJson.get("getCdmaEcioCellSignalStrengthCdma").getAsInt()) / 10);
             }
             if (getCellInfojson.has("getDbmCellSignalStrengthCdma")) {
                 xinxiJson.addProperty("getDbmCellSignalStrengthCdma", String.valueOf(getCellInfojson.get("getDbmCellSignalStrengthCdma")));
@@ -123,6 +128,9 @@ public class XinxiJson {
             if (getCellInfojson.has("getSystemIdCellIdentityCdma")) {
                 xinxiJson.addProperty("sid", String.valueOf(getCellInfojson.get("getSystemIdCellIdentityCdma")));
             }
+            if (getCellInfojson.has("ProvidersName")) {
+                xinxiJson.addProperty("leixing", getCellInfojson.get("ProvidersName").getAsString());
+            }
 //            GPSTracker gps= new GPSTracker(c , m);
 //                xinxiJson.addProperty("weidu", gps.getLatitude());
 //                xinxiJson.addProperty("jingdu", gps.getLongitude() );
@@ -138,11 +146,10 @@ public class XinxiJson {
             xinxiJson.addProperty("shuju", SystemUtil.getNetworkType(this.c, this.m));
             xinxiJson.addProperty("xiaoqu", SystemUtil.getNetworkType(this.c, this.m));
             xinxiJson.addProperty("time", getCunrTime());
-            xinxiJson.addProperty("leixing", "安卓");
             xinxiJson.addProperty("jingque", "300米");
             xinxiJson.addProperty("fangshi", "GPS");
             if (ySignalStrengthJson.has("getSinrCellInfoLte")) {
-                xinxiJson.addProperty("sinr", ( ySignalStrengthJson.get("getSinrCellInfoLte").getAsInt())/10);
+                xinxiJson.addProperty("sinr", (ySignalStrengthJson.get("getSinrCellInfoLte").getAsInt()) / 10);
             }
             if (getCellInfojson.has("getEarfcnCellIdentityLte")) {
                 xinxiJson.addProperty("band", getBand(getCellInfojson.get("getEarfcnCellIdentityLte").getAsInt()));
