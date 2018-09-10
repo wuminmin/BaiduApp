@@ -167,14 +167,14 @@ public class XinxiJson {
         }
     }
 
-    private int getBand(int x) {
+    private String getBand(int x) {
         switch (x) {
             case 100:
-                return 1;
+                return "2.1G";
             case 1825:
-                return 3;
+                return "1.8G";
         }
-        return 0;
+        return "800M";
     }
 
     private String getCunrTime() {
