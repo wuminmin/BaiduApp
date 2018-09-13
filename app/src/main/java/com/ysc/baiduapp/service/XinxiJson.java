@@ -87,7 +87,7 @@ public class XinxiJson {
                 xinxiJson.addProperty("dbm", "");
             }
             if (mySignalStrengthJson.has("getCdmaEcioCellSignalStrengthCdma")) {
-                xinxiJson.addProperty("ecio", (mySignalStrengthJson.get("getCdmaEcioCellSignalStrengthCdma").getAsInt()) / 10);
+                xinxiJson.addProperty("ecio", (mySignalStrengthJson.get("getCdmaEcioCellSignalStrengthCdma").getAsInt()));
             }else {
                 xinxiJson.addProperty("ecio", "");
             }
@@ -129,7 +129,7 @@ public class XinxiJson {
             xinxiJson.addProperty("jingque", "300米");
             xinxiJson.addProperty("fangshi", "GPS");
             if (mySignalStrengthJson.has("getSinrCellInfoLte")) {
-                xinxiJson.addProperty("sinr", (mySignalStrengthJson.get("getSinrCellInfoLte").getAsInt()) / 10);
+                xinxiJson.addProperty("sinr", (mySignalStrengthJson.get("getSinrCellInfoLte").getAsInt()));
             }else {
                 xinxiJson.addProperty("sinr", "");
             }
