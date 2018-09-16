@@ -16,10 +16,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@color/black"
             android:text="@string/shineng"
             android:textSize="20sp"
-            android:textColor="@color/shineng"
+            android:textColor="@color/white"
             tools:ignore="ButtonStyle" />
 
         <Button
@@ -27,10 +26,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@color/black"
             android:text="@string/shiwai"
             android:textSize="20sp"
-            android:textColor="@color/shiwai"
+            android:textColor="@color/white"
             tools:ignore="ButtonStyle" />
 
     </LinearLayout>

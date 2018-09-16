@@ -68,6 +68,8 @@ public class OrderFragment extends BaseFragment {
     private Bundle bundle;
     private DatabaseHelper databaseHelper;
     private XinxiJson xinxiJson;
+    private Button shinengBtn;
+    private Button shiwaiBtn;
 
     final int SELECT_PHOTO = 1;
      List<String> imagelist = new ArrayList<>();
@@ -87,29 +89,79 @@ public class OrderFragment extends BaseFragment {
         shiwaiWebview = view.findViewById(R.id.shiwaiWebview);
         bundle = savedInstanceState;
 
-        final Button shinengBtn = view.findViewById(R.id.shineng);
-        final Button shiwaiBtn = view.findViewById(R.id.shiwai);
+        shinengBtn = view.findViewById(R.id.shineng);
+        shiwaiBtn = view.findViewById(R.id.shiwai);
         shinengBtn.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("ResourceAsColor")
             @Override
             public void onClick(View v) {
+                shinengBtn.setBackgroundColor(R.color.white);
+                shiwaiBtn.setBackgroundColor(R.color.black);
                 shiwaiWebview.setVisibility(View.GONE);
                 shinengWebview.setVisibility(View.VISIBLE);
                 shinengWebviewInit(shinengWebview);
             }
         });
         shiwaiBtn.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("ResourceAsColor")
             @Override
             public void onClick(View view) {
+                shinengBtn.setBackgroundColor(R.color.black);
+                shiwaiBtn.setBackgroundColor(R.color.white);
                 shiwaiWebview.setVisibility(View.VISIBLE);
                 shinengWebview.setVisibility(View.GONE);
                 shiwaiWebviewInit(shiwaiWebview);
             }
         });
-        shinengWebviewInit(shinengWebview);
+        shinengInit(shinengWebview ,shinengBtn ,shiwaiBtn);
         return view;
     }
 
-    private void shinengWebviewInit(WebView shinengWebview){
+    @SuppressLint("ResourceAsColor")
+    private void shinengInit(WebView shinengWebview , Button shinengBtn , Button shiwaiBtn ){
+        shinengBtn.setBackgroundColor(R.color.white);
+        shiwaiBtn.setBackgroundColor(R.color.black);
+        shinengWebview.setWebViewClient(new WebViewClient());
+        WebSettings webSettings = shinengWebview.getSettings();
+        webSettings.setJavaScriptEnabled(true);
+        shinengWebview.addJavascriptInterface(new MyJavascriptInterface(activity), "Android");
+        initLQRPhotoSelectUtils();
+
+        StringBuilder jsontmp = new StringBuilder();
+        List<Note> notes = databaseHelper.getAllNotes();
+        boolean first = true;
+        for( Note  note : notes  ){
+            if(first){
+                jsontmp.append("\"").append(note.getNote()).append("\"");
+                first=false;
+            }else {
+                jsontmp.append(",");
+                jsontmp.append("\"").append(note.getNote()).append("\"");
+            }
+        }
+        final String json = "["+jsontmp.toString()+"]";
+        Log.e("传递给webview的note",json);
+        shinengWebview.addJavascriptInterface(new Object() {
+            //@param message:  html页面传进来的数据
+            @JavascriptInterface
+            public String getLocationData(String message) {
+                return json; // 把本地数据弄成json串，传给html
+            }
+        }, "MyBrowserAPI");//MyBrowserAPI:自定义的js函数名
+
+        final String jsonXinxi = xinxiJson.getXinxiJsonOne();
+        shinengWebview.addJavascriptInterface(new Object() {
+            //@param message:  html页面传进来的数据
+            @JavascriptInterface
+            public String getLocationData(String message) {
+                return jsonXinxi; // 把本地数据弄成json串，传给html
+            }
+        }, "getXinxiJsonOne");//MyBrowserAPI:自定义的js函数名
+
+        shinengWebview.loadUrl("file:///android_asset/shineng.html");
+    }
+
+     private void shinengWebviewInit(WebView shinengWebview ){
         shinengWebview.setWebViewClient(new WebViewClient());
         WebSettings webSettings = shinengWebview.getSettings();
         webSettings.setJavaScriptEnabled(true);
