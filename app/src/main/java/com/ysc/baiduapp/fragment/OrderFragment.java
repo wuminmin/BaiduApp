@@ -70,6 +70,7 @@ public class OrderFragment extends BaseFragment {
     private XinxiJson xinxiJson;
     private Button shinengBtn;
     private Button shiwaiBtn;
+    private int BUTTONSTAT;
 
     final int SELECT_PHOTO = 1;
      List<String> imagelist = new ArrayList<>();
@@ -81,7 +82,7 @@ public class OrderFragment extends BaseFragment {
         context = getActivity().getApplicationContext();
         TelephonyManager telephonyManager = (TelephonyManager) getActivity().getSystemService(Context.TELEPHONY_SERVICE);
         xinxiJson = new XinxiJson(  getActivity().getApplicationContext(), telephonyManager, getActivity()  );
-
+        BUTTONSTAT = 1 ;
         databaseHelper = new DatabaseHelper(context);
         shinengWebview = view.findViewById(R.id.shinengWebview);
         shiwaiWebview = view.findViewById(R.id.shiwaiWebview);
@@ -99,6 +100,7 @@ public class OrderFragment extends BaseFragment {
                 shiwaiBtn.setBackgroundColor(R.color.black);
                 shiwaiWebview.setVisibility(View.GONE);
                 shinengWebview.setVisibility(View.VISIBLE);
+                BUTTONSTAT = 1;
                 shinengWebviewInit(shinengWebview);
             }
         });
@@ -110,6 +112,7 @@ public class OrderFragment extends BaseFragment {
                 shiwaiBtn.setBackgroundColor(R.color.white);
                 shiwaiWebview.setVisibility(View.VISIBLE);
                 shinengWebview.setVisibility(View.GONE);
+                BUTTONSTAT = 2;
                 shiwaiWebviewInit(shiwaiWebview);
             }
         });
@@ -312,7 +315,11 @@ public class OrderFragment extends BaseFragment {
             public void onFinish(File outputFile, Uri outputUri) {
                 Log.e("initLQRPhotoSelectUtils",outputFile.getAbsolutePath());
                 databaseHelper.insertNote(outputUri.toString());
-                shinengWebviewInit(shinengWebview);
+                if (BUTTONSTAT == 1){
+                    shinengWebviewInit(shinengWebview);
+                }else {
+                    shiwaiWebviewInit(shiwaiWebview);
+                }
 
                 // 4、当拍照或从图库选取图片成功后回调
 //                mTvPath.setText(outputFile.getAbsolutePath());

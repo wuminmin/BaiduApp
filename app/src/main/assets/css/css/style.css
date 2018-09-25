@@ -1281,14 +1281,14 @@ button.dim:active:before {
 }
 
 .onoffswitch-inner:before {
-    content: "ON";
+    content: "有";
     padding-left: 10px;
     background-color: #1ab394;
     color: #FFFFFF;
 }
 
 .onoffswitch-inner:after {
-    content: "OFF";
+    content: "无";
     padding-right: 10px;
     background-color: #FFFFFF;
     color: #999999;
@@ -2383,14 +2383,14 @@ table.dataTable thead .sorting:after {
 }
 
 .onoffswitch-inner:before {
-    content: "ON";
+    content: "有";
     padding-left: 7px;
     background-color: #1AB394;
     color: #FFFFFF;
 }
 
 .onoffswitch-inner:after {
-    content: "OFF";
+    content: "无";
     padding-right: 7px;
     background-color: #FFFFFF;
     color: #919191;
