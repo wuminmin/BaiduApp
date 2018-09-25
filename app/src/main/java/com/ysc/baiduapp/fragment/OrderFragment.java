@@ -291,6 +291,13 @@ public class OrderFragment extends BaseFragment {
         }
 
         @JavascriptInterface
+        public void deletePhoto(){
+            databaseHelper.deleteallnote();
+            shinengWebviewInit(shinengWebview);
+            Log.e("删除所有照片","");
+        }
+
+        @JavascriptInterface
         public void saveDizhi(String dizhi){
             Log.e("测试web android 传递参数",dizhi);
 
@@ -305,6 +312,7 @@ public class OrderFragment extends BaseFragment {
             public void onFinish(File outputFile, Uri outputUri) {
                 Log.e("initLQRPhotoSelectUtils",outputFile.getAbsolutePath());
                 databaseHelper.insertNote(outputUri.toString());
+                shinengWebviewInit(shinengWebview);
 
                 // 4、当拍照或从图库选取图片成功后回调
 //                mTvPath.setText(outputFile.getAbsolutePath());

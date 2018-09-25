@@ -246,4 +246,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 new String[]{String.valueOf(note.getId())});
         db.close();
     }
+
+    public void deleteallnote(){
+        List<Note> allnotes = this.getAllNotes();
+        for(Note note : allnotes){
+            this.deleteNote(note);
+        }
+    }
 }

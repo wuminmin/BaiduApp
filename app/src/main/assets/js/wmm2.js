@@ -89,13 +89,11 @@ function setFileUri(uri) {
 
 function choosePhoto() {
     var file = Android.choosePhoto();
-     window.location.href = "file:///android_asset/shineng.html";
-     console.log('测试刷新照片')
+     window.location.href = "file:///android_asset/shiwai.html";
 }
 
 function selectPhoto() {
     var file = Android.selectPhoto();
-     window.location.href = "file:///android_asset/shineng.html";
-      console.log('测试刷新照片')
+      window.location.href = "file:///android_asset/shiwai.html";
 }
 

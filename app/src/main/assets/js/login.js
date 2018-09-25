@@ -36,7 +36,7 @@ $(document).ready(function () {
                 var local = new BMap.LocalSearch(map, {
                     renderOptions: {map: map, panel: "r-result"}
                 });
-                local.searchNearby(["住宅", "机构", "酒店", "超市", "餐饮", "村", "路"], mPoint, 500);
+                local.searchNearby(["住宅", "公司", "酒店", "高校", "餐饮", "村", "路"], mPoint, 200);
                 local.setResultsHtmlSetCallback(function (result) {
                     /*返回最近一次检索的结果*/
                     $.each($("ol li"), function () {
@@ -59,7 +59,6 @@ $(document).ready(function () {
                                                          var dizhiUrl = '?'+'dizhi'+'='+dizhi2 ;
                                                            window.location.href = "file:///android_asset/shiwai.html"+dizhiUrl;
                             }
-
                         });
                     });
                 });
