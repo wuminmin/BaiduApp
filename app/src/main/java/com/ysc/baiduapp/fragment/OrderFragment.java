@@ -6,7 +6,9 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.location.GpsStatus;
 import android.net.Uri;
+import android.net.sip.SipSession;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.telephony.TelephonyManager;
@@ -296,7 +298,7 @@ public class OrderFragment extends BaseFragment {
         @JavascriptInterface
         public void deletePhoto(){
             databaseHelper.deleteallnote();
-            shinengWebviewInit(shinengWebview);
+//            resetcaiji();
             Log.e("删除所有照片","");
         }
 
@@ -305,6 +307,27 @@ public class OrderFragment extends BaseFragment {
             Log.e("测试web android 传递参数",dizhi);
 
         }
+    }
+
+    @SuppressLint("ResourceAsColor")
+    public void resetcaiji(){
+
+                if (BUTTONSTAT == 1){
+                    shinengBtn.setBackgroundColor(R.color.white);
+                    shiwaiBtn.setBackgroundColor(R.color.black);
+                    shiwaiWebview.setVisibility(View.GONE);
+                    shinengWebview.setVisibility(View.VISIBLE);
+                    BUTTONSTAT = 1;
+                    shinengWebviewInit(shinengWebview);
+                }else {
+                    shinengBtn.setBackgroundColor(R.color.black);
+                    shiwaiBtn.setBackgroundColor(R.color.white);
+                    shiwaiWebview.setVisibility(View.VISIBLE);
+                    shinengWebview.setVisibility(View.GONE);
+                    BUTTONSTAT = 2;
+                    shiwaiWebviewInit(shiwaiWebview);
+                }
+
 
     }
 
@@ -320,14 +343,14 @@ public class OrderFragment extends BaseFragment {
                 }else {
                     shiwaiWebviewInit(shiwaiWebview);
                 }
-
                 // 4、当拍照或从图库选取图片成功后回调
 //                mTvPath.setText(outputFile.getAbsolutePath());
 //                mTvUri.setText(outputUri.toString());
 //                imageMap.put("url",outputUri.toString());
 //                Glide.with(OrderFragment.this).load(outputUri).into(mIvPic);
             }
-        }, false);//true裁剪，false不裁剪
+        }, false);
+        //true裁剪，false不裁剪
         //        mLqrPhotoSelectUtils.setAuthorities("com.lqr.lqrnativepicselect.fileprovider");
         //        mLqrPhotoSelectUtils.setImgPath(Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + String.valueOf(System.currentTimeMillis()) + ".jpg");
     }

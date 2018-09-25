@@ -91,7 +91,6 @@ public class HomeFragment extends BaseFragment implements OnMapReadyCallback {
                 xinxiWebview.setVisibility(View.GONE);
                 mapWebview.setVisibility(View.VISIBLE);
                 MapViewInit( mapWebview );
-
             }
         });
         handler.postDelayed(runnable, 1000 * 5);
@@ -125,29 +124,22 @@ public class HomeFragment extends BaseFragment implements OnMapReadyCallback {
     }
 
     private void xinxiInit(WebView xinxiWebview  , TelephonyManager telephonyManager ){
-
         telephonyManager.listen(new PhoneStateListener() {
             public void onSignalStrengthsChanged(SignalStrength signalStrength) {
                 super.onSignalStrengthsChanged(signalStrength);
-
-
                 for (SignalMethod method : SignalStrengths.getMethods()) {
 //                    double level = 0;
                     try {
 //                        level = method.getLevel(signalStrength);
                         String ssignal = signalStrength.toString();
-
                         String[] parts = ssignal.split(" ");
-
                         Log.e("SignalMethod测试", Arrays.toString(parts));
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
-
                 }
             }
         }, PhoneStateListener.LISTEN_SIGNAL_STRENGTHS);
-
         xinxiWebview.setWebViewClient(new WebViewClient());
         WebSettings webSettings = xinxiWebview.getSettings();
         webSettings.setJavaScriptEnabled(true);
@@ -155,9 +147,6 @@ public class HomeFragment extends BaseFragment implements OnMapReadyCallback {
     }
 
     private void xinxiWebViewInit(WebView xinxiWebview ){
-
-
-
         xinxiWebview.setWebViewClient(new WebViewClient());
         WebSettings webSettings = xinxiWebview.getSettings();
         webSettings.setJavaScriptEnabled(true);
@@ -180,7 +169,6 @@ public class HomeFragment extends BaseFragment implements OnMapReadyCallback {
         // Enable Javascript
         WebSettings webSettings = xinxiWebview.getSettings();
         webSettings.setJavaScriptEnabled(true);
-
         final String jsonXinxi = xinxiJson.getXinxiJsonOne();
         xinxiWebview.addJavascriptInterface(new Object() {
             //@param message:  html页面传进来的数据

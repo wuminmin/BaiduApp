@@ -22,6 +22,7 @@ $(document).ready(function () {
         //再跟你想追加的代码加到一起插入div中
         document.getElementById("myImage").innerHTML = htmlsum;
     } else {
+
         var html = document.getElementById("myImage").innerHTML;
         //再跟你想追加的代码加到一起插入div中
         document.getElementById("myImage").innerHTML = html;
@@ -29,7 +30,6 @@ $(document).ready(function () {
 
     var str = getQueryString("dizhi");
     if( str === ''){
-//        document.getElementById("dizhi").innerText = '清点击左边按钮选择地址';
 //          var jsonstrdizhi = window.getXinxiJsonOne.getLocationData("从页面传给手机的message");//拿到本地数据,并可以传给手机一些内容，可选
         //           var jsonstrdizhi = '[{"rsrp":"-86","rssnr":"0","getAsuLevelCellInfoLte":"54","getLevelCellInfoLte":"4","cqi":"0","getDbmCellInfoLte":"-86","rsrq":"-13","getTimingAdvanceCellInfoLte":"2","eci":"6d3f835","earf":"1825","mcc":"460","mnc":"11","pci":"123","tac":"27953","getAsuLevelCellSignalStrengthCdma":"16","getLevelCellSignalStrengthCdma":"4","getCdmaLevelCellSignalStrengthCdma":"4","getEvdoLevelCellSignalStrengthCdma":"0","dbm":"-64","ecio":"-70","getDbmCellSignalStrengthCdma":"-64","getEvdoDbmCellSignalStrengthCdma":"0","getEvdoEcioCellSignalStrengthCdma":"0","getEvdoSnrCellSignalStrengthCdma":"0","bid":"60051","nid":"18","sid":"14166","weidu":30.657186,"jingdu":117.495127,"pingpai":"Xiaomi","xinghao":"MIX 2","yingjian":"qcom","anzhuo":"8.0.0","wangluo":"LTE","shuju":"LTE","xiaoqu":"LTE","time":"15:38:20","leixing":"安卓","jingque":"300米","fangshi":"GPS","band":3,"enb":"447480","cellid":"53"}]';
 //                   var xinxiObj = JSON.parse(jsonstrdizhi);
@@ -89,13 +89,11 @@ function setFileUri(uri) {
 
 function choosePhoto() {
     var file = Android.choosePhoto();
-     window.location.href = "file:///android_asset/shineng.html";
-     console.log('测试刷新照片')
+    window.alert("file = " + file);
 }
 
 function selectPhoto() {
     var file = Android.selectPhoto();
-     window.location.href = "file:///android_asset/shineng.html";
-      console.log('测试刷新照片')
+    window.alert("file = " + file);
 }
 
