@@ -90,13 +90,10 @@ $(function () {
     document.getElementById("rx").innerText = firstJson['dbm'];
     document.getElementById("ecio").innerText = firstJson['ecio'];
 
-
+//      document.getElementById("dizhi").innerText = '清点击左边按钮选择地址';
     // 创建地理编码（地理解析器）实例
-
-
     var points = [new BMap.Point(firstJson['jingdu'], firstJson['weidu'])];
     var myGeo = new BMap.Geocoder();
-
     //坐标转换完之后的回调函数
     translateCallback = function (data) {
         if (data.status === 0) {
@@ -109,7 +106,6 @@ $(function () {
             }
         }
     };
-
     setTimeout(function () {
         var convertor = new BMap.Convertor();
         convertor.translate(points, 1, 5, translateCallback)
