@@ -46,17 +46,20 @@ $(document).ready(function () {
                              var dizhi = $(this)[0]['innerText'] ;
                                                        var t = dizhi.split('\n');
                                                        var dizhi2 =  encodeURIComponent(t[3]);
+                                                       var jianzu = encodeURIComponent(t[1]);
                                                        console.log(dizhi2);
+                                                           console.log(jianzu);
                                                          saveDizhi( dizhi );
-                                                         var dizhiUrl = '?'+'dizhi'+'='+dizhi2 ;
+                                                         var dizhiUrl = '?'+'dizhi'+'='+dizhi2 +'&'+'jianzu'+'='+jianzu;
                                                            window.location.href = "file:///android_asset/shineng.html"+dizhiUrl;
                             }else{
                              var dizhi = $(this)[0]['innerText'] ;
                                                        var t = dizhi.split('\n');
                                                        var dizhi2 =  encodeURIComponent(t[3]);
+                                                         var jianzu = encodeURIComponent(t[1]);
                                                        console.log(dizhi2);
                                                          saveDizhi( dizhi );
-                                                         var dizhiUrl = '?'+'dizhi'+'='+dizhi2 ;
+                                                          var dizhiUrl = '?'+'dizhi'+'='+dizhi2 +'&'+'jianzu'+'='+jianzu;
                                                            window.location.href = "file:///android_asset/shiwai.html"+dizhiUrl;
                             }
                         });
