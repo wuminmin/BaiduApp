@@ -38,7 +38,8 @@ $(document).ready(function () {
 
     if(jianzu == ''){
     }else{
-     $("#jianzu").val( decodeURIComponent(jianzu) );
+        jianzu = jianzu.replace("详情»", "")
+        $("#jianzu").val( decodeURIComponent( jianzu) );
     }
 });
 
