@@ -1,0 +1,24 @@
+{
+"id":""
+
+, "pingpai":"小米" , "xinghao":"MIX2" ,"yingjian":"八核6GB" ,"anzhuo":"8.0" , "wangluo":"LTE" ,"leixing":"类型"
+
+,"jingdu":"117.30333" , "weidu":"30.44556" ,"jingque":"100米" ,"fangshi":"GPS" ,"dizhi":"安徽省池州市贵池区长江中路126号"
+
+,"shuju":"LTE" , "tac":"6245" ,"pci":"122" ,"eci":"6245" ,"band":"3" ,"earf":"6245"
+
+,"freq":"1" ,"nid":"2" ,"bid":"3" ,"sid":"4"
+
+,"rsrp":"-100" ,"rsrq":"8" ,"sinr":"10" ,"dbm":"-80" ,"ecio":"8"
+
+,"time":"09:41:30"  ,"enb":"43017" , "cellid":"54"
+
+,"dangqianweizhi":"车库" ,"zonglouceng":"15" ,"shineijianzu":"平安家园" ,"shineidizhi":"长江西路128号"
+
+."example1":"2G信号有" ,"example3":"4G信号有" ,"example4":"电信室分覆盖" ,"example5":"移动室分覆盖" ,"example6":"联通室分覆盖"
+
+."ccomment":"现场情况描述以及说明，例如上网卡，看视频卡" ,"phone":"联系方式手机号码或者邮箱等"
+
+,"imei":"359355041886388"
+
+ }
