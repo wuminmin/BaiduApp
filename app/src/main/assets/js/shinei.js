@@ -42,7 +42,7 @@ $(document).ready(function () {
         $("#shineijianzu").val( decodeURIComponent( jianzu) );
     }
 
-    
+
     $('.demo1').click(function () {
                 swal({
                     title: "欢迎使用SweetAlert",
@@ -72,6 +72,9 @@ $(document).ready(function () {
         });
     });
 
+
+
+
     $('.demo4').click(function () {
         swal({
                 title: "您确定要上传室内场景采集数据吗？",
@@ -92,8 +95,34 @@ $(document).ready(function () {
             "                        <img alt=\"image\" class=\"img-responsive\" src=\"file:///android_asset/img/hehua.jpg\">\n" +
             "                    </div>";
                      document.getElementById("myImage").innerHTML = a;
-                    swal("上传成功！", "您已经上传室内场景采集数据。", "success");
 
+                    var jsonstrgetXinxiJsonOne = window.getXinxiJsonOne.getLocationData("从页面传给手机的message");//拿到本地数据,并可以传给手机一些内容，可选
+                    var xinxiObjgetXinxiJsonOne = JSON.parse(jsonstrgetXinxiJsonOne);
+                    var firstJsongetXinxiJsonOne = {};
+                    var firstgetXinxiJsonOne = true;
+                    $.each(xinxiObjgetXinxiJsonOne, function (i, item) {
+                        if (firstgetXinxiJsonOne === true) {
+                            firstJsongetXinxiJsonOne = item;
+                            firstgetXinxiJsonOne = false;
+                        }
+                    });
+                    $.ajax({
+                             cache: false,
+                             type: "",
+                             url: "http://wgyd.wuminmin.top/api",
+                             data: {jingdu: 111, weidu: 222},
+                             scriptCharset: "utf-8",
+                             async: true,
+                             success: function (data) {
+                                 if(data && data.resultcode == '200'){
+                                     swal("上传成功！", "您已经上传室内场景采集数据。", "success");
+                                 }
+                             },
+                             error: function () {
+                                  swal("上传失败！", "网络连接失败。", "error");
+                             }
+                         }
+                    );
                 } else {
                     swal("已取消", "您取消了操作！", "error");
                 }

@@ -327,8 +327,6 @@ public class OrderFragment extends BaseFragment {
                     BUTTONSTAT = 2;
                     shiwaiWebviewInit(shiwaiWebview);
                 }
-
-
     }
 
     private void initLQRPhotoSelectUtils() {
