@@ -1,0 +1,93 @@
+@charset "utf-8";
+
+/**********************************重置样式*************************************/
+html, body, div, span, applet, object, iframe,h1, h2, h3, h4, h5, h6, p, blockquote, pre,a, abbr, acronym, address, big, cite, code,del, dfn, em, font, img, ins, kbd, q, s, samp,small, strike, strong, sub, sup, tt, var,
+b, u, i, center,dl, dt, dd, ol, ul, li,fieldset, form, label, legend,table, caption, tbody, tfoot, thead, tr, th, td { 
+	background:transparent none repeat scroll 0% 0%;
+	border: 0; 
+	margin: 0; 
+	padding: 0; 
+	font: inherit; 
+	-webkit-text-size-adjust: none;
+	box-sizing:border-box;
+    -moz-box-sizing:border-box; /* Firefox */
+    -webkit-box-sizing:border-box; /* Safari */
+	-ms-box-sizing: border-box;  
+}
+table { border-collapse:collapse; border-spacing:0; }
+ol,ul,li { list-style: none; }
+fieldset,img{ border: none; outline: none;-moz-outline:none;}
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {display: block;}
+blockquote,q{ quotes: none;}
+blockquote:before, blockquote:after,q:before, q:after { content: ''; content: none; }
+audio,canvas,video{ display: inline-block; *display: inline;*zoom: 1;}/* HTML5 媒体文件跟 img 保持一致 */
+address,caption,cite,code,dfn,em,th{font-style: normal;font-weight: normal;}
+input,button,textarea,select,optgroup,option{ font: inherit;outline: none;-moz-outline:none;}
+
+/**文本居中**/
+.al { text-align: left; }
+.ar { text-align: right; }
+.ac { text-align: center; }
+
+/**浮动**/
+.mg { margin: 0 auto; }
+.fl { float: left; }
+.fr { float: right; }
+.clear:after { display:block;clear: both;content:""; visibility:hidden; height:0 }
+.clear { zoom:1 }
+
+/**定位**/
+.rel { position: relative; }
+.abs { position: absolute; }
+.fix { position: fixed; }
+
+/**边距**/
+.mgt10{ margin-top:0.7143rem;}
+.mgt15{ margin-top:1.07143rem;}
+.mgt20{ margin-top:1.42857rem;}
+.mgt30{ margin-top:2.14286rem;}
+.mgt40{ margin-top:2.85714rem;}
+.mgt60{ margin-top:4.28571rem;}
+.mgl5{ margin-left:0.35714rem;}
+.mgl10{ margin-left:0.7143rem;}
+.mgl15{ margin-left:1.07143rem;}
+.mgl20{ margin-left:1.42857rem;}
+.mgr5{ margin-right:0.35714rem;}
+.mgr10{ margin-right:0.7143rem;}
+.mgr15{ margin-right:1.07143rem;}
+.mgr20{ margin-right:1.42857rem;}
+
+/**字体大小**/
+.fs10{ font-size:0.71rem;}
+.fs12{ font-size:0.86rem;}
+.fs14{ font-size:1.00rem;}
+.fs16{ font-size:1.14rem;}
+.fs18{ font-size:1.28rem;}
+.fs20{ font-size:1.42rem;}
+.fs22{ font-size:1.57rem;}
+.fs24{ font-size:1.71rem;}
+.fs26{ font-size:1.85rem;}
+.fs28{ font-size:2.00rem;}
+.fs30{ font-size:2.14rem;}
+.fs32{ font-size:2.28rem;}
+.fs34{ font-size:2.42rem;}
+.fs36{ font-size:2.57rem;}
+.fs38{ font-size:2.71rem;}
+.fs40{ font-size:2.85rem;}
+
+/******鼠标手******/
+.hander{ cursor:pointer;}
+
+/****屏幕自适应****/
+@media only screen and (min-width:376px){
+   html{font-size: 15px !important;}
+}
+@media only screen and (min-width:361px) and (max-width:375px) {
+   html{font-size: 14px !important;}
+}
+@media only screen and (min-width:321px) and (max-width:360px) {
+   html{font-size: 13px !important;}
+}
+@media only screen and (max-width:320px) {
+   html{font-size:12px !important;}
+}

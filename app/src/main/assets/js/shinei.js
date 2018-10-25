@@ -42,7 +42,6 @@ $(document).ready(function () {
         $("#shineijianzu").val( decodeURIComponent( jianzu) );
     }
 
-
     $('.demo1').click(function () {
                 swal({
                     title: "欢迎使用SweetAlert",
@@ -72,9 +71,6 @@ $(document).ready(function () {
         });
     });
 
-
-
-
     $('.demo4').click(function () {
         swal({
                 title: "您确定要上传室内场景采集数据吗？",
@@ -95,7 +91,6 @@ $(document).ready(function () {
             "                        <img alt=\"image\" class=\"img-responsive\" src=\"file:///android_asset/img/hehua.jpg\">\n" +
             "                    </div>";
                      document.getElementById("myImage").innerHTML = a;
-
                     var jsonstrgetXinxiJsonOne = window.getXinxiJsonOne.getLocationData("从页面传给手机的message");//拿到本地数据,并可以传给手机一些内容，可选
                     var xinxiObjgetXinxiJsonOne = JSON.parse(jsonstrgetXinxiJsonOne);
                     var firstJsongetXinxiJsonOne = {};
@@ -128,10 +123,7 @@ $(document).ready(function () {
                 }
             });
     });
-
-
 });
-
 
 function getQueryString(name,i) {
     var result = window.location.search.match(new RegExp("[\?\&]" + name + "=([^\&]+)", "i"));

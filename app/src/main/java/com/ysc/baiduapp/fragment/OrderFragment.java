@@ -163,7 +163,7 @@ public class OrderFragment extends BaseFragment {
             }
         }, "getXinxiJsonOne");//MyBrowserAPI:自定义的js函数名
 
-        shinengWebview.loadUrl("file:///android_asset/shineng.html");
+        shinengWebview.loadUrl("file:///android_asset/html1016/index.html");
     }
 
      private void shinengWebviewInit(WebView shinengWebview ){
@@ -204,7 +204,7 @@ public class OrderFragment extends BaseFragment {
             }
         }, "getXinxiJsonOne");//MyBrowserAPI:自定义的js函数名
 
-        shinengWebview.loadUrl("file:///android_asset/shineng.html");
+        shinengWebview.loadUrl("file:///android_asset/html1016/index.html");
     }
 
     private void shiwaiWebviewInit(WebView shiwaiWebview){
@@ -245,7 +245,7 @@ public class OrderFragment extends BaseFragment {
             }
         }, "getXinxiJsonOne");//MyBrowserAPI:自定义的js函数名
 
-        shiwaiWebview.loadUrl("file:///android_asset/shiwai.html");
+        shiwaiWebview.loadUrl("file:///android_asset/html1016/index02.html");
     }
 
     class MyJavascriptInterface {
