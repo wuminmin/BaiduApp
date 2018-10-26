@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>采集app-室内场景</title>
+    <link href="css/reset.css" type="text/css" rel="stylesheet">    <!--重置样式文件-->
+    <link href="css/layout.css" type="text/css" rel="stylesheet">   <!--自定义样式文件-->
+    <script type="text/javascript" src="js/jquery-1.12.1.min.js"></script>     <!--JS库文件-->
+    <script type="text/javascript" src="js/layout.js"></script>     <!--JS自定义文件-->  
+  </head>
+  <body>
+  <!--头部-begin-->
+  <!--<div class="cj-header">-->
+    <!--<div class="cj-ullist fs16">-->
+      <!--<ul>-->
+        <!--<li class="list-hover">室内场景</li>-->
+        <!--<li>室外场景</li>-->
+      <!--</ul>-->
+    <!--</div>-->
+  <!--</div>-->
+  <!--头部-end-->
+  <div class="cj-main">
+    <!--banner-begin-->
+    <div class="cj-banner">
+      <div class="cj-banner-img" id="myImage">
+        <img src="images/icon_banner01.png" alt="" />
+      </div>
+      <div class="cj-btns mg">
+        <button class="cj-btn btn-bg01 fl" onclick="choosePhoto()" >拍 照</button>
+        <button class="cj-btn btn-bg02 fr" onclick="selectPhoto()" >相 册</button>
+      </div>
+    </div>
+    <!--banner-end-->
+    <!--信息采集-begin-->
+    <div class="cj-message">
+      <div class="cj-message-title fs16">
+         场景采集
+      </div>
+      <div class="cj-message-con">
+        <div class="cj-message-unit1 clear">
+          <ul>
+            <li>
+               <span class="cj-message-list-le fl">当前位置 ：</span>
+               <span class="cj-message-list-ri fl">
+                 <select name="" id="" class="cf-select fl ">
+                     <option value="">车库</option>
+                 </select>
+               </span>
+            </li>
+            <li>
+               <span class="cj-message-list-le fl">总楼层 ：</span>
+               <span class="cj-message-list-ri fl">
+                 <select name="" id="" class="cf-select fl ">
+                     <option value="">17楼</option>
+                 </select>
+               </span>
+            </li>
+            <li>
+               <span class="cj-message-list-le fl">建筑名称 ：</span>
+               <span class="cj-message-list-ri fl ">
+                  <input type="text" class="cf-input fl cf-input-bg" placeholder="请点击选择建筑名称" />
+               </span>
+            </li>
+            <li style="border:none;">
+               <span class="cj-message-list-le fl">详细地址 ：</span>
+               <span class="cj-message-list-ri fl">
+                  <input type="text" class="cf-input fl" />
+               </span>
+            </li>
+          </ul>
+        </div>
+        <div class="cj-message-unit2 mgt10 clear">
+          <ul>
+            <li>
+               <span class="cj-message-list-le fl">2G信号 ：</span>
+               <span class="cj-message-list-ri fl">
+                 <a href="" class="fl signal-01 list-hover2">  </a>
+                 <a href="" class="fl signal-02 mgl10" ></a>
+                 <a href="" class="fl signal-03 mgl10"> </a>
+               </span>
+            </li>
+            <li style="border:none;">
+               <span class="cj-message-list-le fl">4G信号 ：</span>
+               <span class="cj-message-list-ri fl">
+                 <a href="" class="fl signal-01 list-hover2">  </a>
+                 <a href="" class="fl mgl10 signal-02 list-hover2" ></a>
+                 <a href="" class="fl mgl10 signal-03 list-hover2"> </a>
+               </span>
+            </li>
+          </ul>
+        </div>
+        <div class="cj-message-unit3 mgt10 clear">
+          <h1>说明</h1>
+          <div class="cf-sm mg">
+            <textarea class="cf-textarea" placeholder="请输入"></textarea>
+          </div>
+          <h1>联系方式</h1>
+          <div class="cf-sm mg">
+             <input type="text" class="cf-input2 fl cf-input-bg2" placeholder="请点击选择建筑名称" />
+          </div>
+        </div>
+        <div class="cf-bnt2 mg mgt10">上传数据</div>
+      </div>
+    </div>
+    <!--信息采集-end-->
+  </div>
+  <!--底部-begin-->
+  <!--<div class="cf-footer">-->
+    <!--<ul>-->
+      <!--<li><p class="mg footer-01 "></p><h2>小区信息</h2></li>-->
+      <!--<li class="list-hover3"><p class="mg footer-02"></p><h2>场景采集</h2></li>-->
+    <!--</ul>-->
+  <!--</div>-->
+  <!--底部-end-->
+  </body>
+  <script src="file:///android_asset/js/shinei.js"></script>
+</html>
