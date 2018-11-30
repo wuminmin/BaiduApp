@@ -135,14 +135,11 @@ public class LQRPhotoSelectUtils {
 //            imgUri = orderFragment.getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValues);
         }
 
-
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         intent.putExtra(MediaStore.EXTRA_OUTPUT, imgUri);
 //        mActivity.startActivityForResult(intent,REQ_TAKE_PHOTO);
         myorderFragment.startActivityForResult(intent, REQ_TAKE_PHOTO);
     }
-
-
 
     /**
      * 从图库获取

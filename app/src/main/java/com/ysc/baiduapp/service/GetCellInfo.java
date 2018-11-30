@@ -135,12 +135,10 @@ public class GetCellInfo {
                     };
                     locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 1000, 0, locationListener);
                     Location location = locationManager.getLastKnownLocation(provider);
-//                        Location location = getLocation(locationListener);
                     if (location != null) {
                         DecimalFormat df = new DecimalFormat("#.000000");
                         String getLatitude = df.format(location.getLatitude());
                         String getLongitude = df.format(location.getLongitude());
-//                            Log.e("当前经纬度：",getLongitude+"    "+getLatitude);
                         map.put("getLatitude", Double.valueOf(getLatitude));
                         map.put("getLongitude", Double.valueOf(getLongitude));
                         return map;
@@ -182,7 +180,7 @@ public class GetCellInfo {
                                 cellJson.addProperty("getRsrqCellInfoLte", Integer.valueOf(parts[12]));
                                 cellJson.addProperty("getSinrCellInfoLte", Integer.valueOf(parts[13]));
                                 cellJson.addProperty("getCdmaDbmCellSignalStrengthCdma", Integer.valueOf(parts[5]));
-                                cellJson.addProperty("getCdmaEcioCellSignalStrengthCdma", Integer.valueOf(parts[6]));
+                                cellJson.addProperty("getCdmaEcioCellSignalStrengthCdma", Integer.valueOf(parts[6])/10);
                             } else {
                                 cellJson.addProperty("getRsrpCellInfoLte", Integer.valueOf(parts[9]));
                                 cellJson.addProperty("getRsrqCellInfoLte", Integer.valueOf(parts[10]));

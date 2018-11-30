@@ -143,7 +143,7 @@ public class HomeFragment extends BaseFragment implements OnMapReadyCallback {
         xinxiWebview.setWebViewClient(new WebViewClient());
         WebSettings webSettings = xinxiWebview.getSettings();
         webSettings.setJavaScriptEnabled(true);
-        xinxiWebview.loadUrl("file:///android_asset/xinxi.html");
+        xinxiWebview.loadUrl("file:///android_asset/xinxi_chu_shi_hua.html");
     }
 
     private void xinxiWebViewInit(WebView xinxiWebview ){
@@ -177,7 +177,6 @@ public class HomeFragment extends BaseFragment implements OnMapReadyCallback {
                 return jsonXinxi; // 把本地数据弄成json串，传给html
             }
         }, "getXinxiJsonOne");//MyBrowserAPI:自定义的js函数名
-
         xinxiWebview.loadUrl("file:///android_asset/map.html");
     }
 

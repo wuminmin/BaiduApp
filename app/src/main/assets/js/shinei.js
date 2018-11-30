@@ -86,7 +86,6 @@ $(document).ready(function () {
             function (isConfirm) {
                 if (isConfirm) {
                     Android.deletePhoto();
-
                           var a = "  <div class=\"item active\">\n" +
             "                        <img alt=\"image\" class=\"img-responsive\" src=\"file:///android_asset/img/hehua.jpg\">\n" +
             "                    </div>";
