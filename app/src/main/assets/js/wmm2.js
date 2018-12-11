@@ -4,19 +4,23 @@ $(document).ready(function () {
 //    var jsonstr = "[\"/static/img/a1.jpg\", \"/static/img/a2.jpg\", \"/static/img/a2.jpg\", \"/static/img/a3.jpg\"]";
     if (jsonstr !== '[]') {
         var jsonarr = eval(jsonstr);//通过eval执行字符串，结果arr是一个数组，数组内容是"1","2","3","4"
-        var first = true;
+//      var first = true;
+        htmlsum = '';
         $.each(jsonarr, function (i, item) {
-            if (first) {
-                htmlsum = "<div class=\"item active\">\n" +
-                    "<img alt=\"image\" class=\"img-responsive\" src=\"" + item + "\">\n" +
-                    "</div>";
-                first = false;
-            } else {
-                htmlsum = htmlsum + "     <div class=\"item \">\n" +
-                    "                                <img alt=\"image\" class=\"img-responsive\" src=\"" + item + "\">\n" +
-                    "                            </div>";
-                console.log(i, item);
-            }
+          	htmlsum += '<div class="mui-slider-item">'+
+					        '<img src="'+item+'" alt="" class="cj-banner-img-border"/>'+
+					   '</div>';
+//          if (first) {
+//              htmlsum = "<div class=\"item active\">\n" +
+//                  "<img alt=\"image\" class=\"img-responsive\" src=\"" + item + "\">\n" +
+//                  "</div>";
+//              first = false;
+//          } else {
+//              htmlsum = htmlsum + "     <div class=\"item \">\n" +
+//                  "                                <img alt=\"image\" class=\"img-responsive\" src=\"" + item + "\">\n" +
+//                  "                            </div>";
+//              console.log(i, item);
+//          }
         });
         // var html = document.getElementById("myImage").innerHTML;
         //再跟你想追加的代码加到一起插入div中

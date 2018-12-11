@@ -5,10 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>采集app-室外场景</title>
+    <link href="css/mui.min.css" type="text/css" rel="stylesheet">
     <link href="css/reset.css" type="text/css" rel="stylesheet">    <!--重置样式文件-->
     <link href="css/layout.css" type="text/css" rel="stylesheet">   <!--自定义样式文件-->
+    	
     <script type="text/javascript" src="js/jquery-1.12.1.min.js"></script>     <!--JS库文件-->
     <script type="text/javascript" src="js/layout.js"></script>     <!--JS自定义文件-->  
+    <script type="text/javascript" src="js/mui.min.js"></script> 
   </head>
   <body>
   <!--头部-begin-->
@@ -24,9 +27,16 @@
   <div class="cj-main">
     <!--banner-begin-->
     <div class="cj-banner">
-      <div class="cj-banner-img" id="myImage" >
+    	  <div id="slider" class="mui-slider" style="width: 100%;height: auto;">
+			<div class="mui-slider-group" id="myImage">
+				<div class="mui-slider-item">
+					<img src="images/icon_banner02.png" alt="" class="cj-banner-img-border"/>
+				</div>
+			</div>
+		</div>
+      <!--<div class="cj-banner-img" id="myImage">
         <img src="images/icon_banner02.png" alt="" />
-      </div>
+      </div>-->
       <div class="cj-btns mg">
         <button class="cj-btn btn-bg01 fl" onclick="choosePhoto()" >拍 照</button>
         <button class="cj-btn btn-bg02 fr" onclick="selectPhoto()" >相 册</button>
@@ -44,7 +54,7 @@
             <li style="border:none;">
                <span class="cj-message-list-le fl">建筑名称 ：</span>
                <span class="cj-message-list-ri fl ">
-                <input type="text" class="cf-input fl cf-input-bg3" placeholder="请点击选择建筑名称" />
+                <input type="text" class="cf-input fl cf-input-bg3" style="padding-left: 35px;" placeholder="请点击选择建筑名称" />
                </span>
             </li>
           </ul>
@@ -78,7 +88,7 @@
           </div>
           <h1>联系方式</h1>
           <div class="cf-sm mg">
-             <input type="text" class="cf-input2 fl cf-input-bg2" placeholder="请点击选择建筑名称" />
+             <input type="text" class="cf-input2 fl cf-input-bg2" style="padding-left: 50px;" placeholder="请点击选择建筑名称" />
           </div>
         </div>
         <div class="cf-bnt2 mg mgt10">上传数据</div>

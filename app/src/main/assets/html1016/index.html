@@ -5,10 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>采集app-室内场景</title>
+    	<link href="css/mui.min.css" type="text/css" rel="stylesheet">
     <link href="css/reset.css" type="text/css" rel="stylesheet">    <!--重置样式文件-->
     <link href="css/layout.css" type="text/css" rel="stylesheet">   <!--自定义样式文件-->
     <script type="text/javascript" src="js/jquery-1.12.1.min.js"></script>     <!--JS库文件-->
-    <script type="text/javascript" src="js/layout.js"></script>     <!--JS自定义文件-->  
+    <script type="text/javascript" src="js/layout.js"></script>     <!--JS自定义文件--> 
+    <script type="text/javascript" src="js/mui.min.js"></script> 
   </head>
   <body>
   <!--头部-begin-->
@@ -24,9 +26,16 @@
   <div class="cj-main">
     <!--banner-begin-->
     <div class="cj-banner">
-      <div class="cj-banner-img" id="myImage">
+     	<div id="slider" class="mui-slider" style="width: 100%;height: auto;">
+			<div class="mui-slider-group" id="myImage">
+				<div class="mui-slider-item">
+					<img src="images/icon_banner01.png" alt="" class="cj-banner-img-border"/>
+				</div>
+			</div>
+		</div>
+      <!--<div class="cj-banner-img" id="myImage">
         <img src="images/icon_banner01.png" alt="" />
-      </div>
+      </div>-->
       <div class="cj-btns mg">
         <button class="cj-btn btn-bg01 fl" onclick="choosePhoto()" >拍 照</button>
         <button class="cj-btn btn-bg02 fr" onclick="selectPhoto()" >相 册</button>
@@ -52,15 +61,54 @@
             <li>
                <span class="cj-message-list-le fl">总楼层 ：</span>
                <span class="cj-message-list-ri fl">
-                 <select name="" id="" class="cf-select fl ">
-                     <option value="">17楼</option>
+                 <select name="" id="" class="cf-select fl" style="max-height: 100px;">
+                     <option value="1">1楼</option>
+                     <option value="2">2楼</option>
+                     <option value="3">3楼</option>
+                     <option value="4">4楼</option>
+                     <option value="5">5楼</option>
+                     <option value="6">6楼</option>
+                     <option value="7">7楼</option>
+                     <option value="8">8楼</option>
+                     <option value="9">9楼</option>
+                     <option value="10">10楼</option>
+                     <option value="11">11楼</option>
+                     <option value="12">12楼</option>
+                     <option value="13">13楼</option>
+                     <option value="14">14楼</option>
+                     <option value="15">15楼</option>
+                     <option value="16">16楼</option>
+                     <option value="17">17楼</option>
+                     <option value="18">18楼</option>
+                     <option value="19">19楼</option>
+                     <option value="20">20楼</option>
+                     <option value="21">21楼</option>
+                     <option value="22">22楼</option>
+                     <option value="23">23楼</option>
+                     <option value="24">24楼</option>
+                     <option value="25">25楼</option>
+                     <option value="26">26楼</option>
+                     <option value="27">27楼</option>
+                     <option value="28">28楼</option>
+                     <option value="29">29楼</option>
+                     <option value="30">30楼</option>
+                     <option value="31">31楼</option>
+                     <option value="32">32楼</option>
+                     <option value="33">33楼</option>
+                     <option value="34">34楼</option>
+                     <option value="35">35楼</option>
+                     <option value="36">36楼</option>
+                     <option value="37">37楼</option>
+                     <option value="38">38楼</option>
+                     <option value="39">39楼</option>
+                     <option value="40">40楼</option>
                  </select>
                </span>
             </li>
             <li>
                <span class="cj-message-list-le fl">建筑名称 ：</span>
                <span class="cj-message-list-ri fl ">
-                  <input type="text" class="cf-input fl cf-input-bg" placeholder="请点击选择建筑名称" />
+                  <input type="text" class="cf-input fl cf-input-bg" style="padding-left: 35px;" placeholder="请点击选择建筑名称" />
                </span>
             </li>
             <li style="border:none;">
@@ -98,7 +146,7 @@
           </div>
           <h1>联系方式</h1>
           <div class="cf-sm mg">
-             <input type="text" class="cf-input2 fl cf-input-bg2" placeholder="请点击选择建筑名称" />
+             <input type="text" class="cf-input2 fl cf-input-bg2" style="padding-left: 50px;" placeholder="请点击选择建筑名称" />
           </div>
         </div>
         <div class="cf-bnt2 mg mgt10">上传数据</div>
