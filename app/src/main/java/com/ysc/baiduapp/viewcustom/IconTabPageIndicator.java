@@ -5,6 +5,7 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -23,6 +24,8 @@ public class IconTabPageIndicator extends LinearLayout implements PageIndicator 
      * Title text used when no title is provided by the adapter.
      */
     private static final CharSequence EMPTY_TITLE = "";
+
+    private boolean enabled;
 
     /**
      * Interface for a callback when the selected tab has been reselected.
@@ -277,4 +280,25 @@ public class IconTabPageIndicator extends LinearLayout implements PageIndicator 
             return mIndex;
         }
     }
+
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        return enabled && super.onTouchEvent(event);
+    }
+
+    @Override
+    public boolean onInterceptTouchEvent(MotionEvent event) {
+        return enabled && super.onInterceptTouchEvent(event);
+    }
+
+    public void setPagingEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
+
+    public boolean isPagingEnabled() {
+        return enabled;
+    }
+
+
 }

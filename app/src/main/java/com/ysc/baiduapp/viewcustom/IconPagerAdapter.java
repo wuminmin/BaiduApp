@@ -11,4 +11,8 @@ public interface IconPagerAdapter {
 
     // From PagerAdapter
     int getCount();
+
+
+
+
 }

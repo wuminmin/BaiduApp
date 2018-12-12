@@ -7,9 +7,10 @@ $(document).ready(function () {
 //      var first = true;
         htmlsum = '';
         $.each(jsonarr, function (i, item) {
-          	htmlsum += '<div class="mui-slider-item">'+
-					        '<img src="'+item+'" alt="" class="cj-banner-img-border"/>'+
-					   '</div>';
+          	htmlsum += '<div class="mui-slider-item">' +
+				'<img src="images/icon_banner02.png" id = "'+ "img_"+ i +'" alt="" class="cj-banner-img-border"/>' +
+				'</div>';
+		    imgOrientation(item,"#img_"+i);
 //          if (first) {
 //              htmlsum = "<div class=\"item active\">\n" +
 //                  "<img alt=\"image\" class=\"img-responsive\" src=\"" + item + "\">\n" +
@@ -99,5 +100,46 @@ function choosePhoto() {
 function selectPhoto() {
     var file = Android.selectPhoto();
       window.location.href = "file:///android_asset/shiwai.html";
+}
+
+function imgOrientation(img_url, dom_id) {
+	var Orientation = 1;
+	var imageObj = new Image();
+	imageObj.src = img_url;
+	imageObj.onload = function() {
+		var cvs = document.createElement('canvas');
+		var ctx = cvs.getContext('2d');
+		cvs.width = this.width;
+		cvs.height = this.height; //计算等比缩小后图片宽高
+		EXIF.getData(imageObj, function() {
+			Orientation = EXIF.getTag(this, "Orientation");
+			if(Orientation && Orientation != 1) {
+				switch(Orientation) {
+					case 6: // 旋转90度
+						cvs.width = this.height;
+						cvs.height = this.width;
+						ctx.rotate(Math.PI / 2);
+						// (0,-imgHeight) 从旋转原理图那里获得的起始点
+						ctx.drawImage(this, 0, -this.height, this.width, this.height);
+						break;
+					case 3: // 旋转180度
+						ctx.rotate(Math.PI);
+						ctx.drawImage(this, this.width, -this.height, this.width, this.height);
+						break;
+					case 8: // 旋转-90度
+						cvs.width = this.height;
+						cvs.height = this.width;
+						ctx.rotate(3 * Math.PI / 2);
+						ctx.drawImage(this, -this.width, 0, this.width, this.height);
+						break;
+				}
+				var newImageData = cvs.toDataURL(this, 1);
+			    console.log(JSON.stringify(newImageData));
+			    $(dom_id).attr('src', newImageData);
+			} else {
+				$(dom_id).attr('src', img_url);
+			}
+		});
+	};
 }
 

@@ -28,7 +28,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.tencent.bugly.crashreport.CrashReport;
 import com.ysc.baiduapp.fragment.OrderFragment;
 import com.ysc.baiduapp.fragment.MineFragment;
 import com.ysc.baiduapp.fragment.HomeFragment;
@@ -42,7 +41,6 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-import cn.qqtheme.framework.picker.DoublePicker;
 
 import kr.co.namee.permissiongen.PermissionFail;
 import kr.co.namee.permissiongen.PermissionGen;
@@ -55,7 +53,7 @@ public class MainActivity extends FragmentActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        CrashReport.initCrashReport(getApplicationContext(), "5d728085f5", true);
+//        CrashReport.initCrashReport(getApplicationContext(), "5d728085f5", true);
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activityfragement_main);
@@ -81,7 +79,10 @@ public class MainActivity extends FragmentActivity {
 
     private void initViews(){
         mViewPager = (ViewPager) findViewById(R.id.view_pager);
+
         mIndicator = (IconTabPageIndicator) findViewById(R.id.indicator);
+        mIndicator.setPagingEnabled(false);
+
 //        GridView gridview = (GridView) findViewById(R.id.gridView);
 //        gridview.setAdapter(new ImageAdapter(this));
     }
@@ -89,6 +90,7 @@ public class MainActivity extends FragmentActivity {
     public void initData(){
         List<BaseFragment> fragments = initFragments();
         FragmentAdapter adapter = new FragmentAdapter(fragments, getSupportFragmentManager());
+
         mViewPager.setAdapter(adapter);
         mIndicator.setViewPager(mViewPager);
     }
@@ -132,6 +134,8 @@ public class MainActivity extends FragmentActivity {
         public int getCount() {
             return mFragments.size();
         }
+
+
 
         @Override
         public CharSequence getPageTitle(int position) {
@@ -197,58 +201,58 @@ public class MainActivity extends FragmentActivity {
     }
 
 
-    public void onDoublePicker(View view) {
-        final ArrayList<String> firstData = new ArrayList<>();
-        firstData.add("-1");
-        firstData.add("1");
-        firstData.add("2");
-        firstData.add("3");
-        firstData.add("4");
-        firstData.add("5");
-        firstData.add("6");
-        firstData.add("7");
-        firstData.add("8");
-        firstData.add("9");
-        firstData.add("10");
-        firstData.add("11");
-        firstData.add("12");
-        firstData.add("13");
-        firstData.add("14");
-        firstData.add("15");
-        final ArrayList<String> secondData = new ArrayList<>();
-        secondData.add("-1");
-        secondData.add("1");
-        secondData.add("2");
-        secondData.add("3");
-        secondData.add("4");
-        secondData.add("5");
-        secondData.add("6");
-        secondData.add("7");
-        secondData.add("8");
-        secondData.add("9");
-        secondData.add("10");
-        secondData.add("11");
-        secondData.add("12");
-        secondData.add("13");
-        secondData.add("14");
-        secondData.add("15");
-        final DoublePicker picker = new DoublePicker(this, firstData, secondData);
-        picker.setDividerVisible(true);
-        picker.setCycleDisable(false);
-        picker.setSelectedIndex(0, 0);
-        picker.setFirstLabel("当前层数", null);
-        picker.setSecondLabel("总层数", "");
-        picker.setTextSize(12);
-        picker.setContentPadding(15, 10);
-        picker.setOnPickListener(new DoublePicker.OnPickListener() {
-            @Override
-            public void onPicked(int selectedFirstIndex, int selectedSecondIndex) {
-//                showToast(firstData.get(selectedFirstIndex) + " " + secondData.get(selectedSecondIndex));
-                Toast.makeText(MainActivity.this, firstData.get(selectedFirstIndex) + " " + secondData.get(selectedSecondIndex) , Toast.LENGTH_LONG).show();
-            }
-        });
-        picker.show();
-    }
+//    public void onDoublePicker(View view) {
+//        final ArrayList<String> firstData = new ArrayList<>();
+//        firstData.add("-1");
+//        firstData.add("1");
+//        firstData.add("2");
+//        firstData.add("3");
+//        firstData.add("4");
+//        firstData.add("5");
+//        firstData.add("6");
+//        firstData.add("7");
+//        firstData.add("8");
+//        firstData.add("9");
+//        firstData.add("10");
+//        firstData.add("11");
+//        firstData.add("12");
+//        firstData.add("13");
+//        firstData.add("14");
+//        firstData.add("15");
+//        final ArrayList<String> secondData = new ArrayList<>();
+//        secondData.add("-1");
+//        secondData.add("1");
+//        secondData.add("2");
+//        secondData.add("3");
+//        secondData.add("4");
+//        secondData.add("5");
+//        secondData.add("6");
+//        secondData.add("7");
+//        secondData.add("8");
+//        secondData.add("9");
+//        secondData.add("10");
+//        secondData.add("11");
+//        secondData.add("12");
+//        secondData.add("13");
+//        secondData.add("14");
+//        secondData.add("15");
+//        final DoublePicker picker = new DoublePicker(this, firstData, secondData);
+//        picker.setDividerVisible(true);
+//        picker.setCycleDisable(false);
+//        picker.setSelectedIndex(0, 0);
+//        picker.setFirstLabel("当前层数", null);
+//        picker.setSecondLabel("总层数", "");
+//        picker.setTextSize(12);
+//        picker.setContentPadding(15, 10);
+//        picker.setOnPickListener(new DoublePicker.OnPickListener() {
+//            @Override
+//            public void onPicked(int selectedFirstIndex, int selectedSecondIndex) {
+////                showToast(firstData.get(selectedFirstIndex) + " " + secondData.get(selectedSecondIndex));
+//                Toast.makeText(MainActivity.this, firstData.get(selectedFirstIndex) + " " + secondData.get(selectedSecondIndex) , Toast.LENGTH_LONG).show();
+//            }
+//        });
+//        picker.show();
+//    }
 
 
 }

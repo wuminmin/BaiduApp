@@ -42,4 +42,7 @@ public interface PageIndicator extends ViewPager.OnPageChangeListener {
      * Notify the indicator that the fragment list has changed.
      */
     void notifyDataSetChanged();
+
+
+
 }

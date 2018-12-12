@@ -5,12 +5,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>采集app-室内场景</title>
+    
     	<link href="css/mui.min.css" type="text/css" rel="stylesheet">
+    	<link href="css/mui.picker.css" type="text/css" rel="stylesheet">
+    	<link href="css/mui.poppicker.css" type="text/css" rel="stylesheet">
+    	
+    	<script type="text/javascript" src="js/mui.min.js"></script> 
+    	<script type="text/javascript" src="js/mui.picker.js"></script> 
+    	<script type="text/javascript" src="js/mui.poppicker.js"></script> 
+    	
     <link href="css/reset.css" type="text/css" rel="stylesheet">    <!--重置样式文件-->
     <link href="css/layout.css" type="text/css" rel="stylesheet">   <!--自定义样式文件-->
+    	
     <script type="text/javascript" src="js/jquery-1.12.1.min.js"></script>     <!--JS库文件-->
     <script type="text/javascript" src="js/layout.js"></script>     <!--JS自定义文件--> 
-    <script type="text/javascript" src="js/mui.min.js"></script> 
+    
+    <script src="js/floor.data.js"></script>
   </head>
   <body>
   <!--头部-begin-->
@@ -61,7 +71,8 @@
             <li>
                <span class="cj-message-list-le fl">总楼层 ：</span>
                <span class="cj-message-list-ri fl">
-                 <select name="" id="" class="cf-select fl" style="max-height: 100px;">
+               	<div id="floor_select" class="cf-select fl">选择楼层</div>
+                 <!--<select name="" id="" class="cf-select fl" style="max-height: 100px;">
                      <option value="1">1楼</option>
                      <option value="2">2楼</option>
                      <option value="3">3楼</option>
@@ -102,7 +113,7 @@
                      <option value="38">38楼</option>
                      <option value="39">39楼</option>
                      <option value="40">40楼</option>
-                 </select>
+                 </select>-->
                </span>
             </li>
             <li>
@@ -164,4 +175,5 @@
   <!--底部-end-->
   </body>
   <script src="file:///android_asset/js/shinei.js"></script>
+  <script src="file:///android_asset/js/exif.js"></script>
 </html>

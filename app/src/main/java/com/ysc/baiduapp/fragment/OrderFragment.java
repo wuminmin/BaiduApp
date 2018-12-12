@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.location.GpsStatus;
 import android.net.Uri;
 import android.net.sip.SipSession;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.telephony.TelephonyManager;
@@ -42,6 +43,8 @@ import org.json.JSONObject;
 
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -162,6 +165,24 @@ public class OrderFragment extends BaseFragment {
                 return jsonXinxi; // 把本地数据弄成json串，传给html
             }
         }, "getXinxiJsonOne");//MyBrowserAPI:自定义的js函数名
+        try {
+            if (Build.VERSION.SDK_INT >= 16) {
+                Class<?> clazz = shinengWebview.getSettings().getClass();
+                Method method = clazz.getMethod(
+                        "setAllowUniversalAccessFromFileURLs", boolean.class);
+                if (method != null) {
+                    method.invoke(shinengWebview.getSettings(), true);
+                }
+            }
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        }
 
         shinengWebview.loadUrl("file:///android_asset/html1016/index.html");
     }
@@ -203,7 +224,24 @@ public class OrderFragment extends BaseFragment {
                 return jsonXinxi; // 把本地数据弄成json串，传给html
             }
         }, "getXinxiJsonOne");//MyBrowserAPI:自定义的js函数名
-
+         try {
+             if (Build.VERSION.SDK_INT >= 16) {
+                 Class<?> clazz = shinengWebview.getSettings().getClass();
+                 Method method = clazz.getMethod(
+                         "setAllowUniversalAccessFromFileURLs", boolean.class);
+                 if (method != null) {
+                     method.invoke(shinengWebview.getSettings(), true);
+                 }
+             }
+         } catch (IllegalArgumentException e) {
+             e.printStackTrace();
+         } catch (NoSuchMethodException e) {
+             e.printStackTrace();
+         } catch (IllegalAccessException e) {
+             e.printStackTrace();
+         } catch (InvocationTargetException e) {
+             e.printStackTrace();
+         }
         shinengWebview.loadUrl("file:///android_asset/html1016/index.html");
     }
 
@@ -235,7 +273,6 @@ public class OrderFragment extends BaseFragment {
             }
         }, "MyBrowserAPI");//MyBrowserAPI:自定义的js函数名
 
-
         final String jsonXinxi = xinxiJson.getXinxiJsonOne();
         shiwaiWebview.addJavascriptInterface(new Object() {
             //@param message:  html页面传进来的数据
@@ -244,7 +281,24 @@ public class OrderFragment extends BaseFragment {
                 return jsonXinxi; // 把本地数据弄成json串，传给html
             }
         }, "getXinxiJsonOne");//MyBrowserAPI:自定义的js函数名
-
+        try {
+            if (Build.VERSION.SDK_INT >= 16) {
+                Class<?> clazz = shiwaiWebview.getSettings().getClass();
+                Method method = clazz.getMethod(
+                        "setAllowUniversalAccessFromFileURLs", boolean.class);
+                if (method != null) {
+                    method.invoke(shiwaiWebview.getSettings(), true);
+                }
+            }
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        }
         shiwaiWebview.loadUrl("file:///android_asset/html1016/index02.html");
     }
 
