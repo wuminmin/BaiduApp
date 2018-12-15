@@ -358,7 +358,13 @@ public class OrderFragment extends BaseFragment {
 
         @JavascriptInterface
         public void saveDizhi(String dizhi){
-            Log.e("测试web android 传递参数",dizhi);
+            Log.e("测试saveDizhi 传递参数",dizhi);
+
+        }
+
+        @JavascriptInterface
+        public void upload_data(String data){
+            Log.e("测试upload_data 传递参数",data);
 
         }
     }

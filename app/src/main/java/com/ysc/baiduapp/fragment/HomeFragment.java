@@ -93,7 +93,7 @@ public class HomeFragment extends BaseFragment implements OnMapReadyCallback {
                 MapViewInit( mapWebview );
             }
         });
-        handler.postDelayed(runnable, 1000 * 5);
+        handler.postDelayed(runnable, 1000*3);
         return view;
     }
 

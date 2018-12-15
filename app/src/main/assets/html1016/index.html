@@ -21,6 +21,18 @@
     <script type="text/javascript" src="js/layout.js"></script>     <!--JS自定义文件--> 
     
     <script src="js/floor.data.js"></script>
+    <!--<script src="js/exif.js"></script>
+    <script src="js/shinei.js"></script>-->
+    
+    <style>
+    	.mui-slider .mui-slider-group .mui-slider-item{
+    		text-align: center;
+    	}
+    .mui-slider .mui-slider-group .mui-slider-item img{
+    	    width: auto;
+    	    max-width: 100%;
+    }
+    </style>
   </head>
   <body>
   <!--头部-begin-->
@@ -36,7 +48,7 @@
   <div class="cj-main">
     <!--banner-begin-->
     <div class="cj-banner">
-     	<div id="slider" class="mui-slider" style="width: 100%;height: auto;">
+     	<div id="slider" class="mui-slider" style="height: 230px;">
 			<div class="mui-slider-group" id="myImage">
 				<div class="mui-slider-item">
 					<img src="images/icon_banner01.png" alt="" class="cj-banner-img-border"/>
@@ -63,9 +75,10 @@
             <li>
                <span class="cj-message-list-le fl">当前位置 ：</span>
                <span class="cj-message-list-ri fl">
-                 <select name="" id="" class="cf-select fl ">
+               	 <div id="position_select" class="cf-select fl">选择当前位置</div>
+                 <!--<select name="" id="" class="cf-select fl ">
                      <option value="">车库</option>
-                 </select>
+                 </select>-->
                </span>
             </li>
             <li>
@@ -119,13 +132,13 @@
             <li>
                <span class="cj-message-list-le fl">建筑名称 ：</span>
                <span class="cj-message-list-ri fl ">
-                  <input type="text" class="cf-input fl cf-input-bg" style="padding-left: 35px;" placeholder="请点击选择建筑名称" />
+                  <input id="build_name" type="text" class="cf-input fl cf-input-bg" style="padding-left: 35px;" placeholder="请点击选择建筑名称" />
                </span>
             </li>
             <li style="border:none;">
                <span class="cj-message-list-le fl">详细地址 ：</span>
                <span class="cj-message-list-ri fl">
-                  <input type="text" class="cf-input fl" />
+                  <input id="detail_address" type="text" class="cf-input fl" />
                </span>
             </li>
           </ul>
@@ -135,17 +148,17 @@
             <li>
                <span class="cj-message-list-le fl">2G信号 ：</span>
                <span class="cj-message-list-ri fl">
-                 <a href="" class="fl signal-01 list-hover2">  </a>
-                 <a href="" class="fl signal-02 mgl10" ></a>
-                 <a href="" class="fl signal-03 mgl10"> </a>
+                 <a  id="xin_hao_2g_dx" class="fl signal-01 list-hover2 ">  </a>
+                 <a id="xin_hao_2g_lt" class="fl signal-02 mgl10 " ></a>
+                 <a id="xin_hao_2g_yd" class="fl mgl10 signal-03 list-hover2"> </a>
                </span>
             </li>
             <li style="border:none;">
                <span class="cj-message-list-le fl">4G信号 ：</span>
                <span class="cj-message-list-ri fl">
-                 <a href="" class="fl signal-01 list-hover2">  </a>
-                 <a href="" class="fl mgl10 signal-02 list-hover2" ></a>
-                 <a href="" class="fl mgl10 signal-03 list-hover2"> </a>
+                 <a id="xin_hao_4g_dx" class="fl signal-01 list-hover2">  </a>
+                 <a id="xin_hao_4g_lt" class="fl mgl10 signal-02 list-hover2" ></a>
+                 <a id="xin_hao_4g_yd" class="fl mgl10 signal-03 list-hover2"> </a>
                </span>
             </li>
           </ul>
@@ -153,14 +166,14 @@
         <div class="cj-message-unit3 mgt10 clear">
           <h1>说明</h1>
           <div class="cf-sm mg">
-            <textarea class="cf-textarea" placeholder="请输入"></textarea>
+            <textarea  id="explanation" class="cf-textarea" placeholder="请输入"></textarea>
           </div>
           <h1>联系方式</h1>
           <div class="cf-sm mg">
-             <input type="text" class="cf-input2 fl cf-input-bg2" style="padding-left: 50px;" placeholder="请点击选择建筑名称" />
+             <input id="phone_num" type="text" class="cf-input2 fl cf-input-bg2" style="padding-left: 50px;" placeholder="请输入联系方式" />
           </div>
         </div>
-        <div class="cf-bnt2 mg mgt10">上传数据</div>
+        <div id="demo" class="cf-bnt2 mg mgt10">上传数据</div>
       </div>
     </div>
     <!--信息采集-end-->
@@ -174,6 +187,6 @@
   <!--</div>-->
   <!--底部-end-->
   </body>
-  <script src="file:///android_asset/js/shinei.js"></script>
-  <script src="file:///android_asset/js/exif.js"></script>
+<script src="file:///android_asset/js/exif.js"></script>
+ <script src="file:///android_asset/js/shinei.js"></script>
 </html>

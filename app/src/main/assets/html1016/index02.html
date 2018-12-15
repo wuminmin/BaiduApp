@@ -12,6 +12,17 @@
     <script type="text/javascript" src="js/jquery-1.12.1.min.js"></script>     <!--JS库文件-->
     <script type="text/javascript" src="js/layout.js"></script>     <!--JS自定义文件-->  
     <script type="text/javascript" src="js/mui.min.js"></script> 
+     <script type="text/javascript" src="js/exif.js"></script>
+  <script type="text/javascript" src="js/wmm2.js"></script>
+    <style>
+    	.mui-slider .mui-slider-group .mui-slider-item{
+    		text-align: center;
+    	}
+    .mui-slider .mui-slider-group .mui-slider-item img{
+    	    width: auto;
+    	    max-width: 100%;
+    }
+    </style>
   </head>
   <body>
   <!--头部-begin-->
@@ -54,7 +65,7 @@
             <li style="border:none;">
                <span class="cj-message-list-le fl">建筑名称 ：</span>
                <span class="cj-message-list-ri fl ">
-                <input type="text" class="cf-input fl cf-input-bg3" style="padding-left: 35px;" placeholder="请点击选择建筑名称" />
+                <input id="sw_bulid_name" type="text" class="cf-input fl cf-input-bg3" style="padding-left: 35px;" placeholder="请输入建筑名称" />
                </span>
             </li>
           </ul>
@@ -64,19 +75,19 @@
             <li>
                <span class="cj-message-list-le fl">铁塔 ：</span>
                <span class="cj-message-list-ri fl">
-                 <i href="" class="fr signal-04 list-hover2">  </i>
+                 <i id="wz_tieta" class="fr signal-04 list-hover2">  </i>
                </span>
             </li>
             <li>
                <span class="cj-message-list-le fl">光纤 ：</span>
                <span class="cj-message-list-ri fl">
-                 <i href="" class="fr signal-04 list-hover2">  </i>
+                 <i id="wz_guangqian" class="fr signal-04 list-hover2">  </i>
                </span>
             </li>
             <li style="border:none;">
                <span class="cj-message-list-le fl">电源 ：</span>
                <span class="cj-message-list-ri fl">
-                  <i href="" class="fr signal-04 list-hover4">  </i>
+                  <i id="wz_dianyuan" class="fr signal-04 list-hover4">  </i>
                </span>
             </li>
           </ul>
@@ -84,14 +95,14 @@
         <div class="cj-message-unit3 mgt10 clear">
           <h1>说明</h1>
           <div class="cf-sm mg">
-            <textarea class="cf-textarea" style="min-height: 4rem" placeholder="请输入现场情况描述"></textarea>
+            <textarea  id="sw_shuoming" class="cf-textarea" style="min-height: 4rem" placeholder="请输入现场情况描述"></textarea>
           </div>
           <h1>联系方式</h1>
           <div class="cf-sm mg">
-             <input type="text" class="cf-input2 fl cf-input-bg2" style="padding-left: 50px;" placeholder="请点击选择建筑名称" />
+             <input id="sw_num" type="text" class="cf-input2 fl cf-input-bg2" style="padding-left: 50px;" placeholder="请输入联系方式" />
           </div>
         </div>
-        <div class="cf-bnt2 mg mgt10">上传数据</div>
+        <div id="update" class="cf-bnt2 mg mgt10">上传数据</div>
       </div>
     </div>
     <!--信息采集-end-->
@@ -106,6 +117,6 @@
   <!--底部-end-->
   </body>
 
-  <script src="file:///android_asset/js/wmm2.js"></script>
   <script src="file:///android_asset/js/exif.js"></script>
+  <script src="file:///android_asset/js/wmm2.js"></script>
 </html>

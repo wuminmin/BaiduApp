@@ -54,7 +54,7 @@ input[type=text],select{
  	height: auto;
  }
  .cj-banner-img-border { 
- 	border-radius: 10px;border:1px solid #dcdcdc;
+ 	border-radius: 10px;border:1px solid #dcdcdc;height: 230px;
  }
  .cj-banner-img img { width:100%; height:auto;border-radius: 10px;border:1px solid #dcdcdc;}
 .cj-btns { width:70%; height: 2rem; margin-top:15px; } 
