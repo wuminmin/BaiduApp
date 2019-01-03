@@ -13,7 +13,7 @@
 
         <ImageView
             android:id="@+id/xinxi"
-            android:src="@drawable/dianxin"
+            android:src="@drawable/ano"
             android:textColor="@color/white"
             android:layout_width="0dp"
             android:layout_height="50dp"

@@ -14,13 +14,25 @@ var explanation;
 var phone_num;
 
 $(document).ready(function() {
+	if(sessionStorage.getItem("jianzhu")){
+	           buliding_name = sessionStorage.getItem("jianzhu");
+               detail_adress = sessionStorage.getItem("xiangxi");
+	           buliding_name =  decodeURIComponent(buliding_name);
+	           detail_adress =  decodeURIComponent(detail_adress);
+	            buliding_name = buliding_name.replace("详情»", "");
+	            console.log("addevent"+detail_adress+"---"+buliding_name);
+	           document.getElementById('build_name').value = buliding_name;
+	           document.getElementById('detail_address').value = detail_adress;	
+	}
+	           
+
 	$(document).on('tap', '#floor_select', function() {
 		var floorPicker = new mui.PopPicker({
 			layer: 2
 		});
 		floorPicker.setData(floorData);
 		floorPicker.show(function(items) {
-			$("#floor_select").html((items[0].text == 0 ? "":items[0].text) + items[1].text)
+			$("#floor_select").val((items[0].text == 0 ? "" : items[0].text) + items[1].text)
 		});
 	})
 	$(document).on('tap', '#position_select', function() {
@@ -29,199 +41,190 @@ $(document).ready(function() {
 		});
 		positionPicker.setData(floorData);
 		positionPicker.show(function(items) {
-			$("#position_select").html((items[0].text == 0 ? "":items[0].text) + items[1].text)
+			$("#position_select").val((items[0].text == 0 ? "" : items[0].text) + items[1].text)
 		});
 	})
-	
-$(document).on('tap', '#xin_hao_2g_dx', function() {
+
+	$(document).on('tap', '#build_name', function() {
+ 	 window.location.href = "file:///android_asset/login.html?flag=shinei";
+ //window.location.href = "login.html?flag=shinei";
+	})
+
+	$(document).on('tap', '#xin_hao_2g_dx', function() {
 		var arr = new Array();
 		arr = document.getElementById("xin_hao_2g_dx").getAttribute("class");
 		var reg = RegExp(/list-hover2/);
-   if(arr.match(reg)){ 
-        arr = arr.replace("list-hover2","");
-	    document.getElementById("xin_hao_2g_dx").setAttribute("class",arr);
-}else{
-	  arr = arr.concat("list-hover2");
-	document.getElementById("xin_hao_2g_dx").setAttribute("class",arr);
-}
-})
-$(document).on('tap', '#xin_hao_2g_lt', function() {
+		if(arr.match(reg)) {
+			arr = arr.replace("list-hover2", "");
+			document.getElementById("xin_hao_2g_dx").setAttribute("class", arr);
+		} else {
+			arr = arr.concat("list-hover2");
+			document.getElementById("xin_hao_2g_dx").setAttribute("class", arr);
+		}
+	})
+	$(document).on('tap', '#xin_hao_2g_lt', function() {
 		var arr = new Array();
 		arr = document.getElementById("xin_hao_2g_lt").getAttribute("class");
 		var reg = RegExp(/list-hover2/);
-        if(arr.match(reg)){ 
-        arr = arr.replace("list-hover2","");
-	    document.getElementById("xin_hao_2g_lt").setAttribute("class",arr);
-}else{
-	  arr = arr.concat("list-hover2");
-	document.getElementById("xin_hao_2g_lt").setAttribute("class",arr);
-}
-})
+		if(arr.match(reg)) {
+			arr = arr.replace("list-hover2", "");
+			document.getElementById("xin_hao_2g_lt").setAttribute("class", arr);
+		} else {
+			arr = arr.concat("list-hover2");
+			document.getElementById("xin_hao_2g_lt").setAttribute("class", arr);
+		}
+	})
 
-$(document).on('tap', '#xin_hao_2g_yd', function() {
-	
+	$(document).on('tap', '#xin_hao_2g_yd', function() {
+
 		var arr = new Array();
 		arr = document.getElementById("xin_hao_2g_yd").getAttribute("class");
 		var reg = RegExp(/list-hover2/);
-        if(arr.match(reg)){ 
-        	console.log("+++");
-        arr = arr.replace("list-hover2","");
-	    document.getElementById("xin_hao_2g_yd").setAttribute("class",arr);
-}else{
-	  arr = arr.concat("list-hover2");
-	document.getElementById("xin_hao_2g_yd").setAttribute("class",arr);
-	console.log("---");
-}
-})
+		if(arr.match(reg)) {
+			arr = arr.replace("list-hover2", "");
+			document.getElementById("xin_hao_2g_yd").setAttribute("class", arr);
+		} else {
+			arr = arr.concat("list-hover2");
+			document.getElementById("xin_hao_2g_yd").setAttribute("class", arr);
+			
+		}
+	})
 
-$(document).on('tap', '#xin_hao_4g_dx', function() {
+	$(document).on('tap', '#xin_hao_4g_dx', function() {
 		var arr = new Array();
 		arr = document.getElementById("xin_hao_4g_dx").getAttribute("class");
 		var reg = RegExp(/list-hover2/);
-        if(arr.match(reg)){ 
-        arr = arr.replace("list-hover2","");
-	    document.getElementById("xin_hao_4g_dx").setAttribute("class",arr);
-}else{
-	  arr = arr.concat("list-hover2");
-	document.getElementById("xin_hao_4g_dx").setAttribute("class",arr);
-}
-})
+		if(arr.match(reg)) {
+			arr = arr.replace("list-hover2", "");
+			document.getElementById("xin_hao_4g_dx").setAttribute("class", arr);
+		} else {
+			arr = arr.concat("list-hover2");
+			document.getElementById("xin_hao_4g_dx").setAttribute("class", arr);
+		}
+	})
 
-$(document).on('tap', '#xin_hao_4g_lt', function() {
+	$(document).on('tap', '#xin_hao_4g_lt', function() {
 		var arr = new Array();
 		arr = document.getElementById("xin_hao_4g_lt").getAttribute("class");
 		var reg = RegExp(/list-hover2/);
-        if(arr.match(reg)){ 
-        arr = arr.replace("list-hover2","");
-	    document.getElementById("xin_hao_4g_lt").setAttribute("class",arr);
-}else{
-	  arr = arr.concat("list-hover2");
-	document.getElementById("xin_hao_4g_lt").setAttribute("class",arr);
-}
-})
+		if(arr.match(reg)) {
+			arr = arr.replace("list-hover2", "");
+			document.getElementById("xin_hao_4g_lt").setAttribute("class", arr);
+		} else {
+			arr = arr.concat("list-hover2");
+			document.getElementById("xin_hao_4g_lt").setAttribute("class", arr);
+		}
+	})
 
-$(document).on('tap', '#xin_hao_4g_yd', function() {
+	$(document).on('tap', '#xin_hao_4g_yd', function() {
 		var arr = new Array();
 		arr = document.getElementById("xin_hao_4g_yd").getAttribute("class");
 		var reg = RegExp(/list-hover2/);
-        if(arr.match(reg)){ 
-        arr = arr.replace("list-hover2","");
-	    document.getElementById("xin_hao_4g_yd").setAttribute("class",arr);
-}else{
-	  arr = arr.concat("list-hover2");
-	document.getElementById("xin_hao_4g_yd").setAttribute("class",arr);
-}
-})
+		if(arr.match(reg)) {
+			arr = arr.replace("list-hover2", "");
+			document.getElementById("xin_hao_4g_yd").setAttribute("class", arr);
+		} else {
+			arr = arr.concat("list-hover2");
+			document.getElementById("xin_hao_4g_yd").setAttribute("class", arr);
+		}
+	})
 
+	$('#demo').click(function() {
+		var btnArray = ['取消上传', '确认上传'];
+		mui.confirm('您确定要上传室内场景采集数据吗？', '请在上传前，检查数据是否完整 ', btnArray, function(e) {
+			if(e.index == 1) {
+				var reg = RegExp(/list-hover2/);
+				var classval_2g_dx = document.getElementById("xin_hao_2g_dx").getAttribute("class");
+				if(classval_2g_dx.match(reg)) {
+					xinghao_2g_dx = 0;
+				} else {
+					xinghao_2g_dx = 1;
+				}
+
+				var classval_2g_lt = document.getElementById("xin_hao_2g_lt").getAttribute("class");
+				if(classval_2g_lt.match(reg)) {
+					xinghao_2g_lt = 0;
+				} else {
+					xinghao_2g_lt = 1;
+				}
+
+				var classval_2g_yd = document.getElementById("xin_hao_2g_yd").getAttribute("class");
+				if(classval_2g_yd.match(reg)) {
+					xinghao_2g_yd = 0;
+				} else {
+					xinghao_2g_yd = 1;
+				}
+
+				var classval_4g_dx = document.getElementById("xin_hao_4g_dx").getAttribute("class");
+				if(classval_4g_dx.match(reg)) {
+					xinghao_4g_dx = 0;
+				} else {
+					xinghao_4g_dx = 1;
+				}
+
+				var classval_4g_lt = document.getElementById("xin_hao_4g_lt").getAttribute("class");
+				if(classval_4g_lt.match(reg)) {
+					xinghao_4g_lt = 0;
+				} else {
+					xinghao_4g_lt = 1;
+				}
+
+				var classval_4g_yd = document.getElementById("xin_hao_4g_yd").getAttribute("class");
+				if(classval_4g_yd.match(reg)) {
+					xinghao_4g_yd = 0;
+				} else {
+					xinghao_4g_yd = 1;
+				}
+
+				var jsonstr = window.MyBrowserAPI.getLocationData("从页面传给手机的message");
+				if(jsonstr !== '[]') {
+					img_url = eval(jsonstr);
+				}
+				now_position = $("#position_select").html();
+				all_floor = $("#floor_select").html();
+				buliding_name = $("#build_name").val();
+				detail_adress = $("#detail_address").val();
+				explanation = $("#explanation").val();
+				phone_num = $("#phone_num").val();
+
+				var param = {
+					"img_url": img_url,
+					"now_position": now_position,
+					"all_floor": all_floor,
+					"buliding_name": buliding_name,
+					"detail_adress": detail_adress,
+					"xinghao_2g_dx": xinghao_2g_dx,
+					"xinghao_2g_lt": xinghao_2g_lt,
+					"xinghao_2g_yd": xinghao_2g_yd,
+					"xinghao_4g_dx": xinghao_4g_dx,
+					"xinghao_4g_lt": xinghao_4g_lt,
+					"xinghao_4g_yd": xinghao_4g_yd,
+					"explanation": explanation,
+					"phone_num": phone_num,
+				};
+
+				var paramStr = JSON.stringify(param);
+				console.log(paramStr + '传参');
 		
-			
-			
 				
+				 var jsonStr = Android.upload_data(paramStr);  
+	 //var jsonStr = "{\"code\":\"error\",\"msg\":\"错误详情\"}";
+	 var obj = JSON.parse(jsonStr);   
+     
+     if(obj.code ==="ok"){
+     	 mui.toast("上传成功"); 
+     }else{
+     	mui.toast(obj.msg); 
+     }
 
+			} else {
 
-//	  var list = ['images/0F165F9E140FBA77E68B998D0B628C53.jpg',
-//	              'images/IMG_20181210_090359_gaitubao_com_.jpg',
-//	              'images/icon_banner02.png']
-//	  var htmlsum = '';
-//	  var oW = new Worker('js/sub_js.js');
-//		for (var i = 0; i < list.length; i++) {
-//			htmlsum += '<div class="mui-slider-item">' +
-//					'<img src="images/icon_banner01.png" id = "'+ "img_"+ i +'" alt="" class="cj-banner-img-border"/>' +
-//					'</div>';
-//			imgOrientation(list[i],"#img_"+i);
-//		}
-//		document.getElementById("myImage").innerHTML = htmlsum;
-
-
-$('#demo').click(function() {
-		 var btnArray = ['取消上传', '确认上传'];
-                mui.confirm('您确定要上传室内场景采集数据吗？', '请在上传前，检查数据是否完整 ', btnArray, function(e) {
-                    if (e.index == 1) {
-                    	var reg = RegExp(/list-hover2/);
-	var 	classval_2g_dx = document.getElementById("xin_hao_2g_dx").getAttribute("class");		
-   if(classval_2g_dx.match(reg)){ 
-      	 xinghao_2g_dx = 0;
-    }else{
-	     xinghao_2g_dx = 1;
-    }
-    
-    var 	classval_2g_lt = document.getElementById("xin_hao_2g_lt").getAttribute("class");		
-   if(classval_2g_lt.match(reg)){ 
-      	 xinghao_2g_lt = 0;
-    }else{
-	     xinghao_2g_lt = 1;
-    }
-    
-    var 	classval_2g_yd = document.getElementById("xin_hao_2g_yd").getAttribute("class");		
-   if(classval_2g_yd.match(reg)){ 
-      	 xinghao_2g_yd = 0;
-    }else{
-	     xinghao_2g_yd = 1;
-    }
-    
-    var 	classval_4g_dx = document.getElementById("xin_hao_4g_dx").getAttribute("class");		
-   if(classval_4g_dx.match(reg)){ 
-      	 xinghao_4g_dx = 0;
-    }else{
-	     xinghao_4g_dx = 1;
-    }
-    
-    var 	classval_4g_lt = document.getElementById("xin_hao_4g_lt").getAttribute("class");		
-   if(classval_4g_lt.match(reg)){ 
-      	 xinghao_4g_lt = 0;
-    }else{
-	     xinghao_4g_lt = 1;
-    }
-    
-    var 	classval_4g_yd = document.getElementById("xin_hao_4g_yd").getAttribute("class");		
-   if(classval_4g_yd.match(reg)){ 
-      	 xinghao_4g_yd = 0;
-    }else{
-	     xinghao_4g_yd = 1;
-    }
-            
-                      var jsonstr = window.MyBrowserAPI.getLocationData("从页面传给手机的message"); 	
-	                  if(jsonstr !== '[]') {
-		               img_url = eval(jsonstr);
-		               }
-	                  now_position = $("#position_select").html();
-	                  all_floor =$("#floor_select").html();
-	                  buliding_name =$("#build_name").val();
-	                  detail_adress = $("#detail_address").val();
-	                  explanation = $("#explanation").val();
-	                  phone_num = $("#phone_num").val();
-	                  
-	                  var param = {
-	                  "img_url":img_url,
-	                  "now_position":now_position,
-	                  "all_floor":all_floor,
-                      "buliding_name":buliding_name,
-                      "detail_adress":detail_adress,
-                      "xinghao_2g_dx":xinghao_2g_dx,
-                      "xinghao_2g_lt":xinghao_2g_lt,
-                      "xinghao_2g_yd":xinghao_2g_yd,
-                      "xinghao_4g_dx":xinghao_4g_dx,
-                      "xinghao_4g_lt":xinghao_4g_lt,
-                      "xinghao_4g_yd":xinghao_4g_yd,
-                      "explanation":explanation,
-                      "phone_num":phone_num,                     
-	};
-	
-	var paramStr = JSON.stringify(param);
-	console.log(paramStr + '传参');
-	 Android.upload_data(paramStr);                            
-                        
-                    } else {
-                        
-                    }
-                })
-})
-
-	
-
+			}
+		})
+	})
+//return;
 	var htmlsum = "";
 	var jsonstr = window.MyBrowserAPI.getLocationData("从页面传给手机的message"); //拿到本地数据,并可以传给手机一些内容，可选
-	//    var jsonstr = "[\"/static/img/a1.jpg\", \"/static/img/a2.jpg\", \"/static/img/a2.jpg\", \"/static/img/a3.jpg\"]";
 	if(jsonstr !== '[]') {
 		var jsonarr = eval(jsonstr); //通过eval执行字符串，结果arr是一个数组，数组内容是"1","2","3","4"
 		//      var first = true;
@@ -230,7 +233,7 @@ $('#demo').click(function() {
 			htmlsum += '<div class="mui-slider-item">' +
 				'<img src="images/icon_banner01.png" id = "' + "img_" + i + '" alt="" class="cj-banner-img-border"/>' +
 				'</div>';
-			imgOrientation(item , "#img_" + i);
+			imgOrientation(item, "#img_" + i);
 			//          if (first) {
 			//              htmlsum = "<div class=\"item active\">\n" +
 			//                  "<img alt=\"image\" class=\"img-responsive\" src=\"" + item + "\">\n" +
