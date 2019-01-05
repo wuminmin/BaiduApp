@@ -35,6 +35,7 @@ import com.ysc.baiduapp.database.model.Note;
 import com.ysc.baiduapp.service.GetCellInfo;
 import com.ysc.baiduapp.service.LQRPhotoSelectUtils;
 import com.ysc.baiduapp.service.PostExample;
+import com.ysc.baiduapp.service.SystemUtil;
 import com.ysc.baiduapp.service.XinxiJson;
 import com.ysc.baiduapp.viewcustom.BaseFragment;
 
@@ -45,7 +46,9 @@ import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -362,9 +365,21 @@ public class OrderFragment extends BaseFragment {
         }
 
         @JavascriptInterface
-        public String upload_data(String data){
+        public String upload_data(String data) throws IOException {
             Log.e("测试upload_data 传递参数",data);
 //            return "{\"code\":\"error\",\"msg\":\"错误详情\"}";
+
+            SystemUtil systemUtil = new SystemUtil();
+            String imei = systemUtil.getIMEI(context,activity);
+            String jsonXinxi = xinxiJson.getXinxiJsonOne();
+            Date now_date = new Date();
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");//可以方便地修改日期格式
+            String now = dateFormat.format( now_date );
+            String json = "{\"now\":\""+now+"\",\"imei\":\""+imei+"\",\"data\":"+data+",\"jsonXinxi\":"+jsonXinxi+"}";
+            PostExample example = new PostExample();
+            String response = example.post(json);
+            System.out.println(response);
+
             return "{\"code\":\"ok\"}";
         }
     }

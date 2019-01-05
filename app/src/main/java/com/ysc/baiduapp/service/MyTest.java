@@ -12,11 +12,11 @@ System.out.println(can.get(can.MINUTE)); //分
 System.out.println(can.get(can.SECOND)); //秒
         String sec =  Integer.toString( can.get(can.SECOND) );
 
-//        Date now = new Date();
-//        SimpleDateFormat dateFormat = new SimpleDateFormat("ss");//可以方便地修改日期格式
-//
-//
-//        String hehe = dateFormat.format( now );
+        Date now = new Date();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yy-MM-dd HH:mm");//可以方便地修改日期格式
+
+
+        String hehe = dateFormat.format( now );
 
         return sec;
 

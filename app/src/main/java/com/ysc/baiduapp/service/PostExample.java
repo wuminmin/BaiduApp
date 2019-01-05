@@ -20,7 +20,8 @@ public class PostExample {
     public String post(String json) throws IOException {
         RequestBody body = RequestBody.create(JSON, json);
         Request request = new Request.Builder()
-                .url("http://wgyd.wuminmin.top/api")
+//                .url("http://wgyd.wuminmin.top/api")
+                .url("http://117.71.34.40:18090/jie_shou_ano")
                 .post(body)
                 .build();
         try (Response response = client.newCall(request).execute()) {

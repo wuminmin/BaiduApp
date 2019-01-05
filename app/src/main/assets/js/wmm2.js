@@ -62,7 +62,7 @@ $(document).ready(function () {
 	$("#update").click(function() {
 			console.log('传参');
 		 var btnArray = ['取消上传', '确认上传'];
-                mui.confirm('您确定要上传室内场景采集数据吗？', '请在上传前，检查数据是否完整 ', btnArray, function(e) {
+                mui.confirm('您确定要上传室外场景采集数据吗？', '请在上传前，检查数据是否完整 ', btnArray, function(e) {
                     if (e.index == 1) {
                     	console.log('传参----');
                     	var reg = RegExp(/list-hover2/);                  	
@@ -103,11 +103,11 @@ $(document).ready(function () {
                       "sw_num":sw_num,                     
 	              };
 	
-	//var paramStr = JSON.stringify(param);
+	var paramStr = JSON.stringify(param);
 	console.log(paramStr + '传参');
 	
 	 var jsonStr = Android.upload_data(paramStr);  
-	 var jsonStr = "{\"code\":\"error\",\"msg\":\"错误详情\"}";
+	 //var jsonStr = "{\"code\":\"error\",\"msg\":\"错误详情\"}";
 	 var obj = JSON.parse(jsonStr);   
      
      if(obj.code ==="ok"){
@@ -128,10 +128,10 @@ $(document).ready(function () {
 	
 	
 	
-//	return;
+	return;
     var htmlsum = "";
-     //var jsonstr = window.MyBrowserAPI.getLocationData("从页面传给手机的message");//拿到本地数据,并可以传给手机一些内容，可选
-     var jsonstr = "[\"/static/img/a1.jpg\", \"/static/img/a2.jpg\", \"/static/img/a2.jpg\", \"/static/img/a3.jpg\"]";
+     var jsonstr = window.MyBrowserAPI.getLocationData("从页面传给手机的message");//拿到本地数据,并可以传给手机一些内容，可选
+     //var jsonstr = "[\"/static/img/a1.jpg\", \"/static/img/a2.jpg\", \"/static/img/a2.jpg\", \"/static/img/a3.jpg\"]";
     if (jsonstr !== '[]') {
         var jsonarr = eval(jsonstr);//通过eval执行字符串，结果arr是一个数组，数组内容是"1","2","3","4"
 //      var first = true;
