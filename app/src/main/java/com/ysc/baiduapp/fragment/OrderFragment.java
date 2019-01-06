@@ -29,11 +29,14 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.lzy.imagepicker.bean.ImageItem;
 import com.ysc.baiduapp.R;
 import com.ysc.baiduapp.database.DatabaseHelper;
 import com.ysc.baiduapp.database.model.Note;
 import com.ysc.baiduapp.service.GetCellInfo;
+import com.ysc.baiduapp.service.HttpUtil;
 import com.ysc.baiduapp.service.LQRPhotoSelectUtils;
+import com.ysc.baiduapp.service.MyStringCallBack;
 import com.ysc.baiduapp.service.PostExample;
 import com.ysc.baiduapp.service.SystemUtil;
 import com.ysc.baiduapp.service.XinxiJson;
@@ -379,6 +382,13 @@ public class OrderFragment extends BaseFragment {
             PostExample example = new PostExample();
             String response = example.post(json);
             System.out.println(response);
+
+            HttpUtil httpUtil = new HttpUtil();
+            String url = "";
+            ArrayList<String> pathList = new ArrayList<String>() ;
+            pathList.add("");
+            MyStringCallBack myStringCallBack = new MyStringCallBack();
+            httpUtil.postFileRequest(url,null,pathList,myStringCallBack);
 
             return "{\"code\":\"ok\"}";
         }
