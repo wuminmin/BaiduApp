@@ -174,7 +174,6 @@ public class GetCellInfo {
                             JsonObject cellJson = new JsonObject();
                             String ssignal = signalStrength.toString();
                             String[] parts = ssignal.split(" ");
-                            Log.e("测试signalStrength:", Arrays.toString(parts));
                             if ("HUAWEI".equals(android.os.Build.BRAND) || "Huawei".equals(android.os.Build.BRAND)) {
                                 cellJson.addProperty("getRsrpCellInfoLte", Integer.valueOf(parts[11]));
                                 cellJson.addProperty("getRsrqCellInfoLte", Integer.valueOf(parts[12]));
@@ -188,7 +187,6 @@ public class GetCellInfo {
                                 cellJson.addProperty("getCdmaDbmCellSignalStrengthCdma", Integer.valueOf(parts[3]));
                                 cellJson.addProperty("getCdmaEcioCellSignalStrengthCdma", Integer.valueOf(parts[4]) / 10);
                             }
-                            Log.e("cellJson内容：", cellJson.toString());
 
                             DatabaseHelper databaseHelper = new DatabaseHelper(mycontext);
                             databaseHelper.insertCell(cellJson.toString());
@@ -232,17 +230,11 @@ public class GetCellInfo {
                 cellJson.addProperty("ProvidersName", opeType);
 
                 List<NeighboringCellInfo> neighboringCellInfoList = telephonyManager.getNeighboringCellInfo();
-                Log.e("测试NeighboringCellInfo", String.valueOf(neighboringCellInfoList));
 
                 List<CellInfo> myCellInfoList = telephonyManager.getAllCellInfo();
-                Log.e("测试myCellInfoList", String.valueOf(myCellInfoList));
 
                 CellLocation primaryLocation = telephonyManager.getCellLocation();
                 if (primaryLocation != null) {
-//                        int primaryCellId = Integer.parseInt(primaryLocation.toString().split(",")[1]);
-//                        int trackingAreaCode = Integer.parseInt(primaryLocation.toString().split(",")[0].replace("[", ""));
-//                        Log.d("测试", primaryCellId + " "+ trackingAreaCode);
-                    Log.d("测试", primaryLocation.toString());
                 } else {
                     Log.d("测试", "updateCurrentCell: not even with getCellLocation");
                 }

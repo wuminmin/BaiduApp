@@ -21,7 +21,7 @@ public class PostExample {
         RequestBody body = RequestBody.create(JSON, json);
         Request request = new Request.Builder()
 //                .url("http://wgyd.wuminmin.top/api")
-                .url("http://117.71.34.40:18090/jie_shou_ano")
+                .url("http://117.71.34.40:18090/ano_data")
                 .post(body)
                 .build();
         try (Response response = client.newCall(request).execute()) {

@@ -49,6 +49,8 @@ import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -59,6 +61,14 @@ import java.util.Objects;
 import kr.co.namee.permissiongen.PermissionFail;
 import kr.co.namee.permissiongen.PermissionGen;
 import kr.co.namee.permissiongen.PermissionSuccess;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 /**
  * Created by wjx on 2016-1-12.
@@ -82,9 +92,11 @@ public class OrderFragment extends BaseFragment {
     private Button shinengBtn;
     private Button shiwaiBtn;
     private int BUTTONSTAT;
+    private static final String TAG = "OKHttpUtils----";
+
 
     final int SELECT_PHOTO = 1;
-     List<String> imagelist = new ArrayList<>();
+    List<String> imagelist = new ArrayList<>();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -92,12 +104,12 @@ public class OrderFragment extends BaseFragment {
         activity = getActivity();
         context = getActivity().getApplicationContext();
         TelephonyManager telephonyManager = (TelephonyManager) getActivity().getSystemService(Context.TELEPHONY_SERVICE);
-        xinxiJson = new XinxiJson(  getActivity().getApplicationContext(), telephonyManager, getActivity()  );
-        BUTTONSTAT = 1 ;
+        xinxiJson = new XinxiJson(getActivity().getApplicationContext(), telephonyManager, getActivity());
+        BUTTONSTAT = 1;
         databaseHelper = new DatabaseHelper(context);
         shinengWebview = view.findViewById(R.id.shinengWebview);
         shiwaiWebview = view.findViewById(R.id.shiwaiWebview);
-        getCellInfo = new GetCellInfo( context , telephonyManager, getActivity());
+        getCellInfo = new GetCellInfo(context, telephonyManager, getActivity());
         shiwaiWebview = view.findViewById(R.id.shiwaiWebview);
         bundle = savedInstanceState;
 
@@ -127,12 +139,12 @@ public class OrderFragment extends BaseFragment {
                 shiwaiWebviewInit(shiwaiWebview);
             }
         });
-        shinengInit(shinengWebview ,shinengBtn ,shiwaiBtn);
+        shinengInit(shinengWebview, shinengBtn, shiwaiBtn);
         return view;
     }
 
     @SuppressLint("ResourceAsColor")
-    private void shinengInit(WebView shinengWebview , Button shinengBtn , Button shiwaiBtn ){
+    private void shinengInit(WebView shinengWebview, Button shinengBtn, Button shiwaiBtn) {
         shinengBtn.setBackgroundColor(R.color.white);
         shiwaiBtn.setBackgroundColor(R.color.black);
         shinengWebview.setWebViewClient(new WebViewClient());
@@ -144,17 +156,17 @@ public class OrderFragment extends BaseFragment {
         StringBuilder jsontmp = new StringBuilder();
         List<Note> notes = databaseHelper.getAllNotes();
         boolean first = true;
-        for( Note  note : notes  ){
-            if(first){
+        for (Note note : notes) {
+            if (first) {
                 jsontmp.append("\"").append(note.getNote()).append("\"");
-                first=false;
-            }else {
+                first = false;
+            } else {
                 jsontmp.append(",");
                 jsontmp.append("\"").append(note.getNote()).append("\"");
             }
         }
-        final String json = "["+jsontmp.toString()+"]";
-        Log.e("传递给webview的note",json);
+        final String json = "[" + jsontmp.toString() + "]";
+        Log.e("传递给webview的note", json);
         shinengWebview.addJavascriptInterface(new Object() {
             //@param message:  html页面传进来的数据
             @JavascriptInterface
@@ -193,7 +205,7 @@ public class OrderFragment extends BaseFragment {
         shinengWebview.loadUrl("file:///android_asset/html1016/index.html");
     }
 
-     private void shinengWebviewInit(WebView shinengWebview ){
+    private void shinengWebviewInit(WebView shinengWebview) {
         shinengWebview.setWebViewClient(new WebViewClient());
         WebSettings webSettings = shinengWebview.getSettings();
         webSettings.setJavaScriptEnabled(true);
@@ -203,17 +215,17 @@ public class OrderFragment extends BaseFragment {
         StringBuilder jsontmp = new StringBuilder();
         List<Note> notes = databaseHelper.getAllNotes();
         boolean first = true;
-        for( Note  note : notes  ){
-            if(first){
+        for (Note note : notes) {
+            if (first) {
                 jsontmp.append("\"").append(note.getNote()).append("\"");
-                first=false;
-            }else {
+                first = false;
+            } else {
                 jsontmp.append(",");
                 jsontmp.append("\"").append(note.getNote()).append("\"");
             }
         }
-        final String json = "["+jsontmp.toString()+"]";
-        Log.e("传递给webview的note",json);
+        final String json = "[" + jsontmp.toString() + "]";
+        Log.e("传递给webview的note", json);
         shinengWebview.addJavascriptInterface(new Object() {
             //@param message:  html页面传进来的数据
             @JavascriptInterface
@@ -230,28 +242,28 @@ public class OrderFragment extends BaseFragment {
                 return jsonXinxi; // 把本地数据弄成json串，传给html
             }
         }, "getXinxiJsonOne");//MyBrowserAPI:自定义的js函数名
-         try {
-             if (Build.VERSION.SDK_INT >= 16) {
-                 Class<?> clazz = shinengWebview.getSettings().getClass();
-                 Method method = clazz.getMethod(
-                         "setAllowUniversalAccessFromFileURLs", boolean.class);
-                 if (method != null) {
-                     method.invoke(shinengWebview.getSettings(), true);
-                 }
-             }
-         } catch (IllegalArgumentException e) {
-             e.printStackTrace();
-         } catch (NoSuchMethodException e) {
-             e.printStackTrace();
-         } catch (IllegalAccessException e) {
-             e.printStackTrace();
-         } catch (InvocationTargetException e) {
-             e.printStackTrace();
-         }
+        try {
+            if (Build.VERSION.SDK_INT >= 16) {
+                Class<?> clazz = shinengWebview.getSettings().getClass();
+                Method method = clazz.getMethod(
+                        "setAllowUniversalAccessFromFileURLs", boolean.class);
+                if (method != null) {
+                    method.invoke(shinengWebview.getSettings(), true);
+                }
+            }
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        }
         shinengWebview.loadUrl("file:///android_asset/html1016/index.html");
     }
 
-    private void shiwaiWebviewInit(WebView shiwaiWebview){
+    private void shiwaiWebviewInit(WebView shiwaiWebview) {
         shiwaiWebview.setWebViewClient(new WebViewClient());
         WebSettings webSettings = shiwaiWebview.getSettings();
         webSettings.setJavaScriptEnabled(true);
@@ -260,17 +272,17 @@ public class OrderFragment extends BaseFragment {
         StringBuilder jsontmp = new StringBuilder();
         List<Note> notes = databaseHelper.getAllNotes();
         boolean first = true;
-        for( Note  note : notes  ){
-            if(first){
+        for (Note note : notes) {
+            if (first) {
                 jsontmp.append("\"").append(note.getNote()).append("\"");
-                first=false;
-            }else {
+                first = false;
+            } else {
                 jsontmp.append(",");
                 jsontmp.append("\"").append(note.getNote()).append("\"");
             }
         }
-        final String json = "["+jsontmp.toString()+"]";
-        Log.e("传递给webview的note",json);
+        final String json = "[" + jsontmp.toString() + "]";
+        Log.e("传递给webview的note", json);
         shiwaiWebview.addJavascriptInterface(new Object() {
             //@param message:  html页面传进来的数据
             @JavascriptInterface
@@ -310,21 +322,24 @@ public class OrderFragment extends BaseFragment {
 
     class MyJavascriptInterface {
         Context myContext;
-        /** Instantiate the interface and set the context */
-        MyJavascriptInterface(Context c)
-        {
+
+        /**
+         * Instantiate the interface and set the context
+         */
+        MyJavascriptInterface(Context c) {
             myContext = c;
         }
-        /** Show a toast from the web page */
+
+        /**
+         * Show a toast from the web page
+         */
         @JavascriptInterface
-        public void showToast(String toast)
-        {
+        public void showToast(String toast) {
             Toast.makeText(myContext, toast, Toast.LENGTH_SHORT).show();
         }
 
         @JavascriptInterface
-        public void choosePhoto()
-        {
+        public void choosePhoto() {
             PermissionGen.with(OrderFragment.this)
                     .addRequestCode(LQRPhotoSelectUtils.REQ_TAKE_PHOTO)
                     .permissions(Manifest.permission.READ_EXTERNAL_STORAGE,
@@ -338,9 +353,9 @@ public class OrderFragment extends BaseFragment {
 //            startActivityForResult(photoPickerIntent, SELECT_PHOTO);
 //            return file;
         }
+
         @JavascriptInterface
-        public void selectPhoto()
-        {
+        public void selectPhoto() {
             // 3、调用从图库选取图片方法
             PermissionGen.needPermission(OrderFragment.this,
                     LQRPhotoSelectUtils.REQ_SELECT_PHOTO,
@@ -356,62 +371,92 @@ public class OrderFragment extends BaseFragment {
         }
 
         @JavascriptInterface
-        public void deletePhoto(){
+        public void deletePhoto() {
             databaseHelper.deleteallnote();
 //            resetcaiji();
-            Log.e("删除所有照片","");
+            Log.e("删除所有照片", "");
         }
 
         @JavascriptInterface
-        public void saveDizhi(String dizhi){
-            Log.e("测试saveDizhi 传递参数",dizhi);
+        public void saveDizhi(String dizhi) {
+            Log.e("测试saveDizhi 传递参数", dizhi);
         }
 
         @JavascriptInterface
         public String upload_data(String data) throws IOException {
-            Log.e("测试upload_data 传递参数",data);
+            Log.e("测试upload_data 传递参数", data);
 //            return "{\"code\":\"error\",\"msg\":\"错误详情\"}";
 
             SystemUtil systemUtil = new SystemUtil();
-            String imei = systemUtil.getIMEI(context,activity);
+            String imei = systemUtil.getIMEI(context, activity);
             String jsonXinxi = xinxiJson.getXinxiJsonOne();
             Date now_date = new Date();
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");//可以方便地修改日期格式
-            String now = dateFormat.format( now_date );
-            String json = "{\"now\":\""+now+"\",\"imei\":\""+imei+"\",\"data\":"+data+",\"jsonXinxi\":"+jsonXinxi+"}";
+            String now = dateFormat.format(now_date);
+            String json = "{\"now\":\"" + now + "\",\"imei\":\"" + imei + "\",\"data\":" + data + ",\"jsonXinxi\":" + jsonXinxi + "}";
             PostExample example = new PostExample();
             String response = example.post(json);
             System.out.println(response);
 
-            HttpUtil httpUtil = new HttpUtil();
-            String url = "";
-            ArrayList<String> pathList = new ArrayList<String>() ;
-            pathList.add("");
-            MyStringCallBack myStringCallBack = new MyStringCallBack();
-            httpUtil.postFileRequest(url,null,pathList,myStringCallBack);
-
+//            HttpUtil httpUtil = new HttpUtil();
+            String upload_url = "http://117.71.34.40:18090/ano_image";
+            List<Note> notes = databaseHelper.getAllNotes();
+            ArrayList<String> pathList = new ArrayList<String>();
+            for (Note note : notes) {
+                File file = null;
+                try {
+                    file = new File(new URI(note.getNote()));
+                    //创建okhClient
+                    OkHttpClient okHttpClient = new OkHttpClient();
+                    //创建MultiparBody
+                    MultipartBody.Builder builder = new MultipartBody.Builder().setType(MultipartBody.FORM);
+                    //设置参数
+                    MediaType mediaType = MediaType.parse("image/png");
+                    builder.addFormDataPart("file", note.getNote(), RequestBody.create(mediaType, file));
+                    //添加其他参数
+//                builder.addFormDataPart("uid","71");
+                    MultipartBody body = builder.build();
+                    Request request = new Request.Builder().url(upload_url).post(body).build();
+                    Call call = okHttpClient.newCall(request);
+                    call.enqueue(new Callback() {
+                        @Override
+                        public void onFailure(Call call, IOException e) {
+                            Log.d(TAG, "onFailure() returned: " + "失败---" + e.getMessage());
+                        }
+                        @Override
+                        public void onResponse(Call call, Response response) throws IOException {
+                            Log.d(TAG, "onResponse() returned:成功 " + response.body().string());
+                        }
+                    });
+                } catch (URISyntaxException e) {
+                    e.printStackTrace();
+                }
+//                pathList.add(note.getNote());
+            }
+//            MyStringCallBack myStringCallBack = new MyStringCallBack();
+//            httpUtil.postFileRequest(url,null,pathList,myStringCallBack);
             return "{\"code\":\"ok\"}";
         }
     }
 
     @SuppressLint("ResourceAsColor")
-    public void resetcaiji(){
+    public void resetcaiji() {
 
-                if (BUTTONSTAT == 1){
-                    shinengBtn.setBackgroundColor(R.color.white);
-                    shiwaiBtn.setBackgroundColor(R.color.black);
-                    shiwaiWebview.setVisibility(View.GONE);
-                    shinengWebview.setVisibility(View.VISIBLE);
-                    BUTTONSTAT = 1;
-                    shinengWebviewInit(shinengWebview);
-                }else {
-                    shinengBtn.setBackgroundColor(R.color.black);
-                    shiwaiBtn.setBackgroundColor(R.color.white);
-                    shiwaiWebview.setVisibility(View.VISIBLE);
-                    shinengWebview.setVisibility(View.GONE);
-                    BUTTONSTAT = 2;
-                    shiwaiWebviewInit(shiwaiWebview);
-                }
+        if (BUTTONSTAT == 1) {
+            shinengBtn.setBackgroundColor(R.color.white);
+            shiwaiBtn.setBackgroundColor(R.color.black);
+            shiwaiWebview.setVisibility(View.GONE);
+            shinengWebview.setVisibility(View.VISIBLE);
+            BUTTONSTAT = 1;
+            shinengWebviewInit(shinengWebview);
+        } else {
+            shinengBtn.setBackgroundColor(R.color.black);
+            shiwaiBtn.setBackgroundColor(R.color.white);
+            shiwaiWebview.setVisibility(View.VISIBLE);
+            shinengWebview.setVisibility(View.GONE);
+            BUTTONSTAT = 2;
+            shiwaiWebviewInit(shiwaiWebview);
+        }
     }
 
     private void initLQRPhotoSelectUtils() {
@@ -419,11 +464,11 @@ public class OrderFragment extends BaseFragment {
         mLqrPhotoSelectUtils = new LQRPhotoSelectUtils(activity, new LQRPhotoSelectUtils.PhotoSelectListener() {
             @Override
             public void onFinish(File outputFile, Uri outputUri) {
-                Log.e("initLQRPhotoSelectUtils",outputFile.getAbsolutePath());
+                Log.e("initLQRPhotoSelectUtils", outputFile.getAbsolutePath());
                 databaseHelper.insertNote(outputUri.toString());
-                if (BUTTONSTAT == 1){
+                if (BUTTONSTAT == 1) {
                     shinengWebviewInit(shinengWebview);
-                }else {
+                } else {
                     shiwaiWebviewInit(shiwaiWebview);
                 }
                 // 4、当拍照或从图库选取图片成功后回调
