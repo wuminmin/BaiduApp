@@ -401,7 +401,6 @@ public class OrderFragment extends BaseFragment {
 //            HttpUtil httpUtil = new HttpUtil();
             String upload_url = "http://117.71.34.40:18090/ano_image";
             List<Note> notes = databaseHelper.getAllNotes();
-            ArrayList<String> pathList = new ArrayList<String>();
             for (Note note : notes) {
                 File file = null;
                 try {
@@ -414,7 +413,8 @@ public class OrderFragment extends BaseFragment {
                     MediaType mediaType = MediaType.parse("image/png");
                     builder.addFormDataPart("file", note.getNote(), RequestBody.create(mediaType, file));
                     //添加其他参数
-//                builder.addFormDataPart("uid","71");
+                builder.addFormDataPart("imei",imei);
+                    builder.addFormDataPart("now",now);
                     MultipartBody body = builder.build();
                     Request request = new Request.Builder().url(upload_url).post(body).build();
                     Call call = okHttpClient.newCall(request);
@@ -435,6 +435,7 @@ public class OrderFragment extends BaseFragment {
             }
 //            MyStringCallBack myStringCallBack = new MyStringCallBack();
 //            httpUtil.postFileRequest(url,null,pathList,myStringCallBack);
+            databaseHelper.deleteallnote();
             return "{\"code\":\"ok\"}";
         }
     }
